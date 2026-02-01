@@ -5,14 +5,6 @@
 
 #define DEFAULTFEN "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR"
 
-
-//ASCII THING
-#define DIGITSTART   48
-#define DIGITEND     57
-#define UPPERSTART   65
-#define UPPEREND     90
-#define FORWARDSLASH 47
-
 typedef struct{
     char* fen;
 } PosInfo;

@@ -2,6 +2,7 @@
 #include "../lib/piece.h"
 #include "../lib/move.h"
 #include "../lib/fen.h"
+#include "../lib/coordinate.h"
 #include "ui.h"
 
 #include <stdio.h>
@@ -32,8 +33,10 @@ void test_board(){
 
 int main(void) {
     
+    print_square(63);
+
     Board* b = init_board_fen(DEFAULTFEN);
-    print_board(b);
+    print_board_file(b);
     free_board(b);
 
     return 0;
