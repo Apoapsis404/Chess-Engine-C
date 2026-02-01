@@ -37,5 +37,5 @@ String square_name_from_idx(int idx){
 void print_square(int idx) {
     String name = square_name_from_idx(idx);
     printf("%s\n", name.string);
-    free_string(name);
+    free_string(&name);
 }

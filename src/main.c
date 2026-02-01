@@ -8,6 +8,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
+#define QUIT 'q'
 
 void test_board(){
     Board* b = init_board_empty();
@@ -33,16 +36,43 @@ void test_board(){
     free_board(b);
 }
 
+int eval(String *s){
+    if (s->string[0] == QUIT){
+        return 1;
+    }
+    return 0;
+}
+
+int repl(Board *b){
+    String *s = malloc(sizeof(String));
+    while(1) {
+
+        draw_ui(b, true, BOARD_DRAW_SIZE);
+
+        char buf[255];
+        printf(">");
+
+        fgets(buf, sizeof(buf), stdin);
+
+        string_append_many(s, buf, strlen(buf));
+
+        int ret = eval(s);
+        s->count = 0;
+        if (ret == 1){
+            break;
+        }
+    }
+    free_string(s);
+    free(s);
+    return 0;
+}
+
 int main(void) {
- 
-    String s = { 0 };
 
-    Move move = construct_move(0, 0, 1);
-    s = move_to_string(move);
+    Board *b = init_board_fen(DEFAULTFEN);
 
-    printf("%s\n", s.string);
+    repl(b);
 
-    free_string(&s);
-
+    free_board(b);
     return 0;
 }
