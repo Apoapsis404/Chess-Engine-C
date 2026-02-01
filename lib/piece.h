@@ -1,6 +1,8 @@
 #ifndef PIECE_H
 #define PIECE_H
 
+#include <stdint.h>
+
 #define NONE   0
 #define KING   1
 #define PAWN   2
@@ -29,6 +31,8 @@
 #define PIECEMASK 0b0111
 #define COLORMASK 0b1000
 
+#define PIECE uint8_t
+
 char itop(int piece);
 
-#endif //PIECE_H
+#endif //PIECE_H;

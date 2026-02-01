@@ -1,6 +1,7 @@
 
 -- TODO --
 Make move
+FEN parsing
 
 
 -- DONE --
