@@ -1,6 +1,8 @@
 #ifndef MOVE_H
 #define MOVE_H
 
+#include "sutil.h"
+
 #include <stdint.h>
 
 // FLAGS
@@ -20,6 +22,6 @@ int get_to(Move move);
 int get_flags(Move move);
 
 int invalid_move(Move move);
-char* move_to_string(Move move);
+String move_to_string(Move move);
 
 #endif //MOVE_H

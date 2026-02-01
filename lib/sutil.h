@@ -1,6 +1,31 @@
 #ifndef SUTIL_H
 #define SUTIL_H
 
+#include <stdlib.h>
+
+
+
+// Dynamic String functions
+#define STRING_SIZE_INIT 2
+
+typedef struct {
+    char* string;
+    size_t count;
+    size_t capacity;
+} String;
+
+int string_append(String *dst, const char src);
+int string_append_many(String *dst, const char *src, size_t src_size);
+int string_cat(String *dst, String *src);
+int string_cat_free(String *dst, String *src);
+
+void free_string(String *s);
+
+
+
+
+// Character functions
+
 //ASCII THING
 #define DIGITSTART    48
 #define DIGITEND      57

@@ -1,7 +1,9 @@
 #ifndef COORDINATE_H
 #define COORDINATE_H
 
-char* square_name_from_idx(int idx);
+#include "sutil.h"
+
+String square_name_from_idx(int idx);
 int rank_from_idx(int idx);
 int file_from_idx(int idx);
 void print_square(int idx);

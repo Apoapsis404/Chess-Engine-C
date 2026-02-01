@@ -3,9 +3,11 @@
 #include "../lib/move.h"
 #include "../lib/fen.h"
 #include "../lib/coordinate.h"
+#include "../lib/sutil.h"
 #include "ui.h"
 
 #include <stdio.h>
+#include <stdlib.h>
 
 void test_board(){
     Board* b = init_board_empty();
@@ -32,12 +34,15 @@ void test_board(){
 }
 
 int main(void) {
-    
-    print_square(63);
+ 
+    String s = { 0 };
 
-    Board* b = init_board_fen(DEFAULTFEN);
-    print_board_file(b);
-    free_board(b);
+    Move move = construct_move(0, 0, 1);
+    s = move_to_string(move);
+
+    printf("%s\n", s.string);
+
+    free_string(&s);
 
     return 0;
 }

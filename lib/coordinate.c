@@ -24,18 +24,18 @@ char get_file_name(int idx) {
 }
 
 
-/* Returns a malloc'd string with the square name. Must be freed by caller! */
-char* square_name_from_idx(int idx){
-    char* ret = malloc(sizeof(char) * 3);
-    ret[0] = get_file_name(idx);
-    ret[1] = get_rank_name(idx);
-    ret[2] = '\0';
+/*  */
+String square_name_from_idx(int idx){
+    String s = { 0 };
 
-    return ret;
+    string_append(&s, get_file_name(idx));
+    string_append(&s, get_rank_name(idx));
+
+    return s;
 }
 
 void print_square(int idx) {
-    char* name = square_name_from_idx(idx);
-    printf("%s\n", name);
-    free(name);
+    String name = square_name_from_idx(idx);
+    printf("%s\n", name.string);
+    free_string(name);
 }

@@ -1,5 +1,104 @@
 #include "sutil.h"
 
+#include "string.h"
+
+
+// Dynamic String functions
+
+
+/*
+Reallocates space for string
+Returns 0 on success and -1 on error
+*/
+int string_alloc_space(String* s, size_t needed){
+    needed++;
+    if(needed < s->capacity) return 0;
+    if(s->capacity == 0) s->capacity = STRING_SIZE_INIT;
+
+    while (s->capacity < needed) {
+        s->capacity *= 2;
+    }
+
+    s->string = realloc(s->string, s->capacity * sizeof(char));
+    if (s->string == NULL) return -1;
+    return 0;
+}
+
+/* 
+Appends src to the end of dst
+Returns: 1 on success, 
+Returns -1 on alloc error
+*/
+int string_append(String *dst, const char src){
+    if(string_alloc_space(dst, dst->count) == -1) return -1;
+    dst->string[dst->count++] = src;
+    dst->string[dst->count] = '\0';
+    return 1;
+}
+
+/*
+Appends src to the end of dst
+Returns chars appended
+Returns -1 on alloc fail
+*/
+int string_append_many(String *dst, const char *src, size_t src_size){
+    if(string_alloc_space(dst, dst->count + src_size) == -1) return -1;
+    memcpy(dst->string + dst->count, src, src_size);
+    dst->count += src_size;
+
+    dst->string[dst->count] = '\0';
+    return 0;
+}
+
+/*
+Concats src at the end of dst
+Returns chars appended
+Returns -1 on alloc fail
+*/
+int string_cat(String *dst, String *src){
+    int ret = string_append_many(dst, src->string, src->count);
+    return ret;
+}
+
+/*
+Concats src at the end of dst, and frees src
+Returns chars appended
+Returns -1 on alloc fail
+string is not free'd on error
+*/
+int string_cat_free(String *dst, String *src){
+    int ret = string_append_many(dst, src->string, src->count);
+    if(ret == -1) return -1;
+    free_string(src);
+    return ret;
+}
+
+void free_string(String *s){
+    free(s->string);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Character functions
 int is_lower(char c){
     if (c >= UPPERSTART && c <= UPPEREND) {
         return 1;
