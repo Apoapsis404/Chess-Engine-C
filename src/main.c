@@ -1,6 +1,24 @@
+#include "../lib/board.h"
+#include "../lib/piece.h"
+#include "ui.h"
+
 #include <stdio.h>
 
-void main(void) {
-    printf("Hello, Chess!\n");
+int main(void) {
+    
+    Board* b = init_board("");
+
+    for (int i = 0; i < 64; ++i) {
+        b->board[i] = WHITEROOK; 
+    }
+
+    b->board[0] = BLACKBISHOP;
+
+    print_board(b);
+
+    free_board(b);
+
+
+
     return 0;
 }

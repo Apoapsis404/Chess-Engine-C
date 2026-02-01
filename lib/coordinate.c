@@ -26,6 +26,8 @@ char get_rank_name(int idx){
             return '7';
         case 7:
             return '8';
+        default:
+            return 0;
     }
 }
 

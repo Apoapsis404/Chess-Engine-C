@@ -13,9 +13,11 @@ int get_flags(Move move){
 }
 
 int invalid_move(Move move) {
+    (void)move;
     return 0;
 }
 
 char* move_to_string(Move move){
+    (void)move;
     return "";
 }
