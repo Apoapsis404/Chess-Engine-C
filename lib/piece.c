@@ -30,7 +30,7 @@ char itop(int piece) {
             fprintf(stderr, "ERROR: Unknown piece value: %d\n", piece);
     }
 
-    if ((piece & COLORMASK) == BLACK){
+    if (piece != NONE && (piece & COLORMASK) == WHITE){
         return ret - 32;
     }
     return ret;

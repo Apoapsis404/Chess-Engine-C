@@ -4,22 +4,30 @@
 #include "coordinate.h"
 #include "board.h"
 #include "piece.h"
+#include "fen.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 
-Board* init_board(char* fen){
-    (void)fen;
-
+Board* init_board_empty(){
     Board* b = malloc(sizeof(Board));
-    b->board = calloc(sizeof(PIECE), 64);
+    return b;
+}
+
+Board* init_board_fen(char* fen){
+    Board* b = malloc(sizeof(Board));
+    b->board = parse_fen(fen);
     return b;
 }
 
 void free_board(Board* b){
-    free(b->board);
+    if (b->board != NULL){
+        free(b->board);
+    }
     free(b);
 }
+
+
 
 /* Assumes legal move. Check before calling this function!
    Returns the piece (value) of the piece that was in the
@@ -32,7 +40,7 @@ PIECE make_move(Board* b, Move move){
     PIECE captured_piece = b->board[to]; 
 
     b->board[to] = piece;
-    b->board[from] = 0;
+    b->board[from] = NONE;
 
     return captured_piece;
 }

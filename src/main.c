@@ -1,13 +1,13 @@
 #include "../lib/board.h"
 #include "../lib/piece.h"
 #include "../lib/move.h"
+#include "../lib/fen.h"
 #include "ui.h"
 
 #include <stdio.h>
 
-int main(void) {
-    
-    Board* b = init_board("");
+void test_board(){
+    Board* b = init_board_empty();
 
     for (int i = 0; i < 64; ++i) {
         b->board[i] = BLACKQUEEN; 
@@ -27,6 +27,13 @@ int main(void) {
     make_move(b, construct_move(0, 1, 9));
     print_board(b);
 
+    free_board(b);
+}
+
+int main(void) {
+    
+    Board* b = init_board_fen(DEFAULTFEN);
+    print_board(b);
     free_board(b);
 
     return 0;
