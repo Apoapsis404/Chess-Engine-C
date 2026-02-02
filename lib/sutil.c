@@ -1,6 +1,8 @@
 #include "sutil.h"
 
-#include "string.h"
+#include <string.h>
+#include <stdio.h>
+
 
 
 // Dynamic String functions
@@ -77,13 +79,41 @@ void free_string(String *s){
     free(s->string);
 }
 
+BString bstring_from_string(String *s){
+    BString bs;
+    bs.string = s->string;
+    bs.count = s->count;
+    return bs;
+}
 
+// For now: Expects there to be something here! (because that garanties a null terminator)
+BString bstring_next(BString *bs, char delim){
+    size_t i = 0;
+    while(i < bs->count && bs->string[i] != '\0' && bs->string[i] != delim){
+        i++;
+    }
 
+    BString ret;
+    ret.string = bs->string;
+    ret.count = i;
 
+    if (i < bs->count){
+        bs->count -= i + 1;
+        bs->string += i + 1;
+    } else {
+        bs->count -= i;
+        bs->string += i;
+    }
 
+    return ret;
+}
 
-
-
+void bstring_print(BString *bs, char end){
+    for(size_t i = 0; i < bs->count; ++i){
+        printf("%c", bs->string[i]);
+    }
+    printf("%c", end);
+}
 
 
 
@@ -99,6 +129,7 @@ void free_string(String *s){
 
 
 // Character functions
+
 int is_lower(char c){
     if (c >= UPPERSTART && c <= UPPEREND) {
         return 1;

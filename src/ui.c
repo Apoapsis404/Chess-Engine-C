@@ -89,7 +89,8 @@ void draw_ui(Board* b, bool clear, size_t offset){
 
     print_board(b);
 
-    print_char_n('\n', h - offset - 2);
+    size_t tmp = h - offset - 2;
+    print_char_n('\n', tmp);
 
     print_char_n('#', w);
 }

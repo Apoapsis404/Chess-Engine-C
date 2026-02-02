@@ -9,10 +9,19 @@
 #define STRING_SIZE_INIT 2
 
 typedef struct {
-    char* string;
+    char *string;
     size_t count;
     size_t capacity;
 } String;
+
+/* 
+Borrowed String
+Does not allow for changes in alloced space
+*/
+typedef struct {
+    char *string;
+    size_t count;
+} BString;
 
 int string_append(String *dst, const char src);
 int string_append_many(String *dst, const char *src, size_t src_size);
@@ -21,6 +30,12 @@ int string_cat_free(String *dst, String *src);
 
 void free_string(String *s);
 
+BString bstring_from_string(String *s);
+BString bstring_next(BString *bs, char delim);
+
+
+void bstring_print(BString *bs, char end);
+#define bstring_println(bs) bstring_print(bs, '\n')
 
 
 

@@ -4,7 +4,7 @@
 
 char itop(int piece) {
     char ret;
-    switch (piece & PIECEMASK) {
+    switch (PIECEMASK & piece) {
         case KING:
             ret = 'k';
             break;

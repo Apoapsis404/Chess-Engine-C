@@ -10,53 +10,49 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define QUIT 'q'
+#define BUFSIZE 64
 
-void test_board(){
-    Board* b = init_board_empty();
+//COMMANDS
+#define QUIT "q"
+#define RESET "rst"
 
-    for (int i = 0; i < 64; ++i) {
-        b->board[i] = BLACKQUEEN; 
-    }
+/*
+COMMANDS:
+Make move: mv (from)(to) ex:mv a1h1
+Restart: rst
+Restart with fen: fen (fen) ex:fen DEFAULTFEN (Fens are saved to fen.h for now)
 
-    b->board[0] = WHITEKING;
-    b->board[1] = WHITEQUEEN;
+*/
 
-    print_board(b);
 
-    Move move = construct_move(0, 0, 1);
-    
-    make_move(b, move);
-
-    print_board(b);
-
-    make_move(b, construct_move(0, 1, 9));
-    print_board(b);
-
-    free_board(b);
-}
-
-int eval(String *s){
-    if (s->string[0] == QUIT){
+int eval(BString *bs, Board *b){
+    BString token = bstring_next(bs, ' ');
+    if (strncmp(token.string, QUIT, token.count) == 0){
         return 1;
+    } else if (strncmp(token.string, RESET, token.count) == 0){
+        b->board = parse_fen(DEFAULTFEN);
     }
     return 0;
 }
 
+
 int repl(Board *b){
-    String *s = malloc(sizeof(String));
+    String *s = calloc(sizeof(String), 1);
     while(1) {
 
-        draw_ui(b, true, BOARD_DRAW_SIZE);
+        draw_ui(b, false, BOARD_DRAW_SIZE);
 
-        char buf[255];
+        char* buf = calloc(1, BUFSIZE);
         printf(">");
 
         fgets(buf, sizeof(buf), stdin);
 
-        string_append_many(s, buf, strlen(buf));
+        buf[strlen(buf) - 1] = '\0';
 
-        int ret = eval(s);
+        string_append_many(s, buf, strlen(buf));
+        free(buf);
+        BString bs = bstring_from_string(s);
+        int ret = eval(&bs, b);
         s->count = 0;
         if (ret == 1){
             break;
@@ -70,7 +66,8 @@ int repl(Board *b){
 int main(void) {
 
     Board *b = init_board_fen(DEFAULTFEN);
-
+    Move m = construct_move(0, 0, 1);
+    make_move(b, m);
     repl(b);
 
     free_board(b);
