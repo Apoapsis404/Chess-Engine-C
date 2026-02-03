@@ -37,7 +37,7 @@ BString bstring_next(BString *bs, char delim);
 void bstring_print(BString *bs, char end);
 #define bstring_println(bs) bstring_print(bs, '\n')
 
-
+int string_map(String *s, char (*f)(char));
 
 // Character functions
 

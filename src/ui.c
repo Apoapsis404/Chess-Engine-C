@@ -13,7 +13,7 @@ int print_board_file(Board* board){
         return 0;
     }
 
-    printf("\n------------------------------------\n");
+    printf("\n+---+---+---+---+---+---+---+---+---\n");
     for (int i = 7; i >= 0; --i) {
         printf("|");
         for (int j = 0; j < 8; ++j){
@@ -34,13 +34,13 @@ int print_board(Board* board){
 
     int lines = 1;
 
-    printf("---------------------------------\n");
+    printf("+---+---+---+---+---+---+---+---+\n");
     for (int i = 7; i >= 0; --i) {
         printf("|");
         for (int j = 0; j < 8; ++j){
             printf(" %c |", itop(board->board[8*i + j]));
         }
-        printf("\n---------------------------------\n");
+        printf("\n+---+---+---+---+---+---+---+---+\n");
         lines += 2;
     }
     return lines;

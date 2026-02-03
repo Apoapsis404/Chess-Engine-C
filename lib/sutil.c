@@ -116,7 +116,12 @@ void bstring_print(BString *bs, char end){
 }
 
 
-
+int string_map(String *s, char (*f)(char)){
+    for (size_t i = 0; i < s->count; ++i){
+        s->string[i] = (*f)(s->string[i]);
+    }
+    return 0;
+}
 
 
 
@@ -131,7 +136,7 @@ void bstring_print(BString *bs, char end){
 // Character functions
 
 int is_lower(char c){
-    if (c >= UPPERSTART && c <= UPPEREND) {
+    if (c >= LOWERSTART && c <= LOWEREND) {
         return 1;
     }
     return 0;
@@ -152,7 +157,10 @@ char to_lower(char c){
 }
 
 char to_upper(char c){
-    return c - 32;
+    if(is_lower(c)){
+        return c - 32;
+    }
+    return c;
 }
 
 /* Checks if c is (inclusivly) between 48 and 57*/
