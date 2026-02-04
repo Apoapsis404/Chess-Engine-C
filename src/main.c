@@ -13,8 +13,9 @@
 #define BUFSIZE 64
 
 //COMMANDS
-#define QUIT "q"
+#define QUIT  "q"
 #define RESET "rst"
+#define MOVE  "mv"
 
 /*
 COMMANDS:
@@ -24,14 +25,23 @@ Restart with fen: fen (fen) ex:fen DEFAULTFEN (Fens are saved to fen.h for now)
 
 */
 
+int handle_move(BString bs, Board *b){
+    Move move = string_to_move(bs);
+    return (int)make_move(b, move);
+}
+
 
 int eval(BString *bs, Board *b){
     BString token = bstring_next(bs, ' ');
     if (strncmp(token.string, QUIT, token.count) == 0){
         return 1;
     } else if (strncmp(token.string, RESET, token.count) == 0){
+        free(b->board);
         b->board = parse_fen(DEFAULTFEN);
+    } else if (strncmp(token.string, MOVE, token.count) == 0){
+        handle_move(bstring_next(bs, ' '), b);
     }
+
     return 0;
 }
 
@@ -42,7 +52,7 @@ int repl(Board *b){
 
         draw_ui(b, false, BOARD_DRAW_SIZE);
 
-        char* buf = calloc(1, BUFSIZE);
+        char buf[BUFSIZE] = { 0 };
         printf(">");
 
         fgets(buf, sizeof(buf), stdin);
@@ -50,7 +60,6 @@ int repl(Board *b){
         buf[strlen(buf) - 1] = '\0';
 
         string_append_many(s, buf, strlen(buf));
-        free(buf);
         BString bs = bstring_from_string(s);
         int ret = eval(&bs, b);
         s->count = 0;

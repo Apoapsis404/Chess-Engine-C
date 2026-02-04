@@ -34,6 +34,14 @@ String square_name_from_idx(int idx){
     return s;
 }
 
+/*Square should be validated before this is called*/
+int idx_from_square_name(char* square){
+    int file = square[0] - LOWERSTART;
+    int rank = char_digit_to_int(square[1]);
+    return 8*(rank-1) + file;
+}
+
+
 void print_square(int idx) {
     String name = square_name_from_idx(idx);
     printf("%s\n", name.string);

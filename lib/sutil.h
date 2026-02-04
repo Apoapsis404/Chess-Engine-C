@@ -23,6 +23,7 @@ typedef struct {
     size_t count;
 } BString;
 
+String *string_init(char *string);
 int string_append(String *dst, const char src);
 int string_append_many(String *dst, const char *src, size_t src_size);
 int string_cat(String *dst, String *src);
@@ -33,11 +34,16 @@ void free_string(String *s);
 BString bstring_from_string(String *s);
 BString bstring_next(BString *bs, char delim);
 
+int char_in_string(String *s, char c);
+int char_in_bstring(BString *s, char c);
+
 
 void bstring_print(BString *bs, char end);
 #define bstring_println(bs) bstring_print(bs, '\n')
 
 int string_map(String *s, char (*f)(char));
+#define string_to_lower(s) string_map(s, to_lower);
+#define string_to_upper(s) string_map(s, to_upper);
 
 // Character functions
 

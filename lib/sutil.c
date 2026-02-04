@@ -26,6 +26,16 @@ int string_alloc_space(String* s, size_t needed){
     return 0;
 }
 
+/*
+Returns a malloc String
+Caller is resposible for freeing
+*/
+String *string_init(char *string){
+    String *s = malloc(sizeof(String));
+    string_append_many(s, string, strlen(string));
+    return s;
+}
+
 /* 
 Appends src to the end of dst
 Returns: 1 on success, 
@@ -106,6 +116,13 @@ BString bstring_next(BString *bs, char delim){
     }
 
     return ret;
+}
+
+int char_in_string(String *s, char c){
+    for(size_t i = 0; i < s->count; ++i){
+        if (s->string[i] == c) return 1;
+    }
+    return 0;
 }
 
 void bstring_print(BString *bs, char end){

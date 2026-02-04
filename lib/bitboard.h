@@ -1,0 +1,88 @@
+#ifndef BITBOARD_H
+#define BITBOARD_H
+
+#include "piece.h"
+#include "board.h"
+
+
+#define BB uint64_t
+typedef struct {
+    BB* pieceBB;
+    BB  occupiedBB;
+    BB  emptyBB;
+    BB* AttackedSquareBB;
+} BitBoard;
+
+BitBoard *bb_init(PIECE *board);
+void bb_update(PIECE *board);
+BitBoard *bb_copy(BitBoard *bb);
+
+
+//Helper
+#define notAFile 0xfefefefefefefefe
+#define notHFile 0x7f7f7f7f7f7f7f7f
+
+#define shift_south(bb)      bb >> 8
+#define shift_north(bb)      bb << 8
+#define shift_east(bb)      (bb << 1) & notAFile
+#define shift_northeast(bb) (bb << 9) & notAFile
+#define shift_southeast(bb) (bb >> 7) & notAFile
+#define shift_west(bb)      (bb >> 1) & notHFile
+#define shift_southwest(bb) (bb >> 9) & notHFile
+#define shift_northwest(bb) (bb << 7) & notHFile
+
+//Casteling Masks
+#define WHITE_KINGSIDE_EMPTY   0x0000000000000060
+#define WHITE_QUEENSIDE_EMPTY  0x000000000000000E;
+#define BLACK_KINGSIDE_EMPTY   0x6000000000000000;
+#define BLACK_QUEENSIDE_EMPTY  0x0E000000000000;
+
+#define WHITE_KINGSIDE_ATTACK  0x00000000000000F0;
+#define WHITE_QUEENSIDE_ATTACK 0x000000000000001F;
+#define BLACK_KINGSIDE_ATTACK  0xF000000000000000;
+#define BLACK_QUEENSIDE_ATTACK 0x1F000000000000;
+
+static BB in_betweenn(int sq1, int sq2);
+BB calculate_enpassantbb(int file, int white_to_move);
+#endif //BITBOARD_H;
+
+
+
+/*         switch (board[i]){
+            case WHITEKING:
+                bb->pieceBB[WHITEKING] |= 0b1 << i;
+                break;
+            case WHITEPAWN:
+                bb->pieceBB[WHITEPAWN] |= 0b1 << i;
+                break;
+            case WHITEKNIGHT:
+                bb->pieceBB[WHITEKNIGHT] |= 0b1 << i;
+                break;
+            case WHITEBISHOP:
+                bb->pieceBB[WHITEBISHOP] |= 0b1 << i;
+                break;
+            case WHITEROOK:
+                bb->pieceBB[WHITEROOK] |= 0b1 << i;
+                break;
+            case WHITEQUEEN:
+                bb->pieceBB[WHITEQUEEN] |= 0b1 << i;
+                break;
+            case BLACKKING:
+                bb->pieceBB[BLACKKING] |= 0b1 << i;
+                break;
+            case BLACKPAWN:
+                bb->pieceBB[BLACKPAWN] |= 0b1 << i;
+                break;
+            case BLACKKNIGHT:
+                bb->pieceBB[BLACKKNIGHT] |= 0b1 << i;
+                break;
+            case BLACKBISHOP:
+                bb->pieceBB[BLACKBISHOP] |= 0b1 << i;
+                break;
+            case BLACKROOK:
+                bb->pieceBB[BLACKROOK] |= 0b1 << i;
+                break;
+            case BLACKQUEEN:
+                bb->pieceBB[BLACKQUEEN] |= 0b1 << i;
+                break;
+        } */
