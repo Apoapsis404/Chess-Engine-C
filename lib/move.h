@@ -41,6 +41,9 @@ int get_from(Move move);
 int get_to(Move move);
 int get_flags(Move move);
 
+int move_is_capture(Move move);
+int move_is_flag(int flag);
+
 int invalid_move(Move move);
 String move_to_string(Move move);
 Move string_to_move(BString move_string);

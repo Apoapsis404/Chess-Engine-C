@@ -87,7 +87,5 @@ int main(void) {
     repl(b);
 
     free_board(b);
-    /* BB neg = in_between(0, 63);
-    printf("%ld\n", neg); */
     return 0;
 }

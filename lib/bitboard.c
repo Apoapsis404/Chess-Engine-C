@@ -1,4 +1,5 @@
 #include "bitboard.h"
+#include "move.h"
 
 #include <stdlib.h>
 
@@ -60,4 +61,14 @@ BB in_between(int sq1, int sq2){
     line += (((rank + file) & 15) - 1) & h1b7;
     line *= btwn & (BB)-(int64_t)btwn; // eww!
     return line & btwn;
+}
+
+/* Makes move in place */
+void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
+    BB fromBB = 1UL << get_from(move);
+    BB toBB = 1UL << get_to(move);
+    BB from_to_BB = fromBB ^ toBB;
+
+    bb->pieceBB[piece] ^= from_to_BB;
+    bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
 }
