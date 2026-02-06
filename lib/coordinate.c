@@ -19,7 +19,7 @@ int file_from_idx(int idx){
 }
 
 char get_file_name(int idx) {
-    char* file_names = "abcdefgh";
+    const char* file_names = "abcdefgh";
     return file_names[file_from_idx(idx)];
 }
 

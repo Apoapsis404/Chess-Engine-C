@@ -1,3 +1,4 @@
+#include "../lib/bitboard.h"
 #include "../lib/board.h"
 #include "../lib/piece.h"
 #include "../lib/move.h"
@@ -31,7 +32,7 @@ int handle_move(BString bs, Board *b){
 }
 
 
-int eval(BString *bs, Board *b){
+int eval(BString *bs, Board *b, bool *draw_bb){
     BString token = bstring_next(bs, ' ');
     if (strncmp(token.string, QUIT, token.count) == 0){
         return 1;
@@ -40,7 +41,12 @@ int eval(BString *bs, Board *b){
         b->board = parse_fen(DEFAULTFEN);
     } else if (strncmp(token.string, MOVE, token.count) == 0){
         handle_move(bstring_next(bs, ' '), b);
+    } else if (strncmp(token.string, "bb", token.count) == 0){
+        *draw_bb = true;
+    } else {
+        fprintf(stderr, "Unknown command: %s", token.string);
     }
+
 
     return 0;
 }
@@ -48,9 +54,10 @@ int eval(BString *bs, Board *b){
 
 int repl(Board *b){
     String *s = calloc(sizeof(String), 1);
+    bool draw_bb = false;
     while(1) {
 
-        draw_ui(b, false, BOARD_DRAW_SIZE);
+        draw_ui(b, false, BOARD_DRAW_SIZE, draw_bb);
 
         char buf[BUFSIZE] = { 0 };
         printf(">");
@@ -61,7 +68,7 @@ int repl(Board *b){
 
         string_append_many(s, buf, strlen(buf));
         BString bs = bstring_from_string(s);
-        int ret = eval(&bs, b);
+        int ret = eval(&bs, b, &draw_bb);
         s->count = 0;
         if (ret == 1){
             break;
@@ -80,5 +87,7 @@ int main(void) {
     repl(b);
 
     free_board(b);
+    /* BB neg = in_between(0, 63);
+    printf("%ld\n", neg); */
     return 0;
 }

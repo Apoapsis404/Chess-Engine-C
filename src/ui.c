@@ -5,6 +5,7 @@
 #include <sys/ioctl.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <inttypes.h>
 
 
 int print_board_file(Board* board){
@@ -46,6 +47,26 @@ int print_board(Board* board){
     return lines;
 }
 
+int print_bb(BB board){
+    if(!board){
+        fprintf(stderr, "ERROR: Board uninitialized\b");
+        return 0;
+    }
+
+    int lines = 1;
+
+    printf("+---+---+---+---+---+---+---+---+\n");
+    for (int i = 7; i >= 0; --i) {
+        printf("|");
+        for (int j = 0; j < 8; ++j){
+            printf(" %ld |", (board>>i) & 0b1);
+        }
+        printf("\n+---+---+---+---+---+---+---+---+\n");
+        lines += 2;
+    }
+    return lines;
+}
+
 void clear_screen(){
     system("clear");
 }
@@ -79,7 +100,7 @@ int print_terminal_size(){
     return 0;
 }
 
-void draw_ui(Board* b, bool clear, size_t offset){
+void draw_ui(Board* b, bool clear, size_t offset, bool draw_bb){
     size_t w, h;
     get_terminal_size(&w, &h);
 
@@ -88,6 +109,12 @@ void draw_ui(Board* b, bool clear, size_t offset){
     }
 
     print_board(b);
+
+    if (draw_bb){
+        printf("\n BB: 0x%" PRIX64 "\n", b->bb->occupiedBB);
+        print_bb(b->bb->occupiedBB);
+        offset += 19;
+    }
 
     size_t tmp = h - offset - 2;
     print_char_n('\n', tmp);

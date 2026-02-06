@@ -3,9 +3,12 @@
 
 #include "piece.h"
 #include "move.h"
+#include "bitboard.h"
 
-typedef struct {
+
+typedef struct Board {
     PIECE* board;
+    BitBoard *bb;
 } Board;
 
 Board* init_board_empty();

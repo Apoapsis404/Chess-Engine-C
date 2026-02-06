@@ -1,9 +1,8 @@
 //#include "move.h"
 //#include "piece.h"
-#include "bitboard.h"
 #include "coordinate.h"
+#include "bitboard.h"
 #include "board.h"
-#include "piece.h"
 #include "fen.h"
 
 #include <stdio.h>
@@ -17,6 +16,7 @@ Board* init_board_empty(){
 Board* init_board_fen(char* fen){
     Board* b = malloc(sizeof(Board));
     b->board = parse_fen(fen);
+    b->bb = bb_init(b->board);
     return b;
 }
 
@@ -24,6 +24,11 @@ void free_board(Board* b){
     if (b->board != NULL){
         free(b->board);
     }
+
+    if (b->bb != NULL) {
+        free_bb(b->bb);
+    }
+
     free(b);
 }
 

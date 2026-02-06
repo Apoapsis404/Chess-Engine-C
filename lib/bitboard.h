@@ -2,7 +2,9 @@
 #define BITBOARD_H
 
 #include "piece.h"
-#include "board.h"
+//#include "board.h"
+
+#include <stdint.h>
 
 
 #define BB uint64_t
@@ -16,6 +18,8 @@ typedef struct {
 BitBoard *bb_init(PIECE *board);
 void bb_update(PIECE *board);
 BitBoard *bb_copy(BitBoard *bb);
+
+void free_bb(BitBoard *bb);
 
 
 //Helper
@@ -42,7 +46,7 @@ BitBoard *bb_copy(BitBoard *bb);
 #define BLACK_KINGSIDE_ATTACK  0xF000000000000000;
 #define BLACK_QUEENSIDE_ATTACK 0x1F000000000000;
 
-static BB in_betweenn(int sq1, int sq2);
+BB in_between(int sq1, int sq2);
 BB calculate_enpassantbb(int file, int white_to_move);
 #endif //BITBOARD_H;
 
