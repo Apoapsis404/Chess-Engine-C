@@ -60,3 +60,6 @@ valoutput.txt
 
 # VScode files
 .vscode
+
+# comment out if needed to transfer
+.log

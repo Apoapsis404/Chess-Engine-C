@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <inttypes.h>
+#include <stdbool.h>
 
 
 int print_board_file(Board* board){

@@ -1,3 +1,4 @@
+#include "../lib/logging/lutil.h"
 #include "../lib/bitboard.h"
 #include "../lib/board.h"
 #include "../lib/piece.h"
@@ -35,16 +36,19 @@ int handle_move(BString bs, Board *b){
 int eval(BString *bs, Board *b, bool *draw_bb){
     BString token = bstring_next(bs, ' ');
     if (strncmp(token.string, QUIT, token.count) == 0){
+        log_message(INFO, "EVAL", "Quitting");
         return 1;
     } else if (strncmp(token.string, RESET, token.count) == 0){
         free(b->board);
         b->board = parse_fen(DEFAULTFEN);
+        log_message(INFO, "EVAL", "Resetting board!");
     } else if (strncmp(token.string, MOVE, token.count) == 0){
         handle_move(bstring_next(bs, ' '), b);
     } else if (strncmp(token.string, "bb", token.count) == 0){
         *draw_bb = !(*draw_bb);
     } else {
         fprintf(stderr, "Unknown command: %s\n", token.string);
+        logf_message(WARNING, "EVAL", "Unknown command: %s", token.string);
     }
 
 
@@ -66,11 +70,14 @@ int repl(Board *b){
 
         buf[strlen(buf) - 1] = '\0';
 
+        logf_message(INFO, "REPL", "Command: %s", buf);
+
         string_append_many(s, buf, strlen(buf));
         BString bs = bstring_from_string(s);
         int ret = eval(&bs, b, &draw_bb);
         s->count = 0;
         if (ret == 1){
+            log_message(INFO, "REPL", "Quitting");
             break;
         }
     }
@@ -81,10 +88,19 @@ int repl(Board *b){
 
 int main(void) {
 
+    load_config("lib/logging/config.cfg");
+    
+    log_empty_line();
+
+    log_message(INFO, "MAIN", "Started!");
+
     Board *b = init_board_fen(DEFAULTFEN);
     Move m = construct_move(0, 0, 1);
     make_move(b, m);
     repl(b);
+
+    log_message(INFO, "MAIN", "Quitting");
+    close_logging();
 
     free_board(b);
     return 0;

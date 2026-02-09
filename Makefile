@@ -4,7 +4,8 @@ LDFLAGS = -g
 
 SRC_DIR = src
 LIB_DIR = lib
-SRCS = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(LIB_DIR)/*.c)
+LOG_DIR = logging
+SRCS = $(wildcard $(SRC_DIR)/*.c) $(wildcard $(LIB_DIR)/*.c) $(wildcard $(LIB_DIR)/$(LOG_DIR)/*.c)
 OBJS = $(SRCS:.c=.o)
 TARGET = chess
 
