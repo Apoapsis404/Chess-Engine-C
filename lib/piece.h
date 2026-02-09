@@ -34,6 +34,6 @@
 #define PIECE uint8_t
 
 char itop(int piece);
-int piece_is_color(PIECE piece);
+int piece_is_color(PIECE piece, int color);
 
 #endif //PIECE_H;

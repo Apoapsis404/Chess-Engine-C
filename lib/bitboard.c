@@ -1,5 +1,4 @@
 #include "bitboard.h"
-#include "move.h"
 
 #include <stdlib.h>
 
@@ -14,7 +13,7 @@ void get_piecebb(BitBoard *bb, PIECE *board){
     bb->pieceBB = malloc(sizeof(BB) * 15);
     for (int i = 0; i < 64; ++i) {
         if (board[i] != 0){
-            bb->pieceBB[board[i]] |= 0b1 << i;
+            bb->pieceBB[board[i]] |= 1UL << i;
         }
     }
     get_blackbb(bb);
@@ -26,7 +25,7 @@ void get_occupiedbb(BitBoard *bb){
     bb->occupiedBB = bb->pieceBB[WHITE] | bb->pieceBB[BLACK];
 }
 void get_emptybb(BitBoard *bb){
-    bb->emptyBB = !bb->occupiedBB;
+    bb->emptyBB = ~(bb->occupiedBB);
 }
 
 BitBoard *bb_init(PIECE *board){
@@ -71,4 +70,23 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
 
     bb->pieceBB[piece] ^= from_to_BB;
     bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
+
+    if(move_is_capture(move)){
+        if(move_is_flag(move, ENPASSANTCAPTUREFLAG)){
+            int ep_pawn_idx = piece_is_color(piece, WHITE) ? get_to(move) - 8 : get_to(move) + 8;
+            BB ep_pawn_bb = 1ULL << ep_pawn_idx;
+            bb->pieceBB[cpiece] ^= ep_pawn_bb;
+            bb->pieceBB[cpiece & COLORMASK] ^= ep_pawn_bb;
+            bb->occupiedBB ^= ep_pawn_bb | toBB;
+            bb->emptyBB ^= ep_pawn_bb | toBB;
+        } else {
+            bb->occupiedBB ^= fromBB;
+            bb->emptyBB ^= fromBB;
+        }
+    } else {
+        bb->occupiedBB ^= from_to_BB;
+        bb->emptyBB ^= from_to_BB;
+    }
+
+    bb->AttackedSquareBB[piece_is_color(piece, WHITE) ? 0 : 1] &= ~bb->pieceBB[piece & COLORMASK];
 }

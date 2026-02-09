@@ -44,9 +44,11 @@ PIECE make_move(Board* b, Move move){
     PIECE piece = b->board[from];
     PIECE captured_piece = b->board[to]; 
 
+    
     b->board[to] = piece;
     b->board[from] = NONE;
-
+    
+    bb_make_move(b->bb, move, piece, captured_piece);
     return captured_piece;
 }
 

@@ -48,18 +48,13 @@ int print_board(Board* board){
 }
 
 int print_bb(BB board){
-    if(!board){
-        fprintf(stderr, "ERROR: Board uninitialized\b");
-        return 0;
-    }
-
     int lines = 1;
 
     printf("+---+---+---+---+---+---+---+---+\n");
     for (int i = 7; i >= 0; --i) {
         printf("|");
         for (int j = 0; j < 8; ++j){
-            printf(" %ld |", (board>>i) & 0b1);
+            printf(" %ld |", (board>>(8*i + j)) & 0b1);
         }
         printf("\n+---+---+---+---+---+---+---+---+\n");
         lines += 2;
@@ -111,8 +106,10 @@ void draw_ui(Board* b, bool clear, size_t offset, bool draw_bb){
     print_board(b);
 
     if (draw_bb){
-        printf("\n BB: 0x%" PRIX64 "\n", b->bb->occupiedBB);
-        print_bb(b->bb->occupiedBB);
+        BB bb = b->bb->occupiedBB;
+
+        printf("\nHex: BB: 0x%" PRIX64 "\n", bb);
+        print_bb(bb);
         offset += 19;
     }
 

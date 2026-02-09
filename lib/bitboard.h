@@ -2,6 +2,7 @@
 #define BITBOARD_H
 
 #include "piece.h"
+#include "move.h"
 //#include "board.h"
 
 #include <stdint.h>
@@ -48,45 +49,5 @@ void free_bb(BitBoard *bb);
 
 BB in_between(int sq1, int sq2);
 BB calculate_enpassantbb(int file, int white_to_move);
+void bb_make_move(BitBoard* bb, Move move, PIECE piece, PIECE cpiece);
 #endif //BITBOARD_H;
-
-
-
-/*         switch (board[i]){
-            case WHITEKING:
-                bb->pieceBB[WHITEKING] |= 0b1 << i;
-                break;
-            case WHITEPAWN:
-                bb->pieceBB[WHITEPAWN] |= 0b1 << i;
-                break;
-            case WHITEKNIGHT:
-                bb->pieceBB[WHITEKNIGHT] |= 0b1 << i;
-                break;
-            case WHITEBISHOP:
-                bb->pieceBB[WHITEBISHOP] |= 0b1 << i;
-                break;
-            case WHITEROOK:
-                bb->pieceBB[WHITEROOK] |= 0b1 << i;
-                break;
-            case WHITEQUEEN:
-                bb->pieceBB[WHITEQUEEN] |= 0b1 << i;
-                break;
-            case BLACKKING:
-                bb->pieceBB[BLACKKING] |= 0b1 << i;
-                break;
-            case BLACKPAWN:
-                bb->pieceBB[BLACKPAWN] |= 0b1 << i;
-                break;
-            case BLACKKNIGHT:
-                bb->pieceBB[BLACKKNIGHT] |= 0b1 << i;
-                break;
-            case BLACKBISHOP:
-                bb->pieceBB[BLACKBISHOP] |= 0b1 << i;
-                break;
-            case BLACKROOK:
-                bb->pieceBB[BLACKROOK] |= 0b1 << i;
-                break;
-            case BLACKQUEEN:
-                bb->pieceBB[BLACKQUEEN] |= 0b1 << i;
-                break;
-        } */

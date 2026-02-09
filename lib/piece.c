@@ -36,6 +36,10 @@ char itop(int piece) {
     return ret;
 }
 
+int piece_is_color(PIECE piece, int color){
+    return (COLORMASK & piece) == color;
+}
+
 /* int main(void) {
     printf("%c\n", itop(BLACKKING));
     return 0;

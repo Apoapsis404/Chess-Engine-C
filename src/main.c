@@ -42,9 +42,9 @@ int eval(BString *bs, Board *b, bool *draw_bb){
     } else if (strncmp(token.string, MOVE, token.count) == 0){
         handle_move(bstring_next(bs, ' '), b);
     } else if (strncmp(token.string, "bb", token.count) == 0){
-        *draw_bb = true;
+        *draw_bb = !(*draw_bb);
     } else {
-        fprintf(stderr, "Unknown command: %s", token.string);
+        fprintf(stderr, "Unknown command: %s\n", token.string);
     }
 
 
@@ -54,7 +54,7 @@ int eval(BString *bs, Board *b, bool *draw_bb){
 
 int repl(Board *b){
     String *s = calloc(sizeof(String), 1);
-    bool draw_bb = false;
+    bool draw_bb = true;
     while(1) {
 
         draw_ui(b, false, BOARD_DRAW_SIZE, draw_bb);
