@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-#include <stdlib.h>
 
 #define MAX_MODULES 10
 #define MODULE_NAME_LENGTH 20
@@ -117,10 +116,10 @@ void log_message_header(){
     return;
 }
 
-void logf_message(log_level_t level, const char* module, const char* message, void *extra){
+void logf_message(log_level_t level, const char* module, const char* message, void* arg){
     size_t lenght = strlen(message);
     char temp[lenght + 255];
-    snprintf(temp, lenght + 255, message, extra);
+    snprintf(temp, lenght + 255, message, arg);
     log_message(level, module, temp);
 }
 

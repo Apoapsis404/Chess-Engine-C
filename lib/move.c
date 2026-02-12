@@ -1,5 +1,6 @@
 #include "move.h"
 #include "coordinate.h"
+#include "logging/lutil.h"
 
 #include <string.h>
 #include <stdlib.h>
@@ -32,6 +33,14 @@ int move_is_flag(Move move, int flag) {
 int invalid_move(Move move) {
     (void)move;
     return 0;
+}
+
+String get_from_square_name(Move move){
+    return square_name_from_idx(get_from(move));
+}
+
+String get_to_square_name(Move move){
+    return square_name_from_idx(get_to(move));
 }
 
 // Moves in format (from file)(from rank)(to file)(to rank) ex a1h1

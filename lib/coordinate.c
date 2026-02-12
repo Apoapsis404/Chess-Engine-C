@@ -34,6 +34,7 @@ String square_name_from_idx(int idx){
     return s;
 }
 
+
 /*Square should be validated before this is called*/
 int idx_from_square_name(char* square){
     int file = square[0] - LOWERSTART;

@@ -14,6 +14,7 @@ Board* init_board_empty(){
 }
 
 Board* init_board_fen(char* fen){
+    logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     Board* b = malloc(sizeof(Board));
     b->board = parse_fen(fen);
     b->bb = bb_init(b->board);
@@ -40,6 +41,8 @@ void free_board(Board* b){
 PIECE make_move(Board* b, Move move){
     int from = get_from(move);
     int to = get_to(move);
+
+    logf_message(INFO, "BOARD", "Making move: %s", move_to_string(move).string);
 
     PIECE piece = b->board[from];
     PIECE captured_piece = b->board[to]; 

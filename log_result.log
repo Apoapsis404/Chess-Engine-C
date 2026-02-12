@@ -1,10 +1,65 @@
 
-2026-02-09 20:24:41 [INFO][MAIN] Started!
-2026-02-09 20:24:42 [INFO][REPL] Command: bb
-2026-02-09 20:24:42 [INFO][REPL] Command: bb
-2026-02-09 20:24:43 [INFO][REPL] Command: rst
-2026-02-09 20:24:43 [INFO][EVAL] Resetting board!
-2026-02-09 20:24:44 [INFO][REPL] Command: q
-2026-02-09 20:24:44 [INFO][EVAL] Quitting
-2026-02-09 20:24:44 [INFO][REPL] Quitting
-2026-02-09 20:24:44 [INFO][MAIN] Quitting
+2026-02-11 23:48:41 [INFO][MAIN] Started!
+2026-02-11 23:48:41 [INFO][BOARD] Making move: a1b1
+2026-02-11 23:48:43 [INFO][REPL] Command: rst
+2026-02-11 23:48:43 [INFO][EVAL] Resetting board!
+2026-02-11 23:48:46 [INFO][REPL] Command: mv a1a2
+2026-02-11 23:48:46 [INFO][BOARD] Making move: a1a2
+2026-02-11 23:48:47 [INFO][REPL] Command: q
+2026-02-11 23:48:47 [INFO][EVAL] Quitting
+2026-02-11 23:48:47 [INFO][REPL] Quitting
+2026-02-11 23:48:47 [INFO][MAIN] Quitting
+
+2026-02-11 23:51:48 [INFO][MAIN] Started!
+2026-02-11 23:51:48 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-11 23:51:48 [INFO][BOARD] Making move: a1b1
+2026-02-11 23:53:09 [INFO][REPL] Command: rst
+2026-02-11 23:53:09 [INFO][EVAL] Resetting board!
+2026-02-11 23:53:18 [INFO][REPL] Command: mv e2e4
+2026-02-11 23:53:18 [INFO][BOARD] Making move: e2e4
+2026-02-11 23:53:25 [INFO][REPL] Command: mv e7e5
+2026-02-11 23:53:25 [INFO][BOARD] Making move: e7e5
+2026-02-11 23:53:39 [INFO][REPL] Command: mv d2d4
+2026-02-11 23:53:39 [INFO][BOARD] Making move: d2d4
+2026-02-11 23:54:35 [INFO][REPL] Command: mv
+2026-02-11 23:54:35 [INFO][BOARD] Making move: a1a1
+2026-02-11 23:54:45 [INFO][REPL] Command: rst
+2026-02-11 23:54:45 [INFO][EVAL] Resetting board!
+2026-02-11 23:54:48 [INFO][REPL] Command: bb
+2026-02-11 23:54:50 [INFO][REPL] Command: bb
+2026-02-11 23:54:56 [INFO][REPL] Command: q
+2026-02-11 23:54:56 [INFO][EVAL] Quitting
+2026-02-11 23:54:56 [INFO][REPL] Quitting
+2026-02-11 23:54:56 [INFO][MAIN] Quitting
+
+2026-02-11 23:55:39 [INFO][MAIN] Started!
+2026-02-11 23:55:39 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-11 23:55:39 [INFO][BOARD] Making move: a1b1
+2026-02-11 23:55:52 [INFO][REPL] Command: q
+2026-02-11 23:55:52 [INFO][EVAL] Quitting
+2026-02-11 23:55:52 [INFO][REPL] Quitting
+2026-02-11 23:55:52 [INFO][MAIN] Quitting
+
+2026-02-11 23:56:38 [INFO][MAIN] Started!
+2026-02-11 23:56:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-11 23:56:38 [INFO][BOARD] Making move: a1b1
+2026-02-11 23:56:40 [INFO][REPL] Command: aløskdfj
+2026-02-11 23:56:40 [WARNING][EVAL] Unknown command: aløskdfj
+2026-02-11 23:56:46 [INFO][REPL] Command: mv
+2026-02-11 23:56:46 [INFO][BOARD] Making move: a1a1
+2026-02-11 23:56:47 [INFO][REPL] Command: q
+2026-02-11 23:56:47 [INFO][EVAL] Quitting
+2026-02-11 23:56:47 [INFO][REPL] Quitting
+2026-02-11 23:56:47 [INFO][MAIN] Quitting
+
+2026-02-12 13:06:45 [INFO][MAIN] Started!
+2026-02-12 13:06:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-12 13:06:45 [INFO][BOARD] Making move: a1b1
+2026-02-12 13:06:47 [INFO][REPL] Command: rst
+2026-02-12 13:06:47 [INFO][EVAL] Resetting board!
+2026-02-12 13:06:49 [INFO][REPL] Command: clear
+2026-02-12 13:06:49 [WARNING][EVAL] Unknown command: clear
+2026-02-12 13:06:50 [INFO][REPL] Command: q
+2026-02-12 13:06:50 [INFO][EVAL] Quitting
+2026-02-12 13:06:50 [INFO][REPL] Quitting
+2026-02-12 13:06:50 [INFO][MAIN] Quitting

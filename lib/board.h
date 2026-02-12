@@ -4,6 +4,7 @@
 #include "piece.h"
 #include "move.h"
 #include "bitboard.h"
+#include "./logging/lutil.h"
 
 
 typedef struct Board {
