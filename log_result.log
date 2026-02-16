@@ -63,3 +63,339 @@
 2026-02-12 13:06:50 [INFO][EVAL] Quitting
 2026-02-12 13:06:50 [INFO][REPL] Quitting
 2026-02-12 13:06:50 [INFO][MAIN] Quitting
+
+2026-02-14 22:28:19 [INFO][MAIN] Started!
+2026-02-14 22:28:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 22:28:19 [INFO][BOARD] Making move: a1b1
+2026-02-14 22:28:19 [INFO][BITBOARD] Making move: a1b1
+
+2026-02-14 22:28:32 [INFO][MAIN] Started!
+2026-02-14 22:28:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 22:28:32 [INFO][BOARD] Making move: a1b1
+2026-02-14 22:28:32 [INFO][BITBOARD] Making move: a1b1
+2026-02-14 22:28:37 [INFO][REPL] Command: rst
+2026-02-14 22:28:37 [INFO][EVAL] Resetting board!
+2026-02-14 22:28:49 [INFO][REPL] Command: q
+2026-02-14 22:28:49 [INFO][EVAL] Quitting
+2026-02-14 22:28:49 [INFO][REPL] Quitting
+2026-02-14 22:28:49 [INFO][MAIN] Quitting
+
+2026-02-14 22:30:24 [INFO][MAIN] Started!
+2026-02-14 22:30:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 22:30:24 [INFO][BOARD] Making move: a1b1
+2026-02-14 22:30:24 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 22:30:25 [INFO][REPL] Command: rst
+2026-02-14 22:30:25 [INFO][EVAL] Resetting board!
+2026-02-14 22:30:27 [INFO][REPL] Command: q
+2026-02-14 22:30:27 [INFO][EVAL] Quitting
+2026-02-14 22:30:27 [INFO][REPL] Quitting
+2026-02-14 22:30:27 [INFO][MAIN] Quitting
+
+2026-02-14 22:40:26 [INFO][MAIN] Started!
+2026-02-14 22:40:26 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 22:40:26 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 22:40:26 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 22:40:29 [INFO][REPL] Command: rst
+2026-02-14 22:40:29 [INFO][EVAL] Resetting board!
+2026-02-14 22:40:34 [INFO][REPL] Command: lvl info
+2026-02-14 22:40:34 [INFO][EVAL] Changing log level
+2026-02-14 22:40:37 [INFO][REPL] Command: lvl DEBUG
+2026-02-14 22:40:37 [INFO][EVAL] Changing log level
+2026-02-14 22:40:57 [INFO][REPL] Command: q
+2026-02-14 22:40:57 [INFO][EVAL] Quitting
+2026-02-14 22:40:57 [INFO][REPL] Quitting
+2026-02-14 22:40:57 [INFO][MAIN] Quitting
+
+2026-02-14 22:41:26 [INFO][MAIN] Started!
+2026-02-14 22:41:26 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 22:41:26 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 22:41:26 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 22:41:31 [INFO][REPL] Command: lvl WARNING
+2026-02-14 22:41:31 [INFO][EVAL] Changing log level
+2026-02-14 22:41:32 [WARNING][EVAL] Unknown command: aløsdjkfs
+
+2026-02-14 23:04:27 [INFO][MAIN] Started!
+2026-02-14 23:04:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:04:27 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:04:27 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:04:29 [INFO][REPL] Command: rst
+2026-02-14 23:04:29 [INFO][EVAL] Resetting board!
+2026-02-14 23:04:31 [INFO][REPL] Command: bb
+2026-02-14 23:04:32 [INFO][REPL] Command: bb
+2026-02-14 23:04:42 [INFO][REPL] Command: q
+2026-02-14 23:04:42 [INFO][EVAL] Quitting
+2026-02-14 23:04:42 [INFO][REPL] Quitting
+2026-02-14 23:04:42 [INFO][MAIN] Quitting
+
+2026-02-14 23:13:20 [INFO][MAIN] Started!
+2026-02-14 23:13:20 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:13:20 [DEBUG][MAIN] Got FEN: RNBQKBNR/PPPPPPPP/8/8/8/8/pppppppp/rnbqkbnr
+2026-02-14 23:13:20 [INFO][MAIN] Quitting
+
+2026-02-14 23:14:34 [INFO][MAIN] Started!
+2026-02-14 23:14:34 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+
+2026-02-14 23:14:55 [INFO][MAIN] Started!
+2026-02-14 23:14:55 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:14:55 [DEBUG][MAIN] Got FEN: 8/rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP
+2026-02-14 23:14:55 [INFO][MAIN] Quitting
+
+2026-02-14 23:15:24 [INFO][MAIN] Started!
+2026-02-14 23:15:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:15:24 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP
+2026-02-14 23:15:24 [INFO][MAIN] Quitting
+
+2026-02-14 23:15:43 [INFO][MAIN] Started!
+2026-02-14 23:15:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:15:43 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:15:43 [INFO][MAIN] Quitting
+
+2026-02-14 23:16:29 [INFO][MAIN] Started!
+2026-02-14 23:16:29 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:16:29 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:16:29 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:16:29 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:16:29 [INFO][MAIN] Quitting
+
+2026-02-14 23:18:05 [INFO][MAIN] Started!
+2026-02-14 23:18:05 [INFO][BOARD] Initializing board with fen: r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1
+2026-02-14 23:18:05 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:18:05 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:18:05 [DEBUG][MAIN] Got FEN: r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/1R1Q1RK1
+2026-02-14 23:18:05 [INFO][MAIN] Quitting
+
+2026-02-14 23:18:31 [INFO][MAIN] Started!
+2026-02-14 23:18:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:18:31 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:18:31 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:18:31 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:18:31 [INFO][MAIN] Quitting
+
+2026-02-14 23:20:14 [INFO][MAIN] Started!
+2026-02-14 23:20:14 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:20:14 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:20:14 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:20:14 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:20:14 [INFO][MAIN] Quitting
+
+2026-02-14 23:26:30 [INFO][MAIN] Started!
+2026-02-14 23:26:30 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:26:30 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:26:30 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:26:30 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:26:30 [INFO][MAIN] Quitting
+
+2026-02-14 23:27:14 [INFO][MAIN] Started!
+2026-02-14 23:27:14 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:27:14 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:27:14 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:27:14 [INFO][MAIN] Quitting
+
+2026-02-14 23:27:40 [INFO][MAIN] Started!
+2026-02-14 23:27:40 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:27:40 [INFO][MAIN] Quitting
+
+2026-02-14 23:27:59 [INFO][MAIN] Started!
+2026-02-14 23:27:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:27:59 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:27:59 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:27:59 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:27:59 [INFO][MAIN] Quitting
+
+2026-02-14 23:28:13 [INFO][MAIN] Started!
+2026-02-14 23:28:13 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:28:13 [DEBUG][BOARD] Making move: a1b1
+2026-02-14 23:28:13 [DEBUG][BITBOARD] Making move: a1b1
+2026-02-14 23:28:13 [DEBUG][MAIN] Got FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/1RBQKBNR
+2026-02-14 23:28:13 [INFO][MAIN] Quitting
+
+2026-02-14 23:29:00 [INFO][MAIN] Started!
+2026-02-14 23:29:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:29:02 [INFO][REPL] Command: rst
+2026-02-14 23:29:02 [INFO][EVAL] Resetting board!
+2026-02-14 23:29:05 [INFO][REPL] Command: mv a1a2
+2026-02-14 23:29:05 [INFO][EVAL] Making move
+2026-02-14 23:29:05 [DEBUG][BOARD] Making move: a1a2
+2026-02-14 23:29:05 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-14 23:29:07 [INFO][REPL] Command: bb
+2026-02-14 23:29:07 [INFO][REPL] Command: bb
+2026-02-14 23:29:13 [INFO][REPL] Command: lvl DEBUG
+2026-02-14 23:29:13 [INFO][EVAL] Changing log level
+2026-02-14 23:29:15 [INFO][REPL] Command: q
+2026-02-14 23:29:15 [INFO][EVAL] Quitting
+2026-02-14 23:29:15 [INFO][REPL] Quitting
+2026-02-14 23:29:15 [INFO][MAIN] Quitting
+
+2026-02-14 23:29:54 [INFO][MAIN] Started!
+2026-02-14 23:29:54 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:29:59 [INFO][REPL] Command: mv a1a2
+2026-02-14 23:29:59 [INFO][EVAL] Making move
+2026-02-14 23:29:59 [DEBUG][BOARD] Making move: a1a2
+2026-02-14 23:29:59 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-14 23:30:00 [INFO][REPL] Command: q
+2026-02-14 23:30:00 [INFO][EVAL] Quitting
+2026-02-14 23:30:00 [INFO][REPL] Quitting
+2026-02-14 23:30:00 [INFO][MAIN] Quitting
+
+2026-02-14 23:35:59 [INFO][MAIN] Started!
+2026-02-14 23:35:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-14 23:36:04 [INFO][REPL] Command: mv a1a2
+2026-02-14 23:36:04 [INFO][EVAL] Making move
+2026-02-14 23:36:04 [DEBUG][BOARD] Making move: a1a2
+2026-02-14 23:36:04 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-14 23:36:05 [INFO][REPL] Command: q
+2026-02-14 23:36:05 [INFO][EVAL] Quitting
+2026-02-14 23:36:05 [INFO][REPL] Quitting
+2026-02-14 23:36:05 [INFO][MAIN] Quitting
+
+2026-02-15 00:00:05 [INFO][MAIN] Started!
+2026-02-15 00:00:05 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:00:09 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:00:09 [INFO][EVAL] Making move
+2026-02-15 00:00:09 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:00:09 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:00:11 [INFO][REPL] Command: rst
+2026-02-15 00:00:11 [INFO][EVAL] Resetting board!
+2026-02-15 00:00:11 [INFO][REPL] Command: q
+2026-02-15 00:00:11 [INFO][EVAL] Quitting
+2026-02-15 00:00:11 [INFO][REPL] Quitting
+2026-02-15 00:00:11 [INFO][MAIN] Quitting
+
+2026-02-15 00:08:03 [INFO][MAIN] Started!
+2026-02-15 00:08:03 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:08:13 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:08:13 [INFO][EVAL] Making move
+2026-02-15 00:08:13 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:08:13 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:08:14 [INFO][REPL] Command: q
+2026-02-15 00:08:14 [INFO][EVAL] Quitting
+2026-02-15 00:08:14 [INFO][REPL] Quitting
+2026-02-15 00:08:14 [INFO][MAIN] Quitting
+
+2026-02-15 00:11:28 [INFO][MAIN] Started!
+2026-02-15 00:11:28 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:11:27 [INFO][REPL] Command: q
+2026-02-15 00:11:27 [INFO][EVAL] Quitting
+2026-02-15 00:11:27 [INFO][REPL] Quitting
+2026-02-15 00:11:27 [INFO][MAIN] Quitting
+
+2026-02-15 00:11:31 [INFO][MAIN] Started!
+2026-02-15 00:11:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:11:40 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:11:40 [INFO][EVAL] Making move
+2026-02-15 00:11:40 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:11:40 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:11:41 [INFO][REPL] Command: rst
+2026-02-15 00:11:41 [INFO][EVAL] Resetting board!
+2026-02-15 00:11:42 [INFO][REPL] Command: q
+2026-02-15 00:11:42 [INFO][EVAL] Quitting
+2026-02-15 00:11:42 [INFO][REPL] Quitting
+2026-02-15 00:11:42 [INFO][MAIN] Quitting
+
+2026-02-15 00:12:37 [INFO][MAIN] Started!
+2026-02-15 00:12:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:12:40 [INFO][REPL] Command: q
+2026-02-15 00:12:40 [INFO][EVAL] Quitting
+2026-02-15 00:12:40 [INFO][REPL] Quitting
+2026-02-15 00:12:40 [INFO][MAIN] Quitting
+
+2026-02-15 00:12:42 [INFO][MAIN] Started!
+2026-02-15 00:12:42 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:12:44 [INFO][REPL] Command: q
+2026-02-15 00:12:44 [INFO][EVAL] Quitting
+2026-02-15 00:12:44 [INFO][REPL] Quitting
+2026-02-15 00:12:44 [INFO][MAIN] Quitting
+
+2026-02-15 00:12:50 [INFO][MAIN] Started!
+2026-02-15 00:12:50 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:12:56 [INFO][REPL] Command: q
+2026-02-15 00:12:56 [INFO][EVAL] Quitting
+2026-02-15 00:12:56 [INFO][REPL] Quitting
+2026-02-15 00:12:56 [INFO][MAIN] Quitting
+
+2026-02-15 00:13:35 [INFO][MAIN] Started!
+2026-02-15 00:13:35 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:13:40 [INFO][REPL] Command: q
+2026-02-15 00:13:40 [INFO][EVAL] Quitting
+2026-02-15 00:13:40 [INFO][REPL] Quitting
+2026-02-15 00:13:40 [INFO][MAIN] Quitting
+
+2026-02-15 00:16:56 [INFO][MAIN] Started!
+2026-02-15 00:16:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:17:23 [INFO][REPL] Command: q
+2026-02-15 00:17:23 [INFO][EVAL] Quitting
+2026-02-15 00:17:23 [INFO][REPL] Quitting
+2026-02-15 00:17:23 [INFO][MAIN] Quitting
+
+2026-02-15 00:17:53 [INFO][MAIN] Started!
+2026-02-15 00:17:53 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:17:54 [INFO][REPL] Command: q
+2026-02-15 00:17:54 [INFO][EVAL] Quitting
+2026-02-15 00:17:54 [INFO][REPL] Quitting
+2026-02-15 00:17:54 [INFO][MAIN] Quitting
+
+2026-02-15 00:20:19 [INFO][MAIN] Started!
+2026-02-15 00:20:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:20:22 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:20:22 [INFO][EVAL] Making move
+2026-02-15 00:20:22 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:20:22 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:20:23 [INFO][REPL] Command: q
+2026-02-15 00:20:23 [INFO][EVAL] Quitting
+2026-02-15 00:20:23 [INFO][REPL] Quitting
+2026-02-15 00:20:23 [INFO][MAIN] Quitting
+
+2026-02-15 00:20:59 [INFO][MAIN] Started!
+2026-02-15 00:20:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:21:02 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:21:02 [INFO][EVAL] Making move
+2026-02-15 00:21:02 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:21:02 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:21:03 [INFO][REPL] Command: q
+2026-02-15 00:21:03 [INFO][EVAL] Quitting
+2026-02-15 00:21:03 [INFO][REPL] Quitting
+2026-02-15 00:21:03 [INFO][MAIN] Quitting
+
+2026-02-15 00:26:47 [INFO][MAIN] Started!
+2026-02-15 00:26:47 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 00:26:50 [INFO][REPL] Command: mv a1a2
+2026-02-15 00:26:50 [INFO][EVAL] Making move
+2026-02-15 00:26:50 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 00:26:50 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 00:26:51 [INFO][REPL] Command: q
+2026-02-15 00:26:51 [INFO][EVAL] Quitting
+2026-02-15 00:26:51 [INFO][REPL] Quitting
+2026-02-15 00:26:51 [INFO][MAIN] Quitting
+
+2026-02-15 13:14:22 [INFO][MAIN] Started!
+2026-02-15 13:14:22 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 13:14:28 [INFO][REPL] Command: mv a1a2
+2026-02-15 13:14:28 [INFO][EVAL] Making move
+2026-02-15 13:14:28 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 13:14:28 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 13:14:29 [INFO][REPL] Command: q
+2026-02-15 13:14:29 [INFO][EVAL] Quitting
+2026-02-15 13:14:29 [INFO][REPL] Quitting
+2026-02-15 13:14:29 [INFO][MAIN] Quitting
+
+2026-02-15 13:14:45 [INFO][MAIN] Started!
+2026-02-15 13:14:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 13:14:51 [INFO][REPL] Command: mv a1a2
+2026-02-15 13:14:51 [INFO][EVAL] Making move
+2026-02-15 13:14:51 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 13:14:51 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 13:14:52 [INFO][REPL] Command: q
+2026-02-15 13:14:52 [INFO][EVAL] Quitting
+2026-02-15 13:14:52 [INFO][REPL] Quitting
+2026-02-15 13:14:52 [INFO][MAIN] Quitting
+
+2026-02-15 13:15:38 [INFO][MAIN] Started!
+2026-02-15 13:15:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-15 13:15:43 [INFO][REPL] Command: mv a1a2
+2026-02-15 13:15:43 [INFO][EVAL] Making move
+2026-02-15 13:15:43 [DEBUG][BOARD] Making move: a1a2
+2026-02-15 13:15:43 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-15 13:15:44 [INFO][REPL] Command: q
+2026-02-15 13:15:44 [INFO][EVAL] Quitting
+2026-02-15 13:15:44 [INFO][REPL] Quitting
+2026-02-15 13:15:44 [INFO][MAIN] Quitting

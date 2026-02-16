@@ -1,6 +1,7 @@
 #include "fen.h"
 #include "piece.h"
 #include "sutil.h"
+#include "coordinate.h"
 
 #include <string.h>
 #include <stdio.h>
@@ -59,8 +60,40 @@ PIECE* parse_fen(char* fen){
         if((rank * 8 + file) >= 64){
             printf("ERROR Out of bounds: %d\n", (rank * 8 + file));
         }
-        board[(rank * 8) + file] = piece | color;
+        board[idx_from_rank_file(rank, file)] = piece | color;
         file++;
     }
     return board;
+}
+
+String get_fen(Board *b) {
+    String fen = { 0 };
+
+
+    for (int rank = 7; rank >= 0; rank--){
+        int space = 0;
+        for (int file = 0; file < 8; file++){
+            char p = itop(b->board[idx_from_rank_file(rank, file)]);
+            if (p == ' '){
+                space++;
+                continue;
+            }
+
+            if (space > 0) {
+                string_append(&fen, int_digit_to_char(space));
+                space = 0;
+            }
+            string_append(&fen, p);
+        }
+
+        if (space > 0) {
+            string_append(&fen, int_digit_to_char(space));
+            space = 0;
+        }
+
+        if (rank > 0){
+            string_append(&fen, '/');
+        }
+    }
+    return fen;
 }

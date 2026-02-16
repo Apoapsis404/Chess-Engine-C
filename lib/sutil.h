@@ -6,7 +6,7 @@
 
 
 // Dynamic String functions
-#define STRING_SIZE_INIT 2
+#define STRING_SIZE_INIT 4
 
 typedef struct {
     char *string;

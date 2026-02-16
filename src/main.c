@@ -18,6 +18,8 @@
 #define QUIT  "q"
 #define RESET "rst"
 #define MOVE  "mv"
+#define DRAW_BB "bb"
+#define CHANGE_LEVEL "lvl"
 
 /*
 COMMANDS:
@@ -32,7 +34,6 @@ int handle_move(BString bs, Board *b){
     return (int)make_move(b, move);
 }
 
-
 int eval(BString *bs, Board *b, bool *draw_bb){
     BString token = bstring_next(bs, ' ');
     if (strncmp(token.string, QUIT, token.count) == 0){
@@ -43,9 +44,13 @@ int eval(BString *bs, Board *b, bool *draw_bb){
         b->board = parse_fen(DEFAULTFEN);
         log_message(INFO, "EVAL", "Resetting board!");
     } else if (strncmp(token.string, MOVE, token.count) == 0){
+        log_message(INFO, "EVAL", "Making move");
         handle_move(bstring_next(bs, ' '), b);
-    } else if (strncmp(token.string, "bb", token.count) == 0){
+    } else if (strncmp(token.string, DRAW_BB, token.count) == 0){
         *draw_bb = !(*draw_bb);
+    } else if (strncmp(token.string, CHANGE_LEVEL, token.count) == 0){
+        log_message(INFO, "EVAL", "Changing log level");   
+        set_log_level_from_string(bstring_next(bs, ' ').string);
     } else {
         fprintf(stderr, "Unknown command: %s\n", token.string);
         logf_message(WARNING, "EVAL", "Unknown command: %s", token.string);
@@ -95,9 +100,14 @@ int main(void) {
     log_message(INFO, "MAIN", "Started!");
 
     Board *b = init_board_fen(DEFAULTFEN);
-    Move m = construct_move(0, 0, 1);
-    make_move(b, m);
     repl(b);
+
+    //Move move = construct_move(0, 0, 1);
+    //make_move(b, move);
+
+    //String s = get_fen(b);
+    //logf_message(DEBUG, "MAIN", "Got FEN: %s", s.string);
+    //free_string(&s);
 
     log_message(INFO, "MAIN", "Quitting");
     close_logging();

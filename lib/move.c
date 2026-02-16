@@ -65,7 +65,13 @@ String move_to_string(Move move){
 
     int to = get_to(move);
     String to_s = square_name_from_idx(to);
-    string_cat(&s, &to_s);
+    string_cat_free(&s, &to_s);
 
     return s;
+}
+
+void log_move(log_level_t level, const char* module, Move move){
+    String s = move_to_string(move);
+    logf_message(level, module, "Making move: %s", s.string);
+    free_string(&s);
 }

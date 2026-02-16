@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+int idx_from_rank_file(int rank, int file){
+    return (rank * 8) + file;
+}
 
 int rank_from_idx(int idx){
     return idx / 8;

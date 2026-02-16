@@ -1,4 +1,5 @@
 #include "bitboard.h"
+#include "logging/lutil.h"
 
 #include <stdlib.h>
 
@@ -10,7 +11,7 @@ void get_whitebb(BitBoard *bb){
 }
 
 void get_piecebb(BitBoard *bb, PIECE *board){
-    bb->pieceBB = malloc(sizeof(BB) * 15);
+    bb->pieceBB = calloc(sizeof(BB), 15);
     for (int i = 0; i < 64; ++i) {
         if (board[i] != 0){
             bb->pieceBB[board[i]] |= 1UL << i;
@@ -29,7 +30,7 @@ void get_emptybb(BitBoard *bb){
 }
 
 BitBoard *bb_init(PIECE *board){
-    BitBoard *bb = malloc(sizeof(BitBoard));
+    BitBoard *bb = calloc(sizeof(BitBoard), 1);
 
     get_piecebb(bb, board);
     get_occupiedbb(bb);
@@ -64,6 +65,8 @@ BB in_between(int sq1, int sq2){
 
 /* Makes move in place */
 void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
+    //logf_message(DEBUG, "BITBOARD", "Making move: %s", move_to_string(move).string);
+    log_move(DEBUG, "BITBOARD", move);
     BB fromBB = 1UL << get_from(move);
     BB toBB = 1UL << get_to(move);
     BB from_to_BB = fromBB ^ toBB;
@@ -72,7 +75,9 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
     bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
 
     if(move_is_capture(move)){
+        log_message(DEBUG, "BITBOARD", "Move is capture");
         if(move_is_flag(move, ENPASSANTCAPTUREFLAG)){
+            log_message(DEBUG, "BITBOARD", "Move is enpassant");
             int ep_pawn_idx = piece_is_color(piece, WHITE) ? get_to(move) - 8 : get_to(move) + 8;
             BB ep_pawn_bb = 1ULL << ep_pawn_idx;
             bb->pieceBB[cpiece] ^= ep_pawn_bb;

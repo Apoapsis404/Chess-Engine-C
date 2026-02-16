@@ -2,6 +2,7 @@
 #define MOVE_H
 
 #include "sutil.h"
+#include "logging/lutil.h"
 
 #include <stdint.h>
 
@@ -50,5 +51,6 @@ String get_to_square_name(Move move);
 int invalid_move(Move move);
 String move_to_string(Move move);
 Move string_to_move(BString move_string);
+void log_move(log_level_t level, const char* module, Move move);
 
 #endif //MOVE_H;

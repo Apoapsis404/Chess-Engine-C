@@ -10,6 +10,7 @@ void disable_module(const char* module);
 
 typedef enum { DEBUG, INFO, WARNING, ERROR } log_level_t;
 void set_log_level(log_level_t level);
+void set_log_level_from_string(const char* level);
 
 void init_logging(const char* filename, bool clear_file);
 void close_logging();

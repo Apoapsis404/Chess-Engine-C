@@ -22,7 +22,10 @@ int string_alloc_space(String* s, size_t needed){
     }
 
     s->string = realloc(s->string, s->capacity * sizeof(char));
-    if (s->string == NULL) return -1;
+    if (s->string == NULL) {
+        fprintf(stderr, "SUTIL ERROR: Error with allocating space\n");
+        return -1;
+    }
     return 0;
 }
 
@@ -42,7 +45,7 @@ Returns: 1 on success,
 Returns -1 on alloc error
 */
 int string_append(String *dst, const char src){
-    if(string_alloc_space(dst, dst->count) == -1) return -1;
+    if(string_alloc_space(dst, dst->count + 1) == -1) return -1;
     dst->string[dst->count++] = src;
     dst->string[dst->count] = '\0';
     return 1;
@@ -68,6 +71,7 @@ Returns chars appended
 Returns -1 on alloc fail
 */
 int string_cat(String *dst, String *src){
+    printf("Hello! I am conctinatic strings!\n");
     int ret = string_append_many(dst, src->string, src->count);
     return ret;
 }

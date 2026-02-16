@@ -4,6 +4,7 @@
 #include "sutil.h"
 
 String square_name_from_idx(int idx);
+int idx_from_rank_file(int rank, int file);
 int rank_from_idx(int idx);
 int file_from_idx(int idx);
 void print_square(int idx);

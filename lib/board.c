@@ -42,7 +42,7 @@ PIECE make_move(Board* b, Move move){
     int from = get_from(move);
     int to = get_to(move);
 
-    logf_message(INFO, "BOARD", "Making move: %s", move_to_string(move).string);
+    log_move(DEBUG, "BOARD", move);
 
     PIECE piece = b->board[from];
     PIECE captured_piece = b->board[to]; 

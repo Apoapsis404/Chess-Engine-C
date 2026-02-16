@@ -49,6 +49,13 @@ void set_log_level(log_level_t level){
     current_log_level = level;
 }
 
+void set_log_level_from_string(const char* level){
+    if (strcmp(level , "DEBUG") == 0) set_log_level(DEBUG); 
+    else if (strcmp(level , "INFO") == 0) set_log_level(INFO); 
+    else if (strcmp(level , "WARNING") == 0) set_log_level(WARNING); 
+    else if (strcmp(level , "ERROR") == 0) set_log_level(ERROR); 
+}
+
 //Modules
 static char enabled_modules[MAX_MODULES][MODULE_NAME_LENGTH];
 
