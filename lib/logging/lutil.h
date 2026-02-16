@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 #include <stdbool.h>
+#include <time.h>
 
 // Functions
 void enable_module(const char* module);
@@ -20,5 +21,9 @@ void load_config(const char* config_file);
 void log_empty_line();
 void log_message(log_level_t level, const char* module, const char* text);
 void logf_message(log_level_t level, const char* module, const char* message, void* arg);
+
+//TODO: Make possible to pass string
+void log_time_start(log_level_t level, const char* module, clock_t* time_it);
+void log_time_stop(log_level_t level, const char* module, clock_t* time_it);
 
 #endif //LUTIL_H;

@@ -110,6 +110,22 @@ void close_logging(){
     }
 }
 
+//TIMING
+void log_time_start(log_level_t level, const char* module, clock_t* time_it){
+    *time_it = clock();
+    log_message(level, module, "Starting timer");
+}
+void log_time_start(log_level_t level, const char* module, clock_t* time_it){
+    clock_t end = clock();
+
+    double cpu_time_used = ((double) (end - *time_it)) / CLOCKS_PER_SEC;
+
+    char buf[30];
+    snprintf(buf, sizeof(buf), "Stopping timer. Time elapsed: %lf\0", cpu_time_used);
+
+    log_message(level, module, buf);
+}
+
 void log_empty_line(){
     if (!log_file) {
         fprintf(stderr, "Logging not initialized.\n");
