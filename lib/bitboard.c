@@ -2,6 +2,8 @@
 #include "logging/lutil.h"
 
 #include <stdlib.h>
+#include <inttypes.h>
+#include <stdio.h>
 
 void get_blackbb(BitBoard *bb){
     bb->pieceBB[BLACK] = bb->pieceBB[BLACKKING] | bb->pieceBB[BLACKPAWN] |bb->pieceBB[BLACKKNIGHT] |bb->pieceBB[BLACKBISHOP] |bb->pieceBB[BLACKROOK] |bb->pieceBB[BLACKQUEEN]; 
@@ -63,13 +65,26 @@ BB in_between(int sq1, int sq2){
     return line & btwn;
 }
 
+void log_bb(log_level_t level, const char* module, BB bb){
+    char bb_string[30];
+    snprintf(bb_string, sizeof(bb_string), "0x%016" PRIX64, bb);
+    String s = { 0 };
+    string_append_many(&s, bb_string, 30);
+    logf_message(level, module, "BitBoard: %s", bb_string);
+    free_string(&s);
+
+}
+
 /* Makes move in place */
 void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
-    //logf_message(DEBUG, "BITBOARD", "Making move: %s", move_to_string(move).string);
     log_move(DEBUG, "BITBOARD", move);
     BB fromBB = 1UL << get_from(move);
     BB toBB = 1UL << get_to(move);
     BB from_to_BB = fromBB ^ toBB;
+
+    //log_bb(DEBUG, "BITBOARD", fromBB);
+    //log_bb(DEBUG, "BITBOARD", toBB);
+    //log_bb(DEBUG, "BITBOARD", from_to_BB);
 
     bb->pieceBB[piece] ^= from_to_BB;
     bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
@@ -85,10 +100,14 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
             bb->occupiedBB ^= ep_pawn_bb | toBB;
             bb->emptyBB ^= ep_pawn_bb | toBB;
         } else {
-            bb->occupiedBB ^= fromBB;
-            bb->emptyBB ^= fromBB;
+            bb->pieceBB[cpiece] ^= toBB;
+            bb->pieceBB[cpiece & COLORMASK] ^= toBB;
         }
+        bb->occupiedBB ^= fromBB;
+        bb->emptyBB ^= fromBB;
+
     } else {
+        log_message(DEBUG, "BITBOARD", "Move is not capture");
         bb->occupiedBB ^= from_to_BB;
         bb->emptyBB ^= from_to_BB;
     }

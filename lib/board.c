@@ -50,6 +50,11 @@ PIECE make_move(Board* b, Move move){
     
     b->board[to] = piece;
     b->board[from] = NONE;
+
+    // Handle flags
+    if (captured_piece != NONE) {
+        set_flag(&move, CAPTURESFLAG);
+    }
     
     bb_make_move(b->bb, move, piece, captured_piece);
     return captured_piece;

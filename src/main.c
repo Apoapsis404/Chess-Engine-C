@@ -20,6 +20,7 @@
 #define MOVE  "mv"
 #define DRAW_BB "bb"
 #define CHANGE_LEVEL "lvl"
+#define GET_FEN "fen"
 
 /*
 COMMANDS:
@@ -32,6 +33,13 @@ Restart with fen: fen (fen) ex:fen DEFAULTFEN (Fens are saved to fen.h for now)
 int handle_move(BString bs, Board *b){
     Move move = string_to_move(bs);
     return (int)make_move(b, move);
+}
+
+void handle_fen(BString bs, Board *b){
+    (void)bs;
+    String s = get_fen(b);
+    logf_message(INFO, "EVAL", "Current FEN: %s", s.string);
+    free_string(&s);
 }
 
 int eval(BString *bs, Board *b, bool *draw_bb){
@@ -51,6 +59,8 @@ int eval(BString *bs, Board *b, bool *draw_bb){
     } else if (strncmp(token.string, CHANGE_LEVEL, token.count) == 0){
         log_message(INFO, "EVAL", "Changing log level");   
         set_log_level_from_string(bstring_next(bs, ' ').string);
+    } else if (strncmp(token.string, GET_FEN, token.count) == 0) {
+        handle_fen(bstring_next(bs, ' '), b);
     } else {
         fprintf(stderr, "Unknown command: %s\n", token.string);
         logf_message(WARNING, "EVAL", "Unknown command: %s", token.string);

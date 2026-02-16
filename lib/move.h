@@ -42,6 +42,8 @@ int get_from(Move move);
 int get_to(Move move);
 int get_flags(Move move);
 
+void set_flag(Move *move, int flag);
+
 int move_is_capture(Move move);
 int move_is_flag(Move move, int flag);
 

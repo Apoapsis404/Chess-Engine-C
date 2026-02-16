@@ -22,6 +22,11 @@ int get_flags(Move move){
     return (FLAGMASK & move) >> 12;
 }
 
+void set_flag(Move *move, int flag){
+    *move &= ~0xf000;
+    *move |= (flag << 12);
+}
+
 int move_is_capture(Move move){
     return (get_flags(move) & CAPTURESFLAG) == CAPTURESFLAG;
 }
