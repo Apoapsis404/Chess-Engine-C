@@ -62,10 +62,7 @@ PIECE make_move(Board* b, Move move){
 
 /* Assumes legal move. Check before calling this function! */
 Board* copy_make(Board* b, Move move) {
-    if (invalid_move(move)) {
-        fprintf(stderr, "MOVE ERROR: Invalid move %s. Invalid type: TODO\n", "move");
-        return NULL;
-    }
+    make_move(b, move);
     return b;
 }
 

@@ -54,37 +54,7 @@ void set_log_level_from_string(const char* level){
     else if (strcmp(level , "INFO") == 0) set_log_level(INFO); 
     else if (strcmp(level , "WARNING") == 0) set_log_level(WARNING); 
     else if (strcmp(level , "ERROR") == 0) set_log_level(ERROR); 
-}
-
-//Modules
-static char enabled_modules[MAX_MODULES][MODULE_NAME_LENGTH];
-
-void enable_module(const char* module){
-    for(int i = 0; i < MAX_MODULES; i++){
-        if(enabled_modules[i][0] == '\0') {
-            strncpy(enabled_modules[i], module, MODULE_NAME_LENGTH - 1);
-            enabled_modules[i][MODULE_NAME_LENGTH - 1] = '\0';
-            break;
-        }
-    }
-}
-
-void disable_module(const char* module){
-    for(int i = 0; i < MAX_MODULES; i++){
-        if(strcmp(enabled_modules[i], module) == 0){
-            enabled_modules[i][0] = '\0';
-            break;
-        }
-    }
-}
-
-static int is_module_enabled(const char* module){
-    for(int i = 0; i < MAX_MODULES; i++){
-        if(strcmp(enabled_modules[i], module) == 0){
-            return 1;
-        }
-    }
-    return 0;
+    else if (strcmp(level , "FATAL") == 0) set_log_level(FATAL); 
 }
 
 //FILE
@@ -115,13 +85,14 @@ void log_time_start(log_level_t level, const char* module, clock_t* time_it){
     *time_it = clock();
     log_message(level, module, "Starting timer");
 }
-void log_time_start(log_level_t level, const char* module, clock_t* time_it){
+
+void log_time_stop(log_level_t level, const char* module, clock_t* time_it){
     clock_t end = clock();
 
     double cpu_time_used = ((double) (end - *time_it)) / CLOCKS_PER_SEC;
 
-    char buf[30];
-    snprintf(buf, sizeof(buf), "Stopping timer. Time elapsed: %lf\0", cpu_time_used);
+    char buf[350];
+    snprintf(buf, sizeof(buf), "Stopping timer. Time elapsed: %lf seconds", cpu_time_used);
 
     log_message(level, module, buf);
 }
@@ -161,7 +132,7 @@ void log_message(log_level_t level, const char* module, const char* message){
         return;
     }
 
-    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR" };
+    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR", "FATAL" };
     time_t now = time(NULL);
     struct tm* local_time = localtime(&now);
 

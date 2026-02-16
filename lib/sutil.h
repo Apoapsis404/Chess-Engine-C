@@ -30,6 +30,7 @@ int string_cat(String *dst, String *src);
 int string_cat_free(String *dst, String *src);
 
 void free_string(String *s);
+void free_alloced_string(String *s);
 
 BString bstring_from_string(String *s);
 BString bstring_next(BString *bs, char delim);

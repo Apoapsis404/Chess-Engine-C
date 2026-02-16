@@ -1,0 +1,8 @@
+fen
+bb
+mv a1a2
+fen
+bb
+mv k1l9
+qtr
+fen

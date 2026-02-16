@@ -42,6 +42,9 @@ String square_name_from_idx(int idx){
 int idx_from_square_name(char* square){
     int file = square[0] - LOWERSTART;
     int rank = char_digit_to_int(square[1]);
+
+    if (file < 0 || file >= 8 || rank < 0 || rank >= 8) return -1;
+
     return 8*(rank-1) + file;
 }
 

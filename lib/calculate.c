@@ -6,9 +6,9 @@
 
 
 void free_move_arrays(move_arrays* move_arrays){
-    free(move_arrays->king_moves);
-    free(move_arrays->knight_moves);
-    free(move_arrays->pawn_attacks);
+    //free(move_arrays->king_moves);
+    //free(move_arrays->knight_moves);
+    //free(move_arrays->pawn_attacks);
     free(move_arrays);
 }
 
@@ -24,15 +24,17 @@ void calculate_king_moves(move_arrays* move_array){
         BB king_bb = 1ULL << i;
         move_array->king_moves[i] = king_attacks(king_bb);
     }
+    log_message(DEBUG, "CALCULATE", "Finished calculating king moves");
 }
 
 move_arrays* init_move_arrays(bool read_in_calcs){
     if (read_in_calcs) log_message(WARNING, "CALCULATE", "Cannot read in calcs because they do not exist");
-    move_arrays* move_array = malloc(sizeof(move_array));
+    move_arrays* move_array = malloc(sizeof(*move_array));
 
-    move_array->king_moves = calloc(sizeof(BB), 64);
-    move_array->knight_moves = calloc(sizeof(BB), 64);
-    move_array->pawn_attacks = calloc(sizeof(BB), 2);
+    if (move_array == NULL){
+        log_message(ERROR, "CALCULATE", "FATAL: failed to allocate move_array");
+        exit(EXIT_FAILURE);
+    }
 
     clock_t time_it;
     log_time_start(DEBUG, "CALCULATE", &time_it);

@@ -35,9 +35,20 @@ int move_is_flag(Move move, int flag) {
     return (get_flags(move)) == flag;
 }
 
-int invalid_move(Move move) {
-    (void)move;
-    return 0;
+int invalid_from_to(int from, int to) {
+    int invalid = 0;
+
+    if (from < 0 || from >= 64){
+        log_message(ERROR, "MOVE", "Invalid from square!");
+        invalid = 1;
+    }
+
+    if (to < 0 || to >= 64){
+        log_message(ERROR, "MOVE", "Invalid to square!");
+        invalid = 1;
+    }
+
+    return invalid;
 }
 
 String get_from_square_name(Move move){
@@ -55,9 +66,13 @@ Move string_to_move(BString move_string){
     }
     int from = idx_from_square_name(move_string.string);
     int to = idx_from_square_name(move_string.string + 2);
-    printf("Move: ");
-    bstring_println(&move_string);
+    
     printf("From: %d, To: %d\n", from, to);
+
+    if(invalid_from_to(from, to)) return NULLMOVE;
+
+    //printf("Move: ");
+    //bstring_println(&move_string);
 
     return construct_move(0, from, to);
 }

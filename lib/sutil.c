@@ -93,6 +93,11 @@ void free_string(String *s){
     free(s->string);
 }
 
+void free_alloced_string(String *s){
+    free_string(s);
+    free(s);
+}
+
 BString bstring_from_string(String *s){
     BString bs;
     bs.string = s->string;

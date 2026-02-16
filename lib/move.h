@@ -50,7 +50,6 @@ int move_is_flag(Move move, int flag);
 String get_from_square_name(Move move);
 String get_to_square_name(Move move);
 
-int invalid_move(Move move);
 String move_to_string(Move move);
 Move string_to_move(BString move_string);
 void log_move(log_level_t level, const char* module, Move move);
