@@ -1,8 +1,6 @@
-fen
-bb
-mv a1a2
-fen
-bb
-mv k1l9
-qtr
-fen
+mv e2e4
+mv d7d5
+mv e4e5
+mv f7f5
+mv e5f6
+q

@@ -123,7 +123,6 @@ int repl_from_file(Board *b, const char *filename){
 
     }
 
-
 cleanup:
     if (f != NULL) fclose(f);
     if (s != NULL) free_alloced_string(s);

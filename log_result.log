@@ -1290,3 +1290,189 @@
 2026-02-16 19:30:05 [INFO][EVAL] Quitting
 2026-02-16 19:30:05 [INFO][REPL] Quitting
 2026-02-16 19:30:05 [INFO][MAIN] Quitting
+
+2026-02-17 12:30:16 [INFO][MAIN] Started!
+2026-02-17 12:30:16 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:30:16 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: fen
+2026-02-17 12:30:16 [INFO][EVAL] Current FEN: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: bb
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: mv a1a2
+2026-02-17 12:30:16 [INFO][EVAL] Making move
+2026-02-17 12:30:16 [DEBUG][BOARD] Making move: a1a2
+2026-02-17 12:30:16 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-17 12:30:16 [DEBUG][BITBOARD] Move is capture
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: fen
+2026-02-17 12:30:16 [INFO][EVAL] Current FEN: rnbqkbnr/pppppppp/8/8/8/8/RPPPPPPP/1NBQKBNR
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: hei
+2026-02-17 12:30:16 [WARNING][EVAL] Unknown command: hei
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: bb
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: mv k1l9
+2026-02-17 12:30:16 [INFO][EVAL] Making move
+2026-02-17 12:30:16 [ERROR][MOVE] Invalid from square!
+2026-02-17 12:30:16 [ERROR][MOVE] Invalid to square!
+2026-02-17 12:30:16 [INFO][command_file.txt] Read in command: qtr
+2026-02-17 12:30:16 [INFO][command_file.txt] End of command file
+2026-02-17 12:30:26 [INFO][REPL] Command: q
+2026-02-17 12:30:26 [INFO][EVAL] Quitting
+2026-02-17 12:30:26 [INFO][REPL] Quitting
+2026-02-17 12:30:26 [INFO][MAIN] Quitting
+
+2026-02-17 12:44:18 [INFO][MAIN] Started!
+2026-02-17 12:44:18 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:44:18 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:44:18 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-17 12:44:18 [INFO][EVAL] Making move
+2026-02-17 12:44:18 [DEBUG][BOARD] Making move: e2e4
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:44:18 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-17 12:44:18 [INFO][EVAL] Making move
+2026-02-17 12:44:18 [DEBUG][BOARD] Making move: d7d5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:44:18 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-17 12:44:18 [INFO][EVAL] Making move
+2026-02-17 12:44:18 [DEBUG][BOARD] Making move: e4e5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:44:18 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-17 12:44:18 [INFO][EVAL] Making move
+2026-02-17 12:44:18 [DEBUG][BOARD] Making move: f7f5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:44:18 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-17 12:44:18 [INFO][EVAL] Making move
+2026-02-17 12:44:18 [DEBUG][BOARD] Making move: e5f6
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-17 12:44:18 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:44:18 [INFO][command_file.txt] End of command file
+2026-02-17 12:44:18 [INFO][MAIN] Quitting
+
+2026-02-17 12:45:28 [INFO][MAIN] Started!
+2026-02-17 12:45:28 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:45:28 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:45:28 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-17 12:45:28 [INFO][EVAL] Making move
+2026-02-17 12:45:28 [DEBUG][BOARD] Making move: e2e4
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:45:28 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-17 12:45:28 [INFO][EVAL] Making move
+2026-02-17 12:45:28 [DEBUG][BOARD] Making move: d7d5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:45:28 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-17 12:45:28 [INFO][EVAL] Making move
+2026-02-17 12:45:28 [DEBUG][BOARD] Making move: e4e5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:45:28 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-17 12:45:28 [INFO][EVAL] Making move
+2026-02-17 12:45:28 [DEBUG][BOARD] Making move: f7f5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:45:28 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-17 12:45:28 [INFO][EVAL] Making move
+2026-02-17 12:45:28 [DEBUG][BOARD] Making move: e5f6
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-17 12:45:28 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:45:28 [INFO][command_file.txt] End of command file
+2026-02-17 12:45:28 [INFO][MAIN] Quitting
+
+2026-02-17 12:46:08 [INFO][MAIN] Started!
+2026-02-17 12:46:08 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:46:08 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:46:08 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-17 12:46:08 [INFO][EVAL] Making move
+2026-02-17 12:46:08 [DEBUG][BOARD] Making move: e2e4
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:08 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-17 12:46:08 [INFO][EVAL] Making move
+2026-02-17 12:46:08 [DEBUG][BOARD] Making move: d7d5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:08 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-17 12:46:08 [INFO][EVAL] Making move
+2026-02-17 12:46:08 [DEBUG][BOARD] Making move: e4e5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:08 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-17 12:46:08 [INFO][EVAL] Making move
+2026-02-17 12:46:08 [DEBUG][BOARD] Making move: f7f5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:08 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-17 12:46:08 [INFO][EVAL] Making move
+2026-02-17 12:46:08 [DEBUG][BOARD] Making move: e5f6
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-17 12:46:08 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:08 [INFO][command_file.txt] End of command file
+2026-02-17 12:46:08 [INFO][MAIN] Quitting
+
+2026-02-17 12:46:23 [INFO][MAIN] Started!
+2026-02-17 12:46:23 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:46:23 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-17 12:46:23 [INFO][EVAL] Making move
+2026-02-17 12:46:23 [DEBUG][BOARD] Making move: e2e4
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-17 12:46:23 [INFO][EVAL] Making move
+2026-02-17 12:46:23 [DEBUG][BOARD] Making move: d7d5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-17 12:46:23 [INFO][EVAL] Making move
+2026-02-17 12:46:23 [DEBUG][BOARD] Making move: e4e5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-17 12:46:23 [INFO][EVAL] Making move
+2026-02-17 12:46:23 [DEBUG][BOARD] Making move: f7f5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-17 12:46:23 [INFO][EVAL] Making move
+2026-02-17 12:46:23 [DEBUG][BOARD] Making move: e5f6
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-17 12:46:23 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:23 [INFO][command_file.txt] Read in command: q
+2026-02-17 12:46:23 [INFO][EVAL] Quitting
+2026-02-17 12:46:23 [INFO][command_file.txt] End of command file
+2026-02-17 12:46:23 [INFO][MAIN] Quitting
+
+2026-02-17 12:46:35 [INFO][MAIN] Started!
+2026-02-17 12:46:35 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-17 12:46:35 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-17 12:46:35 [INFO][EVAL] Making move
+2026-02-17 12:46:35 [DEBUG][BOARD] Making move: e2e4
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-17 12:46:35 [INFO][EVAL] Making move
+2026-02-17 12:46:35 [DEBUG][BOARD] Making move: d7d5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-17 12:46:35 [INFO][EVAL] Making move
+2026-02-17 12:46:35 [DEBUG][BOARD] Making move: e4e5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-17 12:46:35 [INFO][EVAL] Making move
+2026-02-17 12:46:35 [DEBUG][BOARD] Making move: f7f5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-17 12:46:35 [INFO][EVAL] Making move
+2026-02-17 12:46:35 [DEBUG][BOARD] Making move: e5f6
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-17 12:46:35 [DEBUG][BITBOARD] Move is not capture
+2026-02-17 12:46:35 [INFO][command_file.txt] Read in command: q
+2026-02-17 12:46:35 [INFO][EVAL] Quitting
+2026-02-17 12:46:35 [INFO][command_file.txt] End of command file
+2026-02-17 12:46:35 [INFO][MAIN] Quitting
