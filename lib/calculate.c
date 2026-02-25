@@ -24,7 +24,42 @@ void calculate_king_moves(move_arrays* move_array){
         BB king_bb = 1ULL << i;
         move_array->king_moves[i] = king_attacks(king_bb);
     }
-    log_message(DEBUG, "CALCULATE", "Finished calculating king moves");
+}
+
+BB knight_attacks(BB knight_bb) {
+    BB west, east, attacks;
+    west = shift_west(knight_bb);
+    east = shift_east(knight_bb);
+    attacks = (east | west) << 16;
+    attacks |= (east | west) >> 16;
+    west = shift_west(west);
+    east = shift_east(east);
+    attacks = (east | west) << 8;
+    attacks |= (east | west) >> 8;
+    return attacks;
+}
+
+void calculate_knight_moves(move_arrays *move_array) {
+    for (int i = 0; i < 64; i++) {
+        BB knight_bb = 1ULL << i;
+        move_array->knight_moves[i] = knight_attacks(knight_bb);
+    }
+}
+
+BB pawn_attacks(BB pawn_bb, int color) {
+    if (color == WHITE) {
+        return shift_northeast(pawn_bb) | shift_northwest(pawn_bb);
+    } else {
+        return shift_southwest(pawn_bb) | shift_southwest(pawn_bb);
+    }
+}
+
+void calculate_pawn_attacks(move_arrays *move_array) {
+    for (int i = 0; i < 64; i++) {
+        BB pawn_bb = 1ULL << i;
+        move_array->pawn_attacks[0][i] = pawn_attacks(pawn_bb, WHITE);
+        move_array->pawn_attacks[1][i] = pawn_attacks(pawn_bb, BLACK);
+    }
 }
 
 move_arrays* init_move_arrays(bool read_in_calcs){
@@ -40,6 +75,8 @@ move_arrays* init_move_arrays(bool read_in_calcs){
     log_time_start(DEBUG, "CALCULATE", &time_it);
 
     calculate_king_moves(move_array);
+    calculate_knight_moves(move_array);
+    calculate_pawn_attacks(move_array);
 
     log_time_stop(DEBUG, "CALCULATE", &time_it);
 

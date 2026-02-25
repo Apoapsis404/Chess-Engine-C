@@ -7,6 +7,7 @@
 #include "../lib/coordinate.h"
 #include "../lib/sutil.h"
 #include "../lib/calculate.h"
+#include "../lib/magic.h"
 #include "ui.h"
 
 #include <stdio.h>
@@ -178,6 +179,7 @@ void test_log(){
 
 int main(void) {
 
+
     load_config("lib/logging/config.cfg");
     
     log_empty_line();
@@ -186,10 +188,10 @@ int main(void) {
 
     Board *b = init_board_fen(DEFAULTFEN);
     //repl(b);
-    int retval = repl_from_file(b, "command_file.txt");
-    if (retval == QUIT_TO_REPL_VAL){
-        repl(b);
-    }
+    //int   retval = repl_from_file(b, "command_file.txt");
+    //if (retval == QUIT_TO_REPL_VAL){
+    //    repl(b);
+    //}
 
     //test_calc();
 
@@ -201,6 +203,10 @@ int main(void) {
     //String s = get_fen(b);
     //logf_message(DEBUG, "MAIN", "Got FEN: %s", s.string);
     //free_string(&s);
+    clock_t time_it;
+    log_time_start(DEBUG, "MAIN", &time_it);
+    init_magic_bitboards();
+    log_time_stop(DEBUG, "MAIN", &time_it);
 
     log_message(INFO, "MAIN", "Quitting");
     close_logging();
