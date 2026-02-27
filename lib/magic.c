@@ -186,6 +186,12 @@ magic_entry_t *find_magic(int square, int relevant_bits, bool is_rook, magic_mas
     BB attack_mask = is_rook ? masks->rook_masks[square] : masks->bishop_masks[square];
     int occupancy_indices = bit_count(attack_mask);
 
+    if (occupancy_indices > relevant_bits) {
+        log_message(FATAL, "MAGIC", "Occupancy indecies outnumber relevant bits");
+        is_error = true;
+        goto clean_up;
+    }
+
     for(int idx = 0; idx < (1 << occupancy_indices); idx++){
         occupancies[idx] = generate_occupancy(idx, occupancy_indices, attack_mask, bit_table);
         attacks[idx] = is_rook ? rook_attack(square, occupancies[idx]) : bishop_attack(square, occupancies[idx]);

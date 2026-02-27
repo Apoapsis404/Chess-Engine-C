@@ -96,18 +96,18 @@ int print_terminal_size(){
     return 0;
 }
 
-void draw_ui(Board* b, bool clear, size_t offset, bool draw_bb){
+void draw_ui(ui_t *ui, size_t offset){
     size_t w, h;
     get_terminal_size(&w, &h);
 
-    if(clear){
+    if(ui->clear){
         clear_screen();
     }
 
-    print_board(b);
+    print_board(ui->b);
 
-    if (draw_bb){
-        BB bb = b->bb->occupiedBB;
+    if (ui->draw_bb){
+        BB bb = ui->bb;
 
         printf("\nHex: BB: 0x%" PRIX64 "\n", bb);
         print_bb(bb);

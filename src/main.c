@@ -27,6 +27,7 @@
 //READ IN COMMANDS (THEY ARE IN ADDITION TO OTHER COMMANDS)
 #define QUIT_TO_REPL "qtr"
 
+
 /*
 COMMANDS:
 Make move: mv (from)(to) ex:mv a1h1
@@ -48,29 +49,97 @@ void handle_fen(BString bs, Board *b){
     free_string(&s);
 }
 
-void handle_bb_cmds(BString bs, bool* draw_bb){
-    if (bs.string[0] == '\0') *draw_bb = !(*draw_bb);
+//Handle BB
+
+int get_color(BString bs){
+    int ret = -1;
+    if (strncmp(bs.string, "w", 1) == 0) {
+        ret = WHITE;
+    } else if (strncmp(bs.string, "b", 1) == 0){
+        ret = BLACK;
+    }  
+    return ret;
 }
 
-int eval(BString *bs, Board *b, bool *draw_bb){
+int get_piece(BString bs) {
+    int ret = -1;
+    if (strncmp(bs.string, "k", 1) == 0) {
+        ret = KING;
+    } else if (strncmp(bs.string, "p", 1) == 0) {
+        ret = PAWN;
+    } else if (strncmp(bs.string, "n", 1) == 0) {
+        ret = KNIGHT;
+    } else if (strncmp(bs.string, "b", 1) == 0) {
+        ret = BISHOP;
+    } else if (strncmp(bs.string, "r", 1) == 0) {
+        ret = ROOK;
+    } else if (strncmp(bs.string, "q", 1) == 0) {
+        ret = QUEEN;
+    } else if (strncmp(bs.string, "o", 1) == 0) {
+        ret = 7;
+    }
+
+    return ret;
+}
+
+void handle_bb_cmds(BString bs, ui_t *ui){
+    if (bs.string[0] == '\0') {
+        ui->draw_bb = !(ui->draw_bb);
+        log_message(DEBUG, "EVAL", "Changing draw bitboard setting");
+        return;
+    }
+
+    int color = get_color(bs);
+    int piece;
+
+    if (color != -1){
+        bs.string++;
+    }
+    piece = get_piece(bs);
+
+    if (piece == -1) {
+        logf_message(ERROR, "EVAL", "Unknown bitboard: %s", bs.string);
+        return;
+    }
+
+    if (piece == 7) {
+        if (color != -1) {
+            ui->bb = ui->b->bb->occupiedBB & !ui->b->bb->pieceBB[color ? BLACK : WHITE];
+        } else {
+            ui->bb = ui->b->bb->occupiedBB;
+        }
+        return;
+    }
+
+    if (color == -1) {
+        ui->bb = ui->b->bb->pieceBB[WHITE | piece] | ui->b->bb->pieceBB[BLACK | piece];
+    } else {
+        ui->bb = ui->b->bb->pieceBB[color | piece];
+    }
+
+}
+
+// Evaluate command
+ 
+int eval(BString *bs, ui_t *ui){
     BString token = bstring_next(bs, ' ');
     if (strncmp(token.string, QUIT, token.count) == 0){
         log_message(INFO, "EVAL", "Quitting");
         return 1;
     } else if (strncmp(token.string, RESET, token.count) == 0){
-        free(b->board);
-        b->board = parse_fen(DEFAULTFEN);
+        free(ui->b->board);
+        ui->b->board = parse_fen(DEFAULTFEN);
         log_message(INFO, "EVAL", "Resetting board!");
     } else if (strncmp(token.string, MOVE, token.count) == 0){
         log_message(INFO, "EVAL", "Making move");
-        handle_move(bstring_next(bs, ' '), b);
+        handle_move(bstring_next(bs, ' '), ui->b);
     } else if (strncmp(token.string, BB_FUNCS, token.count) == 0){
-        handle_bb_cmds(bstring_next(bs, ' '), draw_bb);
+        handle_bb_cmds(bstring_next(bs, ' '), ui);
     } else if (strncmp(token.string, CHANGE_LEVEL, token.count) == 0){
         log_message(INFO, "EVAL", "Changing log level");   
         set_log_level_from_string(bstring_next(bs, ' ').string);
     } else if (strncmp(token.string, GET_FEN, token.count) == 0) {
-        handle_fen(bstring_next(bs, ' '), b);
+        handle_fen(bstring_next(bs, ' '), ui->b);
     } else {
         fprintf(stderr, "Unknown command: %s\n", token.string);
         logf_message(WARNING, "EVAL", "Unknown command: %s", token.string);
@@ -83,7 +152,7 @@ int eval(BString *bs, Board *b, bool *draw_bb){
 
 #define FILE_NOT_FOUND_VAL 3
 #define QUIT_TO_REPL_VAL 2
-int repl_from_file(Board *b, const char *filename){
+int repl_from_file(ui_t *ui, const char *filename){
     //TODO Rename to something smart
     int retval = 0;
     String *s = calloc(sizeof(String), 1);
@@ -96,13 +165,11 @@ int repl_from_file(Board *b, const char *filename){
         goto cleanup;
     }
 
-    bool draw_bb = true;
-
     logf_message(INFO, "REPL", "Reading commands from file: %s", (char *)filename);
     
     char command[128];
     while (fgets(command, sizeof(command), f)){
-        draw_ui(b, false, BOARD_DRAW_SIZE, draw_bb);
+        draw_ui(ui, BOARD_DRAW_SIZE);
         
         command[strcspn(command, "\n")] = '\0';
         logf_message(INFO, (char *)filename, "Read in command: %s", command);
@@ -114,7 +181,7 @@ int repl_from_file(Board *b, const char *filename){
 
         string_append_many(s, command, strlen(command));
         BString bs = bstring_from_string(s);
-        retval = eval(&bs, b, &draw_bb);
+        retval = eval(&bs, ui);
         s->count = 0;
 
         if(retval != 0) {
@@ -131,12 +198,11 @@ cleanup:
     return retval;
 }
 
-int repl(Board *b){
+int repl(ui_t *ui){
     String *s = calloc(sizeof(String), 1);
-    bool draw_bb = true;
     while(1) {
 
-        draw_ui(b, false, BOARD_DRAW_SIZE, draw_bb);
+        draw_ui(ui, BOARD_DRAW_SIZE);
 
         char buf[BUFSIZE] = { 0 };
         printf(">");
@@ -149,7 +215,7 @@ int repl(Board *b){
 
         string_append_many(s, buf, strlen(buf));
         BString bs = bstring_from_string(s);
-        int ret = eval(&bs, b, &draw_bb);
+        int ret = eval(&bs, ui);
         s->count = 0;
         if (ret == 1){
             log_message(INFO, "REPL", "Quitting");
@@ -187,10 +253,16 @@ int main(void) {
     log_message(INFO, "MAIN", "Started!");
 
     Board *b = init_board_fen(DEFAULTFEN);
-    //repl(b);
+    ui_t *ui = malloc(sizeof(ui));
+    ui->b = b;
+    ui->bb = 0ULL;
+    ui->clear = false;
+    ui->draw_bb = true;
+
+    repl(ui);
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
-    //    repl(b);
+        //repl(b);
     //}
 
     //test_calc();
@@ -203,14 +275,15 @@ int main(void) {
     //String s = get_fen(b);
     //logf_message(DEBUG, "MAIN", "Got FEN: %s", s.string);
     //free_string(&s);
-    clock_t time_it;
-    log_time_start(DEBUG, "MAIN", &time_it);
-    init_magic_bitboards();
-    log_time_stop(DEBUG, "MAIN", &time_it);
+    //clock_t time_it;
+    //log_time_start(DEBUG, "MAIN", &time_it);
+    //init_magic_bitboards();
+    //log_time_stop(DEBUG, "MAIN", &time_it);
 
     log_message(INFO, "MAIN", "Quitting");
     close_logging();
 
     free_board(b);
+    free(ui);
     return 0;
 }

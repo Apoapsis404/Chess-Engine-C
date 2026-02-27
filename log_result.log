@@ -2569,3 +2569,473 @@
 2026-02-25 13:56:18 [ERROR][MAGIC] Failed to find magic number for square 63
 2026-02-25 13:56:18 [DEBUG][MAIN] Stopping timer. Time elapsed: 8.430816 seconds
 2026-02-25 13:56:18 [INFO][MAIN] Quitting
+
+2026-02-27 12:10:43 [INFO][MAIN] Started!
+2026-02-27 12:10:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:10:43 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-02-27 12:10:43 [DEBUG][CALCULATE] Starting timer
+2026-02-27 12:10:43 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 0.000009 seconds
+2026-02-27 12:10:43 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-02-27 12:10:43 [INFO][MAIN] Quitting
+
+2026-02-27 12:11:00 [INFO][MAIN] Started!
+2026-02-27 12:11:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:11:00 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-02-27 12:11:00 [DEBUG][CALCULATE] Starting timer
+2026-02-27 12:11:00 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 0.000011 seconds
+2026-02-27 12:11:00 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-02-27 12:11:00 [INFO][MAIN] Quitting
+
+2026-02-27 12:11:36 [INFO][MAIN] Started!
+2026-02-27 12:11:36 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:11:50 [INFO][REPL] Command: q
+2026-02-27 12:11:50 [INFO][EVAL] Quitting
+2026-02-27 12:11:50 [INFO][REPL] Quitting
+2026-02-27 12:11:50 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-27 12:11:50 [INFO][EVAL] Making move
+2026-02-27 12:11:50 [DEBUG][BOARD] Making move: e2e4
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-27 12:11:50 [INFO][EVAL] Making move
+2026-02-27 12:11:50 [DEBUG][BOARD] Making move: d7d5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-27 12:11:50 [INFO][EVAL] Making move
+2026-02-27 12:11:50 [DEBUG][BOARD] Making move: e4e5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-27 12:11:50 [INFO][EVAL] Making move
+2026-02-27 12:11:50 [DEBUG][BOARD] Making move: f7f5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-27 12:11:50 [INFO][EVAL] Making move
+2026-02-27 12:11:50 [DEBUG][BOARD] Making move: e5f6
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-27 12:11:50 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:11:50 [INFO][command_file.txt] Read in command: qtr
+2026-02-27 12:11:50 [INFO][command_file.txt] End of command file
+2026-02-27 12:11:52 [INFO][REPL] Command: q
+2026-02-27 12:11:52 [INFO][EVAL] Quitting
+2026-02-27 12:11:52 [INFO][REPL] Quitting
+2026-02-27 12:11:52 [INFO][MAIN] Quitting
+
+2026-02-27 12:12:11 [INFO][MAIN] Started!
+2026-02-27 12:12:11 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:12:11 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-27 12:12:11 [INFO][EVAL] Making move
+2026-02-27 12:12:11 [DEBUG][BOARD] Making move: e2e4
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-27 12:12:11 [INFO][EVAL] Making move
+2026-02-27 12:12:11 [DEBUG][BOARD] Making move: d7d5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-27 12:12:11 [INFO][EVAL] Making move
+2026-02-27 12:12:11 [DEBUG][BOARD] Making move: e4e5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-27 12:12:11 [INFO][EVAL] Making move
+2026-02-27 12:12:11 [DEBUG][BOARD] Making move: f7f5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-27 12:12:11 [INFO][EVAL] Making move
+2026-02-27 12:12:11 [DEBUG][BOARD] Making move: e5f6
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-27 12:12:11 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:12:11 [INFO][command_file.txt] Read in command: qtr
+2026-02-27 12:12:11 [INFO][command_file.txt] End of command file
+2026-02-27 12:12:14 [INFO][REPL] Command: mv a1a2
+2026-02-27 12:12:14 [INFO][EVAL] Making move
+2026-02-27 12:12:14 [DEBUG][BOARD] Making move: a1a2
+2026-02-27 12:12:14 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-27 12:12:14 [DEBUG][BITBOARD] Move is capture
+2026-02-27 12:12:16 [INFO][REPL] Command: bb
+
+2026-02-27 12:13:19 [INFO][MAIN] Started!
+2026-02-27 12:13:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:13:19 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-27 12:13:19 [INFO][EVAL] Making move
+2026-02-27 12:13:19 [DEBUG][BOARD] Making move: e2e4
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-27 12:13:19 [INFO][EVAL] Making move
+2026-02-27 12:13:19 [DEBUG][BOARD] Making move: d7d5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-27 12:13:19 [INFO][EVAL] Making move
+2026-02-27 12:13:19 [DEBUG][BOARD] Making move: e4e5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-27 12:13:19 [INFO][EVAL] Making move
+2026-02-27 12:13:19 [DEBUG][BOARD] Making move: f7f5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-27 12:13:19 [INFO][EVAL] Making move
+2026-02-27 12:13:19 [DEBUG][BOARD] Making move: e5f6
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-27 12:13:19 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:13:19 [INFO][command_file.txt] Read in command: qtr
+2026-02-27 12:13:19 [INFO][command_file.txt] End of command file
+2026-02-27 12:13:25 [INFO][REPL] Command: mv a1a2
+2026-02-27 12:13:25 [INFO][EVAL] Making move
+2026-02-27 12:13:25 [DEBUG][BOARD] Making move: a1a2
+2026-02-27 12:13:25 [DEBUG][BITBOARD] Making move: a1a2
+2026-02-27 12:13:25 [DEBUG][BITBOARD] Move is capture
+2026-02-27 12:13:26 [INFO][REPL] Command: bb
+2026-02-27 12:13:27 [INFO][REPL] Command: bb
+2026-02-27 12:13:35 [INFO][REPL] Command: mv t6y9
+2026-02-27 12:13:35 [INFO][EVAL] Making move
+2026-02-27 12:13:35 [ERROR][MOVE] Invalid from square!
+2026-02-27 12:13:35 [ERROR][MOVE] Invalid to square!
+2026-02-27 12:14:02 [INFO][REPL] Command: q
+2026-02-27 12:14:02 [INFO][EVAL] Quitting
+2026-02-27 12:14:02 [INFO][REPL] Quitting
+2026-02-27 12:14:02 [INFO][MAIN] Quitting
+
+2026-02-27 12:14:27 [INFO][MAIN] Started!
+2026-02-27 12:14:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:14:27 [INFO][REPL] Reading commands from file: command_file.txt
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv e2e4
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [DEBUG][BOARD] Making move: e2e4
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Making move: e2e4
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv d7d5
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [DEBUG][BOARD] Making move: d7d5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Making move: d7d5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv e4e5
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [DEBUG][BOARD] Making move: e4e5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Making move: e4e5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv f7f5
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [DEBUG][BOARD] Making move: f7f5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Making move: f7f5
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv e5f6
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [DEBUG][BOARD] Making move: e5f6
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Making move: e5f6
+2026-02-27 12:14:27 [DEBUG][BITBOARD] Move is not capture
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: mv u8t9
+2026-02-27 12:14:27 [INFO][EVAL] Making move
+2026-02-27 12:14:27 [ERROR][MOVE] Invalid from square!
+2026-02-27 12:14:27 [ERROR][MOVE] Invalid to square!
+2026-02-27 12:14:27 [INFO][command_file.txt] Read in command: qtr
+2026-02-27 12:14:27 [INFO][command_file.txt] End of command file
+2026-02-27 12:14:50 [INFO][REPL] Command: q
+2026-02-27 12:14:50 [INFO][EVAL] Quitting
+2026-02-27 12:14:50 [INFO][REPL] Quitting
+2026-02-27 12:14:50 [INFO][MAIN] Quitting
+
+2026-02-27 12:15:31 [INFO][MAIN] Started!
+2026-02-27 12:15:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:15:31 [DEBUG][MAIN] Starting timer
+2026-02-27 12:15:31 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 12:15:31 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 12:15:31 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 12:15:31 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 12:15:31 [ERROR][MAGIC] Failed to find magic number for square 1
+
+2026-02-27 12:18:41 [INFO][MAIN] Started!
+2026-02-27 12:18:41 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 12:18:41 [DEBUG][MAIN] Starting timer
+2026-02-27 12:18:41 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 12:18:41 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 12:18:41 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-02-27 12:18:41 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-02-27 12:18:41 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-02-27 12:18:41 [DEBUG][MAIN] Stopping timer. Time elapsed: 0.058361 seconds
+2026-02-27 12:18:41 [INFO][MAIN] Quitting
+
+2026-02-27 13:12:56 [INFO][MAIN] Started!
+2026-02-27 13:12:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:12:58 [INFO][REPL] Command: bb
+2026-02-27 13:12:58 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:13:00 [INFO][REPL] Command: bb
+2026-02-27 13:13:00 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:13:03 [INFO][REPL] Command: bb wp
+2026-02-27 13:13:03 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:13:07 [INFO][REPL] Command: q
+2026-02-27 13:13:07 [INFO][EVAL] Quitting
+2026-02-27 13:13:07 [INFO][REPL] Quitting
+2026-02-27 13:13:07 [INFO][MAIN] Quitting
+
+2026-02-27 13:13:28 [INFO][MAIN] Started!
+2026-02-27 13:13:28 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:13:29 [INFO][REPL] Command: bb
+2026-02-27 13:13:29 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:13:35 [INFO][REPL] Command: bb wp
+2026-02-27 13:13:35 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:13:40 [INFO][REPL] Command: q
+2026-02-27 13:13:40 [INFO][EVAL] Quitting
+2026-02-27 13:13:40 [INFO][REPL] Quitting
+2026-02-27 13:13:40 [INFO][MAIN] Quitting
+
+2026-02-27 13:15:15 [INFO][MAIN] Started!
+2026-02-27 13:15:15 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:15:16 [INFO][REPL] Command: bb
+2026-02-27 13:15:17 [INFO][REPL] Command: b
+2026-02-27 13:15:18 [INFO][REPL] Command: bb
+2026-02-27 13:15:18 [INFO][REPL] Command: bb
+2026-02-27 13:15:19 [INFO][REPL] Command: bb
+2026-02-27 13:15:26 [INFO][REPL] Command: q
+2026-02-27 13:15:26 [INFO][EVAL] Quitting
+2026-02-27 13:15:26 [INFO][REPL] Quitting
+2026-02-27 13:15:26 [INFO][MAIN] Quitting
+
+2026-02-27 13:16:04 [INFO][MAIN] Started!
+2026-02-27 13:16:04 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:16:05 [INFO][REPL] Command: bb
+2026-02-27 13:16:05 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:16:06 [INFO][REPL] Command: bb
+2026-02-27 13:16:06 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:16:07 [INFO][REPL] Command: q
+2026-02-27 13:16:07 [INFO][EVAL] Quitting
+2026-02-27 13:16:07 [INFO][REPL] Quitting
+2026-02-27 13:16:07 [INFO][MAIN] Quitting
+
+2026-02-27 13:16:23 [INFO][MAIN] Started!
+2026-02-27 13:16:23 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:16:25 [INFO][REPL] Command: bb
+2026-02-27 13:16:25 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:16:26 [INFO][REPL] Command: bb
+2026-02-27 13:16:26 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:16:29 [INFO][REPL] Command: bb wp
+2026-02-27 13:16:29 [ERROR][EVAL] Unknown bitboard: 
+2026-02-27 13:16:31 [INFO][REPL] Command: q
+2026-02-27 13:16:31 [INFO][EVAL] Quitting
+2026-02-27 13:16:31 [INFO][REPL] Quitting
+2026-02-27 13:16:31 [INFO][MAIN] Quitting
+
+2026-02-27 13:16:39 [INFO][MAIN] Started!
+2026-02-27 13:16:39 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:16:45 [INFO][REPL] Command: q
+2026-02-27 13:16:45 [INFO][EVAL] Quitting
+2026-02-27 13:16:45 [INFO][REPL] Quitting
+2026-02-27 13:16:45 [INFO][MAIN] Quitting
+
+2026-02-27 13:17:48 [INFO][MAIN] Started!
+2026-02-27 13:17:48 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:17:49 [INFO][REPL] Command: bb
+2026-02-27 13:17:49 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:17:50 [INFO][REPL] Command: bb
+2026-02-27 13:17:50 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:17:52 [INFO][REPL] Command: bb wp
+2026-02-27 13:17:57 [INFO][REPL] Command: bb wk
+2026-02-27 13:18:00 [INFO][REPL] Command: bb 
+2026-02-27 13:18:00 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:18:02 [INFO][REPL] Command: bb
+2026-02-27 13:18:02 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:25:13 [INFO][REPL] Command: q
+2026-02-27 13:25:13 [INFO][EVAL] Quitting
+2026-02-27 13:25:13 [INFO][REPL] Quitting
+2026-02-27 13:25:13 [INFO][MAIN] Quitting
+
+2026-02-27 13:40:18 [INFO][MAIN] Started!
+2026-02-27 13:40:18 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:40:21 [INFO][REPL] Command: bb o
+2026-02-27 13:41:47 [INFO][REPL] Command: q
+2026-02-27 13:41:47 [INFO][EVAL] Quitting
+2026-02-27 13:41:47 [INFO][REPL] Quitting
+2026-02-27 13:41:47 [INFO][MAIN] Quitting
+
+2026-02-27 13:41:49 [INFO][MAIN] Started!
+2026-02-27 13:41:49 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:41:52 [INFO][REPL] Command: bb wo
+2026-02-27 13:41:54 [INFO][REPL] Command: q
+2026-02-27 13:41:54 [INFO][EVAL] Quitting
+2026-02-27 13:41:54 [INFO][REPL] Quitting
+2026-02-27 13:41:54 [INFO][MAIN] Quitting
+
+2026-02-27 13:42:08 [INFO][MAIN] Started!
+2026-02-27 13:42:08 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:42:11 [INFO][REPL] Command: bb wo
+2026-02-27 13:42:14 [INFO][REPL] Command: bb wp
+2026-02-27 13:42:23 [INFO][REPL] Command: 	q
+2026-02-27 13:42:23 [WARNING][EVAL] Unknown command: 	q
+2026-02-27 13:42:24 [INFO][REPL] Command: q
+2026-02-27 13:42:24 [INFO][EVAL] Quitting
+2026-02-27 13:42:24 [INFO][REPL] Quitting
+2026-02-27 13:42:24 [INFO][MAIN] Quitting
+
+2026-02-27 13:52:48 [INFO][MAIN] Started!
+2026-02-27 13:52:48 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 13:52:49 [INFO][REPL] Command: bb
+2026-02-27 13:52:49 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:52:50 [INFO][REPL] Command: bb o
+2026-02-27 13:52:53 [INFO][REPL] Command: bb
+2026-02-27 13:52:53 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:52:55 [INFO][REPL] Command: bb
+2026-02-27 13:52:55 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:53:00 [INFO][REPL] Command: bb wq
+2026-02-27 13:53:01 [INFO][REPL] Command: bb
+2026-02-27 13:53:01 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:53:03 [INFO][REPL] Command: bb bq
+2026-02-27 13:53:06 [INFO][REPL] Command: bb bk
+2026-02-27 13:53:08 [INFO][REPL] Command: bb bn
+2026-02-27 13:53:10 [INFO][REPL] Command: bb
+2026-02-27 13:53:10 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:53:11 [INFO][REPL] Command: bb
+2026-02-27 13:53:11 [DEBUG][EVAL] Changing draw bitboard setting
+2026-02-27 13:53:14 [INFO][REPL] Command: bb o
+2026-02-27 13:53:18 [INFO][REPL] Command: q
+2026-02-27 13:53:18 [INFO][EVAL] Quitting
+2026-02-27 13:53:18 [INFO][REPL] Quitting
+2026-02-27 13:53:18 [INFO][MAIN] Quitting
