@@ -145,7 +145,6 @@ int eval(BString *bs, ui_t *ui){
         logf_message(WARNING, "EVAL", "Unknown command: %s", token.string);
     }
 
-
     return 0;
 }
 
@@ -243,6 +242,20 @@ void test_log(){
     log_message(FATAL, "TEST_LOG", "Testing FATAL");
 }
 
+void test_magic() {
+    clock_t time_it;
+    log_time_start(DEBUG, "TEST_MAGIC", &time_it);
+
+    magic_entry_t *rook_magic_entries = NULL; 
+    magic_entry_t *bishop_magic_entries = NULL;
+
+    init_magic_bitboards(rook_magic_entries, bishop_magic_entries);
+    free(rook_magic_entries);
+    free(bishop_magic_entries);
+
+    log_time_stop(DEBUG, "TEST_MAGIC", &time_it);
+}
+
 int main(void) {
 
 
@@ -253,19 +266,19 @@ int main(void) {
     log_message(INFO, "MAIN", "Started!");
 
     Board *b = init_board_fen(DEFAULTFEN);
-    ui_t *ui = malloc(sizeof(ui));
+    ui_t *ui = malloc(sizeof(ui_t));
     ui->b = b;
     ui->bb = 0ULL;
     ui->clear = false;
     ui->draw_bb = true;
 
-    repl(ui);
+    //repl(ui);
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
         //repl(b);
     //}
 
-    //test_calc();
+    test_calc();
 
     //test_log();
 
@@ -275,10 +288,8 @@ int main(void) {
     //String s = get_fen(b);
     //logf_message(DEBUG, "MAIN", "Got FEN: %s", s.string);
     //free_string(&s);
-    //clock_t time_it;
-    //log_time_start(DEBUG, "MAIN", &time_it);
-    //init_magic_bitboards();
-    //log_time_stop(DEBUG, "MAIN", &time_it);
+
+    //test_magic();
 
     log_message(INFO, "MAIN", "Quitting");
     close_logging();

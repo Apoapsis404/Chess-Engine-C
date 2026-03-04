@@ -27,31 +27,38 @@ uint64_t generate_magic_number() {
 
 static int bit_count(BB bb){
     int count = 0;
-    while (bb != 0) {
-        bb &= bb - 1;
+    while (bb > 0) {
+        bb &= (bb - 1);
         count++;
     }
     return count;
 }
 
-int bit_table[] = {
+int count_1s(BB b) {
+  int r;
+  for(r = 0; b; r++, b &= b - 1);
+  return r;
+}
+
+const int bit_table[] = {
     63, 30, 3, 32, 25, 41, 22, 33, 15, 50, 42, 13, 11, 53, 19, 34, 61, 29, 2,
     51, 21, 43, 45, 10, 18, 47, 1, 54, 9, 57, 0, 35, 62, 31, 40, 4, 49, 5, 52,
     26, 60, 6, 23, 44, 46, 27, 56, 16, 7, 39, 48, 24, 59, 14, 12, 55, 38, 28,
     58, 20, 37, 17, 36, 8
 };
 
-int pop_first_bit(BB *bb, int *bit_table){
+int pop_first_bit(BB *bb){
     uint64_t b = *bb ^ (*bb - 1);
     uint32_t fold = (uint32_t)((b & 0xffffffff) ^ (b >> 32));
-    *bb &= *bb - 1;
+    *bb &= (*bb - 1);
     return bit_table[(fold * 0x783a9b23) >> 26];
 }
 
-uint64_t generate_occupancy(int index, int bits_in_mask, uint64_t attack_mask, int *bit_table) {
-    uint64_t occupancy = 0;
-    for (int count = 0; count < bits_in_mask; count++){
-        int square = pop_first_bit(&attack_mask, bit_table);
+uint64_t generate_occupancy(int index, int bits_in_mask, uint64_t attack_mask) {
+    int count, square;
+    uint64_t occupancy = 0ULL;
+    for (count = 0; count < bits_in_mask; count++){
+        square = pop_first_bit(&attack_mask);
         if ((index & (1 << count)) != 0) {
             occupancy |= (1ULL << square);
         }
@@ -64,15 +71,17 @@ typedef struct {
     BB bishop_masks[64];
 } magic_masks_t;
 
-static uint64_t rook_mask(int square) {
+uint64_t rook_mask(int square) {
     uint64_t mask = 0;
     int rank = square / 8;
-    int file = square & 8;
+    int file = square % 8;
 
-    for (int r = rank + 1; r <= 6; r++) mask |= (1ULL << (file + r * 8));
-    for (int r = rank - 1; r >= 1; r--) mask |= (1ULL << (file + r * 8));
-    for (int f = file + 1; f <= 6; f++) mask |= (1ULL << (f + rank * 8));
-    for (int f = file - 1; f >= 1; f--) mask |= (1ULL << (f + rank * 8));
+    int r, f;
+
+    for (r = rank + 1; r <= 6; r++) mask |= (1ULL << (file + r * 8));
+    for (r = rank - 1; r >= 1; r--) mask |= (1ULL << (file + r * 8));
+    for (f = file + 1; f <= 6; f++) mask |= (1ULL << (f + rank * 8));
+    for (f = file - 1; f >= 1; f--) mask |= (1ULL << (f + rank * 8));
 
     return mask;
 }
@@ -84,15 +93,16 @@ void generate_all_rook_masks(uint64_t *rook_masks) {
     }
 }
 
-static uint64_t bishop_mask(int square) {
-    uint64_t mask = 0;
+uint64_t bishop_mask(int square) {
+    uint64_t mask = 0ULL;
     int rank = square / 8;
-    int file = square & 8;
+    int file = square % 8;
+    int r, f;
 
-    for (int r = rank + 1, f = file + 1; r <= 6 && f <= 6; r++, f++) mask |= (1ULL << (f + r * 8));
-    for (int r = rank + 1, f = file - 1; r <= 6 && f >= 1; r++, f--) mask |= (1ULL << (f + r * 8));
-    for (int r = rank - 1, f = file + 1; r >= 1 && f <= 6; r--, f++) mask |= (1ULL << (f + r * 8));
-    for (int r = rank - 1, f = file - 1; r >= 1 && f >= 1; r--, f--) mask |= (1ULL << (f + r * 8));
+    for (r = rank + 1, f = file + 1; r <= 6 && f <= 6; r++, f++) mask |= (1ULL << (f + r * 8));
+    for (r = rank + 1, f = file - 1; r <= 6 && f >= 1; r++, f--) mask |= (1ULL << (f + r * 8));
+    for (r = rank - 1, f = file + 1; r >= 1 && f <= 6; r--, f++) mask |= (1ULL << (f + r * 8));
+    for (r = rank - 1, f = file - 1; r >= 1 && f >= 1; r--, f--) mask |= (1ULL << (f + r * 8));
 
     return mask;
 }
@@ -104,7 +114,7 @@ void generate_all_bishop_masks(uint64_t *bishop_masks) {
     }
 }
 
-static BB rook_attack(int square, BB block){
+BB rook_attack(int square, BB block){
     BB attacks = 0ULL;
     int rank = square / 8;
     int file = square % 8;
@@ -128,24 +138,25 @@ static BB rook_attack(int square, BB block){
     
     return attacks;
 } 
-static BB bishop_attack(int square, BB block) {
+BB bishop_attack(int square, BB block) {
     BB attacks = 0;
     int rank = square / 8;
     int file = square % 8;
+    int r, f;
 
-    for (int r = rank + 1, f = file + 1; r <= 7 && f <= 7; r++, f++) {
+    for (r = rank + 1, f = file + 1; r <= 7 && f <= 7; r++, f++) {
         attacks |= (1UL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
-    for (int r = rank + 1, f = file - 1; r <= 7 && f >= 0; r++, f--) {
+    for (r = rank + 1, f = file - 1; r <= 7 && f >= 0; r++, f--) {
         attacks |= (1UL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
-    for (int r = rank - 1, f = file + 1; r >= 0 && f <= 7; r--, f++) {
+    for (r = rank - 1, f = file + 1; r >= 0 && f <= 7; r--, f++) {
         attacks |= (1UL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
-    for (int r = rank - 1, f = file - 1; r >= 0 && f >= 0; r--, f--) {
+    for (r = rank - 1, f = file - 1; r >= 0 && f >= 0; r--, f--) {
         attacks |= (1UL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
@@ -163,10 +174,10 @@ void fill_array(uint64_t *array, int array_size, uint64_t fill){
     }
 }
 
-magic_entry_t *init_magic_entry(BB mask, BB magic){
-    magic_entry_t *magic_entry = malloc(sizeof(magic_entry_t));
-    magic_entry->magic = magic;
-    magic_entry->mask = mask;
+magic_entry_t init_magic_entry(BB mask, BB magic){
+    magic_entry_t magic_entry;
+    magic_entry.magic = magic;
+    magic_entry.mask = mask;
     return magic_entry;
 }
 
@@ -174,37 +185,54 @@ void free_magic_entry(magic_entry_t *entry) {
     free(entry);
 }
 
-magic_entry_t *find_magic(int square, int relevant_bits, bool is_rook, magic_masks_t *masks) {
-    int array_size = 1 << relevant_bits;
-    BB *occupancies = calloc(sizeof(BB), array_size);
-    BB *attacks = calloc(sizeof(BB), array_size);
-    BB *used_attacks = calloc(sizeof(BB), array_size);
+void binprintf(BB v)
+{
+    uint64_t mask=1ULL<<(63);
+    while(mask) {
+        printf("%d", (v&mask ? 1 : 0));
+        mask >>= 1;
+    }
+    printf("\n");
+}
+
+magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
+    int array_size = 4096;
+    BB occupancies[array_size];
+    BB attacks[array_size];
+    BB used_attacks[array_size];
 
     bool is_error = false;
-    magic_entry_t *entry = init_magic_entry(0, 0);
+    bool fail = false;
+    magic_entry_t entry = init_magic_entry(0, 0);
     
-    BB attack_mask = is_rook ? masks->rook_masks[square] : masks->bishop_masks[square];
-    int occupancy_indices = bit_count(attack_mask);
 
-    if (occupancy_indices > relevant_bits) {
-        log_message(FATAL, "MAGIC", "Occupancy indecies outnumber relevant bits");
+    BB attack_mask = is_rook ? rook_mask(square) : bishop_mask(square);
+    int occupancy_indices = count_1s(attack_mask); //bit_count(attack_mask);
+
+    int bits = (1 << occupancy_indices);
+
+    if (bits > array_size) {
+        logf_message(FATAL, "MAGIC", "Occupancy indecies outnumber relevant bits for square: %d", square);
+        printf("Bits: %d\n", bits);
+        printf("Mask: %lu\n", attack_mask);
         is_error = true;
         goto clean_up;
     }
 
-    for(int idx = 0; idx < (1 << occupancy_indices); idx++){
-        occupancies[idx] = generate_occupancy(idx, occupancy_indices, attack_mask, bit_table);
+    int idx, k;
+    for(idx = 0; idx < bits; idx++){
+        occupancies[idx] = generate_occupancy(idx, occupancy_indices, attack_mask);
         attacks[idx] = is_rook ? rook_attack(square, occupancies[idx]) : bishop_attack(square, occupancies[idx]);
     }
 
-    for (int k = 0; k < 10000; k++){
+    
+    for (k = 0; k < 10000000; k++){
         BB magic = generate_magic_number();
         if(bit_count((attack_mask  * magic) & 0xFF00000000000000) < 6) continue;
 
         fill_array(used_attacks, array_size, 0ULL);
     
-        bool fail = false;
-        for (int idx = 0; idx < (1 << occupancy_indices); idx++){
+        for (idx = 0, fail = 0; !fail && idx < bits; idx++){
             int magic_idx = transform_key(occupancies[idx], magic, relevant_bits);
             if (used_attacks[magic_idx] == 0) {
                 used_attacks[magic_idx] = attacks[idx];
@@ -214,8 +242,8 @@ magic_entry_t *find_magic(int square, int relevant_bits, bool is_rook, magic_mas
             }
         }
         if (!fail) {
-            entry->magic = magic;
-            entry->mask = attack_mask;
+            entry.magic = magic;
+            entry.mask = attack_mask;
             goto clean_up;
         }
     }
@@ -225,13 +253,10 @@ clean_up:
         logf_message(ERROR, "MAGIC", "Failed to find magic number for square %d", square);
     }
 
-    free(occupancies);
-    free(used_attacks);
-    free(attacks);
-
     return entry;
 } 
-int rook_bits[] = { 
+
+const int rook_bits[] = { 
     12, 11, 11, 11, 11, 11, 11, 12,
     11, 10, 10, 10, 10, 10, 10, 11,
     11, 10, 10, 10, 10, 10, 10, 11,
@@ -242,7 +267,7 @@ int rook_bits[] = {
     12, 11, 11, 11, 11, 11, 11, 12 
 };
 
-int bishop_bits[] = { 
+const int bishop_bits[] = { 
     6, 5, 5, 5, 5, 5, 5, 6,
     5, 5, 5, 5, 5, 5, 5, 5,
     5, 5, 7, 7, 7, 7, 5, 5,
@@ -253,22 +278,20 @@ int bishop_bits[] = {
     6, 5, 5, 5, 5, 5, 5, 6 
 };
 
-void init_magic_bitboards() {
-    magic_entry_t *rook_magic_entries = malloc(sizeof(magic_entry_t) * 64);
-    magic_entry_t *bishop_magic_entries = malloc(sizeof(magic_entry_t) * 64);
-
+/* Expects rook_magic_entries and bishop_magic_entries to be NULL */
+void init_magic_bitboards(magic_entry_t *rook_magic_entries, magic_entry_t *bishop_magic_entries) {
     log_message(INFO, "MAGIC", "Starting to generate magic bitboards!");
 
-    magic_masks_t *masks = malloc(sizeof(magic_masks_t));
-    generate_all_rook_masks(masks->rook_masks);
-    generate_all_bishop_masks(masks->bishop_masks);
-
-    for (int square = 0; square < 64; square++) {
-        printf("Finding magic entries for square %d\n", square);    
-        rook_magic_entries[square] = *find_magic(square, rook_bits[square], true, masks);
-        bishop_magic_entries[square] = *find_magic(square, bishop_bits[square], false, masks);
+    int square;
+    log_message(INFO, "MAGIC", "Finding all magic bitboards for rooks");
+    for (square = 0; square < 64; square++) {
+        printf("Finding magic rook entries for square %d\n", square);    
+        rook_magic_entries[square] = find_magic(square, rook_bits[square], true);
     }
-    free_magic_entry(rook_magic_entries);
-    free_magic_entry(bishop_magic_entries);
-    free(masks);
+
+    log_message(INFO, "MAGIC", "Finding all magic bitboards for bishop");
+    for (square = 0; square < 64; square++) {
+        printf("Finding magic bishop entries for square %d\n", square);    
+        bishop_magic_entries[square] = find_magic(square, bishop_bits[square], false);
+    }
 }

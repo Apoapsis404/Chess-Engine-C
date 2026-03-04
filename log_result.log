@@ -3039,3 +3039,2523 @@
 2026-02-27 13:53:18 [INFO][EVAL] Quitting
 2026-02-27 13:53:18 [INFO][REPL] Quitting
 2026-02-27 13:53:18 [INFO][MAIN] Quitting
+
+2026-02-27 15:00:24 [INFO][MAIN] Started!
+2026-02-27 15:00:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 15:31:16 [INFO][REPL] Command: q
+2026-02-27 15:31:16 [INFO][EVAL] Quitting
+2026-02-27 15:31:16 [INFO][REPL] Quitting
+2026-02-27 15:31:16 [INFO][MAIN] Quitting
+
+2026-02-27 15:31:21 [INFO][MAIN] Started!
+2026-02-27 15:31:21 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 15:31:21 [DEBUG][TEST_MAGIC] Starting timer
+2026-02-27 15:31:21 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 15:31:21 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 15:31:21 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 15:31:21 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 15:31:21 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+
+2026-02-27 15:32:27 [INFO][MAIN] Started!
+2026-02-27 15:32:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 15:32:27 [DEBUG][TEST_MAGIC] Starting timer
+2026-02-27 15:32:27 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 15:32:27 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 15:32:27 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 15:32:27 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 15:32:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+
+2026-02-27 15:33:18 [INFO][MAIN] Started!
+2026-02-27 15:33:18 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 15:33:18 [DEBUG][TEST_MAGIC] Starting timer
+2026-02-27 15:33:18 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 15:33:18 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 15:33:18 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 15:33:18 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 15:33:18 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+
+2026-02-27 15:38:07 [INFO][MAIN] Started!
+2026-02-27 15:38:07 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-02-27 15:38:07 [DEBUG][TEST_MAGIC] Starting timer
+2026-02-27 15:38:07 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-02-27 15:38:07 [DEBUG][MAGIC] Generating all rook masks
+2026-02-27 15:38:07 [DEBUG][MAGIC] Generating all bishop masks
+2026-02-27 15:38:07 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-02-27 15:38:07 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+
+2026-03-02 12:13:27 [INFO][MAIN] Started!
+2026-03-02 12:13:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:13:27 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:13:27 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:13:27 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:13:27 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:13:27 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:27 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:13:27 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.089393 seconds
+2026-03-02 12:13:27 [INFO][MAIN] Quitting
+
+2026-03-02 12:13:43 [INFO][MAIN] Started!
+2026-03-02 12:13:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:13:43 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:13:43 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:13:43 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:13:43 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:13:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:13:43 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:13:43 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.097834 seconds
+2026-03-02 12:13:43 [INFO][MAIN] Quitting
+
+2026-03-02 12:14:43 [INFO][MAIN] Started!
+2026-03-02 12:14:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:14:43 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:14:43 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:14:43 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:14:43 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:14:43 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:14:43 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:14:43 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.098416 seconds
+2026-03-02 12:14:43 [INFO][MAIN] Quitting
+
+2026-03-02 12:15:49 [INFO][MAIN] Started!
+2026-03-02 12:15:49 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:15:49 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:15:49 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:15:49 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:15:49 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:15:49 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:15:49 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:15:49 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.069348 seconds
+2026-03-02 12:15:49 [INFO][MAIN] Quitting
+
+2026-03-02 12:16:32 [INFO][MAIN] Started!
+2026-03-02 12:16:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:16:32 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:16:32 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:16:32 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:16:32 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:16:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:16:32 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:16:32 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.086540 seconds
+2026-03-02 12:16:32 [INFO][MAIN] Quitting
+
+2026-03-02 12:18:56 [INFO][MAIN] Started!
+2026-03-02 12:18:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:18:56 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:18:56 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:18:56 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:18:56 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:18:56 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:18:56 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:18:56 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.088491 seconds
+2026-03-02 12:18:56 [INFO][MAIN] Quitting
+
+2026-03-02 12:29:36 [INFO][MAIN] Started!
+2026-03-02 12:29:36 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:29:36 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:29:36 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:29:36 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:29:36 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 1
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 4
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 6
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 12
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 17
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 18
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 20
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 21
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 25
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 30
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 31
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 35
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 37
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 38
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 43
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 44
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 46
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 47
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 51
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 54
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:29:36 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:29:36 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:29:36 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.090958 seconds
+2026-03-02 12:29:36 [INFO][MAIN] Quitting
+
+2026-03-02 12:37:33 [INFO][MAIN] Started!
+2026-03-02 12:37:33 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:37:33 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:37:33 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:37:33 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:37:33 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:37:33 [ERROR][MAGIC] Failed to find magic number for square 48
+
+2026-03-02 12:38:51 [INFO][MAIN] Started!
+2026-03-02 12:38:51 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:38:51 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:38:51 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:38:51 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:38:51 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:38:52 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:38:52 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:38:52 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:38:52 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:38:53 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:38:53 [ERROR][MAGIC] Failed to find magic number for square 48
+
+2026-03-02 12:39:47 [INFO][MAIN] Started!
+2026-03-02 12:39:47 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:39:47 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:39:47 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:39:47 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:39:47 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:39:47 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:39:47 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:39:48 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:39:48 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:39:48 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:39:49 [ERROR][MAGIC] Failed to find magic number for square 48
+
+2026-03-02 12:41:10 [INFO][MAIN] Started!
+2026-03-02 12:41:10 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:41:10 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:41:10 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:41:10 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:41:10 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:41:11 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:41:11 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 12:41:11 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 12:41:11 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:41:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:41:12 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:41:12 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 1.987241 seconds
+2026-03-02 12:41:12 [INFO][MAIN] Quitting
+
+2026-03-02 12:43:12 [INFO][MAIN] Started!
+2026-03-02 12:43:12 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:43:12 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:43:12 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:43:12 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:43:12 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:43:14 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:43:19 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits
+2026-03-02 12:43:19 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:43:19 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 6.207615 seconds
+2026-03-02 12:43:19 [INFO][MAIN] Quitting
+
+2026-03-02 12:44:14 [INFO][MAIN] Started!
+2026-03-02 12:44:14 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:44:14 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:44:14 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:44:14 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:44:14 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:44:16 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:44:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 12:44:20 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:44:20 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 6.279018 seconds
+2026-03-02 12:44:20 [INFO][MAIN] Quitting
+
+2026-03-02 12:45:27 [INFO][MAIN] Started!
+2026-03-02 12:45:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:45:27 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:45:27 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:45:27 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:45:27 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:45:29 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:45:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 12:45:33 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:45:33 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 6.216368 seconds
+2026-03-02 12:45:33 [INFO][MAIN] Quitting
+
+2026-03-02 12:48:33 [INFO][MAIN] Started!
+2026-03-02 12:48:33 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:48:33 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:48:33 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:48:33 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:48:33 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:48:35 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:48:40 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 12:48:40 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:48:40 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 6.300858 seconds
+2026-03-02 12:48:40 [INFO][MAIN] Quitting
+
+2026-03-02 12:52:33 [INFO][MAIN] Started!
+2026-03-02 12:52:33 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 12:52:33 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 12:52:33 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 12:52:33 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 12:52:33 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 12:52:35 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 12:52:39 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 12:52:39 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 12:52:39 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 6.083370 seconds
+2026-03-02 12:52:39 [INFO][MAIN] Quitting
+
+2026-03-02 13:05:02 [INFO][MAIN] Started!
+2026-03-02 13:05:02 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:05:02 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:05:02 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:05:02 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:05:02 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 13:05:02 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 13:05:02 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 13:05:02 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.675460 seconds
+2026-03-02 13:05:02 [INFO][MAIN] Quitting
+
+2026-03-02 13:07:09 [INFO][MAIN] Started!
+2026-03-02 13:07:10 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:07:10 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:07:10 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:07:10 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:07:10 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 13:07:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 13:07:10 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 13:07:10 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 0.675219 seconds
+2026-03-02 13:07:10 [INFO][MAIN] Quitting
+
+2026-03-02 13:08:08 [INFO][MAIN] Started!
+2026-03-02 13:08:08 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:08:08 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:08:08 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:08:08 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:08:08 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:08:09 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:09:10 [INFO][MAIN] Started!
+2026-03-02 13:09:10 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:09:10 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:09:10 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:09:10 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:09:10 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:09:11 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:11:32 [INFO][MAIN] Started!
+2026-03-02 13:11:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:11:32 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:11:32 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:11:32 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:11:32 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:11:32 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:14:24 [INFO][MAIN] Started!
+2026-03-02 13:14:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:14:24 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:14:24 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:14:24 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:14:24 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:14:25 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:15:53 [INFO][MAIN] Started!
+2026-03-02 13:15:53 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:15:53 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:15:53 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:15:53 [DEBUG][MAGIC] Generating all rook masks
+2026-03-02 13:15:53 [DEBUG][MAGIC] Generating all bishop masks
+2026-03-02 13:15:53 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:17:20 [INFO][MAIN] Started!
+2026-03-02 13:17:20 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:17:20 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:17:20 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:17:21 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:19:00 [INFO][MAIN] Started!
+2026-03-02 13:19:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:19:00 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:19:00 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:19:00 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:19:27 [INFO][MAIN] Started!
+2026-03-02 13:19:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:19:27 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:19:27 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:19:28 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:20:23 [INFO][MAIN] Started!
+2026-03-02 13:20:23 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:20:23 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:20:23 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:20:23 [DEBUG][MAGIC] What about here?
+2026-03-02 13:20:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:21:01 [INFO][MAIN] Started!
+2026-03-02 13:21:01 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:21:01 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:21:01 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+2026-03-02 13:21:01 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 13:21:01 [DEBUG][MAGIC] Are you freezing here?
+
+2026-03-02 13:22:11 [INFO][MAIN] Started!
+2026-03-02 13:22:11 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:22:11 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:22:11 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:22:12 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:33:28 [INFO][MAIN] Started!
+2026-03-02 13:33:28 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:33:28 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:33:28 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:33:29 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:42:21 [INFO][MAIN] Started!
+2026-03-02 13:42:21 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:42:21 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:42:21 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:42:21 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:45:10 [INFO][MAIN] Started!
+2026-03-02 13:45:10 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:45:10 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:45:10 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:45:10 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:48:00 [INFO][MAIN] Started!
+2026-03-02 13:48:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:48:00 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:48:00 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 2
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 5
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 7
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 9
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 10
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 11
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 13
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 14
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 15
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 19
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 22
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 23
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 26
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 27
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 28
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 29
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 33
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 34
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 36
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 40
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 41
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 42
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 45
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 49
+2026-03-02 13:48:00 [ERROR][MAGIC] Failed to find magic number for square 50
+2026-03-02 13:48:01 [ERROR][MAGIC] Failed to find magic number for square 52
+2026-03-02 13:48:01 [ERROR][MAGIC] Failed to find magic number for square 53
+2026-03-02 13:48:01 [ERROR][MAGIC] Failed to find magic number for square 55
+2026-03-02 13:48:01 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:50:43 [INFO][MAIN] Started!
+2026-03-02 13:50:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:50:43 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:50:43 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:50:43 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 13:50:44 [ERROR][MAGIC] Failed to find magic number for square 8
+2026-03-02 13:50:44 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 13:50:44 [ERROR][MAGIC] Failed to find magic number for square 24
+2026-03-02 13:50:45 [ERROR][MAGIC] Failed to find magic number for square 32
+2026-03-02 13:50:45 [ERROR][MAGIC] Failed to find magic number for square 48
+2026-03-02 13:50:45 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:52:59 [INFO][MAIN] Started!
+2026-03-02 13:52:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:52:59 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:52:59 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:53:01 [ERROR][MAGIC] Failed to find magic number for square 0
+2026-03-02 13:53:03 [ERROR][MAGIC] Failed to find magic number for square 16
+2026-03-02 13:53:05 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:53:19 [INFO][MAIN] Started!
+2026-03-02 13:53:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:53:19 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:53:19 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:53:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:53:48 [INFO][MAIN] Started!
+2026-03-02 13:53:48 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:53:48 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:53:48 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:54:05 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 13:55:34 [INFO][MAIN] Started!
+2026-03-02 13:55:34 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:55:34 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:55:34 [INFO][MAGIC] Starting to generate magic bitboards!
+
+2026-03-02 13:56:44 [INFO][MAIN] Started!
+2026-03-02 13:56:44 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 13:56:44 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 13:56:44 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 13:57:01 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 14:01:03 [INFO][MAIN] Started!
+2026-03-02 14:01:03 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 14:01:03 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 14:01:03 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 14:01:20 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+
+2026-03-02 14:01:30 [INFO][MAIN] Started!
+2026-03-02 14:01:30 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 14:01:30 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 14:01:30 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 14:01:33 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 14:01:33 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 14:01:33 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 3.286385 seconds
+2026-03-02 14:01:33 [INFO][MAIN] Quitting
+
+2026-03-02 14:01:47 [INFO][MAIN] Started!
+2026-03-02 14:01:47 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 14:01:47 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 14:01:47 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 14:02:04 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 14:02:04 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 14:02:05 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 17.621351 seconds
+2026-03-02 14:02:05 [INFO][MAIN] Quitting
+
+2026-03-02 14:03:06 [INFO][MAIN] Started!
+2026-03-02 14:03:06 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-02 14:03:06 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-02 14:03:06 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-02 14:03:06 [INFO][MAGIC] Finding magic rook entries for square 0
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 1
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 2
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 3
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 4
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 5
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 6
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 7
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 8
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 9
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 10
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 11
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 12
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 13
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 14
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 15
+
+2026-03-02 14:03:19 [INFO][MAGIC] Finding magic rook entries for square 16
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 17
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 18
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 19
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 20
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 21
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 22
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 23
+
+2026-03-02 14:03:20 [INFO][MAGIC] Finding magic rook entries for square 24
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 25
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 26
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 27
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 28
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 29
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 30
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 31
+
+2026-03-02 14:03:21 [INFO][MAGIC] Finding magic rook entries for square 32
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 33
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 34
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 35
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 36
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 37
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 38
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 39
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 40
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 41
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 42
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 43
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 44
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 45
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 46
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 47
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 48
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 49
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 50
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 51
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 52
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 53
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 54
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 55
+
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 56
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 57
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 58
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 59
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 60
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 61
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 62
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic rook entries for square 63
+
+2026-03-02 14:03:23 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-02 14:03:23 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-02 14:03:23 [INFO][MAGIC] Finding magic bishop entries for square 0
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 1
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 2
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 3
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 4
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 5
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 6
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 7
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 8
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 9
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 10
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 11
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 12
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 13
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 14
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 15
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 16
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 17
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 18
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 19
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 20
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 21
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 22
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 23
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 24
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 25
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 26
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 27
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 28
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 29
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 30
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 31
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 32
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 33
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 34
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 35
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 36
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 37
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 38
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 39
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 40
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 41
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 42
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 43
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 44
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 45
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 46
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 47
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 48
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 49
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 50
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 51
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 52
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 53
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 54
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 55
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 56
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 57
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 58
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 59
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 60
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 61
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 62
+
+2026-03-02 14:03:24 [INFO][MAGIC] Finding magic bishop entries for square 63
+
+2026-03-02 14:03:24 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 17.438483 seconds
+2026-03-02 14:03:24 [INFO][MAIN] Quitting
+
+2026-03-04 12:08:34 [INFO][MAIN] Started!
+2026-03-04 12:08:34 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:08:34 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:08:34 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-04 12:08:37 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-04 12:08:37 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-04 12:08:37 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 2.281392 seconds
+2026-03-04 12:08:37 [INFO][MAIN] Quitting
+
+2026-03-04 12:11:22 [INFO][MAIN] Started!
+2026-03-04 12:11:22 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:11:22 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:11:22 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 56
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 56
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 57
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 57
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 58
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 58
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 59
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 59
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 60
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 60
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 61
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 62
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 62
+2026-03-04 12:11:24 [FATAL][MAGIC] Occupancy indecies outnumber relevant bits for square: 63
+2026-03-04 12:11:24 [ERROR][MAGIC] Failed to find magic number for square 63
+2026-03-04 12:11:24 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 2.309843 seconds
+2026-03-04 12:11:24 [INFO][MAIN] Quitting
+
+2026-03-04 12:14:32 [INFO][MAIN] Started!
+2026-03-04 12:14:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:14:32 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:14:32 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:14:38 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-04 12:14:41 [ERROR][MAGIC] Failed to find magic number for square 7
+2026-03-04 12:14:52 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-04 12:14:52 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 18.566232 seconds
+2026-03-04 12:14:52 [INFO][MAIN] Quitting
+
+2026-03-04 12:16:39 [INFO][MAIN] Started!
+2026-03-04 12:16:39 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:16:39 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:16:39 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:16:42 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-04 12:16:46 [ERROR][MAGIC] Failed to find magic number for square 7
+2026-03-04 12:16:56 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-04 12:16:57 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 19.244885 seconds
+2026-03-04 12:16:57 [INFO][MAIN] Quitting
+
+2026-03-04 12:18:14 [INFO][MAIN] Started!
+2026-03-04 12:18:14 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:18:14 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:18:14 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:18:14 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 12:18:20 [ERROR][MAGIC] Failed to find magic number for square 3
+2026-03-04 12:18:24 [ERROR][MAGIC] Failed to find magic number for square 7
+2026-03-04 12:18:35 [ERROR][MAGIC] Failed to find magic number for square 61
+2026-03-04 12:18:35 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 12:18:35 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 19.580656 seconds
+2026-03-04 12:18:35 [INFO][MAIN] Quitting
+
+2026-03-04 12:18:53 [INFO][MAIN] Started!
+2026-03-04 12:18:53 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:18:53 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:18:53 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:18:53 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 12:19:13 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 12:19:13 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 20.145003 seconds
+2026-03-04 12:19:13 [INFO][MAIN] Quitting
+
+2026-03-04 12:24:00 [INFO][MAIN] Started!
+2026-03-04 12:24:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 12:24:00 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 12:24:00 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 12:24:00 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 12:24:20 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 12:24:20 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 20.417615 seconds
+2026-03-04 12:24:20 [INFO][MAIN] Quitting
+
+2026-03-04 13:06:31 [INFO][MAIN] Started!
+2026-03-04 13:06:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:06:31 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:06:31 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:06:31 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:06:53 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:06:53 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 20.404876 seconds
+2026-03-04 13:06:53 [INFO][MAIN] Quitting
+
+2026-03-04 13:07:09 [INFO][MAIN] Started!
+2026-03-04 13:07:09 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:07:10 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:07:10 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:07:10 [INFO][MAGIC] Finding all magic bitboards for rooks
+
+2026-03-04 13:08:45 [INFO][MAIN] Started!
+2026-03-04 13:08:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:08:45 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:08:45 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:08:45 [INFO][MAGIC] Finding all magic bitboards for rooks
+
+2026-03-04 13:09:17 [INFO][MAIN] Started!
+2026-03-04 13:09:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:09:17 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:09:17 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:09:17 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:11:08 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:11:08 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 111.110366 seconds
+2026-03-04 13:11:08 [INFO][MAIN] Quitting
+
+2026-03-04 13:12:39 [INFO][MAIN] Started!
+2026-03-04 13:12:39 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:12:39 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:12:39 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:12:39 [INFO][MAGIC] Finding all magic bitboards for rooks
+
+2026-03-04 13:14:11 [INFO][MAIN] Started!
+2026-03-04 13:14:11 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:14:11 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:14:11 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:14:11 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:16:01 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:16:10 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 118.874271 seconds
+2026-03-04 13:16:10 [INFO][MAIN] Quitting
+
+2026-03-04 13:19:45 [INFO][MAIN] Started!
+2026-03-04 13:19:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:19:45 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:19:45 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:19:45 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:20:05 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:20:06 [DEBUG][TEST_MAGIC] Stopping timer. Time elapsed: 21.542690 seconds
+2026-03-04 13:20:06 [INFO][MAIN] Quitting
+
+2026-03-04 13:20:37 [INFO][MAIN] Started!
+2026-03-04 13:20:37 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:20:37 [DEBUG][TEST_MAGIC] Starting timer
+2026-03-04 13:20:37 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:20:37 [INFO][MAGIC] Finding all magic bitboards for rooks
+
+2026-03-04 13:22:19 [INFO][MAIN] Started!
+2026-03-04 13:22:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:22:19 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:22:19 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:22:19 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:22:19 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:22:41 [INFO][MAGIC] Finding all magic bitboards for bishop
+
+2026-03-04 13:22:54 [INFO][MAIN] Started!
+2026-03-04 13:22:54 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:22:54 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:22:54 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:22:54 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:22:54 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:24:45 [INFO][MAGIC] Finding all magic bitboards for bishop
+
+2026-03-04 13:27:17 [INFO][MAIN] Started!
+2026-03-04 13:27:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:27:17 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:27:17 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:27:17 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:27:17 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:27:39 [INFO][MAGIC] Finding all magic bitboards for bishop
+
+2026-03-04 13:27:46 [INFO][MAIN] Started!
+2026-03-04 13:27:46 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:27:46 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:27:46 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:27:46 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:27:46 [INFO][MAGIC] Finding all magic bitboards for rooks
+
+2026-03-04 13:29:07 [INFO][MAIN] Started!
+2026-03-04 13:29:07 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:29:07 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:29:07 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:29:07 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:29:07 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:30:54 [INFO][MAGIC] Finding all magic bitboards for bishop
+
+2026-03-04 13:33:24 [INFO][MAIN] Started!
+2026-03-04 13:33:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:33:24 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:33:24 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:33:24 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:33:24 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:33:43 [INFO][MAGIC] Finding all magic bitboards for bishop
+
+2026-03-04 13:34:51 [INFO][MAIN] Started!
+2026-03-04 13:34:51 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:34:51 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:34:51 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:34:51 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:34:51 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:35:10 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:35:12 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 21.539707 seconds
+2026-03-04 13:35:12 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-04 13:35:12 [INFO][MAIN] Quitting
+
+2026-03-04 13:35:24 [INFO][MAIN] Started!
+2026-03-04 13:35:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-04 13:35:24 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-04 13:35:24 [DEBUG][CALCULATE] Starting timer
+2026-03-04 13:35:24 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-04 13:35:24 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-04 13:37:14 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-04 13:37:23 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 118.435909 seconds
+2026-03-04 13:37:23 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-04 13:37:23 [INFO][MAIN] Quitting
