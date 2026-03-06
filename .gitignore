@@ -57,6 +57,8 @@ dkms.conf
 # Build files
 chess
 valoutput.txt
+calcs.bin
+magic_calcs.bin
 
 # VScode files
 .vscode

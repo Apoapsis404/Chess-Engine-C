@@ -234,6 +234,30 @@ void test_calc(){
     free_move_arrays(ma);
 }
 
+void test_save_calc() {
+    move_arrays *ma = init_move_arrays(false);
+
+    char *filename = "calcs.bin";
+    int retval = save_calcs(filename, ma);
+
+    switch (retval) {
+    case 0:
+        log_message(INFO, "TEST_CALC_SAVE", "Calcs where saved as expected!");
+        break;
+    case -1:
+        logf_message(ERROR, "TEST_CALC_SAVE", "Failed to open file %s", filename);
+        break;
+    case -3:
+        log_message(ERROR, "TEST_CALC_SAVE", "Failed to save to calcs!");
+        break;
+    default:
+        logf_message(ERROR, "TEST_CALC_SAVE", "save_calcs exited with unknown error message: %d", retval);
+        break;
+    }
+
+    free_move_arrays(ma);
+}
+
 void test_log(){
     log_message(DEBUG, "TEST_LOG", "Testing DEBUG");
     log_message(INFO, "TEST_LOG", "Testing INFO");
@@ -254,6 +278,30 @@ void test_magic() {
     free(bishop_magic_entries);
 
     log_time_stop(DEBUG, "TEST_MAGIC", &time_it);
+}
+
+void test_save_magic() {
+    clock_t time_it;
+    log_time_start(DEBUG, "TEST_SAVE_MAGIC", &time_it);
+
+    move_arrays *ma = malloc(sizeof(move_arrays));
+
+    init_magic_bitboards(ma->rook_magic_entries, ma->bishop_magic_entries);
+
+    save_magics("magic_calcs.bin", ma);
+
+    free_move_arrays(ma);
+    log_time_stop(DEBUG, "TEST_SAVE_MAGIC", &time_it);
+}
+
+void test_read_magic() {
+    clock_t time_it;
+    log_time_start(DEBUG, "TEST_READ_MAGIC", &time_it);
+    
+    move_arrays *ma = malloc(sizeof(move_arrays));
+    read_in_magics("magic_calcs.bin", ma);
+    free_move_arrays(ma);
+    log_time_stop(DEBUG, "TEST_READ_MAGIC", &time_it);
 }
 
 int main(void) {
@@ -278,16 +326,12 @@ int main(void) {
         //repl(b);
     //}
 
+    //test_save_calc();
+    //test_save_magic();
+    //test_read_magic();
     test_calc();
 
     //test_log();
-
-    //Move move = construct_move(0, 0, 1);
-    //make_move(b, move);
-
-    //String s = get_fen(b);
-    //logf_message(DEBUG, "MAIN", "Got FEN: %s", s.string);
-    //free_string(&s);
 
     //test_magic();
 

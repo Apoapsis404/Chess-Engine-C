@@ -32,6 +32,5 @@ BB black_pawns_able_to_double_push(BB empty_bb, BB piece_bb) {
 void generate_pawn_moves(Board *b) {
     BB pawns_bb, push_bb, double_push_bb;
     int promotion_rank, en_passant_rank;
-    BB attacks_bb[64];
-    
+    BB attacks_bb[64]; 
 }

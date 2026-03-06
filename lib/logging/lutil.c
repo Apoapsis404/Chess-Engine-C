@@ -110,11 +110,22 @@ void log_message_header(){
     return;
 }
 
-void logf_message(log_level_t level, const char* module, const char* message, void* arg){
-    size_t lenght = strlen(message);
-    char temp[lenght + 255];
-    snprintf(temp, lenght + 255, message, arg);
-    log_message(level, module, temp);
+void logf_message(log_level_t level, const char* module, const char* message, ...){
+    va_list args;
+    va_start(args, message);
+    
+    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR", "FATAL" };
+    time_t now = time(NULL);
+    struct tm* local_time = localtime(&now);
+
+    fprintf(log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] ",
+            local_time->tm_year + 1900, local_time->tm_mon+1,
+            local_time->tm_mday, local_time->tm_hour, local_time->tm_min,
+            local_time->tm_sec, level_strings[level], module);
+    vfprintf(log_file, message, args);
+    fprintf(log_file, "\n");
+    fflush(log_file);
+    va_end(args);
 }
 
 void log_message(log_level_t level, const char* module, const char* message){

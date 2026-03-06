@@ -5559,3 +5559,224 @@
 2026-03-04 13:37:23 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 118.435909 seconds
 2026-03-04 13:37:23 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
 2026-03-04 13:37:23 [INFO][MAIN] Quitting
+
+2026-03-05 19:29:50 [INFO][MAIN] Started!
+2026-03-05 19:29:50 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-05 19:29:50 [WARNING][CALCULATE] Cannot read in calcs because they do not exist
+2026-03-05 19:29:50 [DEBUG][CALCULATE] Starting timer
+2026-03-05 19:29:50 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-05 19:29:50 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-05 19:29:54 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-05 19:29:54 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 3.212147 seconds
+2026-03-05 19:29:54 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-05 19:29:54 [INFO][MAIN] Quitting
+
+2026-03-05 19:32:59 [INFO][MAIN] Started!
+2026-03-05 19:32:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-05 19:33:01 [INFO][REPL] Command: bb
+2026-03-05 19:33:01 [DEBUG][EVAL] Changing draw bitboard setting
+2026-03-05 19:33:01 [INFO][REPL] Command: bb
+2026-03-05 19:33:01 [DEBUG][EVAL] Changing draw bitboard setting
+2026-03-05 19:33:04 [INFO][REPL] Command: bb wp
+2026-03-05 19:33:08 [INFO][REPL] Command: bb p
+2026-03-05 19:33:12 [INFO][REPL] Command: bb
+2026-03-05 19:33:12 [DEBUG][EVAL] Changing draw bitboard setting
+2026-03-05 19:33:14 [INFO][REPL] Command: bb
+2026-03-05 19:33:14 [DEBUG][EVAL] Changing draw bitboard setting
+2026-03-05 19:33:16 [INFO][REPL] Command: bbb
+2026-03-05 19:33:16 [WARNING][EVAL] Unknown command: bbb
+2026-03-05 19:33:31 [INFO][REPL] Command: bb je
+2026-03-05 19:33:31 [ERROR][EVAL] Unknown bitboard: je
+2026-03-05 19:33:46 [INFO][REPL] Command: re"
+2026-03-05 19:33:46 [WARNING][EVAL] Unknown command: re"
+2026-03-05 19:33:54 [INFO][REPL] Command:  bb
+2026-03-05 19:33:54 [INFO][EVAL] Quitting
+2026-03-05 19:33:54 [INFO][REPL] Quitting
+2026-03-05 19:33:54 [INFO][MAIN] Quitting
+
+2026-03-05 19:34:02 [INFO][MAIN] Started!
+2026-03-05 19:34:02 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-05 19:34:06 [INFO][REPL] Command: bb wk
+2026-03-05 19:34:08 [INFO][REPL] Command: bb k
+2026-03-05 19:34:08 [INFO][REPL] Command: bb bk
+2026-03-05 19:34:12 [INFO][REPL] Command: q
+2026-03-05 19:34:12 [INFO][EVAL] Quitting
+2026-03-05 19:34:12 [INFO][REPL] Quitting
+2026-03-05 19:34:12 [INFO][MAIN] Quitting
+
+2026-03-06 15:44:27 [INFO][MAIN] Started!
+2026-03-06 15:44:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 15:44:29 [INFO][REPL] Command: q
+2026-03-06 15:44:29 [INFO][EVAL] Quitting
+2026-03-06 15:44:29 [INFO][REPL] Quitting
+2026-03-06 15:44:29 [INFO][MAIN] Quitting
+
+2026-03-06 15:45:55 [INFO][MAIN] Started!
+2026-03-06 15:45:55 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 15:45:55 [DEBUG][TEST_CALC] Starting timer
+2026-03-06 15:45:55 [DEBUG][CALCULATE] Starting timer
+2026-03-06 15:45:55 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 15:45:55 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 15:45:55 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 15:45:56 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 3.148548 seconds
+2026-03-06 15:45:56 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 15:45:56 [DEBUG][TEST_CALC] Stopping timer. Time elapsed: 3.148612 seconds
+2026-03-06 15:45:56 [INFO][MAIN] Quitting
+
+2026-03-06 16:07:38 [INFO][MAIN] Started!
+2026-03-06 16:07:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 16:07:38 [DEBUG][CALCULATE] Starting timer
+2026-03-06 16:07:38 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 16:07:38 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 16:08:41 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 16:08:46 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 67.487755 seconds
+2026-03-06 16:08:46 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 16:08:46 [INFO][MAIN] Quitting
+
+2026-03-06 16:29:31 [INFO][MAIN] Started!
+2026-03-06 16:29:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 16:29:31 [DEBUG][CALCULATE] Starting timer
+2026-03-06 16:29:31 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 16:29:31 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 16:29:34 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 16:29:35 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 3.085484 seconds
+2026-03-06 16:29:35 [INFO][TEST_CALC_SAVE] Calcs where saved as expected!
+2026-03-06 16:29:35 [INFO][MAIN] Quitting
+
+2026-03-06 16:30:55 [INFO][MAIN] Started!
+2026-03-06 16:30:55 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 16:30:55 [DEBUG][CALCULATE] Starting timer
+2026-03-06 16:30:55 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 16:30:55 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 16:31:58 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 16:32:02 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 67.357167 seconds
+2026-03-06 16:32:02 [INFO][TEST_CALC_SAVE] Calcs where saved as expected!
+2026-03-06 16:32:02 [INFO][MAIN] Quitting
+
+2026-03-06 16:33:14 [INFO][MAIN] Started!
+2026-03-06 16:33:14 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 16:33:14 [DEBUG][CALCULATE] Starting timer
+2026-03-06 16:33:14 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 16:33:14 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 16:35:27 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 16:35:38 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 142.365795 seconds
+2026-03-06 16:35:38 [INFO][TEST_CALC_SAVE] Calcs where saved as expected!
+2026-03-06 16:35:38 [INFO][MAIN] Quitting
+
+2026-03-06 16:40:56 [INFO][MAIN] Started!
+2026-03-06 16:40:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 16:40:56 [DEBUG][CALCULATE] Starting timer
+2026-03-06 16:40:56 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 16:40:56 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 16:43:09 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 16:43:19 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 143.202535 seconds
+2026-03-06 16:43:19 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 16:43:19 [INFO][MAIN] Quitting
+
+2026-03-06 17:59:59 [INFO][MAIN] Started!
+2026-03-06 17:59:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 17:59:59 [DEBUG][CALCULATE] Starting timer
+2026-03-06 17:59:59 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 17:59:59 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:00:02 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:00:03 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 3.067125 seconds
+2026-03-06 18:00:03 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 18:00:03 [INFO][MAIN] Quitting
+
+2026-03-06 18:00:17 [INFO][MAIN] Started!
+2026-03-06 18:00:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:00:17 [DEBUG][CALCULATE] Starting timer
+2026-03-06 18:00:17 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:00:17 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:02:32 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:02:42 [DEBUG][CALCULATE] Stopping timer. Time elapsed: 145.037114 seconds
+2026-03-06 18:02:42 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 18:02:42 [INFO][MAIN] Quitting
+
+2026-03-06 18:27:11 [INFO][MAIN] Started!
+2026-03-06 18:27:11 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:27:11 [DEBUG][TEST_SAVE_MAGIC] Starting timer
+2026-03-06 18:27:11 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:27:11 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:27:14 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:27:14 [DEBUG][TEST_SAVE_MAGIC] Stopping timer. Time elapsed: 3.130406 seconds
+2026-03-06 18:27:14 [INFO][MAIN] Quitting
+
+2026-03-06 18:27:40 [INFO][MAIN] Started!
+2026-03-06 18:27:40 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:27:40 [DEBUG][TEST_READ_MAGIC] Starting timer
+2026-03-06 18:27:40 [DEBUG][TEST_READ_MAGIC] Stopping timer. Time elapsed: 0.000008 seconds
+2026-03-06 18:27:40 [INFO][MAIN] Quitting
+
+2026-03-06 18:34:35 [INFO][MAIN] Started!
+2026-03-06 18:34:35 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:34:35 [DEBUG][TEST_READ_MAGIC] Starting timer
+2026-03-06 18:34:35 [DEBUG][TEST_READ_MAGIC] Stopping timer. Time elapsed: 0.000027 seconds
+2026-03-06 18:34:35 [INFO][MAIN] Quitting
+
+2026-03-06 18:34:47 [INFO][MAIN] Started!
+2026-03-06 18:34:47 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:34:47 [DEBUG][CALC] Starting timer
+2026-03-06 18:34:47 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:34:47 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:34:51 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:34:51 [DEBUG][CALC] Stopping timer. Time elapsed: 3.209662 seconds
+2026-03-06 18:34:51 [DEBUG][TEST_CALC]BitBoard: 0x000000000E0A0E00
+2026-03-06 18:34:51 [INFO][MAIN] Quitting
+
+2026-03-06 18:35:13 [INFO][MAIN] Started!
+2026-03-06 18:35:13 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:35:13 [DEBUG][CALC] Starting timer
+2026-03-06 18:35:13 [INFO][CALC] Succesfully read in calcs
+2026-03-06 18:35:13 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009540 seconds
+2026-03-06 18:35:13 [DEBUG][TEST_CALC]BitBoard: 0x000000000E0A0E00
+2026-03-06 18:35:13 [INFO][MAIN] Quitting
+
+2026-03-06 18:39:30 [INFO][MAIN] Started!
+2026-03-06 18:39:30 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:39:30 [DEBUG][CALC] Starting timer
+2026-03-06 18:39:30 [ERROR][CALC_READ]Error: Failed to open file magic_calc.bin
+2026-03-06 18:39:30 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:39:30 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:39:33 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:39:33 [DEBUG][CALC] Stopping timer. Time elapsed: 3.245203 seconds
+2026-03-06 18:39:33 [DEBUG][TEST_CALC]BitBoard: 0x000000000E0A0E00
+2026-03-06 18:39:33 [INFO][MAIN] Quitting
+
+2026-03-06 18:39:54 [INFO][MAIN] Started!
+2026-03-06 18:39:54 [INFO][BOARD]Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:39:54 [DEBUG][CALC] Starting timer
+2026-03-06 18:39:54 [ERROR][CALC_READ]Error: Failed to open file magic_calc.bin
+2026-03-06 18:39:54 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:39:54 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:39:57 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:39:58 [DEBUG][CALC] Stopping timer. Time elapsed: 3.092293 seconds
+2026-03-06 18:39:58 [DEBUG][TEST_CALC]BitBoard: 0x000000000E0A0E00
+2026-03-06 18:39:58 [INFO][MAIN] Quitting
+
+2026-03-06 18:40:01 [INFO][MAIN] Started!
+2026-03-06 18:40:01 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:40:01 [DEBUG][CALC] Starting timer
+2026-03-06 18:40:01 [ERROR][CALC_READ] Error: Failed to open file magic_calc.bin
+2026-03-06 18:40:01 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-06 18:40:01 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-06 18:40:04 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-06 18:40:04 [DEBUG][CALC] Stopping timer. Time elapsed: 3.139412 seconds
+2026-03-06 18:40:04 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 18:40:04 [INFO][MAIN] Quitting
+
+2026-03-06 18:40:28 [INFO][MAIN] Started!
+2026-03-06 18:40:28 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:40:28 [DEBUG][CALC] Starting timer
+2026-03-06 18:40:28 [INFO][CALC] Succesfully read in calcs
+2026-03-06 18:40:28 [DEBUG][CALC] Stopping timer. Time elapsed: 0.010141 seconds
+2026-03-06 18:40:28 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 18:40:28 [INFO][MAIN] Quitting
+
+2026-03-06 18:53:01 [INFO][MAIN] Started!
+2026-03-06 18:53:01 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 18:53:01 [DEBUG][CALC] Starting timer
+2026-03-06 18:53:01 [INFO][CALC] Succesfully read in calcs
+2026-03-06 18:53:02 [DEBUG][CALC] Stopping timer. Time elapsed: 0.297319 seconds
+2026-03-06 18:53:02 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
+2026-03-06 18:53:02 [INFO][MAIN] Quitting

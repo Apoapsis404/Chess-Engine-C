@@ -1,6 +1,5 @@
 #include "logging/lutil.h"
 #include "calculate.h"
-#include "magic.h"
 
 #include <stdlib.h>
 #include <time.h>
@@ -10,8 +9,8 @@
 void free_move_arrays(move_arrays* move_arrays){
     int i;
     for (i = 0; i < 64; i++) {
-        free(move_arrays->bishop_attacks[i]);
-        free(move_arrays->rook_attacks[i]);
+        free(move_arrays->bishop_attacks[i].piece_attack);
+        free(move_arrays->rook_attacks[i].piece_attack);
     }
     free(move_arrays);
 }
@@ -66,18 +65,20 @@ void calculate_pawn_attacks(move_arrays *move_array) {
     }
 }
 
+
 void calculate_all_rook_attacks(move_arrays *move_array, magic_entry_t *rook_magic_entries) {
     int square, idx, relevant_bits_count, occupancy_variations, occupancy, magic_index;
     for(square = 0; square < 64; square++){
         relevant_bits_count = rook_bits[square];
         occupancy_variations = 1 << relevant_bits_count;
 
-        move_array->rook_attacks[square] = malloc(sizeof(BB) * occupancy_variations);
+        move_array->rook_attacks[square].size = occupancy_variations;
+        move_array->rook_attacks[square].piece_attack = malloc(sizeof(BB) * occupancy_variations);
 
         for(idx = 0; idx < occupancy_variations; idx++) {
             occupancy = generate_occupancy(idx, relevant_bits_count, rook_mask(square));
             magic_index = (int)((occupancy * rook_magic_entries[square].magic) >> (64 - relevant_bits_count));
-            move_array->rook_attacks[square][magic_index] = rook_attack(square, occupancy);
+            move_array->rook_attacks[square].piece_attack[magic_index] = rook_attack(square, occupancy);
         }
     }
 }
@@ -88,46 +89,186 @@ void calculate_all_bishop_attacks(move_arrays *move_array, magic_entry_t *bishop
         relevant_bits_count = bishop_bits[square];
         occupancy_variations = 1 << relevant_bits_count;
 
-        move_array->bishop_attacks[square] = malloc(sizeof(BB) * occupancy_variations);
+        move_array->bishop_attacks[square].size = occupancy_variations;
+        move_array->bishop_attacks[square].piece_attack = malloc(sizeof(BB) * occupancy_variations);
 
         for(idx = 0; idx < occupancy_variations; idx++) {
             occupancy = generate_occupancy(idx, relevant_bits_count, bishop_mask(square));
             magic_index = (occupancy * bishop_magic_entries[square].magic) >> (64 - relevant_bits_count);
-            move_array->bishop_attacks[square][magic_index] = bishop_attack(square, occupancy);
+            move_array->bishop_attacks[square].piece_attack[magic_index] = bishop_attack(square, occupancy);
         }
     }
 }
 
-move_arrays* init_move_arrays(bool read_in_calcs){
-    if (read_in_calcs) log_message(WARNING, "CALCULATE", "Cannot read in calcs because they do not exist");
-    move_arrays* move_array = malloc(sizeof(*move_array));
+#define ARRAY_SIZE 64
 
-    if (move_array == NULL){
-        log_message(ERROR, "CALCULATE", "FATAL: failed to allocate move_array");
-        exit(EXIT_FAILURE);
+#define OPEN_FILE_ERROR -1
+#define READ_FROM_FILE_ERROR -2
+#define WRITE_TO_FILE_ERROR -3
+
+
+int read_in_magics(char *filename, move_arrays *move_array) {
+    int rc;
+    int retval = 0;
+    FILE *f = fopen(filename, "rb");
+    if (f == NULL) {
+        logf_message(ERROR, "CALC_READ", "Error: Failed to open file %s", filename);
+        return OPEN_FILE_ERROR;
     }
 
+    rc = fread(move_array->rook_magic_entries, sizeof(magic_entry_t), ARRAY_SIZE, f);
+    if (rc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_READ_MAGIC", "Failed to read in rook magic entries! Read count: %d", rc);
+        goto cleanup;
+    }
+    rc = fread(move_array->bishop_magic_entries, sizeof(magic_entry_t), ARRAY_SIZE, f);
+    if (rc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_READ_MAGIC", "Failed to read in bishop magic entries! Read count: %d", rc);
+        goto cleanup;
+    }
+
+cleanup:
+    if (f) fclose(f);
+    return retval;
+
+}
+
+int read_in_calcs(char *filename, move_arrays *move_array) {
+    FILE *f = fopen(filename, "rb");
+    if (f == NULL) {
+        logf_message(ERROR, "CALC_READ", "Error: Failed to open file %s", filename);
+        return OPEN_FILE_ERROR;
+    }
+
+    (void) move_array;
+    return 0;
+}
+
+int save_magics(char *filename, move_arrays *move_array){
+    int retval = 0;
+    int wc;
+    FILE *f = fopen(filename, "wb");
+    if (f == NULL) {
+        logf_message(ERROR, "CALC_SAVE_MAGIC", "Error: Failed to open file %s", filename);
+        return OPEN_FILE_ERROR;
+    }
+
+    wc = fwrite(move_array->rook_magic_entries, sizeof(magic_entry_t), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE_MAGIC", "Failed to write rook magic entries to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+    wc = fwrite(move_array->bishop_magic_entries, sizeof(magic_entry_t), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE_MAGIC", "Failed to write bishop magic entries to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+cleanup:
+    if (f) fclose(f);
+    return retval;
+}
+
+int save_calcs(char *filename, move_arrays *move_array) {
+    int retval = 0;
+    FILE *f = fopen(filename, "wb");
+    if (f == NULL) {
+        logf_message(ERROR, "CALC_SAVE", "Error: Failed to open file %s", filename);
+        return OPEN_FILE_ERROR;
+    }
+
+    size_t wc;
+
+    // Saving king moves
+    wc = fwrite(move_array->king_moves, sizeof(BB), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE", "Failed to write king moves to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+    // Saving knight moves
+    wc = fwrite(move_array->knight_moves, sizeof(BB), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE", "Failed to write knight moves to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+    // Saving white pawn attacks
+    wc = fwrite(move_array->pawn_attacks[0], sizeof(BB), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE", "Failed to write white pawn attacks to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+    // Saving black pawn attacks
+    wc = fwrite(move_array->pawn_attacks[1], sizeof(BB), ARRAY_SIZE, f);
+    if (wc != ARRAY_SIZE) {
+        logf_message(ERROR, "CALC_SAVE", "Failed to write black pawn attacks to file: Write count: %d", wc);
+        retval = WRITE_TO_FILE_ERROR;
+        goto cleanup;
+    }
+
+    // Saving rook moves
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        size_t size = move_array->rook_attacks[i].size;
+        wc = fwrite(&size, sizeof(size_t), 1, f);
+        wc = fwrite(move_array->rook_attacks[i].piece_attack, sizeof(BB), size, f);
+        if (wc != size) {
+            logf_message(ERROR, "CALC_SAVE", "Failed to write rook moves to file: Write count: %d", wc);
+            retval = WRITE_TO_FILE_ERROR;
+            goto cleanup;
+        }
+    }
+    // Saving bishop moves
+    for (int i = 0; i < ARRAY_SIZE; i++) {
+        size_t size = move_array->bishop_attacks[i].size;
+        wc = fwrite(&size, sizeof(size_t), 1, f);
+        wc = fwrite(move_array->bishop_attacks[i].piece_attack, sizeof(BB), size, f);
+        if (wc != size) {
+            logf_message(ERROR, "CALC_SAVE", "Failed to write bishop moves to file: Write count: %d", wc);
+            retval = WRITE_TO_FILE_ERROR;
+            goto cleanup;
+        }
+    }
+
+cleanup:
+    if (f) fclose(f);
+    return retval;
+}
+
+
+
+move_arrays* init_move_arrays(bool read_in_calcs){
+    move_arrays* move_array = malloc(sizeof(*move_array));
+    
+    if (move_array == NULL){
+        log_message(ERROR, "CALC", "FATAL: failed to allocate move_array");
+        exit(EXIT_FAILURE);
+    }
+    
     clock_t time_it;
-    log_time_start(DEBUG, "CALCULATE", &time_it);
+    log_time_start(DEBUG, "CALC", &time_it);
+    
+    if (read_in_calcs && read_in_magics("magic_calcs.bin", move_array) == 0) {
+        log_message(INFO, "CALC", "Succesfully read in calcs");
+    } else {
+        init_magic_bitboards(move_array->rook_magic_entries, move_array->bishop_magic_entries);
+    }
 
     calculate_king_moves(move_array);
     calculate_knight_moves(move_array);
     calculate_pawn_attacks(move_array);
 
-    magic_entry_t *rook_magic_entries = malloc(sizeof(magic_entry_t) * 64);
-    magic_entry_t *bishop_magic_entries = malloc(sizeof(magic_entry_t) * 64);
+    calculate_all_rook_attacks(move_array, move_array->rook_magic_entries);
+    calculate_all_bishop_attacks(move_array, move_array->bishop_magic_entries);
 
-    init_magic_bitboards(rook_magic_entries, bishop_magic_entries);
-
-    printf("Magic: %lu, Mask: %lu\n", rook_magic_entries[1].magic, rook_magic_entries[1].mask);
-
-    calculate_all_rook_attacks(move_array, rook_magic_entries);
-    calculate_all_bishop_attacks(move_array, bishop_magic_entries);
-
-    free(rook_magic_entries);
-    free(bishop_magic_entries);
-
-    log_time_stop(DEBUG, "CALCULATE", &time_it);
+    log_time_stop(DEBUG, "CALC", &time_it);
 
     return move_array;
 }

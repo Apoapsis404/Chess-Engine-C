@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <time.h>
+#include <stdarg.h>
 
 // Functions
 
@@ -18,7 +19,7 @@ void load_config(const char* config_file);
 
 void log_empty_line();
 void log_message(log_level_t level, const char* module, const char* text);
-void logf_message(log_level_t level, const char* module, const char* message, void* arg);
+void logf_message(log_level_t level, const char* module, const char* message, ...);
 
 //TODO: Make possible to pass string
 void log_time_start(log_level_t level, const char* module, clock_t* time_it);
