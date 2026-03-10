@@ -5780,3 +5780,330 @@
 2026-03-06 18:53:02 [DEBUG][CALC] Stopping timer. Time elapsed: 0.297319 seconds
 2026-03-06 18:53:02 [DEBUG][TEST_CALC] BitBoard: 0x000000000E0A0E00
 2026-03-06 18:53:02 [INFO][MAIN] Quitting
+
+2026-03-06 20:49:50 [INFO][MAIN] Started!
+2026-03-06 20:49:50 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 20:49:50 [DEBUG][CALC] Starting timer
+2026-03-06 20:49:50 [INFO][CALC] Succesfully read in calcs
+2026-03-06 20:49:50 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009789 seconds
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:49:50 [INFO][MAIN] Quitting
+
+2026-03-06 20:55:08 [INFO][MAIN] Started!
+2026-03-06 20:55:08 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 20:55:08 [DEBUG][CALC] Starting timer
+2026-03-06 20:55:08 [INFO][CALC] Succesfully read in calcs
+2026-03-06 20:55:08 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009548 seconds
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Zeros in push_bb: 8
+2026-03-06 20:55:08 [DEBUG][MOVEGEN] Push bb: 255
+2026-03-06 20:55:08 [INFO][MAIN] Quitting
+
+2026-03-06 21:05:40 [INFO][MAIN] Started!
+2026-03-06 21:05:40 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:05:40 [DEBUG][CALC] Starting timer
+2026-03-06 21:05:40 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:05:40 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009717 seconds
+2026-03-06 21:05:40 [INFO][MAIN] Quitting
+
+2026-03-06 21:08:42 [INFO][MAIN] Started!
+2026-03-06 21:08:42 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:08:42 [DEBUG][CALC] Starting timer
+2026-03-06 21:08:42 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:08:42 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009940 seconds
+2026-03-06 21:08:42 [INFO][MAIN] Quitting
+
+2026-03-06 21:09:45 [INFO][MAIN] Started!
+2026-03-06 21:09:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:09:45 [DEBUG][CALC] Starting timer
+2026-03-06 21:09:45 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:09:45 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009764 seconds
+2026-03-06 21:09:45 [INFO][MAIN] Quitting
+
+2026-03-06 21:10:59 [INFO][MAIN] Started!
+2026-03-06 21:10:59 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:10:59 [DEBUG][CALC] Starting timer
+2026-03-06 21:10:59 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:10:59 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009696 seconds
+2026-03-06 21:10:59 [INFO][MAIN] Quitting
+
+2026-03-06 21:25:49 [INFO][MAIN] Started!
+2026-03-06 21:25:49 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:25:49 [DEBUG][CALC] Starting timer
+2026-03-06 21:25:49 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:25:49 [DEBUG][CALC] Stopping timer. Time elapsed: 0.010536 seconds
+
+2026-03-06 21:28:22 [INFO][MAIN] Started!
+2026-03-06 21:28:22 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:28:22 [DEBUG][CALC] Starting timer
+2026-03-06 21:28:22 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:28:22 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009917 seconds
+
+2026-03-06 21:28:38 [INFO][MAIN] Started!
+2026-03-06 21:28:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:28:38 [DEBUG][CALC] Starting timer
+2026-03-06 21:28:38 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:28:38 [DEBUG][CALC] Stopping timer. Time elapsed: 0.134131 seconds
+2026-03-06 21:28:38 [INFO][MAIN] Quitting
+
+2026-03-06 21:29:46 [INFO][MAIN] Started!
+2026-03-06 21:29:46 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:29:46 [DEBUG][CALC] Starting timer
+2026-03-06 21:29:46 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:29:46 [DEBUG][CALC] Stopping timer. Time elapsed: 0.291324 seconds
+2026-03-06 21:29:46 [INFO][MAIN] Quitting
+
+2026-03-06 21:31:11 [INFO][MAIN] Started!
+2026-03-06 21:31:11 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:31:11 [DEBUG][CALC] Starting timer
+2026-03-06 21:31:11 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:31:12 [DEBUG][CALC] Stopping timer. Time elapsed: 0.294063 seconds
+2026-03-06 21:31:12 [INFO][MAIN] Quitting
+
+2026-03-06 21:34:16 [INFO][MAIN] Started!
+2026-03-06 21:34:16 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:34:16 [DEBUG][CALC] Starting timer
+2026-03-06 21:34:16 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:34:16 [DEBUG][CALC] Stopping timer. Time elapsed: 0.010115 seconds
+
+2026-03-06 21:36:32 [INFO][MAIN] Started!
+2026-03-06 21:36:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:36:32 [DEBUG][CALC] Starting timer
+2026-03-06 21:36:32 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:36:32 [DEBUG][CALC] Stopping timer. Time elapsed: 0.009834 seconds
+
+2026-03-06 21:36:35 [INFO][MAIN] Started!
+2026-03-06 21:36:35 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:36:35 [DEBUG][CALC] Starting timer
+2026-03-06 21:36:35 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:36:35 [DEBUG][CALC] Stopping timer. Time elapsed: 0.286243 seconds
+2026-03-06 21:36:35 [INFO][MAIN] Quitting
+
+2026-03-06 21:37:44 [INFO][MAIN] Started!
+2026-03-06 21:37:44 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:37:44 [DEBUG][CALC] Starting timer
+2026-03-06 21:37:44 [INFO][CALC] Succesfully read in calcs
+2026-03-06 21:37:45 [DEBUG][CALC] Stopping timer. Time elapsed: 0.304131 seconds
+2026-03-06 21:37:45 [INFO][MAIN] Quitting
+
+2026-03-06 21:41:31 [INFO][MAIN] Started!
+2026-03-06 21:41:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:41:35 [INFO][REPL] Command: mv a1a2
+2026-03-06 21:41:35 [INFO][EVAL] Making move
+2026-03-06 21:41:35 [DEBUG][BOARD] Making move: a1a2
+2026-03-06 21:41:35 [DEBUG][BITBOARD] Making move: a1a2
+2026-03-06 21:41:35 [DEBUG][BITBOARD] Move is capture
+2026-03-06 21:41:37 [INFO][REPL] Command: mv
+2026-03-06 21:41:37 [INFO][EVAL] Making move
+2026-03-06 21:41:43 [INFO][REPL] Command: mv h3hhhh
+2026-03-06 21:41:43 [INFO][EVAL] Making move
+2026-03-06 21:41:52 [INFO][REPL] Command: q
+2026-03-06 21:41:52 [INFO][EVAL] Quitting
+2026-03-06 21:41:52 [INFO][REPL] Quitting
+2026-03-06 21:41:52 [INFO][MAIN] Quitting
+
+2026-03-06 21:42:42 [INFO][MAIN] Started!
+2026-03-06 21:42:42 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-06 21:42:43 [INFO][REPL] Command: mv
+2026-03-06 21:42:43 [INFO][EVAL] Making move
+2026-03-06 21:42:43 [DEBUG][EVAL] Not a move
+2026-03-06 21:42:50 [INFO][REPL] Command: mv a1a2
+2026-03-06 21:42:50 [INFO][EVAL] Making move
+2026-03-06 21:42:50 [DEBUG][BOARD] Making move: a1a2
+2026-03-06 21:42:50 [DEBUG][BITBOARD] Making move: a1a2
+2026-03-06 21:42:50 [DEBUG][BITBOARD] Move is capture
+2026-03-06 21:42:57 [INFO][REPL] Command: mv t4tttt
+2026-03-06 21:42:57 [INFO][EVAL] Making move
+2026-03-06 21:42:57 [DEBUG][EVAL] Not a move
+2026-03-06 21:42:58 [INFO][REPL] Command: q
+2026-03-06 21:42:58 [INFO][EVAL] Quitting
+2026-03-06 21:42:58 [INFO][REPL] Quitting
+2026-03-06 21:42:58 [INFO][MAIN] Quitting

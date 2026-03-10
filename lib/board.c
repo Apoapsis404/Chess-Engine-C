@@ -4,6 +4,7 @@
 #include "bitboard.h"
 #include "board.h"
 #include "fen.h"
+#include "movegen.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -18,6 +19,9 @@ Board* init_board_fen(char* fen){
     Board* b = malloc(sizeof(Board));
     b->board = parse_fen(fen);
     b->bb = bb_init(b->board);
+    b->current_state = 0;
+    b->white_to_move = true;
+    b->movegen = init_movegen();
     return b;
 }
 
@@ -28,6 +32,12 @@ void free_board(Board* b){
 
     if (b->bb != NULL) {
         free_bb(b->bb);
+    }
+    if (b->move_array != NULL) {
+        free_move_arrays(b->move_array);
+    }
+    if (b->movegen != NULL) {
+        free_movegen(b->movegen);
     }
 
     free(b);

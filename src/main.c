@@ -8,6 +8,7 @@
 #include "../lib/sutil.h"
 #include "../lib/calculate.h"
 #include "../lib/magic.h"
+#include "../lib/movegen.h"
 #include "ui.h"
 
 #include <stdio.h>
@@ -37,9 +38,25 @@ Restart with fen: fen (fen) ex:fen DEFAULTFEN (Fens are saved to fen.h for now)
 */
 
 int handle_move(BString bs, Board *b){
-    Move move = string_to_move(bs);
-    if (move == NULLMOVE) return 1;
-    return (int)make_move(b, move);
+    if (strlen(bs.string) == 4) {
+        Move move = string_to_move(bs);
+        if (move == NULLMOVE) return 1;
+        return (int)make_move(b, move);
+    }
+ 
+    int color = get_color(bs);
+    int piece;
+    if (color != -1) {
+        bs.string++;
+    }
+    piece = get_piece(bs);
+
+    if (piece == -1) {
+        logf_message(ERROR, "EVAL", "Unknown piece: %s", bs.string);
+        return 0;
+    }
+
+    return 0;
 }
 
 void handle_fen(BString bs, Board *b){
@@ -304,6 +321,11 @@ void test_read_magic() {
     log_time_stop(DEBUG, "TEST_READ_MAGIC", &time_it);
 }
 
+void test_move_gen(Board *b) {
+    b->move_array = init_move_arrays(true);
+    generate_pawn_moves(b);
+}
+
 int main(void) {
 
 
@@ -320,7 +342,7 @@ int main(void) {
     ui->clear = false;
     ui->draw_bb = true;
 
-    //repl(ui);
+    repl(ui);
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
         //repl(b);
@@ -329,7 +351,8 @@ int main(void) {
     //test_save_calc();
     //test_save_magic();
     //test_read_magic();
-    test_calc();
+    //test_calc();
+    //test_move_gen(b);
 
     //test_log();
 

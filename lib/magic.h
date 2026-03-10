@@ -21,7 +21,7 @@ uint64_t rook_mask(int square);
 BB rook_attack(int square, BB block);
 BB bishop_attack(int square, BB block);
 
-
+void binprintf(BB v);
 
 
 #endif //MAGIC_H;
