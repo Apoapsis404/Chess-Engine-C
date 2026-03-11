@@ -9,17 +9,12 @@
 #include <stdbool.h>
 
 
-int print_board_file(Board* board){
-    if(!board){
-        fprintf(stderr, "ERROR: Board uninitialized\b");
-        return 0;
-    }
-
+int print_board_file(PIECE* board){
     printf("\n+---+---+---+---+---+---+---+---+---\n");
     for (int i = 7; i >= 0; --i) {
         printf("|");
         for (int j = 0; j < 8; ++j){
-            printf(" %c |", itop(board->board[8*i + j]));
+            printf(" %c |", itop(board[8*i + j]));
         }
         printf(" %d \n", i+1);
         printf("------------------------------------\n");
@@ -28,19 +23,14 @@ int print_board_file(Board* board){
     return 0;
 }
 
-int print_board(Board* board){
-    if(!board){
-        fprintf(stderr, "ERROR: Board uninitialized\b");
-        return 0;
-    }
-
+int print_board(PIECE* board){
     int lines = 1;
 
     printf("+---+---+---+---+---+---+---+---+\n");
     for (int i = 7; i >= 0; --i) {
         printf("|");
         for (int j = 0; j < 8; ++j){
-            printf(" %c |", itop(board->board[8*i + j]));
+            printf(" %c |", itop(board[8*i + j]));
         }
         printf("\n+---+---+---+---+---+---+---+---+\n");
         lines += 2;
@@ -104,7 +94,7 @@ void draw_ui(ui_t *ui, size_t offset){
         clear_screen();
     }
 
-    print_board(ui->b);
+    print_board(ui->b->board);
 
     if (ui->draw_bb){
         BB bb = ui->bb;

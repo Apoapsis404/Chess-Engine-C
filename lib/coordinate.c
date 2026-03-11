@@ -1,5 +1,6 @@
 #include "coordinate.h"
 #include "sutil.h"
+#include "logging/lutil.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,6 +27,20 @@ char get_file_name(int idx) {
     return file_names[file_from_idx(idx)];
 }
 
+bool valid_file(char file) {
+    return char_in_range(file, 'a', 'h') != 0;
+}
+
+bool is_square(BString *bs) {
+    if (bs->count < 2) return false;
+    bool retval = false;
+
+    retval = valid_file(bs->string[0]);
+    logf_message(DEBUG, "COORD", "Valid file: %s", retval ? "true" : "false");
+    retval = is_digit(bs->string[1]);
+    logf_message(DEBUG, "COORD", "Valid rank: %s", retval ? "true" : "false");
+    return retval;
+}
 
 /*  */
 String square_name_from_idx(int idx){

@@ -197,6 +197,13 @@ int is_digit(char c){
     return 0;
 }
 
+int char_in_range(char c, int start, int end) {
+    if (c <= end && c >= start) {
+        return 1;
+    }
+    return 0;
+}
+
 int char_digit_to_int(char c) {
     return c - DIGITSTART;
 }

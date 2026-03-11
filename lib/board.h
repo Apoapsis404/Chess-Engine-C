@@ -10,6 +10,7 @@
 #define EN_PASSANT_FILE_MASK 0b11110000
 #define CASTLING_RIGHTS_MASK 0b00001111
 
+
 typedef struct movegen_t movegen_t;
 
 typedef struct Board {

@@ -37,27 +37,7 @@ Restart with fen: fen (fen) ex:fen DEFAULTFEN (Fens are saved to fen.h for now)
 
 */
 
-int handle_move(BString bs, Board *b){
-    if (strlen(bs.string) == 4) {
-        Move move = string_to_move(bs);
-        if (move == NULLMOVE) return 1;
-        return (int)make_move(b, move);
-    }
- 
-    int color = get_color(bs);
-    int piece;
-    if (color != -1) {
-        bs.string++;
-    }
-    piece = get_piece(bs);
 
-    if (piece == -1) {
-        logf_message(ERROR, "EVAL", "Unknown piece: %s", bs.string);
-        return 0;
-    }
-
-    return 0;
-}
 
 void handle_fen(BString bs, Board *b){
     (void)bs;
@@ -97,6 +77,78 @@ int get_piece(BString bs) {
     }
 
     return ret;
+}
+
+PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int from_sq, int to_sq){
+    PIECE *board = calloc(sizeof(PIECE), 64);
+    int from, to;
+    Move move;
+    PIECE piece;
+    for(size_t i = 0; i < b->movegen->move_count; i++) {
+        move = b->movegen->moves[i];
+        from = get_from(move);
+        to = get_to(move);
+        piece = b->board[from];
+
+        if (piece_is_color(piece, color) == 0) {
+            logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
+            continue;
+        }
+
+        if (from_sq != -1 && from != from_sq){
+            continue;
+        }
+
+        if (to_sq != -1 && to != to_sq) {
+            continue;
+        }
+
+        if (from_piece && b->board[from] != from_piece) {
+            continue;
+        }
+
+        if (target_piece && b->board[to] != target_piece) {
+            continue;
+        }
+
+        board[from] = piece;
+        board[to] = CAPTURED_PIECE;
+    }
+
+    return board;
+}
+
+int handle_move(BString bs, Board *b){
+    if (strlen(bs.string) == 4) {
+        Move move = string_to_move(bs);
+        if (move == NULLMOVE) return 1;
+        return (int)make_move(b, move);
+    }
+
+    int color = b->white_to_move ? WHITE : BLACK;
+
+    if (is_square(&bs)) {
+        logf_message(INFO, "EVAL", "Got square: %s", bs.string);
+        printf("\nPrinting move board!\n");
+        PIECE *board_of_moves = move_board(b, color, NONE, NONE, -1, -1);
+        print_board(board_of_moves);
+        free(board_of_moves);
+        printf("\n");
+        return 0;
+    }
+ 
+    int piece;
+    bs.string++;
+    piece = get_piece(bs);
+
+    if (piece == -1) {
+        logf_message(ERROR, "EVAL", "Unknown piece: %s", bs.string);
+        return 0;
+    }
+
+    
+
+    return 0;
 }
 
 void handle_bb_cmds(BString bs, ui_t *ui){
@@ -148,7 +200,7 @@ int eval(BString *bs, ui_t *ui){
         ui->b->board = parse_fen(DEFAULTFEN);
         log_message(INFO, "EVAL", "Resetting board!");
     } else if (strncmp(token.string, MOVE, token.count) == 0){
-        log_message(INFO, "EVAL", "Making move");
+        log_message(INFO, "EVAL", "Handling move command");
         handle_move(bstring_next(bs, ' '), ui->b);
     } else if (strncmp(token.string, BB_FUNCS, token.count) == 0){
         handle_bb_cmds(bstring_next(bs, ' '), ui);
@@ -324,6 +376,10 @@ void test_read_magic() {
 void test_move_gen(Board *b) {
     b->move_array = init_move_arrays(true);
     generate_pawn_moves(b);
+
+    PIECE *board_of_moves = move_board(b, WHITE, NONE, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
 }
 
 int main(void) {
@@ -342,7 +398,9 @@ int main(void) {
     ui->clear = false;
     ui->draw_bb = true;
 
-    repl(ui);
+
+
+    //repl(ui);
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
         //repl(b);
@@ -352,7 +410,7 @@ int main(void) {
     //test_save_magic();
     //test_read_magic();
     //test_calc();
-    //test_move_gen(b);
+    test_move_gen(b);
 
     //test_log();
 

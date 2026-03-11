@@ -65,5 +65,6 @@ char to_upper(char c);
 int is_digit(char c);
 int char_digit_to_int(char c);
 char int_digit_to_char(int i);
+int char_in_range(char c, int start, int end);
 
 #endif //SUTIL_H;

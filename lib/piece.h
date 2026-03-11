@@ -33,6 +33,8 @@
 
 #define PIECE uint8_t
 
+#define CAPTURED_PIECE 15
+
 char itop(int piece);
 int piece_is_color(PIECE piece, int color);
 

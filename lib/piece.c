@@ -4,6 +4,12 @@
 
 char itop(int piece) {
     char ret;
+
+    // Symbolizes capture square
+    if (piece == CAPTURED_PIECE) {
+        return '#';
+    }
+
     switch (PIECEMASK & piece) {
         case KING:
             ret = 'k';

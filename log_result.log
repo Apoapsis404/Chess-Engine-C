@@ -6107,3 +6107,125 @@
 2026-03-06 21:42:58 [INFO][EVAL] Quitting
 2026-03-06 21:42:58 [INFO][REPL] Quitting
 2026-03-06 21:42:58 [INFO][MAIN] Quitting
+
+2026-03-11 12:34:45 [INFO][MAIN] Started!
+2026-03-11 12:34:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 12:34:47 [INFO][REPL] Command: mv d3
+2026-03-11 12:34:47 [INFO][EVAL] Making move
+2026-03-11 12:34:47 [ERROR][EVAL] Unknown piece: d3
+2026-03-11 12:35:38 [INFO][REPL] Command: q
+2026-03-11 12:35:38 [INFO][EVAL] Quitting
+2026-03-11 12:35:38 [INFO][REPL] Quitting
+2026-03-11 12:35:38 [INFO][MAIN] Quitting
+
+2026-03-11 12:35:40 [INFO][MAIN] Started!
+2026-03-11 12:35:40 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 12:35:42 [INFO][REPL] Command: mv d3
+2026-03-11 12:35:42 [INFO][EVAL] Handling move command
+2026-03-11 12:35:42 [ERROR][EVAL] Unknown piece: d3
+2026-03-11 12:35:43 [INFO][REPL] Command: q
+2026-03-11 12:35:43 [INFO][EVAL] Quitting
+2026-03-11 12:35:43 [INFO][REPL] Quitting
+2026-03-11 12:35:43 [INFO][MAIN] Quitting
+
+2026-03-11 12:39:00 [INFO][MAIN] Started!
+2026-03-11 12:39:00 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 12:39:02 [INFO][REPL] Command: mv d3
+2026-03-11 12:39:02 [INFO][EVAL] Handling move command
+2026-03-11 12:39:02 [DEBUG][COORD] String count: 2
+2026-03-11 12:39:02 [DEBUG][COORD] Retavl is: 0
+2026-03-11 12:39:02 [ERROR][EVAL] Unknown piece: d3
+2026-03-11 12:39:03 [INFO][REPL] Command: q
+2026-03-11 12:39:03 [INFO][EVAL] Quitting
+2026-03-11 12:39:03 [INFO][REPL] Quitting
+2026-03-11 12:39:03 [INFO][MAIN] Quitting
+
+2026-03-11 12:40:22 [INFO][MAIN] Started!
+2026-03-11 12:40:22 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 12:40:24 [INFO][REPL] Command: mv d3
+2026-03-11 12:40:24 [INFO][EVAL] Handling move command
+2026-03-11 12:40:24 [DEBUG][COORD] String count: 2
+2026-03-11 12:40:24 [DEBUG][COORD] Valid file: true
+2026-03-11 12:40:24 [DEBUG][COORD] Valid rank: false
+2026-03-11 12:40:24 [ERROR][EVAL] Unknown piece: d3
+2026-03-11 12:40:41 [INFO][REPL] Command: q
+2026-03-11 12:40:41 [INFO][EVAL] Quitting
+2026-03-11 12:40:41 [INFO][REPL] Quitting
+2026-03-11 12:40:41 [INFO][MAIN] Quitting
+
+2026-03-11 12:40:43 [INFO][MAIN] Started!
+2026-03-11 12:40:43 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 12:40:44 [INFO][REPL] Command: d3
+2026-03-11 12:40:44 [WARNING][EVAL] Unknown command: d3
+2026-03-11 12:40:50 [INFO][REPL] Command: mv d3
+2026-03-11 12:40:50 [INFO][EVAL] Handling move command
+2026-03-11 12:40:50 [DEBUG][COORD] String count: 2
+2026-03-11 12:40:50 [DEBUG][COORD] Valid file: true
+2026-03-11 12:40:50 [DEBUG][COORD] Valid rank: true
+2026-03-11 12:40:50 [INFO][EVAL] Got square: d3
+2026-03-11 12:40:50 [ERROR][EVAL] Unknown piece: d3
+2026-03-11 13:21:45 [INFO][REPL] Command: q
+2026-03-11 13:21:45 [INFO][EVAL] Quitting
+2026-03-11 13:21:45 [INFO][REPL] Quitting
+2026-03-11 13:21:45 [INFO][MAIN] Quitting
+
+2026-03-11 13:25:29 [INFO][MAIN] Started!
+2026-03-11 13:25:29 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:25:33 [INFO][REPL] Command: q
+2026-03-11 13:25:33 [INFO][EVAL] Quitting
+2026-03-11 13:25:33 [INFO][REPL] Quitting
+2026-03-11 13:25:33 [INFO][MAIN] Quitting
+
+2026-03-11 13:26:23 [INFO][MAIN] Started!
+2026-03-11 13:26:23 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:26:25 [INFO][REPL] Command: mv d3
+2026-03-11 13:26:25 [INFO][EVAL] Handling move command
+2026-03-11 13:26:25 [DEBUG][COORD] Valid file: true
+2026-03-11 13:26:25 [DEBUG][COORD] Valid rank: true
+2026-03-11 13:26:25 [INFO][EVAL] Got square: d3
+2026-03-11 13:26:38 [INFO][REPL] Command: q
+2026-03-11 13:26:38 [INFO][EVAL] Quitting
+2026-03-11 13:26:38 [INFO][REPL] Quitting
+2026-03-11 13:26:38 [INFO][MAIN] Quitting
+
+2026-03-11 13:31:36 [INFO][MAIN] Started!
+2026-03-11 13:31:36 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:31:36 [DEBUG][CALC] Starting timer
+2026-03-11 13:31:36 [ERROR][CALC_READ] Error: Failed to open file magic_calcs.bin
+2026-03-11 13:31:36 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-11 13:31:36 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-11 13:31:57 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-11 13:31:59 [DEBUG][CALC] Stopping timer. Time elapsed: 22.665671 seconds
+2026-03-11 13:31:59 [INFO][MAIN] Quitting
+
+2026-03-11 13:32:17 [INFO][MAIN] Started!
+2026-03-11 13:32:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:32:17 [DEBUG][CALC] Starting timer
+2026-03-11 13:32:17 [ERROR][CALC_READ] Error: Failed to open file magic_calcs.bin
+2026-03-11 13:32:17 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-11 13:32:17 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-11 13:32:38 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-11 13:32:39 [DEBUG][CALC] Stopping timer. Time elapsed: 22.411964 seconds
+2026-03-11 13:32:39 [INFO][MAIN] Quitting
+
+2026-03-11 13:33:56 [INFO][MAIN] Started!
+2026-03-11 13:33:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:33:56 [DEBUG][TEST_SAVE_MAGIC] Starting timer
+2026-03-11 13:33:56 [INFO][MAGIC] Starting to generate magic bitboards!
+2026-03-11 13:33:56 [INFO][MAGIC] Finding all magic bitboards for rooks
+2026-03-11 13:34:18 [INFO][MAGIC] Finding all magic bitboards for bishop
+2026-03-11 13:34:19 [DEBUG][TEST_SAVE_MAGIC] Stopping timer. Time elapsed: 22.898323 seconds
+2026-03-11 13:34:19 [INFO][MAIN] Quitting
+
+2026-03-11 13:34:31 [INFO][MAIN] Started!
+2026-03-11 13:34:31 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:34:31 [DEBUG][TEST_READ_MAGIC] Starting timer
+2026-03-11 13:34:31 [DEBUG][TEST_READ_MAGIC] Stopping timer. Time elapsed: 0.000069 seconds
+2026-03-11 13:34:31 [INFO][MAIN] Quitting
+
+2026-03-11 13:34:51 [INFO][MAIN] Started!
+2026-03-11 13:34:51 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:34:51 [DEBUG][CALC] Starting timer
+2026-03-11 13:34:51 [INFO][CALC] Succesfully read in calcs
+2026-03-11 13:34:51 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022794 seconds
+2026-03-11 13:34:51 [INFO][MAIN] Quitting
