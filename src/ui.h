@@ -17,6 +17,7 @@ typedef struct {
 
 int print_board(PIECE* board);
 int print_board_file(PIECE* board);
+int print_bb(BB board);
 
 int get_terminal_size(size_t *width, size_t *height);
 int print_terminal_size();

@@ -96,18 +96,22 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
         }
 
         if (from_sq != -1 && from != from_sq){
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
             continue;
         }
 
         if (to_sq != -1 && to != to_sq) {
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
             continue;
         }
 
         if (from_piece && b->board[from] != from_piece) {
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %zu", piece);
             continue;
         }
 
         if (target_piece && b->board[to] != target_piece) {
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %zu", b->board[to]);
             continue;
         }
 
@@ -375,11 +379,22 @@ void test_read_magic() {
 
 void test_move_gen(Board *b) {
     b->move_array = init_move_arrays(true);
+
+
+    printf("Printing board: \n");
+    print_board(b->board);
+    printf("\n");
+    printf("Printing empty bb: \n");
+    print_bb(b->bb->emptyBB);
+    printf("\n");
+
     generate_pawn_moves(b);
 
-    PIECE *board_of_moves = move_board(b, WHITE, NONE, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
+    dump_moves(b->movegen);
+
 }
 
 int main(void) {
@@ -410,6 +425,10 @@ int main(void) {
     //test_save_magic();
     //test_read_magic();
     //test_calc();
+    Move move = construct_move(0, 0, 16);
+    make_move(b, move);
+    move = construct_move(0, 1, 25);
+    make_move(b, move);
     test_move_gen(b);
 
     //test_log();

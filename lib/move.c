@@ -90,6 +90,12 @@ String move_to_string(Move move){
     return s;
 }
 
+void print_move(Move move) {
+    String s = move_to_string(move);
+    printf("%s\n", s.string);
+    free_string(&s);
+}
+
 void log_move(log_level_t level, const char* module, Move move){
     String s = move_to_string(move);
     logf_message(level, module, "Making move: %s", s.string);

@@ -6229,3 +6229,341 @@
 2026-03-11 13:34:51 [INFO][CALC] Succesfully read in calcs
 2026-03-11 13:34:51 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022794 seconds
 2026-03-11 13:34:51 [INFO][MAIN] Quitting
+
+2026-03-11 13:41:10 [INFO][MAIN] Started!
+2026-03-11 13:41:10 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:41:10 [DEBUG][CALC] Starting timer
+2026-03-11 13:41:10 [INFO][CALC] Succesfully read in calcs
+2026-03-11 13:41:10 [DEBUG][CALC] Stopping timer. Time elapsed: 0.029687 seconds
+2026-03-11 13:41:10 [INFO][MAIN] Quitting
+
+2026-03-11 13:46:17 [INFO][MAIN] Started!
+2026-03-11 13:46:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:46:17 [DEBUG][CALC] Starting timer
+2026-03-11 13:46:17 [INFO][CALC] Succesfully read in calcs
+2026-03-11 13:46:17 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021760 seconds
+2026-03-11 13:46:17 [INFO][MAIN] Quitting
+
+2026-03-11 13:48:25 [INFO][MAIN] Started!
+2026-03-11 13:48:25 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 13:48:25 [DEBUG][CALC] Starting timer
+2026-03-11 13:48:25 [INFO][CALC] Succesfully read in calcs
+2026-03-11 13:48:25 [DEBUG][CALC] Stopping timer. Time elapsed: 0.023148 seconds
+2026-03-11 13:48:25 [INFO][MAIN] Quitting
+
+2026-03-11 14:13:02 [INFO][MAIN] Started!
+2026-03-11 14:13:02 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 14:13:02 [DEBUG][CALC] Starting timer
+2026-03-11 14:13:02 [INFO][CALC] Succesfully read in calcs
+2026-03-11 14:13:02 [DEBUG][CALC] Stopping timer. Time elapsed: 0.025276 seconds
+2026-03-11 14:13:02 [INFO][MAIN] Quitting
+
+2026-03-11 14:16:37 [INFO][MAIN] Started!
+2026-03-11 14:16:37 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 14:16:37 [DEBUG][CALC] Starting timer
+2026-03-11 14:16:37 [INFO][CALC] Succesfully read in calcs
+2026-03-11 14:16:37 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021816 seconds
+2026-03-11 14:16:37 [INFO][MAIN] Quitting
+
+2026-03-11 14:16:56 [INFO][MAIN] Started!
+2026-03-11 14:16:56 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 14:16:56 [DEBUG][CALC] Starting timer
+2026-03-11 14:16:56 [INFO][CALC] Succesfully read in calcs
+2026-03-11 14:16:56 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022771 seconds
+2026-03-11 14:16:56 [INFO][MAIN] Quitting
+
+2026-03-11 14:20:20 [INFO][MAIN] Started!
+2026-03-11 14:20:20 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 14:20:20 [DEBUG][CALC] Starting timer
+2026-03-11 14:20:20 [INFO][CALC] Succesfully read in calcs
+2026-03-11 14:20:20 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022313 seconds
+2026-03-11 14:20:20 [INFO][MAIN] Quitting
+
+2026-03-11 14:23:12 [INFO][MAIN] Started!
+2026-03-11 14:23:12 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 14:23:12 [DEBUG][CALC] Starting timer
+2026-03-11 14:23:12 [INFO][CALC] Succesfully read in calcs
+2026-03-11 14:23:12 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021879 seconds
+2026-03-11 14:23:12 [INFO][MAIN] Quitting
+
+2026-03-11 16:31:04 [INFO][MAIN] Started!
+2026-03-11 16:31:04 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 16:31:04 [DEBUG][CALC] Starting timer
+2026-03-11 16:31:04 [INFO][CALC] Succesfully read in calcs
+2026-03-11 16:31:04 [DEBUG][CALC] Stopping timer. Time elapsed: 0.025360 seconds
+2026-03-11 16:31:04 [INFO][MAIN] Quitting
+
+2026-03-11 17:24:17 [INFO][MAIN] Started!
+2026-03-11 17:24:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 17:24:17 [DEBUG][CALC] Starting timer
+2026-03-11 17:24:17 [INFO][CALC] Succesfully read in calcs
+2026-03-11 17:24:17 [DEBUG][CALC] Stopping timer. Time elapsed: 0.025043 seconds
+2026-03-11 17:24:17 [INFO][MAIN] Quitting
+
+2026-03-11 17:26:32 [INFO][MAIN] Started!
+2026-03-11 17:26:32 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 17:26:32 [DEBUG][CALC] Starting timer
+2026-03-11 17:26:32 [INFO][CALC] Succesfully read in calcs
+2026-03-11 17:26:32 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022099 seconds
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [DEBUG][EVAL_MOVE] Piece is wrong color. Color: Black
+2026-03-11 17:26:32 [INFO][MAIN] Quitting
+
+2026-03-11 21:46:02 [INFO][MAIN] Started!
+2026-03-11 21:46:02 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:46:02 [DEBUG][CALC] Starting timer
+2026-03-11 21:46:02 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:46:02 [DEBUG][CALC] Stopping timer. Time elapsed: 0.023711 seconds
+2026-03-11 21:46:02 [INFO][MAIN] Quitting
+
+2026-03-11 21:49:55 [INFO][MAIN] Started!
+2026-03-11 21:49:55 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:49:55 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:49:55 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:49:55 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:49:55 [DEBUG][CALC] Starting timer
+2026-03-11 21:49:55 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:49:55 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022001 seconds
+2026-03-11 21:49:55 [INFO][MAIN] Quitting
+
+2026-03-11 21:50:16 [INFO][MAIN] Started!
+2026-03-11 21:50:16 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:50:16 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:50:16 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:50:16 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:50:16 [DEBUG][CALC] Starting timer
+2026-03-11 21:50:16 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:50:16 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021607 seconds
+2026-03-11 21:50:16 [INFO][MAIN] Quitting
+
+2026-03-11 21:51:09 [INFO][MAIN] Started!
+2026-03-11 21:51:09 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:51:09 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:51:09 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:51:09 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:51:09 [DEBUG][CALC] Starting timer
+2026-03-11 21:51:09 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:51:09 [DEBUG][CALC] Stopping timer. Time elapsed: 0.024615 seconds
+2026-03-11 21:51:09 [INFO][MAIN] Quitting
+
+2026-03-11 21:52:27 [INFO][MAIN] Started!
+2026-03-11 21:52:27 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:52:27 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:52:27 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:52:27 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:52:27 [DEBUG][BOARD] Making move: b1b4
+2026-03-11 21:52:27 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-11 21:52:27 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:52:27 [DEBUG][CALC] Starting timer
+2026-03-11 21:52:27 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:52:27 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022247 seconds
+2026-03-11 21:52:27 [INFO][MAIN] Quitting
+
+2026-03-11 21:54:08 [INFO][MAIN] Started!
+2026-03-11 21:54:08 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:54:08 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:54:08 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:54:08 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:54:08 [DEBUG][BOARD] Making move: b1b4
+2026-03-11 21:54:08 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-11 21:54:08 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:54:08 [DEBUG][CALC] Starting timer
+2026-03-11 21:54:08 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:54:08 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021448 seconds
+2026-03-11 21:54:08 [INFO][MAIN] Quitting
+
+2026-03-11 21:55:02 [INFO][MAIN] Started!
+2026-03-11 21:55:02 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:55:02 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:55:02 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:55:02 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:55:02 [DEBUG][BOARD] Making move: b1b4
+2026-03-11 21:55:02 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-11 21:55:02 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:55:02 [DEBUG][CALC] Starting timer
+2026-03-11 21:55:02 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:55:02 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022391 seconds
+2026-03-11 21:55:02 [INFO][MAIN] Quitting
+
+2026-03-11 21:55:42 [INFO][MAIN] Started!
+2026-03-11 21:55:42 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-11 21:55:42 [DEBUG][BOARD] Making move: a1a3
+2026-03-11 21:55:42 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-11 21:55:42 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:55:42 [DEBUG][BOARD] Making move: b1b4
+2026-03-11 21:55:42 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-11 21:55:42 [DEBUG][BITBOARD] Move is not capture
+2026-03-11 21:55:42 [DEBUG][CALC] Starting timer
+2026-03-11 21:55:42 [INFO][CALC] Succesfully read in calcs
+2026-03-11 21:55:42 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022349 seconds
+2026-03-11 21:55:42 [INFO][MAIN] Quitting
+
+2026-03-12 10:07:47 [INFO][MAIN] Started!
+2026-03-12 10:07:47 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 10:07:47 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 10:07:47 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 10:07:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 10:07:47 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 10:07:47 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 10:07:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 10:07:47 [DEBUG][CALC] Starting timer
+2026-03-12 10:07:47 [INFO][CALC] Succesfully read in calcs
+2026-03-12 10:07:47 [DEBUG][CALC] Stopping timer. Time elapsed: 0.015557 seconds
+2026-03-12 10:07:47 [INFO][MAIN] Quitting
+
+2026-03-12 10:08:53 [INFO][MAIN] Started!
+2026-03-12 10:08:53 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 10:08:53 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 10:08:53 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 10:08:53 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 10:08:53 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 10:08:53 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 10:08:53 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 10:08:53 [DEBUG][CALC] Starting timer
+2026-03-12 10:08:53 [INFO][CALC] Succesfully read in calcs
+2026-03-12 10:08:53 [DEBUG][CALC] Stopping timer. Time elapsed: 0.024284 seconds
+2026-03-12 10:08:53 [INFO][MAIN] Quitting
+
+2026-03-12 11:00:23 [INFO][MAIN] Started!
+2026-03-12 11:00:23 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:00:23 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:00:23 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:00:23 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:00:23 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:00:23 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:00:23 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:00:23 [DEBUG][CALC] Starting timer
+2026-03-12 11:00:23 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:00:23 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022837 seconds
+2026-03-12 11:00:23 [INFO][MAIN] Quitting
+
+2026-03-12 11:03:11 [INFO][MAIN] Started!
+2026-03-12 11:03:11 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:03:11 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:03:11 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:03:11 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:03:11 [DEBUG][BOARD] Making move: b1b3
+2026-03-12 11:03:11 [DEBUG][BITBOARD] Making move: b1b3
+2026-03-12 11:03:11 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:03:11 [DEBUG][CALC] Starting timer
+2026-03-12 11:03:11 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:03:11 [DEBUG][CALC] Stopping timer. Time elapsed: 0.023066 seconds
+2026-03-12 11:03:11 [INFO][MAIN] Quitting
+
+2026-03-12 11:03:24 [INFO][MAIN] Started!
+2026-03-12 11:03:24 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:03:24 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:03:24 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:03:24 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:03:24 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:03:24 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:03:24 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:03:24 [DEBUG][CALC] Starting timer
+2026-03-12 11:03:24 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:03:24 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022441 seconds
+2026-03-12 11:03:24 [INFO][MAIN] Quitting
+
+2026-03-12 11:04:19 [INFO][MAIN] Started!
+2026-03-12 11:04:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:04:19 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:04:19 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:04:19 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:04:19 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:04:19 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:04:19 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:04:19 [DEBUG][CALC] Starting timer
+2026-03-12 11:04:19 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:04:19 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021617 seconds
+2026-03-12 11:04:19 [INFO][MAIN] Quitting
+
+2026-03-12 11:04:58 [INFO][MAIN] Started!
+2026-03-12 11:04:58 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:04:58 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:04:58 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:04:58 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:04:58 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:04:58 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:04:58 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:04:58 [DEBUG][CALC] Starting timer
+2026-03-12 11:04:58 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:04:58 [DEBUG][CALC] Stopping timer. Time elapsed: 0.024672 seconds
+2026-03-12 11:04:58 [INFO][MAIN] Quitting
+
+2026-03-12 11:06:22 [INFO][MAIN] Started!
+2026-03-12 11:06:22 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:06:22 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:06:22 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:06:22 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:06:22 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:06:22 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:06:22 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:06:22 [DEBUG][CALC] Starting timer
+2026-03-12 11:06:22 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:06:22 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021829 seconds
+2026-03-12 11:06:22 [INFO][MAIN] Quitting
+
+2026-03-12 11:07:45 [INFO][MAIN] Started!
+2026-03-12 11:07:45 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:07:45 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:07:45 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:07:45 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:07:45 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:07:45 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:07:45 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:07:45 [DEBUG][CALC] Starting timer
+2026-03-12 11:07:45 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:07:45 [DEBUG][CALC] Stopping timer. Time elapsed: 0.021883 seconds
+2026-03-12 11:07:45 [INFO][MAIN] Quitting
+
+2026-03-12 11:08:19 [INFO][MAIN] Started!
+2026-03-12 11:08:19 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:08:19 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:08:19 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:08:19 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:19 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:08:19 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:08:19 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:19 [DEBUG][CALC] Starting timer
+2026-03-12 11:08:19 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:08:19 [DEBUG][CALC] Stopping timer. Time elapsed: 0.023073 seconds
+2026-03-12 11:08:19 [INFO][MAIN] Quitting
+
+2026-03-12 11:08:38 [INFO][MAIN] Started!
+2026-03-12 11:08:38 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:08:38 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:08:38 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:08:38 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:38 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:08:38 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:08:38 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:38 [DEBUG][CALC] Starting timer
+2026-03-12 11:08:38 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:08:38 [DEBUG][CALC] Stopping timer. Time elapsed: 0.022195 seconds
+2026-03-12 11:08:38 [INFO][MAIN] Quitting
+
+2026-03-12 11:08:55 [INFO][MAIN] Started!
+2026-03-12 11:08:55 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-12 11:08:55 [DEBUG][BOARD] Making move: a1a3
+2026-03-12 11:08:55 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-12 11:08:55 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:55 [DEBUG][BOARD] Making move: b1b4
+2026-03-12 11:08:55 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-12 11:08:55 [DEBUG][BITBOARD] Move is not capture
+2026-03-12 11:08:55 [DEBUG][CALC] Starting timer
+2026-03-12 11:08:55 [INFO][CALC] Succesfully read in calcs
+2026-03-12 11:08:55 [DEBUG][CALC] Stopping timer. Time elapsed: 0.023246 seconds
+2026-03-12 11:08:55 [INFO][MAIN] Quitting

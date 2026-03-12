@@ -4,6 +4,10 @@
 #include "magic.h"
 #include "coordinate.h"
 
+#include <stdio.h>
+
+#include "../src/ui.h"
+
 movegen_t *init_movegen() {
     movegen_t *movegen = malloc(sizeof(*movegen));
     if (movegen == NULL) {
@@ -45,20 +49,20 @@ BB white_pawns_able_to_push(BB empty_bb, BB piece_bb) {
     return shift_south(empty_bb) & piece_bb;
 }
 
-BB white_pawns_able_to_double_push(BB empty_bb) {
+BB white_pawns_able_to_double_push(BB empty_bb, BB piece_bb) {
     BB rank4 = 0x00000000ff000000;
-    BB empty_rank_3 = shift_south(empty_bb & rank4) & empty_bb;
-    return white_pawns_able_to_push(empty_bb, empty_rank_3);
+    BB empty_rank_3 = shift_south((empty_bb & rank4)) & empty_bb;
+    return white_pawns_able_to_push(empty_rank_3, piece_bb);
 }
 
 BB black_pawns_able_to_push(BB empty_bb, BB piece_bb) {
     return shift_north(empty_bb) & piece_bb;
 }
 
-BB black_pawns_able_to_double_push(BB empty_bb) {
+BB black_pawns_able_to_double_push(BB empty_bb, BB piece_bb) {
     BB rank5 = 0x000000ff00000000;
-    BB empty_rank_6 = shift_north(empty_bb & rank5) & empty_bb;
-    return black_pawns_able_to_push(empty_bb, empty_rank_6);
+    BB empty_rank_6 = shift_north((empty_bb & rank5)) & empty_bb;
+    return black_pawns_able_to_push(empty_rank_6, piece_bb);
 }
 
 void single_push(BB push_bb, int promotion_rank, Board *b) {
@@ -88,6 +92,25 @@ void single_push(BB push_bb, int promotion_rank, Board *b) {
     }
 }
 
+void double_push(BB double_push_bb, Board *b) {
+    int from, to;
+
+    int to_offset = b->white_to_move ? 16 : -16;
+
+    while (double_push_bb != 0) {
+        from = count_trailing_zeros(double_push_bb);
+        to = from + to_offset;
+        
+        //TODO: Add check
+
+        //TODO: Add pins
+
+        Move move = construct_move(DOUBLEPAWNPUSHFLAG, from ,to);
+        add_move(b->movegen, move);
+        double_push_bb &= double_push_bb - 1;
+    }
+}
+
 void generate_pawn_moves(Board *b) {
     BB pawns_bb, push_bb, double_push_bb;
     int promotion_rank, en_passant_rank;
@@ -96,14 +119,14 @@ void generate_pawn_moves(Board *b) {
     if (b->white_to_move) {
         pawns_bb = b->bb->pieceBB[WHITEPAWN];
         push_bb = white_pawns_able_to_push(b->bb->emptyBB, pawns_bb);
-        double_push_bb = white_pawns_able_to_double_push(b->bb->emptyBB);
+        double_push_bb = white_pawns_able_to_double_push(b->bb->emptyBB, pawns_bb);
         attacks_bb = b->move_array->pawn_attacks[0];
         promotion_rank = 7;
         en_passant_rank = 4;
     } else {
         pawns_bb = b->bb->pieceBB[BLACKPAWN];
         push_bb = black_pawns_able_to_push(b->bb->emptyBB, pawns_bb);
-        double_push_bb = black_pawns_able_to_double_push(b->bb->emptyBB);
+        double_push_bb = black_pawns_able_to_double_push(b->bb->emptyBB, pawns_bb);
         attacks_bb = b->move_array->pawn_attacks[1];
         promotion_rank = 0;
         en_passant_rank = 3;
@@ -111,11 +134,21 @@ void generate_pawn_moves(Board *b) {
 
     if (pawns_bb == 0) return;
 
+    // printf("Printing push bb: \n");
+    // print_bb(push_bb);
     single_push(push_bb, promotion_rank, b);
 
-    //double_push(double_push_bb);
+    // printf("Printing double push bb: \n");
+    // print_bb(double_push_bb);
+    double_push(double_push_bb, b);
 
     //BB opponent_bb = b->white_to_move ? b->bb->pieceBB[BLACK] : b->bb->pieceBB[WHITE];
     //int en_passant_file = (int)((b->current_state & EN_PASSANT_FILE_MASK) >> 4) - 1;
     //pawn_captures(pawns_bb, attacks_bb, opponent_bb, promotion_rank, en_passant_rank, en_passant_file);
+}
+
+void dump_moves(movegen_t *movegen) {
+    for (size_t i = 0; i < movegen->move_count; i++) {
+        print_move(movegen->moves[i]);
+    }
 }
