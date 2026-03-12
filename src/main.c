@@ -429,6 +429,8 @@ int main(void) {
     make_move(b, move);
     move = construct_move(0, 1, 25);
     make_move(b, move);
+    move = construct_move(0, 63, 23);
+    make_move(b, move);
     test_move_gen(b);
 
     //test_log();

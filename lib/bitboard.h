@@ -6,6 +6,7 @@
 //#include "board.h"
 
 #include <stdint.h>
+#include <stdbool.h>
 
 
 #define BB uint64_t
@@ -48,7 +49,7 @@ void free_bb(BitBoard *bb);
 #define BLACK_QUEENSIDE_ATTACK 0x1F000000000000;
 
 BB in_between(int sq1, int sq2);
-BB calculate_enpassantbb(int file, int white_to_move);
+BB calculate_enpassantbb(int file, bool white_to_move);
 void bb_make_move(BitBoard* bb, Move move, PIECE piece, PIECE cpiece);
 
 void log_bb(log_level_t level, const char* module, BB bb);

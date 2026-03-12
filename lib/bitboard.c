@@ -65,6 +65,10 @@ BB in_between(int sq1, int sq2){
     return line & btwn;
 }
 
+BB calculate_enpassantbb(int file, bool white_to_move)  {
+    return 0ULL;
+}
+
 void log_bb(log_level_t level, const char* module, BB bb){
     char bb_string[30];
     snprintf(bb_string, sizeof(bb_string), "0x%016" PRIX64, bb);

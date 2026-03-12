@@ -111,6 +111,50 @@ void double_push(BB double_push_bb, Board *b) {
     }
 }
 
+void handle_en_passant(int from, int en_passant_rank, BB en_passant_bb) {
+    log_message(WARNING, "MOVEGEN", "En passant not implemented!");
+}
+
+void pawn_captures(BB pawns_bb, BB *attacks_bb, BB opponent_bb, int promotion_rank, int en_passant_rank, int en_passant_file, bool white_to_move, movegen_t *movegen) {
+    int from, to;
+    BB attacks, en_passant_bb;
+
+    while (pawns_bb != 0) {
+        from = count_trailing_zeros(pawns_bb);
+
+        attacks = (attacks_bb[from] & opponent_bb);
+
+        en_passant_bb = attacks_bb[from] & calculate_enpassantbb(en_passant_file, white_to_move);
+        if (en_passant_bb != 0 && rank_from_idx(from) == en_passant_rank) {
+            handle_en_passant(from, en_passant_rank, en_passant_bb);
+        }
+
+        //TODO: Handle check
+
+        //TODO: Handle pins
+
+        while (attacks != 0) {
+            to = count_trailing_zeros(attacks);
+            Move move = construct_move(CAPTURESFLAG, from, to);
+
+            if (rank_from_idx(to) == promotion_rank) {
+                set_flag(&move, QUEENPROMOTIONCAPTUREFLAG);
+                add_move(movegen, move);
+                set_flag(&move, ROOKPROMOTIONCAPTUREFLAG);
+                add_move(movegen, move);
+                set_flag(&move, BISHOPPROMOTIONCAPTUREFLAG);
+                add_move(movegen, move);
+                set_flag(&move, KNIGHTPROMOTIONCAPTUREFLAG);
+                add_move(movegen, move);
+            } else {
+                add_move(movegen, move);
+            }
+            attacks &= attacks - 1;
+        }
+        pawns_bb &= pawns_bb - 1;
+    }
+}
+
 void generate_pawn_moves(Board *b) {
     BB pawns_bb, push_bb, double_push_bb;
     int promotion_rank, en_passant_rank;
@@ -142,9 +186,9 @@ void generate_pawn_moves(Board *b) {
     // print_bb(double_push_bb);
     double_push(double_push_bb, b);
 
-    //BB opponent_bb = b->white_to_move ? b->bb->pieceBB[BLACK] : b->bb->pieceBB[WHITE];
-    //int en_passant_file = (int)((b->current_state & EN_PASSANT_FILE_MASK) >> 4) - 1;
-    //pawn_captures(pawns_bb, attacks_bb, opponent_bb, promotion_rank, en_passant_rank, en_passant_file);
+    BB opponent_bb = b->white_to_move ? b->bb->pieceBB[BLACK] : b->bb->pieceBB[WHITE];
+    int en_passant_file = (int)((b->current_state & EN_PASSANT_FILE_MASK) >> 4) - 1;
+    pawn_captures(pawns_bb, attacks_bb, opponent_bb, promotion_rank, en_passant_rank, en_passant_file, b->white_to_move, b->movegen);
 }
 
 void dump_moves(movegen_t *movegen) {
