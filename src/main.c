@@ -389,8 +389,9 @@ void test_move_gen(Board *b) {
     printf("\n");
 
     generate_pawn_moves(b);
+    generate_king_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, BLACKROOK, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
@@ -431,6 +432,11 @@ int main(void) {
     make_move(b, move);
     move = construct_move(0, 63, 23);
     make_move(b, move);
+    move = construct_move(0, 4, 22);
+    make_move(b, move);
+
+
+
     test_move_gen(b);
 
     //test_log();

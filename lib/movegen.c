@@ -112,6 +112,9 @@ void double_push(BB double_push_bb, Board *b) {
 }
 
 void handle_en_passant(int from, int en_passant_rank, BB en_passant_bb) {
+    (void)from;
+    (void)(en_passant_bb);
+    (void)(en_passant_rank);
     log_message(WARNING, "MOVEGEN", "En passant not implemented!");
 }
 
@@ -189,6 +192,39 @@ void generate_pawn_moves(Board *b) {
     BB opponent_bb = b->white_to_move ? b->bb->pieceBB[BLACK] : b->bb->pieceBB[WHITE];
     int en_passant_file = (int)((b->current_state & EN_PASSANT_FILE_MASK) >> 4) - 1;
     pawn_captures(pawns_bb, attacks_bb, opponent_bb, promotion_rank, en_passant_rank, en_passant_file, b->white_to_move, b->movegen);
+}
+
+void generate_king_moves(Board *b) {
+    int piece_color = b->white_to_move ? WHITE : BLACK;
+    int from, to;
+
+    BB piece_bb = b->bb->pieceBB[piece_color];
+    BB opponent_bb = b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
+
+    BB king_bb = b->bb->pieceBB[piece_color | KING];
+    
+    if (king_bb == 0) return;
+
+    from = count_trailing_zeros(king_bb);
+    BB moves_bb = b->move_array->king_moves[from] & ~piece_bb;
+    //TODO: Handle Check
+
+    while (moves_bb != 0) {
+        to = count_trailing_zeros(moves_bb);
+
+        //TODO: Handle enemy attacks
+
+        Move move = construct_move(0, from, to);
+        if((opponent_bb & (1ULL << to)) != 0) {
+            set_flag(&move, CAPTURESFLAG);
+        }
+
+        add_move(b->movegen, move);
+        moves_bb &= moves_bb - 1;
+    }
+
+    //TODO: Handle Castling
+
 }
 
 void dump_moves(movegen_t *movegen) {

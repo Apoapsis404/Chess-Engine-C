@@ -66,6 +66,8 @@ BB in_between(int sq1, int sq2){
 }
 
 BB calculate_enpassantbb(int file, bool white_to_move)  {
+    (void)file;
+    (void)white_to_move;
     return 0ULL;
 }
 
