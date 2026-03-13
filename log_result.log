@@ -6834,3 +6834,69 @@
 2026-03-13 01:11:29 [DEBUG][EVAL_MOVE] Wrong target piece : 0
 2026-03-13 01:11:29 [DEBUG][EVAL_MOVE] Wrong target piece : 0
 2026-03-13 01:11:29 [INFO][MAIN] Quitting
+
+2026-03-13 01:14:17 [INFO][MAIN] Started!
+2026-03-13 01:14:17 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-13 01:14:17 [DEBUG][CALC] Starting timer
+2026-03-13 01:14:17 [INFO][CALC] Succesfully read in calcs
+2026-03-13 01:14:17 [DEBUG][CALC] Stopping timer. Time elapsed: 0.014888 seconds
+2026-03-13 01:14:17 [DEBUG][BOARD] Making move: a1a3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 01:14:17 [DEBUG][BOARD] Making move: b1b4
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 01:14:17 [DEBUG][BOARD] Making move: h8h3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Making move: h8h3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 01:14:17 [DEBUG][BOARD] Making move: e1g3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Making move: e1g3
+2026-03-13 01:14:17 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 01:14:17 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 01:14:17 [INFO][MAIN] Quitting
+
+2026-03-13 14:34:47 [INFO][MAIN] Started!
+2026-03-13 14:34:47 [INFO][BOARD] Initializing board with fen: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR
+2026-03-13 14:34:47 [DEBUG][CALC] Starting timer
+2026-03-13 14:34:47 [INFO][CALC] Succesfully read in calcs
+2026-03-13 14:34:47 [DEBUG][CALC] Stopping timer. Time elapsed: 0.038861 seconds
+2026-03-13 14:34:47 [DEBUG][BOARD] Making move: a1a3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Making move: a1a3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 14:34:47 [DEBUG][BOARD] Making move: b1b4
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Making move: b1b4
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 14:34:47 [DEBUG][BOARD] Making move: h8h3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Making move: h8h3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 14:34:47 [DEBUG][BOARD] Making move: e1g3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Making move: e1g3
+2026-03-13 14:34:47 [DEBUG][BITBOARD] Move is not capture
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong piece : 2
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 14:34:47 [DEBUG][EVAL_MOVE] Wrong target piece : 0
+2026-03-13 14:34:47 [INFO][MAIN] Quitting

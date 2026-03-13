@@ -380,6 +380,16 @@ void test_read_magic() {
 void test_move_gen(Board *b) {
     b->move_array = init_move_arrays(true);
 
+    Move move = construct_move(0, 0, 16);
+    make_move(b, move);
+    move = construct_move(0, 1, 25);
+    make_move(b, move);
+    move = construct_move(0, 63, 23);
+    make_move(b, move);
+    move = construct_move(0, 4, 22);
+    make_move(b, move);
+
+
 
     printf("Printing board: \n");
     print_board(b->board);
@@ -399,8 +409,6 @@ void test_move_gen(Board *b) {
 }
 
 int main(void) {
-
-
     load_config("lib/logging/config.cfg");
     
     log_empty_line();
@@ -414,8 +422,6 @@ int main(void) {
     ui->clear = false;
     ui->draw_bb = true;
 
-
-
     //repl(ui);
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
@@ -426,15 +432,6 @@ int main(void) {
     //test_save_magic();
     //test_read_magic();
     //test_calc();
-    Move move = construct_move(0, 0, 16);
-    make_move(b, move);
-    move = construct_move(0, 1, 25);
-    make_move(b, move);
-    move = construct_move(0, 63, 23);
-    make_move(b, move);
-    move = construct_move(0, 4, 22);
-    make_move(b, move);
-
 
 
     test_move_gen(b);

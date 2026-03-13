@@ -78,7 +78,6 @@ void log_bb(log_level_t level, const char* module, BB bb){
     string_append_many(&s, bb_string, 30);
     logf_message(level, module, "BitBoard: %s", bb_string);
     free_string(&s);
-
 }
 
 /* Makes move in place */
