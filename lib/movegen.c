@@ -194,22 +194,61 @@ void generate_pawn_moves(Board *b) {
     pawn_captures(pawns_bb, attacks_bb, opponent_bb, promotion_rank, en_passant_rank, en_passant_file, b->white_to_move, b->movegen);
 }
 
-BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
-    BB knights, kings, bishopsQueens, rooksQueens;
-    knights = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
-    kings = piece_bb[WHITEKING] | piece_bb[BLACKKING];
-    rooksQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
-    bishopsQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
-    rooksQueens |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
-    bishopsQueens |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
+void generate_knight_moves(Board *b) {
+    BB knight_bb = b->bb->pieceBB[b->white_to_move ? WHITEKNIGHT : BLACKKNIGHT];
+    BB friendly_pieces = b->bb->pieceBB[b->white_to_move ? WHITE : BLACK];
+    BB enemy_pieces = b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
 
-    return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
-        | (calcMoveArrays.pawnAttacksBB[1][square] & pieceBB[Piece.WhitePawn])
-        | (calcMoveArrays.knightMovesBB[square] & knights)
-        | (calcMoveArrays.kingMovesBB[square] & kings)
-        | (GetBishopMovesFromSquare(square, occ) & bishopsQueens)
-        | (GetRookMovesFromSquare(square, occ) & rooksQueens);
+    int from, to;
+    BB moves_bb;
+    Move move;
+
+    printf("Printing knight bb: \n");
+    print_bb(knight_bb);
+    printf("Printing friendly pieces bb: \n");
+    print_bb(friendly_pieces);
+    printf("Printing enemy_pieces bb: \n");
+    print_bb(enemy_pieces);
+
+
+
+    while (knight_bb != 0) {
+        from = count_trailing_zeros(knight_bb);
+        moves_bb = (b->move_array->knight_moves[from] & ~friendly_pieces);
+
+        //TODO: Handle Check
+
+        //TODO: Handle pins
+
+        while (moves_bb != 0) {
+            to = count_trailing_zeros(moves_bb);
+            move = construct_move(0, from, to);
+            if ((enemy_pieces & (1ULL << to)) != 0) {
+                set_flag(&move, CAPTURESFLAG);
+            }
+            add_move(b->movegen, move);
+            moves_bb &= moves_bb - 1;
+        }
+        knight_bb &= knight_bb - 1;
+    }
 }
+
+// BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
+//     BB knights, kings, bishopsQueens, rooksQueens;
+//     knights = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
+//     kings = piece_bb[WHITEKING] | piece_bb[BLACKKING];
+//     rooksQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+//     bishopsQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+//     rooksQueens |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
+//     bishopsQueens |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
+
+//     return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
+//         | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
+//         | (move_array->knight_moves[square] & knights)
+//         | (move_array->king_moves[square] & kings)
+//         | (GetBishopMovesFromSquare(square, occ) & bishopsQueens)
+//         | (GetRookMovesFromSquare(square, occ) & rooksQueens);
+// }
 
 void generate_king_moves(Board *b) {
     int piece_color = b->white_to_move ? WHITE : BLACK;

@@ -15,5 +15,6 @@ void free_movegen(movegen_t *movegen);
 void generate_pawn_moves(Board *b);
 void dump_moves(movegen_t *movegen);
 void generate_king_moves(Board *b);
+void generate_knight_moves(Board *b);
 
 #endif //MOVEGEN_H;

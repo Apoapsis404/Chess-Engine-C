@@ -91,32 +91,36 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
         piece = b->board[from];
 
         if (piece_is_color(piece, color) == 0) {
-            logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
+            //logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
             continue;
         }
 
         if (from_sq != -1 && from != from_sq){
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
             continue;
         }
 
         if (to_sq != -1 && to != to_sq) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
             continue;
         }
 
         if (from_piece && b->board[from] != from_piece) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %zu", piece);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %zu", piece);
             continue;
         }
 
         if (target_piece && b->board[to] != target_piece) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %zu", b->board[to]);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %zu", b->board[to]);
             continue;
         }
 
         board[from] = piece;
-        board[to] = CAPTURED_PIECE;
+        if (move_is_capture(move)) {
+            board[to] = 16;
+        } else {
+            board[to] = CAPTURED_PIECE;
+        }
     }
 
     return board;
@@ -400,8 +404,9 @@ void test_move_gen(Board *b) {
 
     generate_pawn_moves(b);
     generate_king_moves(b);
+    generate_knight_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, BLACKROOK, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);

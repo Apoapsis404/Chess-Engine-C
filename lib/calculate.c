@@ -37,7 +37,7 @@ BB knight_attacks(BB knight_bb) {
     attacks |= (east | west) >> 16;
     west = shift_west(west);
     east = shift_east(east);
-    attacks = (east | west) << 8;
+    attacks |= (east | west) << 8;
     attacks |= (east | west) >> 8;
     return attacks;
 }

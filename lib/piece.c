@@ -9,6 +9,9 @@ char itop(int piece) {
     if (piece == CAPTURED_PIECE) {
         return '#';
     }
+    if (piece == 16) {
+        return 'X';
+    }
 
     switch (PIECEMASK & piece) {
         case KING:
