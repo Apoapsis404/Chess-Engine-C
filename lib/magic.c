@@ -119,19 +119,21 @@ BB rook_attack(int square, BB block){
     int rank = square / 8;
     int file = square % 8;
 
-    for (int r = rank + 1; r <= 7; r++) {
+    int r, f;
+
+    for (r = rank + 1; r <= 7; r++) {
         attacks |= (1ULL << (file + r * 8));
         if (((1ULL << (file + r * 8)) & block) != 0) break;
     }
-    for (int r = rank - 1; r >= 0; r--) {
+    for (r = rank - 1; r >= 0; r--) {
         attacks |= (1ULL << (file + r * 8));
         if (((1ULL << (file + r * 8)) & block) != 0) break;
     }
-    for (int f = file + 1; f <= 7; f++) {
+    for (f = file + 1; f <= 7; f++) {
         attacks |= (1ULL << (f + rank * 8));
         if (((1ULL << (f + rank * 8)) & block) != 0) break;
     }
-    for (int f = file - 1; f >= 0; f--) {
+    for (f = file - 1; f >= 0; f--) {
         attacks |= (1ULL << (f + rank * 8));
         if (((1ULL << (f + rank * 8)) & block) != 0) break;
     }

@@ -203,15 +203,6 @@ void generate_knight_moves(Board *b) {
     BB moves_bb;
     Move move;
 
-    printf("Printing knight bb: \n");
-    print_bb(knight_bb);
-    printf("Printing friendly pieces bb: \n");
-    print_bb(friendly_pieces);
-    printf("Printing enemy_pieces bb: \n");
-    print_bb(enemy_pieces);
-
-
-
     while (knight_bb != 0) {
         from = count_trailing_zeros(knight_bb);
         moves_bb = (b->move_array->knight_moves[from] & ~friendly_pieces);
@@ -232,6 +223,117 @@ void generate_knight_moves(Board *b) {
         knight_bb &= knight_bb - 1;
     }
 }
+
+BB get_rook_moves_from_square(int square, move_arrays *move_array, BB occupied_bb) {
+    magic_entry_t entry = move_array->rook_magic_entries[square];
+    BB occupancy = (occupied_bb & entry.mask);
+    occupancy *= entry.magic;
+    occupancy >>= (64 - rook_bits[square]);
+    // printf("magic: %lu\n", occupancy);
+    // printf("magic mask: %lu\n", entry.mask);
+    // printf("magic magic: %lu\n", entry.magic);
+    // printf("size of rook move %zu\n", move_array->rook_attacks[square].size);
+    // printf("occupancy %zu\n",move_array->rook_attacks[square].piece_attack[occupancy]);
+    // print_bb(move_array->rook_attacks[square].piece_attack[occupancy]);
+    return move_array->rook_attacks[square].piece_attack[occupancy];
+}
+
+void generate_rook_moves(Board *b) {
+    BB rook_bb = b->bb->pieceBB[b->white_to_move ? WHITEROOK : BLACKROOK];
+    BB friendly_pieces = b->bb->pieceBB[b->white_to_move ? WHITE : BLACK];
+    BB emeny_pieces = b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
+
+    int from, to;
+    BB moves_bb;
+    Move move = 0;
+
+    // printf("Printing rook moves from square 16\n");
+    // print_bb(get_rook_moves_from_square(16, b->move_array, 0ULL));
+    // printf("Printing occupied bb\n");
+    //     print_bb(b->bb->occupiedBB);
+    //     printf("\n");
+
+    for (int i = 0; i < 64; i++) {
+        BB bb = get_rook_moves_from_square(i, b->move_array, b->bb->occupiedBB); 
+        if (bb != 0) {
+            printf("Printing rook moves from square %d\n", i);
+            print_bb(bb);
+            printf("%lu\n", bb);
+        }
+    }
+
+    while (rook_bb != 0) {
+        from = count_trailing_zeros(rook_bb);
+        moves_bb = (get_rook_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
+        printf("Printing moves bb for square %d\n", from);
+        print_bb(moves_bb);
+        printf("\n");
+        
+        //TODO: Handle check
+
+        //TODO: Handle pins
+
+        while (moves_bb != 0) {
+            to = count_trailing_zeros(moves_bb);
+            move = construct_move(0, from, to);
+            if ((emeny_pieces & (1ULL << to)) != 0) {
+                set_flag(&move, CAPTURESFLAG);
+            }
+            add_move(b->movegen, move);
+            moves_bb &= moves_bb - 1;
+        }
+        rook_bb &= rook_bb - 1;
+    }
+}
+
+BB get_bishop_moves_from_square(int square, move_arrays *move_array, BB occupied_bb) {
+    magic_entry_t entry = move_array->bishop_magic_entries[square];
+    BB occupancy = (occupied_bb & entry.mask);
+    occupancy *= entry.magic;
+    occupancy >>= (64 - bishop_bits[square]);
+    return move_array->bishop_attacks[square].piece_attack[occupancy];
+}
+
+void generate_bishop_moves(Board *b) {
+    BB bishop_bb = b->bb->pieceBB[b->white_to_move ? WHITEBISHOP : BLACKBISHOP];
+    BB friendly_pieces = b->bb->pieceBB[b->white_to_move ? WHITE : BLACK];
+    BB emeny_pieces = b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
+
+    int from, to;
+    BB moves_bb;
+    Move move = 0;
+
+    // printf("Printing bishop moves from square 16\n");
+    // print_bb(get_bishop_moves_from_square(16, b->move_array, 0ULL));
+
+    // printf("Printing occupied bb\n");
+    // print_bb(b->bb->occupiedBB);
+    // printf("\n");
+
+    while (bishop_bb != 0) {
+        from = count_trailing_zeros(bishop_bb);
+        moves_bb = (get_bishop_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
+        // printf("Printing moves bb for square %d\n", from);
+        // print_bb(moves_bb);
+        // printf("\n");
+        
+        //TODO: Handle check
+
+        //TODO: Handle pins
+
+        while (moves_bb != 0) {
+            to = count_trailing_zeros(moves_bb);
+            move = construct_move(0, from, to);
+            if ((emeny_pieces & (1ULL << to)) != 0) {
+                set_flag(&move, CAPTURESFLAG);
+            }
+            add_move(b->movegen, move);
+            moves_bb &= moves_bb - 1;
+        }
+        bishop_bb &= bishop_bb - 1;
+    }
+}
+
 
 // BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
 //     BB knights, kings, bishopsQueens, rooksQueens;

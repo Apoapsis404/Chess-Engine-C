@@ -77,7 +77,7 @@ void calculate_all_rook_attacks(move_arrays *move_array, magic_entry_t *rook_mag
 
         for(idx = 0; idx < occupancy_variations; idx++) {
             occupancy = generate_occupancy(idx, relevant_bits_count, rook_mask(square));
-            magic_index = (int)((occupancy * rook_magic_entries[square].magic) >> (64 - relevant_bits_count));
+            magic_index = (occupancy * rook_magic_entries[square].magic) >> (64 - relevant_bits_count);
             move_array->rook_attacks[square].piece_attack[magic_index] = rook_attack(square, occupancy);
         }
     }

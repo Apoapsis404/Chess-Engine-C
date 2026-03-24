@@ -382,8 +382,9 @@ void test_read_magic() {
 }
 
 void test_move_gen(Board *b) {
-    b->move_array = init_move_arrays(true);
+    b->move_array = init_move_arrays(false);
 
+    //Moves rook
     Move move = construct_move(0, 0, 16);
     make_move(b, move);
     move = construct_move(0, 1, 25);
@@ -391,6 +392,13 @@ void test_move_gen(Board *b) {
     move = construct_move(0, 63, 23);
     make_move(b, move);
     move = construct_move(0, 4, 22);
+    make_move(b, move);
+
+    //Moves bishop
+    move = construct_move(0, 2, 19);
+    make_move(b, move);
+
+    move = construct_move(0, 7, 28);
     make_move(b, move);
 
 
@@ -405,8 +413,10 @@ void test_move_gen(Board *b) {
     generate_pawn_moves(b);
     generate_king_moves(b);
     generate_knight_moves(b);
+    generate_rook_moves(b);
+    generate_bishop_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, ROOK, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
