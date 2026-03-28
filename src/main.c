@@ -90,28 +90,28 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
         to = get_to(move);
         piece = b->board[from];
 
-        if (piece_is_color(piece, color) == 0) {
-            //logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
+        if (!piece_is_color(piece, color)) {
+            logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
             continue;
         }
 
         if (from_sq != -1 && from != from_sq){
-            // logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
             continue;
         }
 
         if (to_sq != -1 && to != to_sq) {
-            // logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
             continue;
         }
 
         if (from_piece && b->board[from] != from_piece) {
-            // logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %zu", piece);
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %s%s", get_piece_color_name(piece).string, get_piece_name(piece & PIECEMASK).string);
             continue;
         }
 
         if (target_piece && b->board[to] != target_piece) {
-            // logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %zu", b->board[to]);
+            logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %s%s", get_piece_color_name(b->board[to]).string, get_piece_name(b->board[to] & PIECEMASK).string);
             continue;
         }
 
@@ -153,9 +153,6 @@ int handle_move(BString bs, Board *b){
         logf_message(ERROR, "EVAL", "Unknown piece: %s", bs.string);
         return 0;
     }
-
-    
-
     return 0;
 }
 
@@ -264,7 +261,6 @@ int repl_from_file(ui_t *ui, const char *filename){
             //TODO Make message smarter!
             goto cleanup;
         }
-
     }
 
 cleanup:
@@ -382,7 +378,6 @@ void test_read_magic() {
 }
 
 void test_move_gen(Board *b) {
-    b->move_array = init_move_arrays(false);
 
     //Moves rook
     Move move = construct_move(0, 0, 16);
@@ -401,7 +396,8 @@ void test_move_gen(Board *b) {
     move = construct_move(0, 7, 28);
     make_move(b, move);
 
-
+    // b->white_to_move = false;
+    b->move_array = init_move_arrays(true);
 
     printf("Printing board: \n");
     print_board(b->board);
@@ -416,11 +412,10 @@ void test_move_gen(Board *b) {
     generate_rook_moves(b);
     generate_bishop_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, ROOK, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KNIGHT, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
-
 }
 
 int main(void) {

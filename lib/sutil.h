@@ -33,6 +33,7 @@ void free_string(String *s);
 void free_alloced_string(String *s);
 
 BString bstring_from_string(String *s);
+BString bstring_from_cstr(char *cstr);
 BString bstring_next(BString *bs, char delim);
 
 int char_in_string(String *s, char c);

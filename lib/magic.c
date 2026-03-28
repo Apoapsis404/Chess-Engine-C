@@ -6,8 +6,6 @@
 #include <stdlib.h>
 
 // Random 
-
-
 uint64_t rnd64(uint64_t n){
 
     const uint64_t z = 0x9FB21C651E98DF25;

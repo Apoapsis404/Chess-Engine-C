@@ -2,4 +2,3 @@ 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
 
 For testing with valgrind
 Valgrind: valgrind --log-file="valoutput.txt" ./chess
-MAPS_API_KEY = AIzaSyAQVMC4knQ5OSfkfRL7Oki2aFdLZsXSrwE

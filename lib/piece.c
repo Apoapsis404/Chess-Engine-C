@@ -49,7 +49,29 @@ int piece_is_color(PIECE piece, int color){
     return (COLORMASK & piece) == color;
 }
 
-/* int main(void) {
-    printf("%c\n", itop(BLACKKING));
-    return 0;
-} */
+BString get_piece_name(PIECE piece) {
+    switch (piece){
+    case PAWN:
+        return bstring_from_cstr("PAWN");
+    case KING:
+        return bstring_from_cstr("KING");
+    case KNIGHT:
+        return bstring_from_cstr("KNIGHT");
+    case BISHOP:
+        return bstring_from_cstr("BISHOP");
+    case ROOK:
+        return bstring_from_cstr("ROOK");
+    case QUEEN:
+        return bstring_from_cstr("QUEEN");
+    default:
+        return bstring_from_cstr("NONE");
+    }
+}
+
+BString get_piece_color_name(PIECE piece) {
+    if (piece_is_color(piece, WHITE)) {
+        return bstring_from_cstr("WHITE");
+    } else {
+        return bstring_from_cstr("BLACK");
+    }
+}

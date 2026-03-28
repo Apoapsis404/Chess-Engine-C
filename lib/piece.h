@@ -2,6 +2,7 @@
 #define PIECE_H
 
 #include <stdint.h>
+#include "sutil.h"
 
 #define NONE   0
 #define KING   1
@@ -37,5 +38,6 @@
 
 char itop(int piece);
 int piece_is_color(PIECE piece, int color);
-
+BString get_piece_name(PIECE piece);
+BString get_piece_color_name(PIECE piece);
 #endif //PIECE_H;

@@ -105,6 +105,14 @@ BString bstring_from_string(String *s){
     return bs;
 }
 
+BString bstring_from_cstr(char *cstr){
+    BString bs = {
+        .string = cstr,
+        .count = strlen(cstr) + 1,
+    };
+    return bs;
+}
+
 // For now: Expects there to be something here! (because that garanties a null terminator)
 BString bstring_next(BString *bs, char delim){
     size_t i = 0;
