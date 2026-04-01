@@ -116,7 +116,6 @@ BB rook_attack(int square, BB block){
     BB attacks = 0ULL;
     int rank = square / 8;
     int file = square % 8;
-
     int r, f;
 
     for (r = rank + 1; r <= 7; r++) {
@@ -137,7 +136,7 @@ BB rook_attack(int square, BB block){
     }
     
     return attacks;
-} 
+}
 BB bishop_attack(int square, BB block) {
     BB attacks = 0;
     int rank = square / 8;
@@ -145,19 +144,19 @@ BB bishop_attack(int square, BB block) {
     int r, f;
 
     for (r = rank + 1, f = file + 1; r <= 7 && f <= 7; r++, f++) {
-        attacks |= (1UL << (f + r * 8));
+        attacks |= (1ULL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
     for (r = rank + 1, f = file - 1; r <= 7 && f >= 0; r++, f--) {
-        attacks |= (1UL << (f + r * 8));
+        attacks |= (1ULL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
     for (r = rank - 1, f = file + 1; r >= 0 && f <= 7; r--, f++) {
-        attacks |= (1UL << (f + r * 8));
+        attacks |= (1ULL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
     for (r = rank - 1, f = file - 1; r >= 0 && f >= 0; r--, f--) {
-        attacks |= (1UL << (f + r * 8));
+        attacks |= (1ULL << (f + r * 8));
         if (((1ULL << (f + r * 8)) & block) != 0) break;
     }
 
@@ -200,6 +199,7 @@ magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
     BB occupancies[array_size];
     BB attacks[array_size];
     BB used_attacks[array_size];
+    bool used[array_size];
 
     bool is_error = false;
     bool fail = false;
@@ -219,26 +219,29 @@ magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
         goto clean_up;
     }
 
-    int idx, k;
+    int idx, k, magic_idx;
     for(idx = 0; idx < bits; idx++){
         occupancies[idx] = generate_occupancy(idx, occupancy_indices, attack_mask);
         attacks[idx] = is_rook ? rook_attack(square, occupancies[idx]) : bishop_attack(square, occupancies[idx]);
     }
 
-    
+    BB magic;
     for (k = 0; k < 10000000; k++){
-        BB magic = generate_magic_number();
-        if(bit_count((attack_mask  * magic) & 0xFF00000000000000) < 6) continue;
+        magic = generate_magic_number();
+        if(bit_count((attack_mask  * magic) & 0xFF00000000000000ULL) < 6) continue;
 
-        fill_array(used_attacks, array_size, 0ULL);
+        for(idx =  0; idx < array_size; idx++) {
+            used_attacks[idx] = 0ULL;
+            used[idx] = false;
+        }
     
-        for (idx = 0, fail = 0; !fail && idx < bits; idx++){
-            int magic_idx = transform_key(occupancies[idx], magic, relevant_bits);
-            if (used_attacks[magic_idx] == 0) {
+        for (idx = 0, fail = false; !fail && idx < bits; idx++){
+            magic_idx = transform_key(occupancies[idx], magic, relevant_bits);
+            if (!used[magic_idx]) {
+                used[magic_idx] = true;
                 used_attacks[magic_idx] = attacks[idx];
             } else if (used_attacks[magic_idx] != attacks[idx]) {
                 fail = true;
-                break;
             }
         }
         if (!fail) {

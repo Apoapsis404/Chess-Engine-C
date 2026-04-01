@@ -67,7 +67,9 @@ void calculate_pawn_attacks(move_arrays *move_array) {
 
 
 void calculate_all_rook_attacks(move_arrays *move_array, magic_entry_t *rook_magic_entries) {
-    int square, idx, relevant_bits_count, occupancy_variations, occupancy, magic_index;
+    int square, idx, relevant_bits_count, occupancy_variations;
+    BB occupancy;
+    uint64_t magic_index;
     for(square = 0; square < 64; square++){
         relevant_bits_count = rook_bits[square];
         occupancy_variations = 1 << relevant_bits_count;
@@ -84,7 +86,9 @@ void calculate_all_rook_attacks(move_arrays *move_array, magic_entry_t *rook_mag
 }
 
 void calculate_all_bishop_attacks(move_arrays *move_array, magic_entry_t *bishop_magic_entries) {
-    int square, idx, relevant_bits_count, occupancy_variations, occupancy, magic_index;
+    int square, idx, relevant_bits_count, occupancy_variations;
+    BB occupancy;
+    uint64_t magic_index;
     for(square = 0; square < 64; square++) {
         relevant_bits_count = bishop_bits[square];
         occupancy_variations = 1 << relevant_bits_count;

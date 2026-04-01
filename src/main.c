@@ -343,12 +343,10 @@ void test_magic() {
     clock_t time_it;
     log_time_start(DEBUG, "TEST_MAGIC", &time_it);
 
-    magic_entry_t *rook_magic_entries = NULL; 
-    magic_entry_t *bishop_magic_entries = NULL;
+    magic_entry_t rook_magic_entries[64];
+    magic_entry_t bishop_magic_entries[64];
 
     init_magic_bitboards(rook_magic_entries, bishop_magic_entries);
-    free(rook_magic_entries);
-    free(bishop_magic_entries);
 
     log_time_stop(DEBUG, "TEST_MAGIC", &time_it);
 }
@@ -412,7 +410,7 @@ void test_move_gen(Board *b) {
     generate_rook_moves(b);
     generate_bishop_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KNIGHT, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
