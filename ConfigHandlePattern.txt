@@ -1,0 +1,16 @@
+// Define handlers
+static void handle_my_setting(const char *value) { /* ... */ }
+
+// Define config entries
+static const cfg_entry_t my_entries[] = {
+    {"my_setting", handle_my_setting},
+};
+
+// Load your specific section
+load_config_section(
+    "config.cfg",
+    "# MY MODULE START",
+    "# MY MODULE END",
+    my_entries,
+    sizeof(my_entries) / sizeof(my_entries[0])
+);

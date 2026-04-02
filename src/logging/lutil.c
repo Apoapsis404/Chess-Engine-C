@@ -1,7 +1,7 @@
 #include "lutil.h"
+#include "../util/cfgutil.h"
 
 #include <assert.h>
-#include <ctype.h>
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
@@ -45,22 +45,7 @@ void set_log_file(const char *filename) {
     log.log_filename = strdup(filename);
 }
 
-#define CONFIG_SECTION_START "# LOG CONFIG START"
-#define CONFIG_SECTION_END "# LOG CONFIG END"
-
-static void trim_whitespace(char *str) {
-    if (!str) return;
-    // trim left
-    char *start = str;
-    while (*start && isspace((unsigned char)*start)) start++;
-    if (start != str) memmove(str, start, strlen(start) + 1);
-
-    // trim right
-    char *end = str + strlen(str);
-    while (end > str && isspace((unsigned char)*(end - 1))) end--;
-    *end = '\0';
-}
-
+// Config handlers
 static void handle_log_level(const char *value) {
     if (strcmp(value, "DEBUG") == 0) set_log_level(DEBUG);
     else if (strcmp(value, "INFO") == 0) set_log_level(INFO);
@@ -83,78 +68,24 @@ static void handle_log_file(const char *value) {
     set_log_file(value);
 }
 
-typedef void (*config_handler_t)(const char *value);
+// Config
+void load_config(const char* config_file) {
+    static const cfg_entry_t log_config_entries[] = {
+        {"log_level", handle_log_level},
+        {"log_file", handle_log_file},
+        {"clear_file", handle_clear_file},
+        {"max_log_entities", handle_max_log_entities},
+    };
 
-typedef struct {
-    const char *key;
-    config_handler_t handler;
-} config_entry_t;
-
-static const config_entry_t log_config_entries[] = {
-    {"log_level", handle_log_level},
-    {"log_file", handle_log_file},
-    {"clear_file", handle_clear_file},
-    {"max_log_entities", handle_max_log_entities},
-};
-
-static void apply_log_config(const char *key, const char *value) {
-    for (size_t i = 0; i < sizeof(log_config_entries) / sizeof(log_config_entries[0]); ++i) {
-        if (strcmp(key, log_config_entries[i].key) == 0) {
-            log_config_entries[i].handler(value);
-            return;
-        }
-    }
-    // Unknown key; ignore to allow extensibility
-}
-
-//Config
-void load_config(const char* config_file){
-    FILE* file = fopen(config_file, "r");
-    if(!file){
-        fprintf(stderr, "Failed to open config file: %s\n", config_file);
-        return;
-    }
-
-    bool in_config = false;
-    char line[256];
-    while(fgets(line, sizeof(line), file)){
-        char buffer[256];
-        strncpy(buffer, line, sizeof(buffer));
-        buffer[sizeof(buffer)-1] = '\0';
-
-        trim_whitespace(buffer);
-        if (buffer[0] == '\0') continue; // empty line
-
-        if (strncmp(buffer, CONFIG_SECTION_START, strlen(CONFIG_SECTION_START)) == 0) {
-            in_config = true;
-            continue;
-        }
-
-        if (strncmp(buffer, CONFIG_SECTION_END, strlen(CONFIG_SECTION_END)) == 0) {
-            break;
-        }
-
-        if (!in_config) continue;
-
-        if (buffer[0] == '#') continue;
-
-        char *equals = strchr(buffer, '=');
-        if (!equals) continue;
-
-        *equals = '\0';
-        char *key = buffer;
-        char *value = equals + 1;
-
-        trim_whitespace(key);
-        trim_whitespace(value);
-
-        if (key[0] == '\0' || value[0] == '\0') continue;
-
-        apply_log_config(key, value);
-    }
+    load_config_section(
+        config_file,
+        "# LOG CONFIG START",
+        "# LOG CONFIG END",
+        log_config_entries,
+        sizeof(log_config_entries) / sizeof(log_config_entries[0])
+    );
 
     init_logging();
-    fclose(file);
 }
 
 //Log Level
