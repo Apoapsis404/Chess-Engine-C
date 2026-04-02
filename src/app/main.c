@@ -16,6 +16,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 #define BUFSIZE 64
 
@@ -108,21 +110,201 @@ int repl(ui_t *ui){
     return 0;
 }
 
-int main(int argc, const char **argv) {
-    set_log_args(argc, argv);
-    load_config("src/logging/config.cfg");
-    
-    log_message(INFO, "MAIN", "Started!");
+typedef struct main_t {
+    char *config_file_name;
 
-    if (argc > 1 && strcmp(argv[1], "test") == 0) {
-        const char *selected_test = (argc > 2 ? argv[2] : NULL);
-        int result = run_tests(selected_test);
-        log_message(INFO, "MAIN", "Exiting after tests");
-        close_logging();
-        return result;
+    log_level_t log_level;
+
+    char *fen;
+
+    bool test;
+    char *test_name;
+} main_t;
+
+main_t main_cfg = {
+    .config_file_name = "src/logging/config.cfg",
+
+    .log_level = DEBUG,
+
+    .fen = DEFAULTFEN,
+
+    .test = false,
+    .test_name = "",
+};
+
+static void print_usage(const char *prog_name) {
+    printf("Usage: %s [options]\n", prog_name);
+    printf("  --help, -h               Show this help message\n");
+    printf("  --config <file>          Load a config file (default: src/logging/config.cfg)\n");
+    printf("  --log-level <level>      Set log level (DEBUG, INFO, WARNING, ERROR, FATAL)\n");
+    printf("  --fen <fen|preset>       Set initial board position using FEN or preset name.\n");
+    printf("      Preset names: DEFAULTFEN, PIN_FEN, PIN_FEN2, CROSS_CHECK_FEN, DOUBLE_CHECK_FEN,\n");
+    printf("                    DIRECT_CHECK_FEN, PAWN_PIN_FEN, POS_4_FEN\n");
+    printf("  --test [name ...]        Run tests. No name = all tests. One or more names = run only those tests.\n");
+    printf("      Available tests are from tests.c (calc, save_calc, log, magic, save_magic, read_magic, move_gen, pin, check)\n");
+}
+
+static bool is_valid_fen_placement(const char *fen) {
+    if (fen == NULL) return false;
+
+    int rank = 0;
+    int file = 0;
+
+    while (*fen) {
+        char c = *fen;
+
+        if (c == '/') {
+            if (file != 8) return false;
+            rank++;
+            if (rank >= 8) return false;
+            file = 0;
+        } else if (c >= '1' && c <= '8') {
+            file += c - '0';
+            if (file > 8) return false;
+        } else {
+            bool piece = false;
+            switch(c) {
+                case 'p': case 'n': case 'b': case 'r': case 'q': case 'k':
+                case 'P': case 'N': case 'B': case 'R': case 'Q': case 'K':
+                    piece = true;
+                    break;
+                default:
+                    return false;
+            }
+            if (piece) {
+                file++;
+                if (file > 8) return false;
+            }
+        }
+        fen++;
     }
 
-    Board *b = init_board_fen(DEFAULTFEN);
+    return rank == 7 && file == 8;
+}
+
+static const char *resolve_fen_input(const char *arg) {
+    static const struct { const char *name; const char *fen; } presets[] = {
+        {"DEFAULTFEN", DEFAULTFEN},
+        {"PIN_FEN", PIN_FEN},
+        {"PIN_FEN2", PIN_FEN2},
+        {"CROSS_CHECK_FEN", CROSS_CHECK_FEN},
+        {"DOUBLE_CHECK_FEN", DOUBLE_CHECK_FEN},
+        {"DIRECT_CHECK_FEN", DIRECT_CHECK_FEN},
+        {"PAWN_PIN_FEN", PAWN_PIN_FEN},
+        {"POS_4_FEN", POS_4_FEN},
+    };
+
+    for (size_t i = 0; i < sizeof(presets) / sizeof(presets[0]); ++i) {
+        if (strcmp(arg, presets[i].name) == 0) {
+            return presets[i].fen;
+        }
+    }
+
+    if (is_valid_fen_placement(arg)) {
+        return arg;
+    }
+
+    logf_message(WARNING, "MAIN", "Using default fen because '%s' is not a valid FEN or preset", arg);
+    return DEFAULTFEN;
+}
+
+int main(int argc, const char **argv) {
+    set_log_args(argc, argv);
+
+    const char *program = argc > 0 ? argv[0] : "chess-engine";
+    const char *selected_tests[64];
+    int selected_test_count = 0;
+
+    for (int i = 1; i < argc; ++i) {
+        const char *arg = argv[i];
+
+        if (strcmp(arg, "--help") == 0 || strcmp(arg, "-h") == 0) {
+            print_usage(program);
+            return 0;
+        }
+
+        if (strcmp(arg, "--config") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing argument for --config\n");
+                print_usage(program);
+                return 1;
+            }
+            main_cfg.config_file_name = (char *)argv[++i];
+            continue;
+        }
+
+        if (strcmp(arg, "--log-level") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing argument for --log-level\n");
+                print_usage(program);
+                return 1;
+            }
+            main_cfg.log_level = DEBUG;
+            set_log_level_from_string(argv[++i]);
+            continue;
+        }
+
+        if (strcmp(arg, "--fen") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing argument for --fen\n");
+                print_usage(program);
+                return 1;
+            }
+            main_cfg.fen = (char *)resolve_fen_input(argv[++i]);
+            continue;
+        }
+
+        if (strcmp(arg, "--test") == 0 || strcmp(arg, "test") == 0) {
+            main_cfg.test = true;
+            // Collect all following non-flag test names
+            while (i + 1 < argc && argv[i + 1][0] != '-') {
+                selected_tests[selected_test_count++] = argv[++i];
+                if (selected_test_count >= (int)(sizeof(selected_tests) / sizeof(selected_tests[0]))) {
+                    break;
+                }
+            }
+            continue;
+        }
+
+        fprintf(stderr, "Unknown argument: %s\n", arg);
+        print_usage(program);
+        return 1;
+    }
+
+    load_config(main_cfg.config_file_name);
+    log_message(INFO, "MAIN", "Started!");
+
+    if (main_cfg.test) {
+        int result_code = 0;
+
+        if (selected_test_count == 0) {
+            // run all tests
+            result_code = run_tests(NULL);
+        } else {
+            int valid_test_count = 0;
+            for (int ti = 0; ti < selected_test_count; ++ti) {
+                int test_result = run_tests(selected_tests[ti]);
+                if (test_result == 2) {
+                    fprintf(stderr, "Unknown test name: %s\n", selected_tests[ti]);
+                    result_code = 1;
+                    continue;
+                }
+                valid_test_count++;
+                if (test_result != 0) {
+                    result_code = 1;
+                }
+            }
+            if (valid_test_count == 0) {
+                printf("No valid tests given; running all tests instead.\n");
+                result_code = run_tests(NULL);
+            }
+        }
+        log_message(INFO, "MAIN", "Exiting after tests");
+        close_logging();
+        return result_code;
+    }
+
+    Board *b = init_board_fen(main_cfg.fen);
     b->move_array = init_move_arrays(true);
     ui_t *ui = malloc(sizeof(ui_t));
     ui->b = b;

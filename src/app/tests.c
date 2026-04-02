@@ -247,7 +247,7 @@ int run_tests(const char *test_name) {
         if (selected_index == count) {
             fprintf(stderr, "Unknown test: %s\n", test_name);
             print_available_tests();
-            return 1;
+            return 2; // Unknown test indicates not run
         }
 
         printf("Running specific test: %s - %s... \n", test_cases[selected_index].name, test_cases[selected_index].description);

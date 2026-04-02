@@ -14,3 +14,12 @@ load_config_section(
     my_entries,
     sizeof(my_entries) / sizeof(my_entries[0])
 );
+
+New flags suggestion from copilot
+--profile (enable performance/time profiling, output per move/time spent)
+--ai-level <0..N> or --depth <N> (search depth / difficulty)
+--movelist <file> (play moves from PGN/moves file)
+--ui <terminal|raylib|none> (switch UI mode from CLI to graphical)
+--dump-fen <file> (write final FEN to file on exit)
+--seed <n> (randomized tests, random opening choice)
+--benchmark <seconds> (autotest engine throughput, nodes/sec)
