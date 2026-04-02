@@ -113,6 +113,11 @@ BString bstring_from_cstr(char *cstr){
     return bs;
 }
 
+int bstring_equal(BString token, const char *command) {
+    size_t len = strlen(command);
+    return token.count == len && strncmp(token.string, command, len) == 0;
+}
+
 // For now: Expects there to be something here! (because that garanties a null terminator)
 BString bstring_next(BString *bs, char delim){
     size_t i = 0;

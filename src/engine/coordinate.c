@@ -64,6 +64,10 @@ int idx_from_square_name(char* square){
     return 8*(rank-1) + file;
 }
 
+int file_from_square_name(char *square){
+    return file_from_idx(idx_from_square_name(square));
+}
+
 
 void print_square(int idx) {
     String name = square_name_from_idx(idx);

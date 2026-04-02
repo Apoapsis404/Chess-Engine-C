@@ -9,6 +9,10 @@
 
 #define EN_PASSANT_FILE_MASK 0b11110000
 #define CASTLING_RIGHTS_MASK 0b00001111
+#define CASTLING_WHITE_KINGSIDE  (1u << 3)
+#define CASTLING_WHITE_QUEENSIDE (1u << 2)
+#define CASTLING_BLACK_KINGSIDE  (1u << 1)
+#define CASTLING_BLACK_QUEENSIDE (1u << 0)
 
 #define WHITE_KING_SQUARE 0 
 #define BLACK_KING_SQUARE 1 
@@ -23,6 +27,8 @@ typedef struct Board {
     bool white_to_move;
     uint32_t current_state;
     bool check;
+    uint32_t half_move_clock;
+    uint32_t move_count;
     int king_square[2];
 } Board;
 

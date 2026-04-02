@@ -22,10 +22,8 @@ void get_king_squares(Board *b) {
 Board* init_board_fen(char* fen){
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     Board* b = malloc(sizeof(Board));
-    b->board = parse_fen(fen);
+    parse_fen(b, fen);
     b->bb = bb_init(b->board);
-    b->current_state = 0;
-    b->white_to_move = true;
     b->check = false;
     b->move_array = NULL;
     b->movegen = init_movegen();
@@ -56,11 +54,9 @@ void reset_board_fen(Board *b, char *fen) {
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     free(b->board);
     free_bb(b->bb);
-    b->board = parse_fen(fen);
+    parse_fen(b, fen);
     b->bb = bb_init(b->board);
     b->check = false;
-    b->white_to_move = true;
-    b->current_state = 0;
     get_king_squares(b);
 }
 

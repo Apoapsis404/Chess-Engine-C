@@ -205,6 +205,93 @@ fail:
     return 1;
 }
 
+static int test_castling(void) {
+    Board *b = init_board_fen(FULL_CASTLE_FEN);
+    b->move_array = init_move_arrays(true);
+
+    printf("\nFull castle \n");
+
+    print_board(b->board);
+
+    binprintf(b->current_state & CASTLING_RIGHTS_MASK);
+
+    generate_moves(b);
+    
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    printf("\nCastling block by piece\n");
+    reset_board_fen(b, BLOCKED_BY_PIECE_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    printf("\nCastling blocked by check\n");
+    reset_board_fen(b, BLOCKED_BY_CHECK_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    printf("\nMoving through check \n");
+    reset_board_fen(b, MOVE_THROUGH_CHECK_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    printf("\nLost castling rights\n");
+    reset_board_fen(b, RIGHTS_LOST_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    printf("\nCastle ending in check\n");
+    reset_board_fen(b, ENDING_IN_CHECK_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
+
+    free_board(b);
+    return 0;
+}
+
 static const struct {
     const char *name;
     const char *description;
@@ -219,6 +306,7 @@ static const struct {
     { "move_gen", "Generate and print move boards", test_move_gen },
     { "pin", "Generate pin test positions", test_pin },
     { "check", "Generates check positions and checks if there is check", test_check},
+    { "castling", "Check if all castling rules are followed", test_castling},
 };
 
 static int print_available_tests(void) {

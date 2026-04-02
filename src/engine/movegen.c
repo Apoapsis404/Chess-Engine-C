@@ -2,6 +2,7 @@
 #include "calculate.h"
 #include "magic.h"
 #include "coordinate.h"
+//#include "ui/ui.h"
 
 #include <stdio.h>
 
@@ -493,6 +494,45 @@ BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
         | (get_rook_moves_from_square(square, move_array, occ) & rooksQueens);
 }
 
+bool calculate_castling_rights(Board *b, bool white_to_move, bool king_side) {
+    if (b->check) return false;
+    bool attacked = false;
+
+    BB occ = b->bb->occupiedBB;
+
+    if (white_to_move) {
+        if (king_side) {
+            attacked = ((attacks_to(occ, 5, b->bb->pieceBB, b->move_array) | 
+                         attacks_to(occ, 6, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 7, b->bb->pieceBB, b->move_array)) & 
+                         b->bb->pieceBB[BLACK]) != 0;
+            return (occ & WHITE_KINGSIDE_EMPTY) == 0 && !attacked;
+        } else {
+            attacked = ((attacks_to(occ, 0, b->bb->pieceBB, b->move_array) | 
+                         attacks_to(occ, 1, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 2, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 3, b->bb->pieceBB, b->move_array)) & 
+                         b->bb->pieceBB[BLACK]) != 0;
+            return (occ & WHITE_QUEENSIDE_EMPTY) == 0 && !attacked;
+        }
+    } else {
+        if (king_side) {
+            attacked = ((attacks_to(occ, 61, b->bb->pieceBB, b->move_array) | 
+                         attacks_to(occ, 62, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 63, b->bb->pieceBB, b->move_array)) & 
+                         b->bb->pieceBB[WHITE]) != 0;
+            return (occ & BLACK_KINGSIDE_EMPTY) == 0 && !attacked;
+        } else {
+            attacked = ((attacks_to(occ, 56, b->bb->pieceBB, b->move_array) | 
+                         attacks_to(occ, 57, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 58, b->bb->pieceBB, b->move_array) |
+                         attacks_to(occ, 59, b->bb->pieceBB, b->move_array)) & 
+                         b->bb->pieceBB[WHITE]) != 0;
+            return (occ & BLACK_QUEENSIDE_EMPTY) == 0 && !attacked;
+        }
+    }
+}
+
 void generate_king_moves(Board *b) {
     int piece_color = b->white_to_move ? WHITE : BLACK;
     int from, to;
@@ -512,16 +552,16 @@ void generate_king_moves(Board *b) {
         moves_bb &= ~get_pin_bb(-1, b);
     }
 
+    Move move;
     while (moves_bb != 0) {
         to = count_trailing_zeros(moves_bb);
 
-        //TODO: Handle enemy attacks
         if ((attacks_to(0ULL, to, b->bb->pieceBB, b->move_array) & opponent_bb) != 0){
             moves_bb &= moves_bb - 1;
             continue;
         }
 
-        Move move = construct_move(0, from, to);
+        move = construct_move(0, from, to);
         if((opponent_bb & (1ULL << to)) != 0) {
             set_flag(&move, CAPTURESFLAG);
         }
@@ -530,18 +570,49 @@ void generate_king_moves(Board *b) {
         moves_bb &= moves_bb - 1;
     }
 
-    //TODO: Handle Castling
+    // Castling
+    if (b->white_to_move) {
+        if ((b->current_state & CASTLING_RIGHTS_MASK & CASTLING_WHITE_KINGSIDE) != 0){
+            // White king Side
+            if (calculate_castling_rights(b, true, true)) {
+                move = construct_move(KINGCASLTEFLAG, from, 6);
+                add_move(b->movegen, move);
+            }
+        }
+        if ((b->current_state & CASTLING_RIGHTS_MASK & CASTLING_WHITE_QUEENSIDE) != 0){
+            // White queen Side
+            if (calculate_castling_rights(b, true, false)) {
+                move = construct_move(KINGCASLTEFLAG, from, 2);
+                add_move(b->movegen, move);
+            }
+        }
+    } else {
+        if ((b->current_state & CASTLING_RIGHTS_MASK & CASTLING_BLACK_KINGSIDE) != 0){
+            // Black king Side
+            if (calculate_castling_rights(b, false, true)) {
+                move = construct_move(KINGCASLTEFLAG, from, 62);
+                add_move(b->movegen, move);
+            }
+        }
+        if ((b->current_state & CASTLING_RIGHTS_MASK & CASTLING_BLACK_QUEENSIDE) != 0){
+            // Black queen Side
+            if (calculate_castling_rights(b, false, false)) {
+                move = construct_move(KINGCASLTEFLAG, from, 58);
+                add_move(b->movegen, move);
+            }
+        }
+    }
 
 }
 
 BB handle_check(Board *b) {
     BB cpieces = 0ULL;
     int king_square = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
-    BB attacks = attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array);
+    BB attacks = attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
     int attack_from_square = count_trailing_zeros(attacks);
 
     cpieces |= b->move_array->triangle_inbetween[triangular_index(king_square, attack_from_square)];
-
+    
     attacks &= attacks - 1;
     // If there are remaining attacks it is a double check and only king moves are allowed
     if (attacks != 0) {

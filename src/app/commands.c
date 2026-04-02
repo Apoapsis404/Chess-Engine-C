@@ -25,10 +25,6 @@ typedef struct {
     const char *help;
 } command_def_t;
 
-static int bstring_equal(BString token, const char *command) {
-    size_t len = strlen(command);
-    return token.count == len && strncmp(token.string, command, len) == 0;
-}
 
 static void handle_fen(BString bs, Board *b){
     (void)bs;
@@ -190,7 +186,7 @@ static int handle_reset_cmd(BString args, ui_t *ui){
     if (ui->b->board != NULL){
         free(ui->b->board);
     }
-    ui->b->board = parse_fen(DEFAULTFEN);
+    parse_fen(ui->b, DEFAULTFEN);
     log_message(INFO, "EVAL", "Resetting board!");
     return 0;
 }

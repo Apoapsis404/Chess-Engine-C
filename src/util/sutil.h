@@ -45,6 +45,7 @@ BString bstring_next(BString *bs, char delim);
 
 int char_in_string(String *s, char c);
 int char_in_bstring(BString *s, char c);
+int bstring_equal(BString token, const char *command);
 
 
 void bstring_print(BString *bs, char end);
