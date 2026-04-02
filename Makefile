@@ -1,6 +1,7 @@
 CC = gcc
 CFLAGS = -g -Wall -Wextra -Isrc -Isrc/engine -Isrc/logging -Isrc/util
 LDFLAGS = -g
+MAKEFLAGS += -j4
 
 SRC_DIR = src
 APP_DIR = $(SRC_DIR)/app

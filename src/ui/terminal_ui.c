@@ -1,10 +1,23 @@
 #include "ui.h"
+
+
+#ifdef _WIN32
+#include <windows.h>
+#else
 #include <sys/ioctl.h>
 #include <unistd.h>
+#endif
 #include <stdlib.h>
 #include <inttypes.h>
 
 int get_terminal_size(size_t *width, size_t *height) {
+#ifdef _WIN32
+    CONSOLE_SCREEN_BUFFER_INFO csbi;
+    if (!GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) return 1;
+    *width = csbi.dwSize.X;
+    *height = csbi.dwSize.y;
+    return 0;
+#else
     struct winsize w;
 
     if (ioctl(STDOUT_FILENO, TIOCGWINSZ, &w) == -1) {
@@ -15,10 +28,15 @@ int get_terminal_size(size_t *width, size_t *height) {
     *width = w.ws_col;
     *height = w.ws_row;
     return 0;
+#endif
 }
 
 void clear_screen(void) {
+#ifdef _WIN32
+    system("cls");
+#else
     system("clear");
+#endif
 }
 
 int print_terminal_size(void) {

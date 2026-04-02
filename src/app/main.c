@@ -128,7 +128,7 @@ int main(int argc, char **argv) {
     ui_t *ui = malloc(sizeof(ui_t));
     ui->b = b;
     ui->bb = 0ULL;
-    ui->clear = false;
+    ui->clear = true;
     ui->draw_bb = true;
 
     repl(ui);
