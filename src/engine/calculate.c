@@ -53,7 +53,7 @@ BB pawn_attacks(BB pawn_bb, int color) {
     if (color == WHITE) {
         return shift_northeast(pawn_bb) | shift_northwest(pawn_bb);
     } else {
-        return shift_southwest(pawn_bb) | shift_southwest(pawn_bb);
+        return shift_southwest(pawn_bb) | shift_southeast(pawn_bb);
     }
 }
 

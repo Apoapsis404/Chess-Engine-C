@@ -23,6 +23,11 @@
 #define ENDING_IN_CHECK_FEN "2r5/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
 #define ROOK_THROUGH_CHECK_FEN "r3k2r/8/8/8/2b5/8/8/R3K2R w KQkq - 0 1"
 
+//En Passant FENs
+#define STANDARD_ENPASSANT_FEN "8/8/8/8/2pP4/8/8/K1k5 b - d3 0 1"
+#define MULTIPLE_ENPASSANT_FEN "k7/8/8/3PpP2/8/8/8/K7 w - e6 0 1"
+#define DISCOVERED_CHECK_ENPASSANT_FEN "7k/6b1/8/4pP2/8/8/8/K7 w - e6 0 1"
+
 #define PAWN_PIN_FEN "3rq2k/8/8/8/7b/8/4PP2/4K3"
 #define POS_4_FEN "r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1"
 

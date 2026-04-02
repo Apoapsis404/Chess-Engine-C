@@ -66,9 +66,10 @@ BB in_between(int sq1, int sq2){
 }
 
 BB calculate_enpassantbb(int file, bool white_to_move)  {
-    (void)file;
-    (void)white_to_move;
-    return 0ULL;
+    if (file == -1) return 0ULL;
+    int rank = white_to_move ? 5 : 2;
+    int sq = rank * 8 + file;
+    return 1ULL << sq;
 }
 
 void log_bb(log_level_t level, const char* module, BB bb){

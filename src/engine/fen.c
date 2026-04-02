@@ -100,7 +100,9 @@ int parse_fen(Board *b, char* fen_str){
 
     token = bstring_next(&fen, ' ');
     if (!bstring_equal(token, "-")) {
-        en_passant = file_from_square_name(token.string);
+        en_passant = file_from_square_name(token.string) + 1;
+    } else {
+        en_passant = 0;
     }
 
     token = bstring_next(&fen, ' ');

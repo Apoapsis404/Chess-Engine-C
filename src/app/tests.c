@@ -13,6 +13,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 extern PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int from_sq, int to_sq);
 
@@ -57,6 +58,51 @@ static int test_log(void){
     log_message(ERROR, "TEST_LOG", "Testing ERROR");
     log_message(FATAL, "TEST_LOG", "Testing FATAL");
     return 0;
+}
+
+static int test_generate_moves_from_fen(const char *name, const char *fen, const char **must_have, size_t must_have_count, const char **must_not_have, size_t must_not_have_count) {
+    printf("[TEST_%s] Running %s\n", name, fen);
+    Board *b = init_board_fen((char *)fen);
+    b->move_array = init_move_arrays(true);
+
+    generate_moves(b);
+    printf("[TEST_%s] Total moves: %zu\n", name, b->movegen->move_count);
+
+    bool success = true;
+    for (size_t i = 0; i < must_have_count; i++) {
+        bool found = false;
+        for (size_t j = 0; j < b->movegen->move_count; j++) {
+            String mov = move_to_string(b->movegen->moves[j]);
+            if (strcmp(mov.string, must_have[i]) == 0) {
+                found = true;
+            }
+            free_string(&mov);
+            if (found) break;
+        }
+        if (!found) {
+            printf("[TEST_%s] Missing expected move: %s\n", name, must_have[i]);
+            success = false;
+        }
+    }
+
+    for (size_t i = 0; i < must_not_have_count; i++) {
+        bool found = false;
+        for (size_t j = 0; j < b->movegen->move_count; j++) {
+            String mov = move_to_string(b->movegen->moves[j]);
+            if (strcmp(mov.string, must_not_have[i]) == 0) {
+                found = true;
+            }
+            free_string(&mov);
+            if (found) break;
+        }
+        if (found) {
+            printf("[TEST_%s] Forbidden move found: %s\n", name, must_not_have[i]);
+            success = false;
+        }
+    }
+
+    free_board(b);
+    return success ? 0 : 1;
 }
 
 static int test_magic(void) {
@@ -145,18 +191,25 @@ static int test_move_gen(void) {
 }
 
 static int test_pin(void) {
-    Board *b = init_board_fen(PIN_FEN);
-    b->move_array = init_move_arrays(true);
+    const char *white_must[] = { "a1b1" };
+    const char *white_must_not[] = { "d1d2" };
 
-    print_board(b->board);
+    const char *black_fen = "3k4/3p4/8/8/8/8/8/3R1K2 b - - 0 1";
+    const char *black_must[] = { "d8e8", "d7d6" };
+    const char *black_must_not[] = { };
 
-    generate_moves(b);
-    
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
+    if (test_generate_moves_from_fen("PIN_WHITE", PIN_FEN,
+                                     white_must, 1,
+                                     white_must_not, 1) != 0) {
+        return 1;
+    }
 
-    free_board(b);
+    if (test_generate_moves_from_fen("PIN_BLACK", black_fen,
+                                     black_must, 1,
+                                     black_must_not, 1) != 0) {
+        return 1;
+    }
+
     return 0;
 }
 
@@ -206,99 +259,44 @@ fail:
 }
 
 static int test_castling(void) {
-    Board *b = init_board_fen(FULL_CASTLE_FEN);
-    b->move_array = init_move_arrays(true);
+    const char *white_must[] = { "e1g1", "e1c1" };
+    const char *black_must[] = { "e8g8", "e8c8" };
 
-    printf("\nFull castle \n");
+    int res = test_generate_moves_from_fen("CASTLING_WHITE", FULL_CASTLE_FEN,
+                                           white_must, 2,
+                                           NULL, 0);
+    if (res != 0) return res;
 
-    print_board(b->board);
+    const char *black_fen = "r3k2r/8/8/8/8/8/8/4K3 b kq - 0 1";
+    res = test_generate_moves_from_fen("CASTLING_BLACK", black_fen,
+                                       black_must, 2,
+                                       NULL, 0);
+    return res;
+}
 
-    generate_moves(b);
-    
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
+static int test_en_passant(void) {
+    const char *must_standard[] = { "c4d3" };
+    const char *must_multiple[] = { "d5e6", "f5e6" };
+    const char *must_not_discovered[] = { "f5e6" };
 
-    dump_moves(b->movegen);
+    if (test_generate_moves_from_fen("ENPASSANT_STANDARD", STANDARD_ENPASSANT_FEN,
+                                     must_standard, 1,
+                                     NULL, 0) != 0) {
+        return 1;
+    }
 
-    printf("\nCastling block by piece\n");
-    reset_board_fen(b, BLOCKED_BY_PIECE_FEN);
+    if (test_generate_moves_from_fen("ENPASSANT_MULTIPLE", MULTIPLE_ENPASSANT_FEN,
+                                     must_multiple, 2,
+                                     NULL, 0) != 0) {
+        return 1;
+    }
 
-    print_board(b->board);
+    if (test_generate_moves_from_fen("ENPASSANT_DISCOVERED", DISCOVERED_CHECK_ENPASSANT_FEN,
+                                     NULL, 0,
+                                     must_not_discovered, 1) != 0) {
+        return 1;
+    }
 
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-
-    printf("\nCastling blocked by check\n");
-    reset_board_fen(b, BLOCKED_BY_CHECK_FEN);
-
-    print_board(b->board);
-
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-
-    printf("\nMoving through check \n");
-    reset_board_fen(b, MOVE_THROUGH_CHECK_FEN);
-
-    print_board(b->board);
-
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-
-    printf("\nLost castling rights\n");
-    reset_board_fen(b, RIGHTS_LOST_FEN);
-
-    print_board(b->board);
-
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-
-    printf("\nCastle ending in check\n");
-    reset_board_fen(b, ENDING_IN_CHECK_FEN);
-
-    print_board(b->board);
-
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-
-    printf("\nRook through attacked square\n");
-    reset_board_fen(b, ROOK_THROUGH_CHECK_FEN);
-
-    print_board(b->board);
-
-    generate_moves(b);
-    
-    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
-    print_board(board_of_moves);
-    free(board_of_moves);
-
-    dump_moves(b->movegen);
-    free_board(b);
     return 0;
 }
 
@@ -317,6 +315,7 @@ static const struct {
     { "pin", "Generate pin test positions", test_pin },
     { "check", "Generates check positions and checks if there is check", test_check},
     { "castling", "Check if all castling rules are followed", test_castling},
+    { "en_passant", "Test en passant moves including discovered check", test_en_passant},
 };
 
 static int print_available_tests(void) {

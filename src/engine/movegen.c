@@ -5,6 +5,7 @@
 //#include "ui/ui.h"
 
 #include <stdio.h>
+#include <string.h>
 
 movegen_t *init_movegen() {
     movegen_t *movegen = malloc(sizeof(*movegen));
@@ -243,11 +244,65 @@ void double_push(BB double_push_bb, Board *b) {
     }
 }
 
-void handle_en_passant(int from, int en_passant_rank, BB en_passant_bb) {
-    (void)from;
-    (void)(en_passant_bb);
-    (void)(en_passant_rank);
-    log_message(WARNING, "MOVEGEN", "En passant not implemented!");
+BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {    occ &= ~(1ULL << square);    BB knights, kings, bishopsQueens, rooksQueens;
+    knights = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
+    kings = piece_bb[WHITEKING] | piece_bb[BLACKKING];
+    rooksQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+    bishopsQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+    rooksQueens |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
+    bishopsQueens |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
+
+    return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
+        | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
+        | (move_array->knight_moves[square] & knights)
+        | (move_array->king_moves[square] & kings)
+        | (get_bishop_moves_from_square(square, move_array, occ) & bishopsQueens)
+        | (get_rook_moves_from_square(square, move_array, occ) & rooksQueens);
+}
+
+void handle_en_passant(int from, BB en_passant_bb, Board *b) {
+    int to = count_trailing_zeros(en_passant_bb);
+    int captured_sq = to + (b->white_to_move ? -8 : 8);
+
+    // Check if in check, only allow if to is attacked by checking piece
+    if (b->check && ((1ULL << to) & b->movegen->checking_pieces) == 0) {
+        return;
+    }
+
+    // Simulate the move to check for discovered check
+    BB new_occupied = b->bb->occupiedBB;
+    BB new_piece_bb[16];
+    memcpy(new_piece_bb, b->bb->pieceBB, sizeof(BB) * 16);
+
+    int color = b->white_to_move ? WHITE : BLACK;
+    int pawn_piece = color | PAWN;
+    int captured_piece = (b->white_to_move ? BLACK : WHITE) | PAWN;
+
+    // Remove capturing pawn from from
+    new_occupied ^= (1ULL << from);
+    new_piece_bb[pawn_piece] ^= (1ULL << from);
+
+    // Remove captured pawn from captured_sq
+    new_occupied ^= (1ULL << captured_sq);
+    new_piece_bb[captured_piece] ^= (1ULL << captured_sq);
+
+    // Place capturing pawn on to
+    new_occupied ^= (1ULL << to);
+    new_piece_bb[pawn_piece] ^= (1ULL << to);
+
+    // Check if king is attacked
+    int king_sq = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
+    BB attackers = attacks_to(new_occupied, king_sq, new_piece_bb, b->move_array);
+    BB opponent_pieces = new_piece_bb[b->white_to_move ? BLACK : WHITE];
+
+    if ((attackers & opponent_pieces) != 0) {
+        // King in check, illegal
+        return;
+    }
+
+    // Legal, add the move
+    Move move = construct_move(ENPASSANTCAPTUREFLAG, from, to);
+    add_move(b->movegen, move);
 }
 
 void pawn_captures(BB pawns_bb, BB *attacks_bb, BB opponent_bb, int promotion_rank, int en_passant_rank, int en_passant_file, bool white_to_move, Board *b) {
@@ -262,7 +317,7 @@ void pawn_captures(BB pawns_bb, BB *attacks_bb, BB opponent_bb, int promotion_ra
 
         en_passant_bb = attacks_bb[from] & calculate_enpassantbb(en_passant_file, white_to_move);
         if (en_passant_bb != 0 && rank_from_idx(from) == en_passant_rank) {
-            handle_en_passant(from, en_passant_rank, en_passant_bb);
+            handle_en_passant(from, en_passant_bb, b);
         }
 
         //TODO: Handle check
@@ -475,23 +530,6 @@ void generate_queen_moves(Board *b) {
         }
         queen_bb &= queen_bb - 1;
     }
-}
-
-BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
-    BB knights, kings, bishopsQueens, rooksQueens;
-    knights = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
-    kings = piece_bb[WHITEKING] | piece_bb[BLACKKING];
-    rooksQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
-    bishopsQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
-    rooksQueens |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
-    bishopsQueens |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
-
-    return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
-        | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
-        | (move_array->knight_moves[square] & knights)
-        | (move_array->king_moves[square] & kings)
-        | (get_bishop_moves_from_square(square, move_array, occ) & bishopsQueens)
-        | (get_rook_moves_from_square(square, move_array, occ) & rooksQueens);
 }
 
 bool calculate_castling_rights(Board *b, bool white_to_move, bool king_side) {
