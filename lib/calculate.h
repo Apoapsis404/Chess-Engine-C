@@ -19,10 +19,14 @@ typedef struct move_arrays {
     magic_entry_t bishop_magic_entries[64];
     sliding_piece_attack rook_attacks[64];
     sliding_piece_attack bishop_attacks[64];
+    BB triangle_inbetween[65*64/2];
 } move_arrays;
 
 move_arrays* init_move_arrays(bool read_in_calcs);
 void free_move_arrays(move_arrays* move_array);
+
+BB get_inbetween_inclusive(int sq1, int sq2, move_arrays *move_array);
+
 
 int save_calcs(char *filename, move_arrays *move_array);
 int save_magics(char *filename, move_arrays *move_array);

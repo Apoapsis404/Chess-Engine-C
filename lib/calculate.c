@@ -104,6 +104,33 @@ void calculate_all_bishop_attacks(move_arrays *move_array, magic_entry_t *bishop
     }
 }
 
+int triangular_index(int sq1, int sq2) {
+    int d = sq1 - sq2;
+    d &= d >> 31;
+    sq2 += d;
+    sq1 -= d;
+    sq2 *= sq2 ^ 127;
+    return (sq2 >> 1) + sq1;
+}
+
+void calculate_all_inbetween(move_arrays *move_array) {
+    int sq1, sq2, tri_idx;
+
+    for(int i = 0; i < 65*64/2; i++) {
+        move_array->triangle_inbetween[i] = 0ULL;
+    }
+
+    for(sq1 = 0; sq1 < 64; sq1++) {
+        
+        for(sq2 = 0; sq2 < 64; sq2++) {
+            tri_idx = triangular_index(sq1, sq2);
+            if(move_array->triangle_inbetween[tri_idx] != 0ULL) continue;
+
+            move_array->triangle_inbetween[tri_idx] = in_between(sq1, sq2);
+        }
+    }
+}
+
 #define ARRAY_SIZE 64
 
 #define OPEN_FILE_ERROR -1
@@ -272,7 +299,17 @@ move_arrays* init_move_arrays(bool read_in_calcs){
     calculate_all_rook_attacks(move_array, move_array->rook_magic_entries);
     calculate_all_bishop_attacks(move_array, move_array->bishop_magic_entries);
 
+    calculate_all_inbetween(move_array);
+
     log_time_stop(DEBUG, "CALC", &time_it);
 
     return move_array;
+}
+
+BB get_inbetween(int sq1, int sq2, move_arrays *move_array) {
+    return move_array->triangle_inbetween[triangular_index(sq1, sq2)];
+}
+
+BB get_inbetween_inclusive(int sq1, int sq2, move_arrays *move_array){
+    return get_inbetween(sq1, sq2, move_array) | 1ULL << sq1 | 1ULL << sq2;
 }

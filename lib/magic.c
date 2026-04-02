@@ -199,7 +199,6 @@ magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
     BB occupancies[array_size];
     BB attacks[array_size];
     BB used_attacks[array_size];
-    bool used[array_size];
 
     bool is_error = false;
     bool fail = false;
@@ -232,17 +231,12 @@ magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
 
         for(idx =  0; idx < array_size; idx++) {
             used_attacks[idx] = 0ULL;
-            used[idx] = false;
         }
     
         for (idx = 0, fail = false; !fail && idx < bits; idx++){
             magic_idx = transform_key(occupancies[idx], magic, relevant_bits);
-            if (!used[magic_idx]) {
-                used[magic_idx] = true;
-                used_attacks[magic_idx] = attacks[idx];
-            } else if (used_attacks[magic_idx] != attacks[idx]) {
-                fail = true;
-            }
+            if (used_attacks[magic_idx] == 0ULL) used_attacks[magic_idx] = attacks[idx];
+            else if(used_attacks[magic_idx] != attacks[idx]) fail = true;
         }
         if (!fail) {
             entry.magic = magic;

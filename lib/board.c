@@ -14,6 +14,11 @@ Board* init_board_empty(){
     return b;
 }
 
+void get_king_squares(Board *b) {
+    b->king_square[0] = count_trailing_zeros(b->bb->pieceBB[WHITEKING]);
+    b->king_square[1] = count_trailing_zeros(b->bb->pieceBB[BLACKKING]);
+}
+
 Board* init_board_fen(char* fen){
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     Board* b = malloc(sizeof(Board));
@@ -21,7 +26,9 @@ Board* init_board_fen(char* fen){
     b->bb = bb_init(b->board);
     b->current_state = 0;
     b->white_to_move = true;
+    b->move_array = NULL;
     b->movegen = init_movegen();
+    get_king_squares(b);
     return b;
 }
 

@@ -409,12 +409,30 @@ void test_move_gen(Board *b) {
     generate_knight_moves(b);
     generate_rook_moves(b);
     generate_bishop_moves(b);
+    generate_queen_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, BISHOP, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
 }
+
+void test_pin() {
+    Board *b = init_board_fen(PIN_FEN);
+    b->move_array = init_move_arrays(true);   
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    free_board(b);
+}
+
+
 
 int main(void) {
     load_config("lib/logging/config.cfg");
@@ -442,7 +460,9 @@ int main(void) {
     //test_calc();
 
 
-    test_move_gen(b);
+    //test_move_gen(b);
+
+    test_pin();
 
     //test_log();
 

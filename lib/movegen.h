@@ -3,10 +3,12 @@
 
 #include "move.h"
 #include "board.h"
+#include "bitboard.h"
 
 
 typedef struct movegen_t {
     size_t move_count;
+    BB pin_bb;
     Move moves[255];
 } movegen_t;
 
@@ -18,5 +20,9 @@ void generate_king_moves(Board *b);
 void generate_knight_moves(Board *b);
 void generate_rook_moves(Board *b);
 void generate_bishop_moves(Board *b);
+void generate_queen_moves(Board *b);
+int generate_moves(Board *b);
+
+int count_trailing_zeros(BB bb);
 
 #endif //MOVEGEN_H;

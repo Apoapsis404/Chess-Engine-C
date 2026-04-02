@@ -8,6 +8,13 @@
 // Dynamic String functions
 #define STRING_SIZE_INIT 4
 
+#ifndef BS_Fmt
+#define BS_Fmt "%.*s"
+#endif //BS_Fmt
+#ifndef BS_Arg
+#define BS_Arg(bs) (int) (bs).count, (bs).string
+#endif //BS_Arg
+
 typedef struct {
     char *string;
     size_t count;
