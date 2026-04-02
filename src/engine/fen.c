@@ -17,7 +17,7 @@ PIECE* parse_fen(char* fen){
     int file = 0;
     int rank = 7;
 
-    PIECE* board = calloc(sizeof(PIECE), 64);
+    PIECE* board = calloc(64, sizeof(PIECE));
 
     for(int i = 0; i < fen_len; ++i) {
         char cur = fen[i];

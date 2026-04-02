@@ -13,7 +13,7 @@ void get_whitebb(BitBoard *bb){
 }
 
 void get_piecebb(BitBoard *bb, PIECE *board){
-    bb->pieceBB = calloc(sizeof(BB), 15);
+    bb->pieceBB = calloc(15, sizeof(BB));
     for (int i = 0; i < 64; ++i) {
         if (board[i] != 0){
             bb->pieceBB[board[i]] |= 1UL << i;
@@ -32,12 +32,12 @@ void get_emptybb(BitBoard *bb){
 }
 
 BitBoard *bb_init(PIECE *board){
-    BitBoard *bb = calloc(sizeof(BitBoard), 1);
+    BitBoard *bb = calloc(1, sizeof(BitBoard));
 
     get_piecebb(bb, board);
     get_occupiedbb(bb);
     get_emptybb(bb);
-    bb->AttackedSquareBB = calloc(sizeof(bb), 2);
+    bb->AttackedSquareBB = calloc(2, sizeof(bb));
     return bb;
 }
 

@@ -15,7 +15,7 @@ int get_terminal_size(size_t *width, size_t *height) {
     CONSOLE_SCREEN_BUFFER_INFO csbi;
     if (!GetConsoleScreenBufferInfo(GetStdHandle(STD_OUTPUT_HANDLE), &csbi)) return 1;
     *width = csbi.dwSize.X;
-    *height = csbi.dwSize.y;
+    *height = csbi.dwSize.Y;
     return 0;
 #else
     struct winsize w;
