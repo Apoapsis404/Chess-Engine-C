@@ -116,7 +116,8 @@ int main(int argc, char **argv) {
     log_message(INFO, "MAIN", "Started!");
 
     if (argc > 1 && strcmp(argv[1], "test") == 0) {
-        int result = run_tests();
+        const char *selected_test = (argc > 2 ? argv[2] : NULL);
+        int result = run_tests(selected_test);
         log_message(INFO, "MAIN", "Exiting after tests");
         close_logging();
         return result;

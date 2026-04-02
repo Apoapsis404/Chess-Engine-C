@@ -173,26 +173,66 @@ static const struct {
     { "pin", "Generate pin test positions", test_pin },
 };
 
-int run_tests(void) {
+static int print_available_tests(void) {
+    const size_t count = sizeof(test_cases) / sizeof(test_cases[0]);
+
+    printf("Available tests:\n");
+    for (size_t i = 0; i < count; ++i) {
+        printf("  %s - %s\n", test_cases[i].name, test_cases[i].description);
+    }
+    return 0;
+}
+
+int run_tests(const char *test_name) {
     const size_t count = sizeof(test_cases) / sizeof(test_cases[0]);
     int failures = 0;
 
-    printf("Running %zu tests...\n", count);
-    for (size_t i = 0; i < count; ++i) {
-        printf("[%zu/%zu] %s - %s... ", i + 1, count, test_cases[i].name, test_cases[i].description);
-        fflush(stdout);
+    if (test_name != NULL && strcmp(test_name, "all") == 0) {
+        test_name = NULL;
+    }
 
-        int result = test_cases[i].fn();
+    if (test_name == NULL) {
+        printf("Running %zu tests...\n", count);
+        for (size_t i = 0; i < count; ++i) {
+            printf("[%zu/%zu] %s - %s... ", i + 1, count, test_cases[i].name, test_cases[i].description);
+            fflush(stdout);
+
+            int result = test_cases[i].fn();
+            if (result != 0) {
+                failures += 1;
+                printf("FAIL (code %d)\n", result);
+            } else {
+                printf("PASS\n");
+            }
+        }
+    } else {
+        size_t selected_index = count;
+        for (size_t i = 0; i < count; ++i) {
+            if (strcmp(test_cases[i].name, test_name) == 0) {
+                selected_index = i;
+                break;
+            }
+        }
+
+        if (selected_index == count) {
+            fprintf(stderr, "Unknown test: %s\n", test_name);
+            print_available_tests();
+            return 1;
+        }
+
+        printf("Running specific test: %s - %s... ", test_cases[selected_index].name, test_cases[selected_index].description);
+        fflush(stdout);
+        int result = test_cases[selected_index].fn();
         if (result != 0) {
-            failures += 1;
             printf("FAIL (code %d)\n", result);
+            failures = 1;
         } else {
             printf("PASS\n");
         }
     }
 
     if (failures == 0) {
-        printf("All tests passed.\n");
+        printf("All requested tests passed.\n");
         return 0;
     }
 
