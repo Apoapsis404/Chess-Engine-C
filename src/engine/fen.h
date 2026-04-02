@@ -15,12 +15,13 @@
 #define DOUBLE_CHECK_FEN "k7/8/8/8/4b3/6nR/8/7K"
 #define DIRECT_CHECK_FEN "4k3/8/8/8/8/8/8/r3K3"
 
-#define FULL_CASTLE_FEN "4k3/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
+#define FULL_CASTLE_FEN "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
 #define BLOCKED_BY_PIECE_FEN "r3k2r/8/8/8/8/8/8/Rn2K1BR w KQkq - 0 1"
 #define BLOCKED_BY_CHECK_FEN "4r3/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
 #define MOVE_THROUGH_CHECK_FEN "r3k2r/8/b7/8/8/8/8/R3K2R w KQkq - 0 1"
 #define RIGHTS_LOST_FEN "r3k2r/8/8/8/8/8/8/R3K2R w kq - 0 1"
 #define ENDING_IN_CHECK_FEN "2r5/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
+#define ROOK_THROUGH_CHECK_FEN "r3k2r/8/8/8/2b5/8/8/R3K2R w KQkq - 0 1"
 
 #define PAWN_PIN_FEN "3rq2k/8/8/8/7b/8/4PP2/4K3"
 #define POS_4_FEN "r3k2r/Pppp1ppp/1b3nbN/nP6/BBP1P3/q4N2/Pp1P2PP/R2Q1RK1"

@@ -503,14 +503,11 @@ bool calculate_castling_rights(Board *b, bool white_to_move, bool king_side) {
     if (white_to_move) {
         if (king_side) {
             attacked = ((attacks_to(occ, 5, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 6, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 7, b->bb->pieceBB, b->move_array)) & 
+                         attacks_to(occ, 6, b->bb->pieceBB, b->move_array)) &
                          b->bb->pieceBB[BLACK]) != 0;
             return (occ & WHITE_KINGSIDE_EMPTY) == 0 && !attacked;
         } else {
-            attacked = ((attacks_to(occ, 0, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 1, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 2, b->bb->pieceBB, b->move_array) |
+            attacked = ((attacks_to(occ, 2, b->bb->pieceBB, b->move_array) |
                          attacks_to(occ, 3, b->bb->pieceBB, b->move_array)) & 
                          b->bb->pieceBB[BLACK]) != 0;
             return (occ & WHITE_QUEENSIDE_EMPTY) == 0 && !attacked;
@@ -518,14 +515,11 @@ bool calculate_castling_rights(Board *b, bool white_to_move, bool king_side) {
     } else {
         if (king_side) {
             attacked = ((attacks_to(occ, 61, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 62, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 63, b->bb->pieceBB, b->move_array)) & 
+                         attacks_to(occ, 62, b->bb->pieceBB, b->move_array)) &
                          b->bb->pieceBB[WHITE]) != 0;
             return (occ & BLACK_KINGSIDE_EMPTY) == 0 && !attacked;
         } else {
-            attacked = ((attacks_to(occ, 56, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 57, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 58, b->bb->pieceBB, b->move_array) |
+            attacked = ((attacks_to(occ, 58, b->bb->pieceBB, b->move_array) |
                          attacks_to(occ, 59, b->bb->pieceBB, b->move_array)) & 
                          b->bb->pieceBB[WHITE]) != 0;
             return (occ & BLACK_QUEENSIDE_EMPTY) == 0 && !attacked;

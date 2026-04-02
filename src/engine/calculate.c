@@ -121,7 +121,6 @@ void calculate_all_inbetween(move_arrays *move_array) {
     }
 
     for(sq1 = 0; sq1 < 64; sq1++) {
-        
         for(sq2 = 0; sq2 < 64; sq2++) {
             tri_idx = triangular_index(sq1, sq2);
             if(move_array->triangle_inbetween[tri_idx] != 0ULL) continue;

@@ -213,8 +213,6 @@ static int test_castling(void) {
 
     print_board(b->board);
 
-    binprintf(b->current_state & CASTLING_RIGHTS_MASK);
-
     generate_moves(b);
     
     PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
@@ -288,6 +286,18 @@ static int test_castling(void) {
 
     dump_moves(b->movegen);
 
+    printf("\nRook through attacked square\n");
+    reset_board_fen(b, ROOK_THROUGH_CHECK_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, KING, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    dump_moves(b->movegen);
     free_board(b);
     return 0;
 }
