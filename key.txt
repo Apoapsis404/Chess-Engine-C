@@ -1,4 +1,0 @@
-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
-
-For testing with valgrind
-Valgrind: valgrind --log-file="valoutput.txt" ./chess
