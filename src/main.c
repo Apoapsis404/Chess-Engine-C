@@ -1,15 +1,15 @@
-#include "../lib/logging/lutil.h"
-#include "../lib/bitboard.h"
-#include "../lib/board.h"
-#include "../lib/piece.h"
-#include "../lib/move.h"
-#include "../lib/fen.h"
-#include "../lib/coordinate.h"
-#include "../lib/sutil.h"
-#include "../lib/calculate.h"
-#include "../lib/magic.h"
-#include "../lib/movegen.h"
-#include "ui.h"
+#include "logging/lutil.h"
+#include "bitboard.h"
+#include "board.h"
+#include "piece.h"
+#include "move.h"
+#include "fen.h"
+#include "coordinate.h"
+#include "sutil.h"
+#include "calculate.h"
+#include "magic.h"
+#include "movegen.h"
+#include "ui/ui.h"
 #include "commands.h"
 #include "tests.h"
 
@@ -130,7 +130,7 @@ int main(int argc, char **argv) {
     ui->clear = false;
     ui->draw_bb = true;
 
-    //repl(ui);
+    repl(ui);
     
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){

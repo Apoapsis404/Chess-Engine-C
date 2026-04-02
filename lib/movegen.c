@@ -5,8 +5,6 @@
 
 #include <stdio.h>
 
-#include "../src/ui.h"
-
 movegen_t *init_movegen() {
     movegen_t *movegen = malloc(sizeof(*movegen));
     if (movegen == NULL) {

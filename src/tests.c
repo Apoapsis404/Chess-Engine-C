@@ -1,14 +1,14 @@
 #include "tests.h"
 #include "commands.h"
-#include "ui.h"
-#include "../lib/logging/lutil.h"
-#include "../lib/board.h"
-#include "../lib/fen.h"
-#include "../lib/move.h"
-#include "../lib/movegen.h"
-#include "../lib/calculate.h"
-#include "../lib/magic.h"
-#include "../lib/sutil.h"
+#include "ui/ui.h"
+#include "logging/lutil.h"
+#include "board.h"
+#include "fen.h"
+#include "move.h"
+#include "movegen.h"
+#include "calculate.h"
+#include "magic.h"
+#include "sutil.h"
 
 #include <stdio.h>
 #include <stdlib.h>
