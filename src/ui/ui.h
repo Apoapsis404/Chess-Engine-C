@@ -1,7 +1,7 @@
 #ifndef UI_UI_H
 #define UI_UI_H
 
-#include "../lib/board.h"
+#include "../engine/board.h"
 
 #include <stdio.h>
 #include <stdbool.h>

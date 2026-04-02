@@ -5,7 +5,7 @@
 #include "move.h"
 #include "bitboard.h"
 #include "calculate.h"
-#include "./logging/lutil.h"
+#include "logging/lutil.h"
 
 #define EN_PASSANT_FILE_MASK 0b11110000
 #define CASTLING_RIGHTS_MASK 0b00001111

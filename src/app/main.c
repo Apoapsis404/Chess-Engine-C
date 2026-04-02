@@ -1,14 +1,14 @@
 #include "logging/lutil.h"
-#include "bitboard.h"
-#include "board.h"
-#include "piece.h"
-#include "move.h"
-#include "fen.h"
-#include "coordinate.h"
-#include "sutil.h"
-#include "calculate.h"
-#include "magic.h"
-#include "movegen.h"
+#include "engine/bitboard.h"
+#include "engine/board.h"
+#include "engine/piece.h"
+#include "engine/move.h"
+#include "engine/fen.h"
+#include "engine/coordinate.h"
+#include "util/sutil.h"
+#include "engine/calculate.h"
+#include "engine/magic.h"
+#include "engine/movegen.h"
 #include "ui/ui.h"
 #include "commands.h"
 #include "tests.h"
@@ -109,7 +109,7 @@ int repl(ui_t *ui){
 }
 
 int main(int argc, char **argv) {
-    load_config("lib/logging/config.cfg");
+    load_config("src/logging/config.cfg");
     
     log_empty_line();
 

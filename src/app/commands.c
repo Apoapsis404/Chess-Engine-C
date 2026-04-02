@@ -1,12 +1,12 @@
 #include "commands.h"
 #include "ui/ui.h"
 #include "logging/lutil.h"
-#include "board.h"
-#include "fen.h"
-#include "move.h"
-#include "coordinate.h"
-#include "movegen.h"
-#include "sutil.h"
+#include "engine/board.h"
+#include "engine/fen.h"
+#include "engine/move.h"
+#include "engine/coordinate.h"
+#include "engine/movegen.h"
+#include "util/sutil.h"
 
 #include <string.h>
 

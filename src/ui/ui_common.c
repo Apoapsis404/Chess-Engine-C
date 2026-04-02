@@ -1,5 +1,5 @@
 #include "ui.h"
-#include "../lib/piece.h"
+#include "../engine/piece.h"
 
 #include <stdio.h>
 
