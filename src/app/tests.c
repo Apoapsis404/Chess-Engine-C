@@ -165,11 +165,13 @@ static int test_check(void) {
     print_board(b->board);
 
     generate_moves(b);
+
     
     PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
 
+    if (b->check == false) return 1;
     reset_board_fen(b, DOUBLE_CHECK_FEN);
 
     print_board(b->board);
@@ -180,6 +182,7 @@ static int test_check(void) {
     print_board(board_of_moves);
     free(board_of_moves);
 
+    if (b->check == false) return 1;
     free_board(b);
     return 0;
 }

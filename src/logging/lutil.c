@@ -70,6 +70,12 @@ static void handle_log_file(const char *value) {
 
 // Config
 void load_config(const char* config_file) {
+
+    if (config_file == NULL) {
+        init_logging();
+        return;
+    }
+
     static const cfg_entry_t log_config_entries[] = {
         {"log_level", handle_log_level},
         {"log_file", handle_log_file},
@@ -150,7 +156,6 @@ static void trim_log_file_to_entity_limit(void) {
         lines[lines_count++] = line;
 
         if (is_log_start_line(buffer)) {
-            printf("is log start!\n");
             if (entity_count >= entity_cap) {
                 size_t new_cap = entity_cap ? entity_cap * 2 : 16;
                 size_t *new_entity = realloc(entity_starts, new_cap * sizeof(size_t));

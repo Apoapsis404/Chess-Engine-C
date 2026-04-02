@@ -9,6 +9,7 @@ ENGINE_DIR = $(SRC_DIR)/engine
 LOG_DIR = $(SRC_DIR)/logging
 UI_DIR = $(SRC_DIR)/ui
 UTIL_DIR = $(SRC_DIR)/util
+BUILD_DIR = build
 UI ?= terminal
 
 APP_SRCS = $(wildcard $(APP_DIR)/*.c)
@@ -26,7 +27,7 @@ UTIL_SRCS = $(wildcard $(UTIL_DIR)/*.c)
 LOG_SRCS = $(wildcard $(LOG_DIR)/*.c)
 
 SRCS = $(APP_SRCS) $(UI_COMMON) $(UI_SRC) $(ENGINE_SRCS) $(UTIL_SRCS) $(LOG_SRCS)
-OBJS = $(SRCS:.c=.o)
+OBJS = $(patsubst src/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 TARGET = chess
 
 all: $(TARGET)
@@ -34,13 +35,12 @@ all: $(TARGET)
 $(TARGET): $(OBJS)
 	$(CC) $(LDFLAGS) -o $@ $^
 
-%.o: %.c
+$(BUILD_DIR)/%.o: src/%.c
+	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OBJS) $(TARGET)
-	rm -f src/*.o src/ui.o
-	rm -f src/app/*.o src/engine/*.o src/util/*.o src/logging/*.o src/ui/*.o
+	rm -rf $(BUILD_DIR) $(TARGET)
 
 .PHONY: all clean
 
