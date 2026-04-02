@@ -9,6 +9,7 @@
 typedef struct movegen_t {
     size_t move_count;
     BB pin_bb;
+    BB checking_pieces;
     Move moves[255];
 } movegen_t;
 

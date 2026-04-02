@@ -126,18 +126,20 @@ static int test_move_gen(void) {
     print_bb(b->bb->emptyBB);
     printf("\n");
 
-    generate_pawn_moves(b);
-    generate_king_moves(b);
-    generate_knight_moves(b);
-    generate_rook_moves(b);
-    generate_bishop_moves(b);
-    generate_queen_moves(b);
+    // generate_pawn_moves(b);
+    // generate_king_moves(b);
+    // generate_knight_moves(b);
+    // generate_rook_moves(b);
+    // generate_bishop_moves(b);
+    // generate_queen_moves(b);
 
-    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, BISHOP, NONE, -1, -1);
+    generate_moves(b);
+
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
     dump_moves(b->movegen);
-
+    printf("fen: %s\n", get_fen(b).string);
     free_board(b);
     return 0;
 }
@@ -159,6 +161,7 @@ static int test_pin(void) {
 }
 
 static int test_check(void) {
+    // Test first direct check
     Board *b = init_board_fen(DIRECT_CHECK_FEN);
     b->move_array = init_move_arrays(true);
 
@@ -166,25 +169,40 @@ static int test_check(void) {
 
     generate_moves(b);
 
+    printf("\nChecking pieces: \n");
+    print_bb(b->movegen->checking_pieces);
+    printf("\n");
     
     PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
 
-    if (b->check == false) return 1;
+    dump_moves(b->movegen);
+
+    if (b->check == false) goto fail;
+
+    // Testing double check
     reset_board_fen(b, DOUBLE_CHECK_FEN);
 
     print_board(b->board);
 
     generate_moves(b);
+    printf("\nChecking pieces: \n");
+    print_bb(b->movegen->checking_pieces);
+    printf("\n");
     
     board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
 
-    if (b->check == false) return 1;
+    dump_moves(b->movegen);
+    if (b->check == false) goto fail;
     free_board(b);
     return 0;
+
+fail:
+    free_board(b);
+    return 1;
 }
 
 static const struct {

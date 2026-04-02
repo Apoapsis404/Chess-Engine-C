@@ -12,6 +12,7 @@ movegen_t *init_movegen() {
     }
     movegen->move_count = 0;
     movegen->pin_bb = 0ULL;
+    movegen->checking_pieces = 0ULL;
     return movegen;
 }
 
@@ -185,6 +186,10 @@ void single_push(BB push_bb, int promotion_rank, Board *b) {
         from = count_trailing_zeros(push_bb);
         to = b->white_to_move ? from + 8 : from - 8;
         // todo: Check check if()
+        if (b->check && ((1ULL << to) & b->movegen->checking_pieces) == 0) {
+            push_bb &= push_bb - 1;
+            continue;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from, b->move_array) & (1ULL << to)) == 0){
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
@@ -220,6 +225,10 @@ void double_push(BB double_push_bb, Board *b) {
         to = from + to_offset;
         
         //TODO: Add check
+        if (b->check && ((1ULL << to) & b->movegen->checking_pieces) == 0) {
+            double_push_bb &= double_push_bb - 1;
+            continue;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from, b->move_array) & (1ULL << to)) == 0){
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
@@ -256,6 +265,9 @@ void pawn_captures(BB pawns_bb, BB *attacks_bb, BB opponent_bb, int promotion_ra
         }
 
         //TODO: Handle check
+        if (b->check) {
+            attacks &= b->movegen->checking_pieces;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
@@ -330,6 +342,9 @@ void generate_knight_moves(Board *b) {
         moves_bb = (b->move_array->knight_moves[from] & ~friendly_pieces);
 
         //TODO: Handle Check
+        if (b->check) {
+            moves_bb &= b->movegen->checking_pieces;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_KNIGHT", "Knight at square %s is pinned", square_name_from_idx(from).string);
@@ -363,6 +378,9 @@ void generate_rook_moves(Board *b) {
         moves_bb = (get_rook_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
         
         //TODO: Handle check
+        if (b->check) {
+            moves_bb &= b->movegen->checking_pieces;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_ROOK", "Rook at square %s is pinned", square_name_from_idx(from).string);
@@ -396,6 +414,9 @@ void generate_bishop_moves(Board *b) {
         moves_bb = (get_bishop_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
         
         //TODO: Handle check
+        if (b->check) {
+            moves_bb &= b->movegen->checking_pieces;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_BISHOP", "Bishop at square %s is pinned", square_name_from_idx(from).string);
@@ -431,6 +452,9 @@ void generate_queen_moves(Board *b) {
                     ~friendly_pieces;
          
         //TODO: Handle Check
+        if (b->check) {
+            moves_bb &= b->movegen->checking_pieces;
+        }
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_QUEEN", "Queen at square %s is pinned", square_name_from_idx(from).string);
@@ -482,7 +506,11 @@ void generate_king_moves(Board *b) {
 
     from = count_trailing_zeros(king_bb);
     BB moves_bb = b->move_array->king_moves[from] & ~piece_bb;
-    //TODO: Handle Check
+    
+    if (b->check) {
+        moves_bb ^= b->movegen->checking_pieces & moves_bb;
+        moves_bb &= ~get_pin_bb(-1, b);
+    }
 
     while (moves_bb != 0) {
         to = count_trailing_zeros(moves_bb);
@@ -506,12 +534,41 @@ void generate_king_moves(Board *b) {
 
 }
 
+BB handle_check(Board *b) {
+    BB cpieces = 0ULL;
+    int king_square = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
+    BB attacks = attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array);
+    int attack_from_square = count_trailing_zeros(attacks);
+
+    cpieces |= b->move_array->triangle_inbetween[triangular_index(king_square, attack_from_square)];
+
+    attacks &= attacks - 1;
+    // If there are remaining attacks it is a double check and only king moves are allowed
+    if (attacks != 0) {
+        printf("It is a double check!\n");
+        return 0ULL;
+    }
+    return cpieces;
+}
+
 
 int generate_moves(Board *b) {
-    b->movegen->move_count = 0;
-
-    b->movegen->pin_bb = get_pin_bb(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], b);
+    log_message(INFO, "MOVEGEN", "Generating moves");
     
+    // Reset movegen
+    b->movegen->move_count = 0;
+    b->check = false;
+    b->movegen->checking_pieces = UINT64_MAX;
+
+    // Check pins and check
+    b->movegen->pin_bb = get_pin_bb(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], b);
+
+    if ((attacks_to(b->bb->occupiedBB, b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
+        logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
+        b->check = true;
+        b->movegen->checking_pieces = handle_check(b);
+    }
+
     generate_pawn_moves(b);
     generate_king_moves(b);
     generate_knight_moves(b);
