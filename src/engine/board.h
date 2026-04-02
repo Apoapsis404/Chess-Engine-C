@@ -30,6 +30,7 @@ Board* init_board_empty();
 Board* init_board_fen(char* fen);
 
 void free_board(Board* b);
+void reset_board_fen(Board *b, char *fen);
 
 PIECE make_move(Board* b, Move move);
 

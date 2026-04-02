@@ -32,6 +32,7 @@ Board* init_board_fen(char* fen){
     return b;
 }
 
+
 void free_board(Board* b){
     if (b->board != NULL){
         free(b->board);
@@ -50,7 +51,13 @@ void free_board(Board* b){
     free(b);
 }
 
-
+void reset_board_fen(Board *b, char *fen) {
+    logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
+    free(b->board);
+    free_bb(b->bb);
+    b->board = parse_fen(fen);
+    b->bb = bb_init(b->board);
+}
 
 /* Assumes legal move. Check before calling this function!
    Returns the piece (value) of the piece that was in the

@@ -158,6 +158,32 @@ static int test_pin(void) {
     return 0;
 }
 
+static int test_check(void) {
+    Board *b = init_board_fen(DIRECT_CHECK_FEN);
+    b->move_array = init_move_arrays(true);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    reset_board_fen(b, DOUBLE_CHECK_FEN);
+
+    print_board(b->board);
+
+    generate_moves(b);
+    
+    board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
+    print_board(board_of_moves);
+    free(board_of_moves);
+
+    free_board(b);
+    return 0;
+}
+
 static const struct {
     const char *name;
     const char *description;
@@ -171,6 +197,7 @@ static const struct {
     { "read_magic", "Read magic bitboards from disk", test_read_magic },
     { "move_gen", "Generate and print move boards", test_move_gen },
     { "pin", "Generate pin test positions", test_pin },
+    { "check", "Generates check positions and checks if there is check", test_check},
 };
 
 static int print_available_tests(void) {
@@ -194,7 +221,7 @@ int run_tests(const char *test_name) {
     if (test_name == NULL) {
         printf("Running %zu tests...\n", count);
         for (size_t i = 0; i < count; ++i) {
-            printf("[%zu/%zu] %s - %s... ", i + 1, count, test_cases[i].name, test_cases[i].description);
+            printf("[%zu/%zu] %s - %s... \n", i + 1, count, test_cases[i].name, test_cases[i].description);
             fflush(stdout);
 
             int result = test_cases[i].fn();
@@ -220,7 +247,7 @@ int run_tests(const char *test_name) {
             return 1;
         }
 
-        printf("Running specific test: %s - %s... ", test_cases[selected_index].name, test_cases[selected_index].description);
+        printf("Running specific test: %s - %s... \n", test_cases[selected_index].name, test_cases[selected_index].description);
         fflush(stdout);
         int result = test_cases[selected_index].fn();
         if (result != 0) {

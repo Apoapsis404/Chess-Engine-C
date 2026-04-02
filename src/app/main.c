@@ -108,11 +108,10 @@ int repl(ui_t *ui){
     return 0;
 }
 
-int main(int argc, char **argv) {
+int main(int argc, const char **argv) {
+    set_log_args(argc, argv);
     load_config("src/logging/config.cfg");
     
-    log_empty_line();
-
     log_message(INFO, "MAIN", "Started!");
 
     if (argc > 1 && strcmp(argv[1], "test") == 0) {

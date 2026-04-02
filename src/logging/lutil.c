@@ -1,12 +1,111 @@
 #include "lutil.h"
 
 #include <assert.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
 
 #define MAX_MODULES 10
 #define MODULE_NAME_LENGTH 20
+
+typedef struct log_t {
+    FILE *log_file;
+    char *log_filename;
+
+    log_level_t current_log_level;
+    bool clear_file;
+
+    int max_entities;
+
+    const char *config_file;
+
+    // Program args
+    int argc;
+    const char **argv;
+} log_t;
+
+static log_t log = {
+    .log_file = NULL,
+    .log_filename = "",
+
+    .current_log_level = DEBUG,
+    .clear_file = true,
+    .max_entities = 0,
+
+    .config_file = "",
+
+    .argc = 0,
+    .argv = NULL,
+};
+
+void set_log_file(const char *filename) {
+    if (!filename) return;
+    // Make a copy to avoid dangling pointer issues
+    log.log_filename = strdup(filename);
+}
+
+#define CONFIG_SECTION_START "# LOG CONFIG START"
+#define CONFIG_SECTION_END "# LOG CONFIG END"
+
+static void trim_whitespace(char *str) {
+    if (!str) return;
+    // trim left
+    char *start = str;
+    while (*start && isspace((unsigned char)*start)) start++;
+    if (start != str) memmove(str, start, strlen(start) + 1);
+
+    // trim right
+    char *end = str + strlen(str);
+    while (end > str && isspace((unsigned char)*(end - 1))) end--;
+    *end = '\0';
+}
+
+static void handle_log_level(const char *value) {
+    if (strcmp(value, "DEBUG") == 0) set_log_level(DEBUG);
+    else if (strcmp(value, "INFO") == 0) set_log_level(INFO);
+    else if (strcmp(value, "WARNING") == 0) set_log_level(WARNING);
+    else if (strcmp(value, "ERROR") == 0) set_log_level(ERROR);
+    else if (strcmp(value, "FATAL") == 0) set_log_level(FATAL);
+}
+
+static void handle_clear_file(const char *value) {
+    if (strcmp(value, "false") == 0) log.clear_file = false;
+    else if (strcmp(value, "true") == 0) log.clear_file = true;
+}
+
+static void handle_max_log_entities(const char *value) {
+    int max_ent = atoi(value);
+    set_log_entity_limit(max_ent);
+}
+
+static void handle_log_file(const char *value) {
+    set_log_file(value);
+}
+
+typedef void (*config_handler_t)(const char *value);
+
+typedef struct {
+    const char *key;
+    config_handler_t handler;
+} config_entry_t;
+
+static const config_entry_t log_config_entries[] = {
+    {"log_level", handle_log_level},
+    {"log_file", handle_log_file},
+    {"clear_file", handle_clear_file},
+    {"max_log_entities", handle_max_log_entities},
+};
+
+static void apply_log_config(const char *key, const char *value) {
+    for (size_t i = 0; i < sizeof(log_config_entries) / sizeof(log_config_entries[0]); ++i) {
+        if (strcmp(key, log_config_entries[i].key) == 0) {
+            log_config_entries[i].handler(value);
+            return;
+        }
+    }
+    // Unknown key; ignore to allow extensibility
+}
 
 //Config
 void load_config(const char* config_file){
@@ -15,38 +114,57 @@ void load_config(const char* config_file){
         fprintf(stderr, "Failed to open config file: %s\n", config_file);
         return;
     }
-    
-    bool clear_file = false;
 
-    char line[128];
+    bool in_config = false;
+    char line[256];
     while(fgets(line, sizeof(line), file)){
-        if (strncmp(line, "log_level=", 10) == 0){
-            char* level = line + 10;
-            level[strcspn(level, "\n")] = '\0';
-            if (strcmp(level, "DEBUG") == 0) set_log_level(DEBUG);
-            else if (strcmp(level, "INFO") == 0) set_log_level(INFO);
-            else if (strcmp(level, "WARNING") == 0) set_log_level(WARNING);
-            else if (strcmp(level, "ERROR") == 0) set_log_level(ERROR);
-        } else if (strncmp(line, "log_file=", 9) == 0) {
-            char* filename = line + 9;
-            filename[strcspn(filename, "\n")] = '\0';
-            init_logging(filename, clear_file);
-        } else if (strncmp(line, "clear_file=", 11) == 0){
-            char* val = line + 11;
-            val[strcspn(val, "\n")] = '\0';
-            if (strcmp(val, "false") == 0) clear_file = false;
-            else if (strcmp(val, "true") == 0) clear_file = true;
+        char buffer[256];
+        strncpy(buffer, line, sizeof(buffer));
+        buffer[sizeof(buffer)-1] = '\0';
+
+        trim_whitespace(buffer);
+        if (buffer[0] == '\0') continue; // empty line
+
+        if (strncmp(buffer, CONFIG_SECTION_START, strlen(CONFIG_SECTION_START)) == 0) {
+            in_config = true;
+            continue;
         }
+
+        if (strncmp(buffer, CONFIG_SECTION_END, strlen(CONFIG_SECTION_END)) == 0) {
+            break;
+        }
+
+        if (!in_config) continue;
+
+        if (buffer[0] == '#') continue;
+
+        char *equals = strchr(buffer, '=');
+        if (!equals) continue;
+
+        *equals = '\0';
+        char *key = buffer;
+        char *value = equals + 1;
+
+        trim_whitespace(key);
+        trim_whitespace(value);
+
+        if (key[0] == '\0' || value[0] == '\0') continue;
+
+        apply_log_config(key, value);
     }
 
+    init_logging();
     fclose(file);
 }
 
 //Log Level
-static log_level_t current_log_level = INFO;
-
 void set_log_level(log_level_t level){
-    current_log_level = level;
+    log.current_log_level = level;
+}
+
+void set_log_args(int argc, const char **argv) {
+    log.argc = argc;
+    log.argv = argv;
 }
 
 void set_log_level_from_string(const char* level){
@@ -57,26 +175,166 @@ void set_log_level_from_string(const char* level){
     else if (strcmp(level , "FATAL") == 0) set_log_level(FATAL); 
 }
 
-//FILE
-static FILE* log_file = NULL;
+void set_log_entity_limit(int max_entities){
+    if(max_entities < 0) {
+        max_entities = 0;
+    }
+    log.max_entities = max_entities;
+}
 
-void init_logging(const char* filename, bool clear_file){
-    if(!filename){
-        log_file = stdout;
+static bool is_log_start_line(const char *line) {
+    return line && strstr(line, "LOG START") != NULL;
+}
+
+static void trim_log_file_to_entity_limit(void) {
+    if (!log.log_filename || log.log_filename[0] == '\0') return;
+    if (log.clear_file) return;
+    if (log.max_entities <= 0) return;
+
+    FILE *input = fopen(log.log_filename, "r");
+    if (!input) return;
+
+    char **lines = NULL;
+    size_t lines_cap = 0;
+    size_t lines_count = 0;
+    size_t *entity_starts = NULL;
+    size_t entity_cap = 0;
+    size_t entity_count = 0;
+
+    char buffer[1024];
+    while (fgets(buffer, sizeof(buffer), input)) {
+        char *line = strdup(buffer);
+        if (!line) continue;
+
+        if (lines_count >= lines_cap) {
+            size_t new_cap = lines_cap ? lines_cap * 2 : 256;
+            char **new_lines = realloc(lines, new_cap * sizeof(char*));
+            if (!new_lines) {
+                free(line);
+                break;
+            }
+            lines = new_lines;
+            lines_cap = new_cap;
+        }
+        lines[lines_count++] = line;
+
+        if (is_log_start_line(buffer)) {
+            printf("is log start!\n");
+            if (entity_count >= entity_cap) {
+                size_t new_cap = entity_cap ? entity_cap * 2 : 16;
+                size_t *new_entity = realloc(entity_starts, new_cap * sizeof(size_t));
+                if (!new_entity) break;
+                entity_starts = new_entity;
+                entity_cap = new_cap;
+            }
+            entity_starts[entity_count++] = lines_count - 1;
+        }
+    }
+    fclose(input);
+
+    if (entity_count <= (size_t)log.max_entities) {
+        for (size_t i = 0; i < lines_count; ++i) free(lines[i]);
+        free(lines);
+        free(entity_starts);
         return;
     }
-    if (clear_file) log_file = fopen(filename, "w");
-    else log_file = fopen(filename, "a");
-    if(!log_file){
-        fprintf(stderr, "Failed to open log file: %s\n", filename);
+
+    size_t remove = entity_count - log.max_entities;
+    size_t keep_start_line = entity_starts[remove];
+
+    FILE *output = fopen(log.log_filename, "w");
+    if (output) {
+        for (size_t i = keep_start_line; i < lines_count; ++i) {
+            fputs(lines[i], output);
+        }
+        fclose(output);
+    }
+
+    for (size_t i = 0; i < lines_count; ++i) free(lines[i]);
+    free(lines);
+    free(entity_starts);
+}
+
+//FILE
+
+void log_header(int argc, const char **argv) {
+    if (!log.log_file) {
+        fprintf(stderr, "Logging not initialized.\n");
+        return;
+    }
+
+    time_t now = time(NULL);
+    struct tm* local_time = localtime(&now);
+
+    fprintf(log.log_file, "==================== LOG START ====================\n");
+    fprintf(log.log_file, "Timestamp: %04d-%02d-%02d %02d:%02d:%02d\n",
+            local_time->tm_year + 1900, local_time->tm_mon + 1,
+            local_time->tm_mday, local_time->tm_hour,
+            local_time->tm_min, local_time->tm_sec);
+
+    if (argc > 0 && argv) {
+        fprintf(log.log_file, "Program arguments (%d):", argc);
+        for (int i = 0; i < argc; ++i) {
+            fprintf(log.log_file, " %s", argv[i] ? argv[i] : "(null)");
+        }
+        fprintf(log.log_file, "\n");
+    } else {
+        fprintf(log.log_file, "Program arguments: [none]\n");
+    }
+
+    fprintf(log.log_file, "===================================================\n");
+    fflush(log.log_file);
+}
+
+void log_footer(void) {
+    if (!log.log_file) {
+        fprintf(stderr, "Logging not initialized.\n");
+        return;
+    }
+
+    time_t now = time(NULL);
+    struct tm* local_time = localtime(&now);
+
+    fprintf(log.log_file, "===================== LOG END =====================\n");
+    fprintf(log.log_file, "Timestamp: %04d-%02d-%02d %02d:%02d:%02d\n",
+            local_time->tm_year + 1900, local_time->tm_mon + 1,
+            local_time->tm_mday, local_time->tm_hour,
+            local_time->tm_min, local_time->tm_sec);
+    fprintf(log.log_file, "===================================================\n");
+    fflush(log.log_file);
+}
+
+void init_logging(){
+    if(!log.log_filename || log.log_filename[0] == '\0'){
+        printf("[INFO] Logging on stdout!\n");
+        log.log_file = stdout;
+        log_header(log.argc, log.argv);
+        return;
+    }
+
+    if (!log.clear_file && log.max_entities > 0) {
+        trim_log_file_to_entity_limit();
+    }
+
+    if (log.clear_file) log.log_file = fopen(log.log_filename, "w");
+    else log.log_file = fopen(log.log_filename, "a");
+    if(!log.log_file){
+        fprintf(stderr, "Failed to open log file: %s\n", log.log_filename);
         exit(EXIT_FAILURE);
     }
+    log_empty_line();
+    log_header(log.argc, log.argv);
 }
 
 void close_logging(){
-    if(log_file && log_file != stdout){
-        fclose(log_file);
-        log_file = NULL;
+    if (log.log_file) {
+        log_footer();
+    }
+    if(log.log_file && log.log_file != stdout){
+        fclose(log.log_file);
+        log.log_file = NULL;
+        free(log.log_filename);
+        log.log_filename = NULL;
     }
 }
 
@@ -98,16 +356,13 @@ void log_time_stop(log_level_t level, const char* module, clock_t* time_it){
 }
 
 void log_empty_line(){
-    if (!log_file) {
-        fprintf(stderr, "Logging not initialized.\n");
+    if (!log.log_file) {
+        //fprintf(stderr, "Logging not initialized.\n");
+        printf("\n");
         return;
     }
-    fprintf(log_file, "\n");
-    fflush(log_file);
-}
-
-void log_message_header(){
-    return;
+    fprintf(log.log_file, "\n");
+    fflush(log.log_file);
 }
 
 void logf_message(log_level_t level, const char* module, const char* message, ...){
@@ -118,13 +373,13 @@ void logf_message(log_level_t level, const char* module, const char* message, ..
     time_t now = time(NULL);
     struct tm* local_time = localtime(&now);
 
-    fprintf(log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] ",
+    fprintf(log.log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] ",
             local_time->tm_year + 1900, local_time->tm_mon+1,
             local_time->tm_mday, local_time->tm_hour, local_time->tm_min,
             local_time->tm_sec, level_strings[level], module);
-    vfprintf(log_file, message, args);
-    fprintf(log_file, "\n");
-    fflush(log_file);
+    vfprintf(log.log_file, message, args);
+    fprintf(log.log_file, "\n");
+    fflush(log.log_file);
     va_end(args);
 }
 
@@ -134,11 +389,11 @@ void log_message(log_level_t level, const char* module, const char* message){
         return;
     }
 
-    if(level < current_log_level){
+    if(level < log.current_log_level){
         return;
     }
 
-    if (!log_file) {
+    if (!log.log_file) {
         fprintf(stderr, "Logging not initialized.\n");
         return;
     }
@@ -147,16 +402,16 @@ void log_message(log_level_t level, const char* module, const char* message){
     time_t now = time(NULL);
     struct tm* local_time = localtime(&now);
 
-    fprintf(log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
+    fprintf(log.log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
             local_time->tm_year + 1900, local_time->tm_mon+1,
             local_time->tm_mday, local_time->tm_hour, local_time->tm_min,
             local_time->tm_sec, level_strings[level], module, message);
     
-    fflush(log_file);
+    fflush(log.log_file);
 }
 
 /*
     FOR JSON!
-    fprintf(log_file, "{ \"timestamp\": %ld, \"level\": \"%s\", \"module\": \"%s\", \"message\": \"%s\" }\n",
+    fprintf(log.log_file, "{ \"timestamp\": %ld, \"level\": \"%s\", \"module\": \"%s\", \"message\": \"%s\" }\n",
             now, level_strings[level], module, text);
     */
