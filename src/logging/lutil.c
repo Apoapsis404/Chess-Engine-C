@@ -274,6 +274,13 @@ void close_logging(){
     }
 }
 
+void log_todo(const char* func_name){
+    logf_message(FATAL, "SYSTEM", "Function %s not yet implemented!", func_name);
+    close_logging();
+    exit(EXIT_FAILURE);
+}
+
+
 //TIMING
 void log_time_start(log_level_t level, const char* module, clock_t* time_it){
     *time_it = clock();

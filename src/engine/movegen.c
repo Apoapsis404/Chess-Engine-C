@@ -244,7 +244,13 @@ void double_push(BB double_push_bb, Board *b) {
     }
 }
 
-BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {    occ &= ~(1ULL << square);    BB knights, kings, bishopsQueens, rooksQueens;
+BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
+    if (square < 0 || square >= 64) {
+        logf_message(ERROR, "MOVEGEN", "Invalid square in attacks_to: %d", square);
+        return 0ULL;
+    }
+    occ &= ~(1ULL << square);
+    BB knights, kings, bishopsQueens, rooksQueens;
     knights = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
     kings = piece_bb[WHITEKING] | piece_bb[BLACKKING];
     rooksQueens = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
@@ -664,12 +670,18 @@ int generate_moves(Board *b) {
     b->movegen->checking_pieces = UINT64_MAX;
 
     // Check pins and check
-    b->movegen->pin_bb = get_pin_bb(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], b);
+    int king_square = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
+    if (king_square < 0 || king_square >= 64) {
+        logf_message(ERROR, "MOVEGEN", "Invalid king square: %d", king_square);
+        b->movegen->pin_bb = 0ULL;
+    } else {
+        b->movegen->pin_bb = get_pin_bb(king_square, b);
 
-    if ((attacks_to(b->bb->occupiedBB, b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
-        logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
-        b->check = true;
-        b->movegen->checking_pieces = handle_check(b);
+        if ((attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
+            logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
+            b->check = true;
+            b->movegen->checking_pieces = handle_check(b);
+        }
     }
 
     generate_pawn_moves(b);

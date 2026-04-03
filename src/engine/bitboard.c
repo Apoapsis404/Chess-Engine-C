@@ -1,5 +1,6 @@
 #include "bitboard.h"
 #include "logging/lutil.h"
+#include "engine/coordinate.h"
 
 #include <stdlib.h>
 #include <inttypes.h>
@@ -88,15 +89,10 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
     BB toBB = 1UL << get_to(move);
     BB from_to_BB = fromBB ^ toBB;
 
-    //log_bb(DEBUG, "BITBOARD", fromBB);
-    //log_bb(DEBUG, "BITBOARD", toBB);
-    //log_bb(DEBUG, "BITBOARD", from_to_BB);
-
     bb->pieceBB[piece] ^= from_to_BB;
     bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
 
     if(move_is_capture(move)){
-        log_message(DEBUG, "BITBOARD", "Move is capture");
         if(move_is_flag(move, ENPASSANTCAPTUREFLAG)){
             log_message(DEBUG, "BITBOARD", "Move is enpassant");
             int ep_pawn_idx = piece_is_color(piece, WHITE) ? get_to(move) - 8 : get_to(move) + 8;
@@ -113,10 +109,32 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
         bb->emptyBB ^= fromBB;
 
     } else {
-        log_message(DEBUG, "BITBOARD", "Move is not capture");
         bb->occupiedBB ^= from_to_BB;
         bb->emptyBB ^= from_to_BB;
     }
-
+    bool white_to_move = piece_is_color(piece, WHITE);
+    Move castle_move;
+    if (move_is_flag(move, KINGCASLTEFLAG)) {
+        if (white_to_move) {
+            //Moving rook on h1
+            castle_move = construct_move(0, h1, f1);
+            bb_make_move(bb, castle_move, WHITEROOK, NONE);
+        } else {
+            //Moving rook on h8
+            castle_move = construct_move(0, h8, f8);
+            bb_make_move(bb, castle_move, WHITEROOK, NONE);
+        }
+    }
+    if (move_is_flag(move, QUEENCASTLEFLAG)) {
+        if (white_to_move) {
+            //Moving rook on a1
+            castle_move = construct_move(0, a1, d1);
+            bb_make_move(bb, castle_move, BLACKROOK, NONE);
+        } else {
+            //Moving rook on a8
+            castle_move = construct_move(0, a8, d8);
+            bb_make_move(bb, castle_move, BLACKROOK, NONE);
+        }
+    }
     bb->AttackedSquareBB[piece_is_color(piece, WHITE) ? 0 : 1] &= ~bb->pieceBB[piece & COLORMASK];
 }

@@ -305,6 +305,9 @@ static int test_en_passant(void) {
     return 0;
 }
 
+static int test_make_move(void) {
+}
+
 static const struct {
     const char *name;
     const char *description;
@@ -321,6 +324,7 @@ static const struct {
     { "check", "Generates check positions and checks if there is check", test_check},
     { "castling", "Check if all castling rules are followed", test_castling},
     { "en_passant", "Test en passant moves including discovered check", test_en_passant},
+    { "make_move", "Test make move", test_make_move},
 };
 
 static int print_available_tests(void) {

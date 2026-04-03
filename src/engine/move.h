@@ -46,6 +46,8 @@ void set_flag(Move *move, int flag);
 
 int move_is_capture(Move move);
 int move_is_flag(Move move, int flag);
+int move_is_promotion(Move move);
+int move_get_promotion(Move move);
 
 String get_from_square_name(Move move);
 String get_to_square_name(Move move);

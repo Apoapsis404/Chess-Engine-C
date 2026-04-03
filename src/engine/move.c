@@ -35,6 +35,14 @@ int move_is_flag(Move move, int flag) {
     return (get_flags(move)) == flag;
 }
 
+int move_is_promotion(Move move) {
+    return (get_flags(move) & 0b1000) == 0b1000;
+}
+
+int move_get_promotion(Move move){
+    return (get_flags(move & PROMOTIONMASK));
+}
+
 int invalid_from_to(int from, int to) {
     int invalid = 0;
 
@@ -70,9 +78,6 @@ Move string_to_move(BString move_string){
     printf("From: %d, To: %d\n", from, to);
 
     if(invalid_from_to(from, to)) return NULLMOVE;
-
-    //printf("Move: ");
-    //bstring_println(&move_string);
 
     return construct_move(0, from, to);
 }
