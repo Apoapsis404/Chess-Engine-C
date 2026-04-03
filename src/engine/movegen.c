@@ -271,8 +271,8 @@ void handle_en_passant(int from, BB en_passant_bb, Board *b) {
 
     // Simulate the move to check for discovered check
     BB new_occupied = b->bb->occupiedBB;
-    BB new_piece_bb[16];
-    memcpy(new_piece_bb, b->bb->pieceBB, sizeof(BB) * 16);
+    BB new_piece_bb[15];
+    memcpy(new_piece_bb, b->bb->pieceBB, sizeof(BB) * 15);
 
     int color = b->white_to_move ? WHITE : BLACK;
     int pawn_piece = color | PAWN;

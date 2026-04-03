@@ -192,6 +192,7 @@ static const char *resolve_fen_input(const char *arg) {
         {"DIRECT_CHECK_FEN", DIRECT_CHECK_FEN},
         {"PAWN_PIN_FEN", PAWN_PIN_FEN},
         {"POS_4_FEN", POS_4_FEN},
+        {"DCERF", DISCOVERED_CHECK_ENPASSANT_ROOK_FEN},
     };
 
     for (size_t i = 0; i < sizeof(presets) / sizeof(presets[0]); ++i) {

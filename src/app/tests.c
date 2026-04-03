@@ -297,6 +297,11 @@ static int test_en_passant(void) {
         return 1;
     }
 
+    if (test_generate_moves_from_fen("ENPASSANT_DISCOVERED_ROOK", DISCOVERED_CHECK_ENPASSANT_ROOK_FEN,
+                                     NULL, 0,
+                                     must_not_discovered, 1) != 0) {
+        return 1;
+    }
     return 0;
 }
 
