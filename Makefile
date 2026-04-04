@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Isrc -Isrc/engine -Isrc/logging -Isrc/util
+CFLAGS = -g -Wall -Wextra -Isrc -Isrc/engine -Isrc/logging -Isrc/util -MMD -MP
 LDFLAGS = -g
 MAKEFLAGS += -j4
 
@@ -9,6 +9,7 @@ ENGINE_DIR = $(SRC_DIR)/engine
 LOG_DIR = $(SRC_DIR)/logging
 UI_DIR = $(SRC_DIR)/ui
 UTIL_DIR = $(SRC_DIR)/util
+PERFT_DIR = $(SRC_DIR)/perft
 BUILD_DIR = build
 UI ?= terminal
 
@@ -25,9 +26,12 @@ endif
 ENGINE_SRCS = $(wildcard $(ENGINE_DIR)/*.c)
 UTIL_SRCS = $(wildcard $(UTIL_DIR)/*.c)
 LOG_SRCS = $(wildcard $(LOG_DIR)/*.c)
+PERFT_SRCS = $(wildcard $(PERFT_DIR)/*.c)
 
-SRCS = $(APP_SRCS) $(UI_COMMON) $(UI_SRC) $(ENGINE_SRCS) $(UTIL_SRCS) $(LOG_SRCS)
+
+SRCS = $(APP_SRCS) $(UI_COMMON) $(UI_SRC) $(ENGINE_SRCS) $(UTIL_SRCS) $(LOG_SRCS) $(PERFT_SRCS) 
 OBJS = $(patsubst src/%.c, $(BUILD_DIR)/%.o, $(SRCS))
+DEPS = $(OBJS:.o=.d)
 TARGET = chess
 
 all: $(TARGET)
@@ -38,6 +42,8 @@ $(TARGET): $(OBJS)
 $(BUILD_DIR)/%.o: src/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(CFLAGS) -c $< -o $@
+
+-include $(DEPS)
 
 clean:
 	rm -rf $(BUILD_DIR) $(TARGET)

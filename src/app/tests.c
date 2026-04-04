@@ -3,6 +3,7 @@
 #include "ui/ui.h"
 #include "logging/lutil.h"
 #include "engine/board.h"
+#include "engine/coordinate.h"
 #include "engine/fen.h"
 #include "engine/move.h"
 #include "engine/movegen.h"
@@ -63,7 +64,6 @@ static int test_log(void){
 static int test_generate_moves_from_fen(const char *name, const char *fen, const char **must_have, size_t must_have_count, const char **must_not_have, size_t must_not_have_count) {
     printf("[TEST_%s] Running %s\n", name, fen);
     Board *b = init_board_fen((char *)fen);
-    b->move_array = init_move_arrays(true);
 
     generate_moves(b);
     printf("[TEST_%s] Total moves: %zu\n", name, b->movegen->move_count);
@@ -163,8 +163,6 @@ static int test_move_gen(void) {
     move = construct_move(0, 7, 28);
     make_move(b, move);
 
-    b->move_array = init_move_arrays(true);
-
     printf("Printing board: \n");
     print_board(b->board);
     printf("\n");
@@ -216,7 +214,6 @@ static int test_pin(void) {
 static int test_check(void) {
     // Test first direct check
     Board *b = init_board_fen(DIRECT_CHECK_FEN);
-    b->move_array = init_move_arrays(true);
 
     print_board(b->board);
 
@@ -306,6 +303,149 @@ static int test_en_passant(void) {
 }
 
 static int test_make_move(void) {
+    bool success = true;
+    Board *b;
+    Move move;
+    PIECE captured;
+    int ep_file;
+
+    // Quiet pawn push on the initial position
+    b = init_board_fen((char *)DEFAULTFEN);
+    move = construct_move(0,
+                          idx_from_square_name((char *)"e2"),
+                          idx_from_square_name((char *)"e4"));
+    captured = make_move(b, move);
+    if (captured != NONE) {
+        printf("[TEST_MAKE_MOVE:PAWN_PUSH] Expected no capture for e2e4, got %d\n", captured);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"e2")] != NONE ||
+        b->board[idx_from_square_name((char *)"e4")] != (WHITEPAWN)) {
+        printf("[TEST_MAKE_MOVE:PAWN_PUSH] Pawn did not move correctly for e2e4\n");
+        success = false;
+    }
+    if (b->white_to_move != false) {
+        printf("[TEST_MAKE_MOVE:PAWN_PUSH] Turn did not flip after e2e4\n");
+        success = false;
+    }
+    if (((b->current_state & HALF_MOVE_CLOCK_MASK) >> 16) != 0) {
+        printf("[TEST_MAKE_MOVE:PAWN_PUSH] Half-move clock should reset after pawn move\n");
+        success = false;
+    }
+    free_board(b);
+
+    // Standard capture and half-move reset
+    b = init_board_fen((char *)"7k/8/8/3p4/4P3/8/8/4K3 w - - 0 1");
+    move = construct_move(CAPTURESFLAG,
+                          idx_from_square_name((char *)"e4"),
+                          idx_from_square_name((char *)"d5"));
+    captured = make_move(b, move);
+    if (captured != (BLACKPAWN)) {
+        printf("[TEST_MAKE_MOVE:CAPTURE] Expected capture of black pawn on d5, got %d\n", captured);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"d5")] != (WHITEPAWN) ||
+        b->board[idx_from_square_name((char *)"e4")] != NONE) {
+        printf("[TEST_MAKE_MOVE:CAPTURE] Capture result incorrect for e4d5\n");
+        success = false;
+    }
+    if (((b->current_state & HALF_MOVE_CLOCK_MASK) >> 16) != 0) {
+        printf("[TEST_MAKE_MOVE:CAPTURE] Half-move clock should reset after capture\n");
+        success = false;
+    }
+    free_board(b);
+
+    // En passant and double pawn push state handling
+    b = init_board_fen((char *)"7k/3p4/8/4P3/8/8/8/4K3 b - - 0 1");
+    move = construct_move(DOUBLEPAWNPUSHFLAG,
+                          idx_from_square_name((char *)"d7"),
+                          idx_from_square_name((char *)"d5"));
+    captured = make_move(b, move);
+    if (captured != NONE) {
+        printf("[TEST_MAKE_MOVE:DOUBLE_PAWN_PUSH] Unexpected capture for d7d5\n");
+        success = false;
+    }
+    ep_file = (b->current_state >> 4) & EN_PASSANT_FILE_MASK;
+    if (ep_file != file_from_square_name((char *)"d") + 1) {
+        printf("[TEST_MAKE_MOVE:DOUBLE_PAWN_PUSH] Expected en passant file 4 after d7d5, got %d\n", ep_file);
+        success = false;
+    }
+    move = construct_move(ENPASSANTCAPTUREFLAG,
+                          idx_from_square_name((char *)"e5"),
+                          idx_from_square_name((char *)"d6"));
+    captured = make_move(b, move);
+    if (captured != (BLACKPAWN)) {
+        printf("[TEST_MAKE_MOVE:EN_PASSANT] Expected en passant capture to return black pawn, got %d\n", captured);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"d5")] != NONE ||
+        b->board[idx_from_square_name((char *)"d6")] != (WHITEPAWN)) {
+        printf("[TEST_MAKE_MOVE:EN_PASSANT] En passant capture did not update squares correctly\n");
+        success = false;
+    }
+    if (((b->current_state >> 4) & EN_PASSANT_FILE_MASK) != 0) {
+        printf("[TEST_MAKE_MOVE:EN_PASSANT] En passant file should clear after capture\n");
+        success = false;
+    }
+    free_board(b);
+
+    // King-side castling rook movement and castling rights update
+    b = init_board_fen((char *)"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    move = construct_move(KINGCASLTEFLAG,
+                          idx_from_square_name((char *)"e1"),
+                          idx_from_square_name((char *)"g1"));
+    captured = make_move(b, move);
+    if (captured != NONE) {
+        printf("[TEST_MAKE_MOVE:CASTLING] Unexpected capture during castling\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g1")] != (WHITEKING) ||
+        b->board[idx_from_square_name((char *)"f1")] != (WHITEROOK) ||
+        b->board[idx_from_square_name((char *)"h1")] != NONE) {
+        printf("[TEST_MAKE_MOVE:CASTLING] King-side castling rook or king squares incorrect\n");
+        success = false;
+    }
+    if ((b->current_state & CASTLING_RIGHTS_MASK) & CASTLING_WHITE_KINGSIDE) {
+        printf("[TEST_MAKE_MOVE:CASTLING] White kingside castling right should be removed after castling\n");
+        success = false;
+    }
+    free_board(b);
+
+    // Promotion handling - quiet promotion
+    b = init_board_fen((char *)"8/6P1/8/8/8/8/8/4K2k w - - 0 1");
+    move = construct_move(QUEENPROMOTIONFLAG,
+                          idx_from_square_name((char *)"g7"),
+                          idx_from_square_name((char *)"g8"));
+    captured = make_move(b, move);
+    if (captured != NONE) {
+        printf("[TEST_MAKE_MOVE:PROMOTION] Expected no capture when promoting on empty g8, got %d\n", captured);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g8")] != (WHITEQUEEN) ||
+        b->board[idx_from_square_name((char *)"g7")] != NONE) {
+        printf("[TEST_MAKE_MOVE:PROMOTION] Promotion did not place white queen on g8 or clear g7\n");
+        success = false;
+    }
+    free_board(b);
+
+    // Promotion capture handling
+    b = init_board_fen((char *)"6r1/6P1/8/8/8/8/8/4K2k w - - 0 1");
+    move = construct_move(QUEENPROMOTIONFLAG,
+                          idx_from_square_name((char *)"g7"),
+                          idx_from_square_name((char *)"g8"));
+    captured = make_move(b, move);
+    if (captured != (BLACKROOK)) {
+        printf("[TEST_MAKE_MOVE:PROMOTION_CAPTURE] Expected capture of black rook on g8, got %d\n", captured);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g8")] != (WHITEQUEEN) ||
+        b->board[idx_from_square_name((char *)"g7")] != NONE) {
+        printf("[TEST_MAKE_MOVE:PROMOTION_CAPTURE] Promotion capture did not replace black rook with white queen correctly\n");
+        success = false;
+    }
+    free_board(b);
+
+    return success ? 0 : 1;
 }
 
 static const struct {

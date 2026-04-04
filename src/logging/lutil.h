@@ -24,8 +24,8 @@ void log_empty_line();
 void log_message(log_level_t level, const char* module, const char* text);
 void logf_message(log_level_t level, const char* module, const char* message, ...);
 
-#define TODO log_todo(__func__)
-void log_todo(const char* func_name);
+#define TODO log_todo(__func__, __FILE__, __LINE__)
+void log_todo(const char *func_name, const char *file_name, int line_number);
 
 void log_header(int argc, const char **argv);
 void log_footer(void);

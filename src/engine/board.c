@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+move_arrays *move_array = NULL;
+
 Board* init_board_empty(){
     Board* b = malloc(sizeof(Board));
     return b;
@@ -25,7 +27,9 @@ Board* init_board_fen(char* fen){
     parse_fen(b, fen);
     b->bb = bb_init(b->board);
     b->check = false;
-    b->move_array = NULL;
+
+    if (move_array == NULL) move_array = init_move_arrays(true);
+
     b->movegen = init_movegen();
     get_king_squares(b);
     return b;
@@ -39,9 +43,6 @@ void free_board(Board* b){
 
     if (b->bb != NULL) {
         free_bb(b->bb);
-    }
-    if (b->move_array != NULL) {
-        free_move_arrays(b->move_array);
     }
     if (b->movegen != NULL) {
         free_movegen(b->movegen);
@@ -128,6 +129,10 @@ PIECE make_move(Board* b, Move move){
     
     b->board[to] = piece;
     b->board[from] = NONE;
+
+    if ((piece & PIECEMASK) == KING) {
+        b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE] = to;
+    }
     
     b->current_state |= (en_passant_file << 4) | castling_rights;
 
@@ -149,9 +154,9 @@ PIECE make_move(Board* b, Move move){
 }
 
 /* Assumes legal move. Check before calling this function! */
-Board* copy_make(Board* b, Move move) {
+Board copy_make(Board* b, Move move) {
     make_move(b, move);
-    return b;
+    return *b;
 }
 
 void test_move() {

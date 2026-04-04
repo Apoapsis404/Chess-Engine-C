@@ -274,8 +274,8 @@ void close_logging(){
     }
 }
 
-void log_todo(const char* func_name){
-    logf_message(FATAL, "SYSTEM", "Function %s not yet implemented!", func_name);
+void log_todo(const char *func_name, const char *file_name, int line_number){
+    logf_message(FATAL, "SYSTEM", "Function %s in %s:%d not yet implemented!", func_name, file_name, line_number);
     close_logging();
     exit(EXIT_FAILURE);
 }

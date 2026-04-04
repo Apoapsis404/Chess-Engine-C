@@ -39,7 +39,7 @@ int count_trailing_zeros(BB bb) {
     return count;
 }
 
-BB get_rook_moves_from_square(int square, move_arrays *move_array, BB occupied_bb) {
+BB get_rook_moves_from_square(int square, BB occupied_bb) {
     magic_entry_t entry = move_array->rook_magic_entries[square];
     BB occupancy = (occupied_bb & entry.mask);
     occupancy *= entry.magic;
@@ -47,7 +47,7 @@ BB get_rook_moves_from_square(int square, move_arrays *move_array, BB occupied_b
     return move_array->rook_attacks[square].piece_attack[occupancy]; 
 }
 
-BB get_bishop_moves_from_square(int square, move_arrays *move_array, BB occupied_bb) {
+BB get_bishop_moves_from_square(int square, BB occupied_bb) {
     magic_entry_t entry = move_array->bishop_magic_entries[square];
     BB occupancy = (occupied_bb & entry.mask);
     occupancy *= entry.magic;
@@ -60,15 +60,15 @@ PINS
 */
 
 BB xray_rook_attacks(int square, Board *b, BB blockers) {
-    BB attacks = get_rook_moves_from_square(square, b->move_array, b->bb->occupiedBB);
+    BB attacks = get_rook_moves_from_square(square, b->bb->occupiedBB);
     blockers &= attacks;
-    return attacks ^ get_rook_moves_from_square(square, b->move_array, b->bb->occupiedBB ^ blockers);
+    return attacks ^ get_rook_moves_from_square(square, b->bb->occupiedBB ^ blockers);
 }
 
 BB xray_bishop_attacks(int square, Board *b, BB blockers) {
-    BB attacks = get_bishop_moves_from_square(square, b->move_array, b->bb->occupiedBB);
+    BB attacks = get_bishop_moves_from_square(square, b->bb->occupiedBB);
     blockers &= attacks;
-    return attacks ^ get_bishop_moves_from_square(square, b->move_array, b->bb->occupiedBB ^ blockers);
+    return attacks ^ get_bishop_moves_from_square(square, b->bb->occupiedBB ^ blockers);
 }
 
 BB get_bishop_pins(BB bishop_bb, Board *b, BB enemy_pieces, int king_square) {
@@ -83,7 +83,7 @@ BB get_bishop_pins(BB bishop_bb, Board *b, BB enemy_pieces, int king_square) {
         new_pin = xray_bishop_attacks(from, b, enemy_pieces);
         pin_bb |= new_pin;
         if (king_square != -1 && new_pin != 0 && (new_pin & (1ULL << king_square)) != 0) {
-            king_between |= get_inbetween_inclusive(from, king_square, b->move_array);
+            king_between |= get_inbetween_inclusive(from, king_square, move_array);
         }
         bishop_bb &= bishop_bb - 1;
     }
@@ -105,7 +105,7 @@ BB get_rook_pins(BB rook_bb, Board *b, BB enemy_pieces, int king_square) {
         new_pin = xray_rook_attacks(from, b, enemy_pieces);
         pin_bb |= new_pin;
         if (king_square != -1 && new_pin != 0 && (new_pin & (1ULL << king_square)) != 0) {
-            king_between |= get_inbetween_inclusive(from, king_square, b->move_array);
+            king_between |= get_inbetween_inclusive(from, king_square, move_array);
         }
         rook_bb &= rook_bb - 1;
     }
@@ -128,7 +128,7 @@ BB get_queen_pins(BB queen_bb, Board *b, BB enemy_pieces, int king_square) {
         new_pin |= xray_rook_attacks(from, b, enemy_pieces);
         pin_bb |= new_pin;
         if (king_square != -1 && new_pin != 0 && (new_pin & (1ULL << king_square)) != 0) {
-            king_between |= get_inbetween_inclusive(from, king_square, b->move_array);
+            king_between |= get_inbetween_inclusive(from, king_square, move_array);
         }
         queen_bb &= queen_bb - 1;
     }
@@ -138,11 +138,11 @@ BB get_queen_pins(BB queen_bb, Board *b, BB enemy_pieces, int king_square) {
     return (pin_bb & king_between) | king_between;
 }
 
-BB pinned(int king_square, int from, move_arrays *move_array) {
+BB pinned(int king_square, int from) {
     BB lines = (rank_from_idx(from) == rank_from_idx(king_square)) ||
                (file_from_idx(from) == file_from_idx(king_square)) ?
-               get_rook_moves_from_square(king_square, move_array, 0ULL) & get_rook_moves_from_square(from, move_array, 0ULL) :
-               get_bishop_moves_from_square(king_square, move_array, 0ULL) & get_bishop_moves_from_square(from, move_array, 0ULL);
+               get_rook_moves_from_square(king_square, 0ULL) & get_rook_moves_from_square(from, 0ULL) :
+               get_bishop_moves_from_square(king_square, 0ULL) & get_bishop_moves_from_square(from, 0ULL);
     return lines;
 }
 
@@ -193,7 +193,7 @@ void single_push(BB push_bb, int promotion_rank, Board *b) {
             continue;
         }
 
-        if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from, b->move_array) & (1ULL << to)) == 0){
+        if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from) & (1ULL << to)) == 0){
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
             push_bb &= push_bb - 1;
             continue;
@@ -232,7 +232,7 @@ void double_push(BB double_push_bb, Board *b) {
             continue;
         }
 
-        if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from, b->move_array) & (1ULL << to)) == 0){
+        if ((b->movegen->pin_bb & (1ULL << from)) != 0 && (pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from) & (1ULL << to)) == 0){
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
             double_push_bb &= double_push_bb - 1;
             continue;
@@ -244,7 +244,7 @@ void double_push(BB double_push_bb, Board *b) {
     }
 }
 
-BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
+BB attacks_to(BB occ, int square, BB *piece_bb) {
     if (square < 0 || square >= 64) {
         logf_message(ERROR, "MOVEGEN", "Invalid square in attacks_to: %d", square);
         return 0ULL;
@@ -262,8 +262,8 @@ BB attacks_to(BB occ, int square, BB *piece_bb, move_arrays *move_array) {
         | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
         | (move_array->knight_moves[square] & knights)
         | (move_array->king_moves[square] & kings)
-        | (get_bishop_moves_from_square(square, move_array, occ) & bishopsQueens)
-        | (get_rook_moves_from_square(square, move_array, occ) & rooksQueens);
+        | (get_bishop_moves_from_square(square, occ) & bishopsQueens)
+        | (get_rook_moves_from_square(square, occ) & rooksQueens);
 }
 
 void handle_en_passant(int from, BB en_passant_bb, Board *b) {
@@ -298,7 +298,7 @@ void handle_en_passant(int from, BB en_passant_bb, Board *b) {
 
     // Check if king is attacked
     int king_sq = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
-    BB attackers = attacks_to(new_occupied, king_sq, new_piece_bb, b->move_array);
+    BB attackers = attacks_to(new_occupied, king_sq, new_piece_bb);
     BB opponent_pieces = new_piece_bb[b->white_to_move ? BLACK : WHITE];
 
     if ((attackers & opponent_pieces) != 0) {
@@ -333,7 +333,7 @@ void pawn_captures(BB pawns_bb, BB *attacks_bb, BB opponent_bb, int promotion_ra
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_PAWN", "Pawn at square %s is pinned", square_name_from_idx(from).string);
-            attacks &= pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from, b->move_array);
+            attacks &= pinned(b->white_to_move ? b->king_square[WHITE_KING_SQUARE] : b->king_square[BLACK_KING_SQUARE], from);
         }
 
         while (attacks != 0) {
@@ -367,14 +367,14 @@ void generate_pawn_moves(Board *b) {
         pawns_bb = b->bb->pieceBB[WHITEPAWN];
         push_bb = white_pawns_able_to_push(b->bb->emptyBB, pawns_bb);
         double_push_bb = white_pawns_able_to_double_push(b->bb->emptyBB, pawns_bb);
-        attacks_bb = b->move_array->pawn_attacks[0];
+        attacks_bb = move_array->pawn_attacks[0];
         promotion_rank = 7;
         en_passant_rank = 4;
     } else {
         pawns_bb = b->bb->pieceBB[BLACKPAWN];
         push_bb = black_pawns_able_to_push(b->bb->emptyBB, pawns_bb);
         double_push_bb = black_pawns_able_to_double_push(b->bb->emptyBB, pawns_bb);
-        attacks_bb = b->move_array->pawn_attacks[1];
+        attacks_bb = move_array->pawn_attacks[1];
         promotion_rank = 0;
         en_passant_rank = 3;
     }
@@ -401,7 +401,7 @@ void generate_knight_moves(Board *b) {
 
     while (knight_bb != 0) {
         from = count_trailing_zeros(knight_bb);
-        moves_bb = (b->move_array->knight_moves[from] & ~friendly_pieces);
+        moves_bb = (move_array->knight_moves[from] & ~friendly_pieces);
 
         //TODO: Handle Check
         if (b->check) {
@@ -410,7 +410,7 @@ void generate_knight_moves(Board *b) {
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_KNIGHT", "Knight at square %s is pinned", square_name_from_idx(from).string);
-            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from, b->move_array);
+            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from);
         }
 
         while (moves_bb != 0) {
@@ -437,7 +437,7 @@ void generate_rook_moves(Board *b) {
 
     while (rook_bb != 0) {
         from = count_trailing_zeros(rook_bb);
-        moves_bb = (get_rook_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
+        moves_bb = (get_rook_moves_from_square(from, b->bb->occupiedBB) & ~friendly_pieces);
         
         //TODO: Handle check
         if (b->check) {
@@ -446,7 +446,7 @@ void generate_rook_moves(Board *b) {
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_ROOK", "Rook at square %s is pinned", square_name_from_idx(from).string);
-            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from, b->move_array);
+            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from);
         }
 
         while (moves_bb != 0) {
@@ -473,7 +473,7 @@ void generate_bishop_moves(Board *b) {
 
     while (bishop_bb != 0) {
         from = count_trailing_zeros(bishop_bb);
-        moves_bb = (get_bishop_moves_from_square(from, b->move_array, b->bb->occupiedBB) & ~friendly_pieces);
+        moves_bb = (get_bishop_moves_from_square(from, b->bb->occupiedBB) & ~friendly_pieces);
         
         //TODO: Handle check
         if (b->check) {
@@ -482,7 +482,7 @@ void generate_bishop_moves(Board *b) {
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_BISHOP", "Bishop at square %s is pinned", square_name_from_idx(from).string);
-            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from, b->move_array);
+            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from);
         }
 
         while (moves_bb != 0) {
@@ -509,8 +509,8 @@ void generate_queen_moves(Board *b) {
 
     while (queen_bb != 0) {
         from = count_trailing_zeros(queen_bb);
-        moves_bb = (get_rook_moves_from_square(from, b->move_array, b->bb->occupiedBB) |
-                    get_bishop_moves_from_square(from, b->move_array, b->bb->occupiedBB)) &
+        moves_bb = (get_rook_moves_from_square(from, b->bb->occupiedBB) |
+                    get_bishop_moves_from_square(from, b->bb->occupiedBB)) &
                     ~friendly_pieces;
          
         //TODO: Handle Check
@@ -520,7 +520,7 @@ void generate_queen_moves(Board *b) {
 
         if ((b->movegen->pin_bb & (1ULL << from)) != 0) {
             logf_message(DEBUG, "MOVEGEN_QUEEN", "Queen at square %s is pinned", square_name_from_idx(from).string);
-            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from, b->move_array);
+            moves_bb &= pinned(b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE], from);
         }
 
 
@@ -546,25 +546,25 @@ bool calculate_castling_rights(Board *b, bool white_to_move, bool king_side) {
 
     if (white_to_move) {
         if (king_side) {
-            attacked = ((attacks_to(occ, 5, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 6, b->bb->pieceBB, b->move_array)) &
+            attacked = ((attacks_to(occ, 5, b->bb->pieceBB) | 
+                         attacks_to(occ, 6, b->bb->pieceBB)) &
                          b->bb->pieceBB[BLACK]) != 0;
             return (occ & WHITE_KINGSIDE_EMPTY) == 0 && !attacked;
         } else {
-            attacked = ((attacks_to(occ, 2, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 3, b->bb->pieceBB, b->move_array)) & 
+            attacked = ((attacks_to(occ, 2, b->bb->pieceBB) |
+                         attacks_to(occ, 3, b->bb->pieceBB)) & 
                          b->bb->pieceBB[BLACK]) != 0;
             return (occ & WHITE_QUEENSIDE_EMPTY) == 0 && !attacked;
         }
     } else {
         if (king_side) {
-            attacked = ((attacks_to(occ, 61, b->bb->pieceBB, b->move_array) | 
-                         attacks_to(occ, 62, b->bb->pieceBB, b->move_array)) &
+            attacked = ((attacks_to(occ, 61, b->bb->pieceBB) | 
+                         attacks_to(occ, 62, b->bb->pieceBB)) &
                          b->bb->pieceBB[WHITE]) != 0;
             return (occ & BLACK_KINGSIDE_EMPTY) == 0 && !attacked;
         } else {
-            attacked = ((attacks_to(occ, 58, b->bb->pieceBB, b->move_array) |
-                         attacks_to(occ, 59, b->bb->pieceBB, b->move_array)) & 
+            attacked = ((attacks_to(occ, 58, b->bb->pieceBB) |
+                         attacks_to(occ, 59, b->bb->pieceBB)) & 
                          b->bb->pieceBB[WHITE]) != 0;
             return (occ & BLACK_QUEENSIDE_EMPTY) == 0 && !attacked;
         }
@@ -583,7 +583,7 @@ void generate_king_moves(Board *b) {
     if (king_bb == 0) return;
 
     from = count_trailing_zeros(king_bb);
-    BB moves_bb = b->move_array->king_moves[from] & ~piece_bb;
+    BB moves_bb = move_array->king_moves[from] & ~piece_bb;
     
     if (b->check) {
         moves_bb ^= b->movegen->checking_pieces & moves_bb;
@@ -594,7 +594,7 @@ void generate_king_moves(Board *b) {
     while (moves_bb != 0) {
         to = count_trailing_zeros(moves_bb);
 
-        if ((attacks_to(0ULL, to, b->bb->pieceBB, b->move_array) & opponent_bb) != 0){
+        if ((attacks_to(0ULL, to, b->bb->pieceBB) & opponent_bb) != 0){
             moves_bb &= moves_bb - 1;
             continue;
         }
@@ -646,10 +646,10 @@ void generate_king_moves(Board *b) {
 BB handle_check(Board *b) {
     BB cpieces = 0ULL;
     int king_square = b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE];
-    BB attacks = attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
+    BB attacks = attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE];
     int attack_from_square = count_trailing_zeros(attacks);
 
-    cpieces |= b->move_array->triangle_inbetween[triangular_index(king_square, attack_from_square)];
+    cpieces |= move_array->triangle_inbetween[triangular_index(king_square, attack_from_square)];
     
     attacks &= attacks - 1;
     // If there are remaining attacks it is a double check and only king moves are allowed
@@ -677,7 +677,7 @@ int generate_moves(Board *b) {
     } else {
         b->movegen->pin_bb = get_pin_bb(king_square, b);
 
-        if ((attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB, b->move_array) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
+        if ((attacks_to(b->bb->occupiedBB, king_square, b->bb->pieceBB) & b->bb->pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
             logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
             b->check = true;
             b->movegen->checking_pieces = handle_check(b);

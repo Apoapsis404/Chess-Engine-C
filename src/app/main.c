@@ -12,12 +12,14 @@
 #include "ui/ui.h"
 #include "commands.h"
 #include "tests.h"
+#include "perft/perft.h"
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
 #include <ctype.h>
+#include <errno.h>
 
 #define BUFSIZE 64
 
@@ -119,6 +121,9 @@ typedef struct main_t {
 
     bool test;
     char *test_name;
+
+    bool perft;
+    int perft_depth;
 } main_t;
 
 main_t main_cfg = {
@@ -130,18 +135,23 @@ main_t main_cfg = {
 
     .test = false,
     .test_name = "",
+
+    .perft = false,
+    .perft_depth = 1,
 };
 
 static void print_usage(const char *prog_name) {
     printf("Usage: %s [options]\n", prog_name);
-    printf("  --help, -h               Show this help message\n");
-    printf("  --config <file>          Load a config file (default: src/logging/config.cfg)\n");
-    printf("  --log-level <level>      Set log level (DEBUG, INFO, WARNING, ERROR, FATAL)\n");
-    printf("  --fen <fen|preset>       Set initial board position using FEN or preset name.\n");
+    printf("  --help, -h            Show this help message\n");
+    printf("  --config <file>       Load a config file (default: src/logging/config.cfg)\n");
+    printf("  --log-level <level>   Set log level (DEBUG, INFO, WARNING, ERROR, FATAL)\n");
+    printf("  --fen <fen|preset>    Set initial board position using FEN or preset name.\n");
     printf("      Preset names: DEFAULTFEN, PIN_FEN, PIN_FEN2, CROSS_CHECK_FEN, DOUBLE_CHECK_FEN,\n");
     printf("                    DIRECT_CHECK_FEN, PAWN_PIN_FEN, POS_4_FEN\n");
-    printf("  --test [name ...]        Run tests. No name = all tests. One or more names = run only those tests.\n");
+    printf("  --test [name ...]     Run tests. No name = all tests. One or more names = run only those tests.\n");
     printf("      Available tests are from tests.c (calc, save_calc, log, magic, save_magic, read_magic, move_gen, pin, check)\n");
+    printf("  --perft, -p <depth>   Run perft test on FEN string with depth <depth>\n");
+    printf("      It will run on FEN string given with --fen or the default FEN if none is given\n");
 }
 
 static bool is_valid_fen_placement(const char *fen) {
@@ -180,6 +190,37 @@ static bool is_valid_fen_placement(const char *fen) {
     }
 
     return rank == 7 && file == 8;
+}
+
+
+static int resolve_perft_input(const char *arg){
+
+    int base = 10;
+    char *endptr;
+    errno = 0;    /* To distinguish success/failure after call */
+    strtol("0", NULL, base);
+    if (errno == EINVAL) {
+        return -1;
+    }
+
+    errno = 0;    /* To distinguish success/failure after call */
+    strtol(arg, &endptr, base);
+
+    /* Check for various possible errors. */
+    if (errno == ERANGE) {
+        return -1;
+    }
+
+    if (endptr == arg) {
+        fprintf(stderr, "No digits were found\n");
+        return -1;
+    }
+
+    /* If we got here, strtol() successfully parsed a number. */
+    if (*endptr != '\0')        /* Not necessarily an error... */
+        printf("Further characters after number: \"%s\"\n", endptr);
+
+    return strtol(arg, NULL, 10);
 }
 
 static const char *resolve_fen_input(const char *arg) {
@@ -267,6 +308,23 @@ int main(int argc, const char **argv) {
             continue;
         }
 
+        if (strcmp(arg, "--perft") == 0 || strcmp(arg, "-p") == 0) {
+            if (i + 1 >= argc) {
+                fprintf(stderr, "Missing argument for %s\n", arg);
+                print_usage(program);
+                return 1;
+            }
+            int depth = resolve_perft_input(argv[++i]);
+            if (depth <= 0) {
+                fprintf(stderr, "Invalid argument '%s' for depth\n", arg);
+                print_usage(program);
+                return 1;
+            } 
+            main_cfg.perft = true;
+            main_cfg.perft_depth = depth;
+            continue;
+        }
+
         fprintf(stderr, "Unknown argument: %s\n", arg);
         print_usage(program);
         return 1;
@@ -274,6 +332,11 @@ int main(int argc, const char **argv) {
 
     load_config(main_cfg.config_file_name);
     log_message(INFO, "MAIN", "Started!");
+
+    if (main_cfg.perft) {
+        perft_single_test(main_cfg.fen, main_cfg.perft_depth);
+    }
+
 
     if (main_cfg.test) {
         int result_code = 0;
@@ -302,18 +365,18 @@ int main(int argc, const char **argv) {
         }
         log_message(INFO, "MAIN", "Exiting after tests");
         close_logging();
+        free_move_arrays(move_array);
         return result_code;
     }
 
     Board *b = init_board_fen(main_cfg.fen);
-    b->move_array = init_move_arrays(true);
     ui_t *ui = malloc(sizeof(ui_t));
     ui->b = b;
     ui->bb = 0ULL;
     ui->clear = true;
     ui->draw_bb = true;
 
-    repl(ui);
+    //repl(ui);
     
     //int   retval = repl_from_file(b, "command_file.txt");
     //if (retval == QUIT_TO_REPL_VAL){
@@ -324,6 +387,7 @@ int main(int argc, const char **argv) {
     close_logging();
 
     free_board(b);
+    free_move_arrays(move_array);
     free(ui);
     return 0;
 }

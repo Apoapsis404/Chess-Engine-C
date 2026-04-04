@@ -16,6 +16,7 @@
 #define BB_FUNCS "bb"
 #define CHANGE_LEVEL "lvl"
 #define GET_FEN "fen"
+#define PERFT "perft"
 
 typedef int (*command_fn)(BString args, ui_t *ui);
 
@@ -212,6 +213,10 @@ static int handle_get_fen_cmd(BString args, ui_t *ui){
     return 0;
 }
 
+static int handle_perft_cmd(BString args, ui_t *ui) {
+
+}
+
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
     { RESET, handle_reset_cmd, "Reset board to default position" },
@@ -219,6 +224,7 @@ static const command_def_t command_table[] = {
     { BB_FUNCS, handle_bb_cmd, "Toggle or select bitboard view" },
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
+    { PERFT, handle_perft_cmd, "Run PERFT test"},
 };
 
 int eval(BString *bs, ui_t *ui){

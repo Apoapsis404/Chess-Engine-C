@@ -28,11 +28,22 @@ void set_flag(Move *move, int flag){
 }
 
 int move_is_capture(Move move){
-    return (get_flags(move) & CAPTURESFLAG) == CAPTURESFLAG;
+    int flags = get_flags(move);
+    switch (flags) {
+        case CAPTURESFLAG:
+        case ENPASSANTCAPTUREFLAG:
+        case KNIGHTPROMOTIONCAPTUREFLAG:
+        case BISHOPPROMOTIONCAPTUREFLAG:
+        case ROOKPROMOTIONCAPTUREFLAG:
+        case QUEENPROMOTIONCAPTUREFLAG:
+            return 1;
+        default:
+            return 0;
+    }
 }
 
 int move_is_flag(Move move, int flag) {
-    return (get_flags(move)) == flag;
+    return get_flags(move) == flag;
 }
 
 int move_is_promotion(Move move) {
@@ -40,7 +51,7 @@ int move_is_promotion(Move move) {
 }
 
 int move_get_promotion(Move move){
-    return (get_flags(move & PROMOTIONMASK));
+    return get_flags(move) & PROMOTIONMASK;
 }
 
 int invalid_from_to(int from, int to) {

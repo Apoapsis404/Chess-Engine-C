@@ -18,12 +18,13 @@
 #define WHITE_KING_SQUARE 0 
 #define BLACK_KING_SQUARE 1 
 
+extern move_arrays *move_array;
+
 typedef struct movegen_t movegen_t;
 
 typedef struct Board {
     PIECE* board;
     BitBoard *bb;
-    move_arrays *move_array;
     movegen_t *movegen;
     bool white_to_move;
     uint32_t current_state;
@@ -40,5 +41,7 @@ void free_board(Board* b);
 void reset_board_fen(Board *b, char *fen);
 
 PIECE make_move(Board* b, Move move);
+
+Board copy_make(Board *b, Move move);
 
 #endif //BOARD_H;
