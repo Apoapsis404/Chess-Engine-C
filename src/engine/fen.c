@@ -24,7 +24,7 @@ int parse_fen(Board *b, char* fen_str){
     int rank = 7;
 
     // Handle pos
-    PIECE* board = calloc(64, sizeof(PIECE));
+    memset(b->board, 0, sizeof(b->board));
     for(size_t i = 0; i < token.count; ++i) {
         char cur = token.string[i];
         if (cur == FORWARDSLASH){
@@ -66,10 +66,10 @@ int parse_fen(Board *b, char* fen_str){
         if((rank * 8 + file) >= 64){
             printf("ERROR Out of bounds: %d\n", (rank * 8 + file));
         }
-        board[idx_from_rank_file(rank, file)] = piece | color;
+        b->board[idx_from_rank_file(rank, file)] = piece | color;
         file++;
     }
-    b->board = board;
+    
 
     token = bstring_next(&fen, ' ');
     b->white_to_move = bstring_equal(token, "w");

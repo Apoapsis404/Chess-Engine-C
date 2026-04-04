@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <inttypes.h>
 #include <stdio.h>
+#include <string.h>
 
 void get_blackbb(BitBoard *bb){
     bb->pieceBB[BLACK] = bb->pieceBB[BLACKKING] | bb->pieceBB[BLACKPAWN] |bb->pieceBB[BLACKKNIGHT] |bb->pieceBB[BLACKBISHOP] |bb->pieceBB[BLACKROOK] |bb->pieceBB[BLACKQUEEN]; 
@@ -14,7 +15,6 @@ void get_whitebb(BitBoard *bb){
 }
 
 void get_piecebb(BitBoard *bb, PIECE *board){
-    bb->pieceBB = calloc(15, sizeof(BB));
     for (int i = 0; i < 64; ++i) {
         if (board[i] != 0){
             bb->pieceBB[board[i]] |= 1UL << i;
@@ -32,20 +32,17 @@ void get_emptybb(BitBoard *bb){
     bb->emptyBB = ~(bb->occupiedBB);
 }
 
-BitBoard *bb_init(PIECE *board){
-    BitBoard *bb = calloc(1, sizeof(BitBoard));
-
+BitBoard *bb_init(BitBoard *bb, PIECE *board){
+    memset(bb->pieceBB, 0, sizeof(bb->pieceBB));
+    memset(bb->AttackedSquareBB, 0, sizeof(bb->AttackedSquareBB));
     get_piecebb(bb, board);
     get_occupiedbb(bb);
     get_emptybb(bb);
-    bb->AttackedSquareBB = calloc(2, sizeof(bb));
     return bb;
 }
 
 void free_bb(BitBoard *bb){
-    free(bb->AttackedSquareBB);
-    free(bb->pieceBB);
-    free(bb);
+    // No-op: bb is now embedded with fixed arrays
 }
 
 BB in_between(int sq1, int sq2){

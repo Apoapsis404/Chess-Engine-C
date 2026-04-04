@@ -7,6 +7,13 @@
 #include "calculate.h"
 #include "logging/lutil.h"
 
+typedef struct movegen_t {
+    size_t move_count;
+    BB pin_bb;
+    BB checking_pieces;
+    Move moves[255];
+} movegen_t;
+
 #define EN_PASSANT_FILE_MASK 0b11110000
 #define CASTLING_RIGHTS_MASK 0b00001111
 #define HALF_MOVE_CLOCK_MASK 0xFFFF0000
@@ -23,9 +30,9 @@ extern move_arrays *move_array;
 typedef struct movegen_t movegen_t;
 
 typedef struct Board {
-    PIECE* board;
-    BitBoard *bb;
-    movegen_t *movegen;
+    PIECE board[64];
+    BitBoard bb;
+    movegen_t movegen;
     bool white_to_move;
     uint32_t current_state;
     bool check;
@@ -42,6 +49,6 @@ void reset_board_fen(Board *b, char *fen);
 
 PIECE make_move(Board* b, Move move);
 
-Board copy_make(Board *b, Move move);
+Board copy_make(Board b, Move move);
 
 #endif //BOARD_H;

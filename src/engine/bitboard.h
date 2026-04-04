@@ -11,13 +11,13 @@
 
 #define BB uint64_t
 typedef struct {
-    BB* pieceBB;
+    BB pieceBB[15];
     BB  occupiedBB;
     BB  emptyBB;
-    BB* AttackedSquareBB;
+    BB AttackedSquareBB[2];
 } BitBoard;
 
-BitBoard *bb_init(PIECE *board);
+BitBoard *bb_init(BitBoard *bb, PIECE *board);
 void bb_update(PIECE *board);
 BitBoard *bb_copy(BitBoard *bb);
 

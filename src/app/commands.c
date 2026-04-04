@@ -69,8 +69,8 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
     int from, to;
     Move move;
     PIECE piece;
-    for(size_t i = 0; i < b->movegen->move_count; i++) {
-        move = b->movegen->moves[i];
+    for(size_t i = 0; i < b->movegen.move_count; i++) {
+        move = b->movegen.moves[i];
         from = get_from(move);
         to = get_to(move);
         piece = b->board[from];
@@ -162,17 +162,17 @@ static void handle_bb_cmds(BString bs, ui_t *ui){
 
     if (piece == 7) {
         if (color != -1) {
-            ui->bb = ui->b->bb->occupiedBB & ~ui->b->bb->pieceBB[color ? BLACK : WHITE];
+            ui->bb = ui->b->bb.occupiedBB & ~ui->b->bb.pieceBB[color ? BLACK : WHITE];
         } else {
-            ui->bb = ui->b->bb->occupiedBB;
+            ui->bb = ui->b->bb.occupiedBB;
         }
         return;
     }
 
     if (color == -1) {
-        ui->bb = ui->b->bb->pieceBB[WHITE | piece] | ui->b->bb->pieceBB[BLACK | piece];
+        ui->bb = ui->b->bb.pieceBB[WHITE | piece] | ui->b->bb.pieceBB[BLACK | piece];
     } else {
-        ui->bb = ui->b->bb->pieceBB[color | piece];
+        ui->bb = ui->b->bb.pieceBB[color | piece];
     }
 }
 
@@ -184,9 +184,6 @@ static int handle_quit_cmd(BString args, ui_t *ui) {
 
 static int handle_reset_cmd(BString args, ui_t *ui){
     (void)args;
-    if (ui->b->board != NULL){
-        free(ui->b->board);
-    }
     parse_fen(ui->b, DEFAULTFEN);
     log_message(INFO, "EVAL", "Resetting board!");
     return 0;
@@ -213,10 +210,6 @@ static int handle_get_fen_cmd(BString args, ui_t *ui){
     return 0;
 }
 
-static int handle_perft_cmd(BString args, ui_t *ui) {
-
-}
-
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
     { RESET, handle_reset_cmd, "Reset board to default position" },
@@ -224,7 +217,6 @@ static const command_def_t command_table[] = {
     { BB_FUNCS, handle_bb_cmd, "Toggle or select bitboard view" },
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
-    { PERFT, handle_perft_cmd, "Run PERFT test"},
 };
 
 int eval(BString *bs, ui_t *ui){

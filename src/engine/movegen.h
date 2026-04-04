@@ -2,18 +2,14 @@
 #define MOVEGEN_H
 
 #include "move.h"
-#include "board.h"
+//#include "board.h"  // Removed to avoid circular include
 #include "bitboard.h"
 
+typedef struct Board Board;  // Forward declaration
 
-typedef struct movegen_t {
-    size_t move_count;
-    BB pin_bb;
-    BB checking_pieces;
-    Move moves[255];
-} movegen_t;
+typedef struct movegen_t movegen_t;
 
-movegen_t *init_movegen();
+void init_movegen(movegen_t *movegen);
 void free_movegen(movegen_t *movegen);
 void generate_pawn_moves(Board *b);
 void dump_moves(movegen_t *movegen);

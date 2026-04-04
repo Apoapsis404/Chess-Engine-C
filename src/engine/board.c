@@ -17,46 +17,33 @@ Board* init_board_empty(){
 }
 
 void get_king_squares(Board *b) {
-    b->king_square[0] = b->bb->pieceBB[WHITEKING] ? count_trailing_zeros(b->bb->pieceBB[WHITEKING]) : -1;
-    b->king_square[1] = b->bb->pieceBB[BLACKKING] ? count_trailing_zeros(b->bb->pieceBB[BLACKKING]) : -1;
+    b->king_square[0] = b->bb.pieceBB[WHITEKING] ? count_trailing_zeros(b->bb.pieceBB[WHITEKING]) : -1;
+    b->king_square[1] = b->bb.pieceBB[BLACKKING] ? count_trailing_zeros(b->bb.pieceBB[BLACKKING]) : -1;
 }
 
 Board* init_board_fen(char* fen){
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     Board* b = malloc(sizeof(Board));
     parse_fen(b, fen);
-    b->bb = bb_init(b->board);
+    bb_init(&b->bb, b->board);
     b->check = false;
 
     if (move_array == NULL) move_array = init_move_arrays(true);
 
-    b->movegen = init_movegen();
+    init_movegen(&b->movegen);
     get_king_squares(b);
     return b;
 }
 
 
 void free_board(Board* b){
-    if (b->board != NULL){
-        free(b->board);
-    }
-
-    if (b->bb != NULL) {
-        free_bb(b->bb);
-    }
-    if (b->movegen != NULL) {
-        free_movegen(b->movegen);
-    }
-
     free(b);
 }
 
 void reset_board_fen(Board *b, char *fen) {
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
-    free(b->board);
-    free_bb(b->bb);
     parse_fen(b, fen);
-    b->bb = bb_init(b->board);
+    bb_init(&b->bb, b->board);
     b->check = false;
     get_king_squares(b);
 }
@@ -142,7 +129,7 @@ PIECE make_move(Board* b, Move move){
 
     b->current_state |= (uint32_t)((move_is_capture(move) || (piece & PIECEMASK) == PAWN) ? 0 : ((b->current_state & HALF_MOVE_CLOCK_MASK) >> 16) + 1) << 16;
 
-    bb_make_move(b->bb, move, piece, captured_piece);
+    bb_make_move(&b->bb, move, piece, captured_piece);
 
     b->white_to_move = !b->white_to_move;
 
@@ -154,9 +141,10 @@ PIECE make_move(Board* b, Move move){
 }
 
 /* Assumes legal move. Check before calling this function! */
-Board copy_make(Board* b, Move move) {
-    make_move(b, move);
-    return *b;
+Board copy_make(Board b, Move move) {
+    make_move(&b, move);
+    generate_moves(&b);
+    return b;
 }
 
 void test_move() {

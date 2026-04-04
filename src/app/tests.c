@@ -66,13 +66,13 @@ static int test_generate_moves_from_fen(const char *name, const char *fen, const
     Board *b = init_board_fen((char *)fen);
 
     generate_moves(b);
-    printf("[TEST_%s] Total moves: %zu\n", name, b->movegen->move_count);
+    printf("[TEST_%s] Total moves: %zu\n", name, b->movegen.move_count);
 
     bool success = true;
     for (size_t i = 0; i < must_have_count; i++) {
         bool found = false;
-        for (size_t j = 0; j < b->movegen->move_count; j++) {
-            String mov = move_to_string(b->movegen->moves[j]);
+        for (size_t j = 0; j < b->movegen.move_count; j++) {
+            String mov = move_to_string(b->movegen.moves[j]);
             if (strcmp(mov.string, must_have[i]) == 0) {
                 found = true;
             }
@@ -87,8 +87,8 @@ static int test_generate_moves_from_fen(const char *name, const char *fen, const
 
     for (size_t i = 0; i < must_not_have_count; i++) {
         bool found = false;
-        for (size_t j = 0; j < b->movegen->move_count; j++) {
-            String mov = move_to_string(b->movegen->moves[j]);
+        for (size_t j = 0; j < b->movegen.move_count; j++) {
+            String mov = move_to_string(b->movegen.moves[j]);
             if (strcmp(mov.string, must_not_have[i]) == 0) {
                 found = true;
             }
@@ -167,7 +167,7 @@ static int test_move_gen(void) {
     print_board(b->board);
     printf("\n");
     printf("Printing empty bb: \n");
-    print_bb(b->bb->emptyBB);
+    print_bb(b->bb.emptyBB);
     printf("\n");
 
     // generate_pawn_moves(b);
@@ -182,7 +182,7 @@ static int test_move_gen(void) {
     PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
-    dump_moves(b->movegen);
+    dump_moves(&b->movegen);
     printf("fen: %s\n", get_fen(b).string);
     free_board(b);
     return 0;
@@ -220,14 +220,14 @@ static int test_check(void) {
     generate_moves(b);
 
     printf("\nChecking pieces: \n");
-    print_bb(b->movegen->checking_pieces);
+    print_bb(b->movegen.checking_pieces);
     printf("\n");
     
     PIECE *board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
 
-    dump_moves(b->movegen);
+    dump_moves(&b->movegen);
 
     if (b->check == false) goto fail;
 
@@ -238,14 +238,14 @@ static int test_check(void) {
 
     generate_moves(b);
     printf("\nChecking pieces: \n");
-    print_bb(b->movegen->checking_pieces);
+    print_bb(b->movegen.checking_pieces);
     printf("\n");
     
     board_of_moves = move_board(b, b->white_to_move ? WHITE : BLACK, NONE, NONE, -1, -1);
     print_board(board_of_moves);
     free(board_of_moves);
 
-    dump_moves(b->movegen);
+    dump_moves(&b->movegen);
     if (b->check == false) goto fail;
     free_board(b);
     return 0;

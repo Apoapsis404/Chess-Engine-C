@@ -309,6 +309,10 @@ void log_empty_line(){
 }
 
 void logf_message(log_level_t level, const char* module, const char* message, ...){
+    if(level < log.current_log_level){
+        return;
+    }
+
     va_list args;
     va_start(args, message);
     
