@@ -131,7 +131,7 @@ int parse_fen(Board *b, char* fen_str){
 String get_fen(Board *b) {
     String fen = { 0 };
 
-
+    // 1. Piece placement
     for (int rank = 7; rank >= 0; rank--){
         int space = 0;
         for (int file = 0; file < 8; file++){
@@ -157,5 +157,54 @@ String get_fen(Board *b) {
             string_append(&fen, '/');
         }
     }
+
+    // 2. Active color
+    string_append(&fen, ' ');
+    string_append(&fen, b->white_to_move ? 'w' : 'b');
+
+    // 3. Castling rights
+    string_append(&fen, ' ');
+    uint32_t castling = b->current_state & CASTLING_RIGHTS_MASK;
+    if (castling == 0) {
+        string_append(&fen, '-');
+    } else {
+        if (castling & CASTLING_WHITE_KINGSIDE) {
+            string_append(&fen, 'K');
+        }
+        if (castling & CASTLING_WHITE_QUEENSIDE) {
+            string_append(&fen, 'Q');
+        }
+        if (castling & CASTLING_BLACK_KINGSIDE) {
+            string_append(&fen, 'k');
+        }
+        if (castling & CASTLING_BLACK_QUEENSIDE) {
+            string_append(&fen, 'q');
+        }
+    }
+
+    // 4. En passant target square
+    string_append(&fen, ' ');
+    uint32_t en_passant = (b->current_state >> 4) & 0x0F;
+    if (en_passant == 0) {
+        string_append(&fen, '-');
+    } else {
+        int file = en_passant - 1;
+        string_append(&fen, 'a' + file);
+        string_append(&fen, (b->white_to_move ? '6' : '3'));
+    }
+
+    // 5. Halfmove clock
+    string_append(&fen, ' ');
+    uint32_t half_move_clock = (b->current_state >> 16) & 0xFFFF;
+    char half_move_str[6];
+    sprintf(half_move_str, "%u", half_move_clock);
+    string_append_many(&fen, half_move_str, strlen(half_move_str));
+
+    // 6. Fullmove number
+    string_append(&fen, ' ');
+    char move_str[6];
+    sprintf(move_str, "%u", b->move_count);
+    string_append_many(&fen, move_str, strlen(move_str));
+
     return fen;
 }

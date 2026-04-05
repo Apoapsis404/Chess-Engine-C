@@ -53,6 +53,7 @@ String get_from_square_name(Move move);
 String get_to_square_name(Move move);
 
 String move_to_string(Move move);
+String move_to_long_algebraic(Move move);
 Move string_to_move(BString move_string);
 void log_move(log_level_t level, const char* module, Move move);
 void print_move(Move move);

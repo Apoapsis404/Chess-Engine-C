@@ -93,6 +93,22 @@ Move string_to_move(BString move_string){
     return construct_move(0, from, to);
 }
 
+static char promotion_piece_letter(Move move) {
+    int promotion = move_get_promotion(move);
+    switch (promotion) {
+        case KNIGHTPROMOTIONFLAG:
+            return 'n';
+        case BISHOPPROMOTIONFLAG:
+            return 'b';
+        case ROOKPROMOTIONFLAG:
+            return 'r';
+        case QUEENPROMOTIONFLAG:
+            return 'q';
+        default:
+            return '\0';
+    }
+}
+
 String move_to_string(Move move){
     String s = { 0 };
 
@@ -103,6 +119,17 @@ String move_to_string(Move move){
     String to_s = square_name_from_idx(to);
     string_cat_free(&s, &to_s);
 
+    return s;
+}
+
+String move_to_long_algebraic(Move move) {
+    String s = move_to_string(move);
+    if (move_is_promotion(move)) {
+        char promo = promotion_piece_letter(move);
+        if (promo != '\0') {
+            string_append(&s, promo);
+        }
+    }
     return s;
 }
 

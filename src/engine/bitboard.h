@@ -51,6 +51,7 @@ void free_bb(BitBoard *bb);
 BB in_between(int sq1, int sq2);
 BB calculate_enpassantbb(int file, bool white_to_move);
 void bb_make_move(BitBoard* bb, Move move, PIECE piece, PIECE cpiece);
+void bb_unmake_move(BitBoard* bb, Move move, PIECE piece, PIECE cpiece);
 
 void log_bb(log_level_t level, const char* module, BB bb);
 

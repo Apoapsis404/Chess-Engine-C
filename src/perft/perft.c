@@ -2,14 +2,19 @@
 #include "logging/lutil.h"
 #include "engine/board.h"
 #include "engine/movegen.h"
+#include "engine/fen.h"
+
+perft_result_t pr = { 0 };
+
+FILE *pf = NULL;
 
 void start_test(Board *b, int depth);
-int perft_test(Board *b, int depth);
+void perft_test(Board *b, int depth);
+void log_perft_result(log_level_t level, const perft_result_t *result);
 
 void perft_single_test(char *fen, int depth){
     Board *b;
     b = init_board_fen(fen);
-    generate_moves(b);
 
     logf_message(INFO, "PERFT", "Starting PERFT test with FEN '%s' and depth %d", fen, depth);
 
@@ -18,26 +23,98 @@ void perft_single_test(char *fen, int depth){
     free_board(b);
 }
 
-void start_test(Board *b, int depth) {
-    clock_t time_it;
-    log_time_start(INFO, "PERFT", &time_it);
-    int moves = perft_test(b, depth);
-    logf_message(INFO, "PERFT", "Finished PERFT. Found %d moves", moves);
-    log_time_stop(INFO, "PERFT", &time_it);
-}
+// /* Adds elements of two perft results together, in place in the first given */
+// void add_perft_results(perft_result_t *pr1, perft_result_t *pr2) {
+//     pr1->nodes += pr2->nodes;
+//     pr1->captures += pr2->captures;
+//     pr1->ep += pr2->ep;
+//     pr1->castles += pr2->castles;
+//     pr1->promotions += pr2->promotions;
+//     pr1->checks += pr2->checks;
+//     pr1->checkmates += pr2->checkmates;
+// }
 
-int perft_test(Board *b, int depth) {
-    logf_message(DEBUG, "PERFT", "Perft on depth %d", depth);
-    if (depth == 1) {
-        return b->movegen.move_count;
+void update_perft_result_from_moves(Move *moves, size_t moves_size, bool is_check) {
+    if (is_check && moves_size == 0) {
+        pr.checkmates += 1;
     }
 
-    int moves = 0;
+    Move move;
+
+    for (size_t i = 0; i < moves_size; i++) {
+        move = moves[i];
+        pr.nodes += 1;
+
+        if (move_is_capture(move)) {
+            pr.captures += 1;
+        }
+
+        if (move_is_promotion(move)) {
+            pr.promotions += 1;
+        }
+
+        if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) {
+            pr.ep += 1;
+        }
+
+        if (move_is_flag(move, KINGCASLTEFLAG) || move_is_flag(move, QUEENCASTLEFLAG)) {
+            pr.castles += 1;
+        }
+    }
+}
+
+void log_perft_result(log_level_t level, const perft_result_t *result) {
+    logf_message(level, "PERFT", "=== PERFT RESULTS ===");
+    logf_message(level, "PERFT", "  Nodes:       %zu", result->nodes);
+    logf_message(level, "PERFT", "  Captures:    %zu", result->captures);
+    logf_message(level, "PERFT", "  En Passant:  %zu", result->ep);
+    logf_message(level, "PERFT", "  Castles:     %zu", result->castles);
+    logf_message(level, "PERFT", "  Promotions:  %zu", result->promotions);
+    logf_message(level, "PERFT", "  Checks:      %zu", result->checks);
+    logf_message(level, "PERFT", "  Checkmates:  %zu", result->checkmates);
+}
+
+void start_test(Board *b, int depth) {
+    if (pf != NULL) fclose(pf);
+    pf = fopen("perft.txt", "w");
+
+
+    clock_t time_it;
+    log_time_start(INFO, "PERFT", &time_it);
+    perft_test(b, depth);
+    log_perft_result(INFO, &pr);
+    log_time_stop(INFO, "PERFT", &time_it);
+
+    fclose(pf);
+}
+
+void perft_test(Board *b, int depth) {
+    generate_moves(b);
+    
+    //To be commented out
+    String fen = get_fen(b);
+
+    fprintf(pf, "%s\n", fen.string);
+    free_string(&fen);
+
+    for (size_t i = 0; i < b->movegen.move_count; i++) {
+        fprintf(pf, "%s\n", move_to_string(b->movegen.moves[i]).string);
+    }
+    fflush(pf);
+
+
+    if (depth == 1) {
+        update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
+        return;
+    }
+
+    //update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
     Move move;
     for (size_t i = 0; i < b->movegen.move_count; ++i) {
         move = b->movegen.moves[i];
-        Board new_b = copy_make(*b, move);
-        moves += perft_test(&new_b, depth - 1);
+        //Board new_b = copy_make(*b, move);
+        make_move(b, move);
+        perft_test(b, depth - 1);
+        unmake_move(b);
     }
-    return moves;
 }

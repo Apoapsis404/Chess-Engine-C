@@ -66,3 +66,4 @@ magic_calcs.bin
 # comment out if needed to transfer
 *.log
 key.txt
+perft.txt

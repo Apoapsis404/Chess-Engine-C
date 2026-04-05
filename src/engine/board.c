@@ -8,11 +8,13 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 move_arrays *move_array = NULL;
 
 Board* init_board_empty(){
     Board* b = malloc(sizeof(Board));
+    b->move_history_count = 0;
     return b;
 }
 
@@ -24,6 +26,8 @@ void get_king_squares(Board *b) {
 Board* init_board_fen(char* fen){
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
     Board* b = malloc(sizeof(Board));
+    memset(b->move_history, 0, MOVE_HISTORY_MAX * sizeof(*b->move_history));
+    b->move_history_count = 0;
     parse_fen(b, fen);
     bb_init(&b->bb, b->board);
     b->check = false;
@@ -46,6 +50,7 @@ void reset_board_fen(Board *b, char *fen) {
     bb_init(&b->bb, b->board);
     b->check = false;
     get_king_squares(b);
+    b->move_history_count = 0;
 }
 
 int handle_promotion(Move move, Board *b) {
@@ -62,6 +67,18 @@ int handle_promotion(Move move, Board *b) {
    Returns the piece (value) of the piece that was in the
    to square */
 PIECE make_move(Board* b, Move move){
+    // Save move history entry
+    if (b->move_history_count < MOVE_HISTORY_MAX) {
+        MoveHistoryEntry *entry = &b->move_history[b->move_history_count];
+        entry->move = move;
+        entry->moved_piece = b->board[get_from(move)]; // Store original piece before any modifications
+        entry->state_before = b->current_state;
+        entry->white_to_move_before = b->white_to_move;
+        entry->king_square_before[0] = b->king_square[0];
+        entry->king_square_before[1] = b->king_square[1];
+        entry->move_count_before = b->move_count;
+    }
+
     int from = get_from(move);
     int to = get_to(move);
 
@@ -133,8 +150,13 @@ PIECE make_move(Board* b, Move move){
 
     b->white_to_move = !b->white_to_move;
 
-    //TODO implement global move history
-    //TODO implement global state history
+    // Update move history count
+    if (b->move_history_count < MOVE_HISTORY_MAX) {
+        b->move_history[b->move_history_count].captured_piece = captured_piece;
+        b->move_history_count++;
+    }
+
+    //TODO implement generate_moves after unmake_move is stable
     //generate_moves(b);
 
     return captured_piece;
@@ -157,4 +179,73 @@ void test_move() {
 void test_coord(){
     print_square(0);
     print_square(63);
+}
+
+/* Reverses the most recent move. Must have move history available. */
+void unmake_move(Board *b) {
+    if (b->move_history_count == 0) {
+        logf_message(ERROR, "BOARD", "Cannot unmake move: move history is empty");
+        return;
+    }
+
+    b->move_history_count--;
+    MoveHistoryEntry *entry = &b->move_history[b->move_history_count];
+    Move move = entry->move;
+
+    int from = get_from(move);
+    int to = get_to(move);
+    PIECE moved_piece = entry->moved_piece;
+    PIECE captured_piece = entry->captured_piece;
+    bool white_to_move_before = entry->white_to_move_before;
+
+    log_move(DEBUG, "BOARD", move);
+
+    // For promotions, the piece at 'to' is the promoted piece, but we need the original pawn for bitboard
+    PIECE piece_on_to = b->board[to];
+
+    // Unmake the bitboard move
+    bb_unmake_move(&b->bb, move, piece_on_to, captured_piece);
+
+    // Restore original piece to from square
+    b->board[from] = moved_piece;
+    
+    // Restore captured piece
+    if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) {
+        int e_pawn_idx = white_to_move_before ? to - 8 : to + 8;
+        b->board[to] = NONE;
+        b->board[e_pawn_idx] = captured_piece;
+    } else {
+        b->board[to] = captured_piece;
+    }
+
+    // Handle castling - restore rooks
+    if (move_is_flag(move, KINGCASLTEFLAG)) {
+        if (white_to_move_before) {
+            // Moving rook back from f1 to h1
+            b->board[f1] = NONE;
+            b->board[h1] = WHITEROOK;
+        } else {
+            // Moving rook back from f8 to h8
+            b->board[f8] = NONE;
+            b->board[h8] = BLACKROOK;
+        }
+    }
+    if (move_is_flag(move, QUEENCASTLEFLAG)) {
+        if (white_to_move_before) {
+            // Moving rook back from d1 to a1
+            b->board[d1] = NONE;
+            b->board[a1] = WHITEROOK;
+        } else {
+            // Moving rook back from d8 to a8
+            b->board[d8] = NONE;
+            b->board[a8] = BLACKROOK;
+        }
+    }
+
+    // Restore board state
+    b->current_state = entry->state_before;
+    b->white_to_move = entry->white_to_move_before;
+    b->king_square[0] = entry->king_square_before[0];
+    b->king_square[1] = entry->king_square_before[1];
+    b->move_count = entry->move_count_before;
 }

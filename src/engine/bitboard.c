@@ -41,9 +41,9 @@ BitBoard *bb_init(BitBoard *bb, PIECE *board){
     return bb;
 }
 
-void free_bb(BitBoard *bb){
-    // No-op: bb is now embedded with fixed arrays
-}
+// void free_bb(BitBoard *bb){
+//     // No-op: bb is now embedded with fixed arrays
+// }
 
 BB in_between(int sq1, int sq2){
     const BB m1 = UINT64_MAX;
@@ -134,4 +134,70 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
         }
     }
     bb->AttackedSquareBB[piece_is_color(piece, WHITE) ? 0 : 1] &= ~bb->pieceBB[piece & COLORMASK];
+}
+
+/* Reverses the effects of a move on the bitboard */
+void bb_unmake_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece) {
+    log_move(DEBUG, "BITBOARD", move);
+    BB fromBB = 1UL << get_from(move);
+    BB toBB = 1UL << get_to(move);
+    BB from_to_BB = fromBB ^ toBB;
+
+    // Handle promotion - piece is the promoted piece, but we need to restore the pawn
+    PIECE original_piece = piece;
+    if (move_is_promotion(move)) {
+        original_piece = piece_is_color(piece, WHITE) ? WHITEPAWN : BLACKPAWN;
+        // Remove the promoted piece and add back the pawn
+        bb->pieceBB[piece] ^= toBB;
+        bb->pieceBB[piece & COLORMASK] ^= toBB;
+        bb->pieceBB[original_piece] ^= fromBB;
+        bb->pieceBB[original_piece & COLORMASK] ^= fromBB;
+    } else {
+        // Move piece back
+        bb->pieceBB[piece] ^= from_to_BB;
+        bb->pieceBB[piece & COLORMASK] ^= from_to_BB;
+    }
+
+    if (move_is_capture(move)) {
+        if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) {
+            log_message(DEBUG, "BITBOARD", "Unmake is enpassant");
+            int ep_pawn_idx = piece_is_color(original_piece, WHITE) ? get_to(move) - 8 : get_to(move) + 8;
+            BB ep_pawn_bb = 1ULL << ep_pawn_idx;
+            bb->pieceBB[cpiece] ^= ep_pawn_bb;
+            bb->pieceBB[cpiece & COLORMASK] ^= ep_pawn_bb;
+            bb->occupiedBB ^= ep_pawn_bb | toBB;
+            bb->emptyBB ^= ep_pawn_bb | toBB;
+        } else {
+            bb->pieceBB[cpiece] ^= toBB;
+            bb->pieceBB[cpiece & COLORMASK] ^= toBB;
+        }
+        bb->occupiedBB ^= fromBB;
+        bb->emptyBB ^= fromBB;
+    } else {
+        bb->occupiedBB ^= from_to_BB;
+        bb->emptyBB ^= from_to_BB;
+    }
+
+    // Handle castling - undo rook moves
+    bool white_to_move = piece_is_color(original_piece, WHITE);
+    Move castle_move;
+    if (move_is_flag(move, KINGCASLTEFLAG)) {
+        if (white_to_move) {
+            castle_move = construct_move(0, h1, f1);
+            bb_unmake_move(bb, castle_move, WHITEROOK, NONE);
+        } else {
+            castle_move = construct_move(0, h8, f8);
+            bb_unmake_move(bb, castle_move, BLACKROOK, NONE);
+        }
+    }
+    if (move_is_flag(move, QUEENCASTLEFLAG)) {
+        if (white_to_move) {
+            castle_move = construct_move(0, a1, d1);
+            bb_unmake_move(bb, castle_move, WHITEROOK, NONE);
+        } else {
+            castle_move = construct_move(0, a8, d8);
+            bb_unmake_move(bb, castle_move, BLACKROOK, NONE);
+        }
+    }
+    bb->AttackedSquareBB[piece_is_color(original_piece, WHITE) ? 0 : 1] &= ~bb->pieceBB[original_piece & COLORMASK];
 }

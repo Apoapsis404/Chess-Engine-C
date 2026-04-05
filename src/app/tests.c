@@ -448,6 +448,270 @@ static int test_make_move(void) {
     return success ? 0 : 1;
 }
 
+static int test_unmake_move(void) {
+    bool success = true;
+    Board *b;
+    Move move;
+    PIECE original_board[64];
+    uint32_t original_state;
+    bool original_turn;
+
+    printf("\n=== Testing unmake_move ===\n");
+
+    // TEST 1: Simple quiet move (pawn push)
+    printf("[TEST_UNMAKE_MOVE:QUIET_MOVE] Testing quiet pawn move e2e4\n");
+    b = init_board_fen((char *)DEFAULTFEN);
+    memcpy(original_board, b->board, sizeof(original_board));
+    original_state = b->current_state;
+    original_turn = b->white_to_move;
+    move = construct_move(0, idx_from_square_name((char *)"e2"), idx_from_square_name((char *)"e4"));
+    make_move(b, move);
+    unmake_move(b);
+    if (memcmp(original_board, b->board, sizeof(original_board)) != 0) {
+        printf("[TEST_UNMAKE_MOVE:QUIET_MOVE] Board position not restored\n");
+        success = false;
+    }
+    if (b->current_state != original_state) {
+        printf("[TEST_UNMAKE_MOVE:QUIET_MOVE] State not restored (expected %u, got %u)\n", original_state, b->current_state);
+        success = false;
+    }
+    if (b->white_to_move != original_turn) {
+        printf("[TEST_UNMAKE_MOVE:QUIET_MOVE] Turn not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 2: Simple capture
+    printf("[TEST_UNMAKE_MOVE:CAPTURE] Testing capture move e4d5\n");
+    b = init_board_fen((char *)"7k/8/8/3p4/4P3/8/8/4K3 w - - 0 1");
+    original_state = b->current_state;
+    original_turn = b->white_to_move;
+    move = construct_move(CAPTURESFLAG, idx_from_square_name((char *)"e4"), idx_from_square_name((char *)"d5"));
+    make_move(b, move);
+    unmake_move(b);
+    
+    if (b->board[idx_from_square_name((char *)"e4")] != WHITEPAWN) {
+        printf("[TEST_UNMAKE_MOVE:CAPTURE] White pawn not restored to e4, got %d\n", b->board[idx_from_square_name((char *)"e4")]);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"d5")] != (PAWN | BLACK)) {
+        printf("[TEST_UNMAKE_MOVE:CAPTURE] Black pawn not restored to d5, got %d\n", 
+               b->board[idx_from_square_name((char *)"d5")]);
+        success = false;
+    }
+    if (b->current_state != original_state) {
+        printf("[TEST_UNMAKE_MOVE:CAPTURE] State not restored\n");
+        success = false;
+    }
+    if (b->white_to_move != original_turn) {
+        printf("[TEST_UNMAKE_MOVE:CAPTURE] Turn not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 3: En passant capture
+    printf("[TEST_UNMAKE_MOVE:EN_PASSANT] Testing en passant capture\n");
+    b = init_board_fen((char *)"7k/3p4/8/4P3/8/8/8/4K3 b - - 0 1");
+    // Make double pawn push
+    move = construct_move(DOUBLEPAWNPUSHFLAG, idx_from_square_name((char *)"d7"), idx_from_square_name((char *)"d5"));
+    make_move(b, move);
+    original_state = b->current_state;
+    original_turn = b->white_to_move;
+    // Make en passant capture
+    move = construct_move(ENPASSANTCAPTUREFLAG, idx_from_square_name((char *)"e5"), idx_from_square_name((char *)"d6"));
+    make_move(b, move);
+    unmake_move(b);
+    if (b->board[idx_from_square_name((char *)"d5")] != (PAWN | BLACK)) {
+        printf("[TEST_UNMAKE_MOVE:EN_PASSANT] Enpassant pawn not restored to d5, got %d\n",
+               b->board[idx_from_square_name((char *)"d5")]);
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"e5")] != WHITEPAWN) {
+        printf("[TEST_UNMAKE_MOVE:EN_PASSANT] White pawn not restored to e5\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"d6")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:EN_PASSANT] Square d6 should be empty after unmake\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 4: Kingside castling
+    printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] Testing kingside castling\n");
+    b = init_board_fen((char *)"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    original_state = b->current_state;
+    original_turn = b->white_to_move;
+    move = construct_move(KINGCASLTEFLAG, idx_from_square_name((char *)"e1"), idx_from_square_name((char *)"g1"));
+    make_move(b, move);
+    unmake_move(b);
+    if (b->board[idx_from_square_name((char *)"e1")] != WHITEKING) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] King not restored to e1\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"h1")] != WHITEROOK) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] Rook not restored to h1\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"f1")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] f1 should be empty\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g1")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] g1 should be empty\n");
+        success = false;
+    }
+    if ((b->current_state & CASTLING_WHITE_KINGSIDE) == 0) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] Castling rights not restored\n");
+        success = false;
+    }
+    if (b->current_state != original_state) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_KINGSIDE] State not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 5: Queenside castling
+    printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] Testing queenside castling\n");
+    b = init_board_fen((char *)"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    original_state = b->current_state;
+    original_turn = b->white_to_move;
+    move = construct_move(QUEENCASTLEFLAG, idx_from_square_name((char *)"e1"), idx_from_square_name((char *)"c1"));
+    make_move(b, move);
+    unmake_move(b);
+    if (b->board[idx_from_square_name((char *)"e1")] != WHITEKING) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] King not restored to e1\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"a1")] != WHITEROOK) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] Rook not restored to a1\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"d1")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] d1 should be empty\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"c1")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] c1 should be empty\n");
+        success = false;
+    }
+    if (b->current_state != original_state) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_QUEENSIDE] State not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 6: Pawn promotion (quiet)
+    printf("[TEST_UNMAKE_MOVE:PROMOTION] Testing pawn promotion\n");
+    b = init_board_fen((char *)"8/6P1/8/8/8/8/8/4K2k w - - 0 1");
+    original_turn = b->white_to_move;    move = construct_move(QUEENPROMOTIONFLAG, idx_from_square_name((char *)"g7"), idx_from_square_name((char *)"g8"));
+    make_move(b, move);
+    unmake_move(b);
+    if (b->board[idx_from_square_name((char *)"g7")] != WHITEPAWN) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION] Pawn not restored to g7\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g8")] != NONE) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION] Square g8 should be empty after unmake\n");
+        success = false;
+    }
+    if (b->white_to_move != original_turn) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION] Turn not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 7: Pawn promotion with capture
+    printf("[TEST_UNMAKE_MOVE:PROMOTION_CAPTURE] Testing pawn promotion with capture\n");
+    b = init_board_fen((char *)"6r1/6P1/8/8/8/8/8/4K2k w - - 0 1");
+    original_turn = b->white_to_move;    move = construct_move(QUEENPROMOTIONFLAG, idx_from_square_name((char *)"g7"), idx_from_square_name((char *)"g8"));
+    make_move(b, move);
+    unmake_move(b);
+    if (b->board[idx_from_square_name((char *)"g7")] != WHITEPAWN) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION_CAPTURE] Pawn not restored to g7\n");
+        success = false;
+    }
+    if (b->board[idx_from_square_name((char *)"g8")] != (ROOK | BLACK)) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION_CAPTURE] Captured rook not restored to g8, got %d\n", 
+               b->board[idx_from_square_name((char *)"g8")]);
+        success = false;
+    }
+    if (b->white_to_move != original_turn) {
+        printf("[TEST_UNMAKE_MOVE:PROMOTION_CAPTURE] Turn not restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 8: Multiple moves and unmakes
+    printf("[TEST_UNMAKE_MOVE:MULTIPLE_MOVES] Testing multiple moves and unmakes\n");
+    b = init_board_fen((char *)MULTIPLE_ENPASSANT_FEN);
+    memcpy(original_board, b->board, sizeof(original_board));
+    original_state = b->current_state;
+    // Move 1: e2e4
+    move = construct_move(ENPASSANTCAPTUREFLAG, idx_from_square_name((char *)"f5"), idx_from_square_name((char *)"e6"));
+    make_move(b, move);
+    // Move 2: e7e5
+    move = construct_move(0, idx_from_square_name((char *)"a8"), idx_from_square_name((char *)"b8"));
+    make_move(b, move);
+    // Move 3: g1f3
+    move = construct_move(0, idx_from_square_name((char *)"f6"), idx_from_square_name((char *)"f7"));
+    make_move(b, move);
+    // Unmake move 3
+    unmake_move(b);
+    // Unmake move 2
+    unmake_move(b);
+    // Unmake move 1
+    unmake_move(b);
+    if (memcmp(original_board, b->board, sizeof(original_board)) != 0) {
+        printf("[TEST_UNMAKE_MOVE:MULTIPLE_MOVES] Board not restored after multiple moves and unmakes\n");
+        success = false;
+    }
+    if (b->current_state != original_state) {
+        printf("[TEST_UNMAKE_MOVE:MULTIPLE_MOVES] State not restored after multiple unmakes\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 9: Castling rights loss
+    printf("[TEST_UNMAKE_MOVE:CASTLING_RIGHTS] Testing castling rights restoration\n");
+    b = init_board_fen((char *)"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1");
+    original_state = b->current_state;
+    // Move king, losing all castling rights
+    move = construct_move(0, idx_from_square_name((char *)"e1"), idx_from_square_name((char *)"d2"));
+    make_move(b, move);
+    unmake_move(b);
+    if ((b->current_state & CASTLING_RIGHTS_MASK) != (original_state & CASTLING_RIGHTS_MASK)) {
+        printf("[TEST_UNMAKE_MOVE:CASTLING_RIGHTS] Castling rights not properly restored\n");
+        success = false;
+    }
+    free_board(b);
+
+    // TEST 10: Move count restoration (black's move count should only increment after black moves)
+    printf("[TEST_UNMAKE_MOVE:MOVE_COUNT] Testing move count restoration\n");
+    b = init_board_fen((char *)DEFAULTFEN);
+    uint32_t original_move_count = b->move_count;
+    // White moves (move_count shouldn't change)
+    move = construct_move(0, idx_from_square_name((char *)"e2"), idx_from_square_name((char *)"e4"));
+    make_move(b, move);
+    // Black moves (move_count should increment)
+    move = construct_move(0, idx_from_square_name((char *)"e7"), idx_from_square_name((char *)"e5"));
+    make_move(b, move);
+    if (b->move_count != original_move_count + 1) {
+        printf("[TEST_UNMAKE_MOVE:MOVE_COUNT] Move count not incremented correctly\n");
+        success = false;
+    }
+    unmake_move(b);
+    if (b->move_count != original_move_count) {
+        printf("[TEST_UNMAKE_MOVE:MOVE_COUNT] Move count not restored after black's move unmake\n");
+        success = false;
+    }
+    free_board(b);
+
+    if (success) {
+        printf("=== All unmake_move tests passed! ===\n\n");
+    }
+    return success ? 0 : 1;
+}
+
 static const struct {
     const char *name;
     const char *description;
@@ -465,6 +729,7 @@ static const struct {
     { "castling", "Check if all castling rules are followed", test_castling},
     { "en_passant", "Test en passant moves including discovered check", test_en_passant},
     { "make_move", "Test make move", test_make_move},
+    { "unmake_move", "Test unmake move including edge cases", test_unmake_move},
 };
 
 static int print_available_tests(void) {
