@@ -11,14 +11,14 @@ typedef struct movegen_t movegen_t;
 
 void init_movegen(movegen_t *movegen);
 void free_movegen(movegen_t *movegen);
-void generate_pawn_moves(Board *b);
+void generate_pawn_moves(movegen_t *movegen, Board *b);
 void dump_moves(movegen_t *movegen);
-void generate_king_moves(Board *b);
-void generate_knight_moves(Board *b);
-void generate_rook_moves(Board *b);
-void generate_bishop_moves(Board *b);
-void generate_queen_moves(Board *b);
-int generate_moves(Board *b);
+void generate_king_moves(movegen_t *movegen, Board *b);
+void generate_knight_moves(movegen_t *movegen, Board *b);
+void generate_rook_moves(movegen_t *movegen, Board *b);
+void generate_bishop_moves(movegen_t *movegen, Board *b);
+void generate_queen_moves(movegen_t *movegen, Board *b);
+movegen_t generate_moves(Board *b);
 
 int count_trailing_zeros(BB bb);
 

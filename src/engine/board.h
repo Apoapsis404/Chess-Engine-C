@@ -43,7 +43,6 @@ typedef struct movegen_t movegen_t;
 typedef struct Board {
     PIECE board[64];
     BitBoard bb;
-    movegen_t movegen;
     bool white_to_move;
     uint32_t current_state;
     bool check;

@@ -34,7 +34,6 @@ Board* init_board_fen(char* fen){
 
     if (move_array == NULL) move_array = init_move_arrays(true);
 
-    init_movegen(&b->movegen);
     get_king_squares(b);
     return b;
 }

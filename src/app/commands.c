@@ -69,8 +69,9 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
     int from, to;
     Move move;
     PIECE piece;
-    for(size_t i = 0; i < b->movegen.move_count; i++) {
-        move = b->movegen.moves[i];
+    movegen_t movegen = generate_moves(b);
+    for(size_t i = 0; i < movegen.move_count; i++) {
+        move = movegen.moves[i];
         from = get_from(move);
         to = get_to(move);
         piece = b->board[from];

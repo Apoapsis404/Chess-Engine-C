@@ -89,32 +89,32 @@ void start_test(Board *b, int depth) {
 }
 
 void perft_test(Board *b, int depth) {
-    generate_moves(b);
+    movegen_t movegen = generate_moves(b);
     
     //To be commented out
-    String fen = get_fen(b);
+    // String fen = get_fen(b);
 
-    fprintf(pf, "%s\n", fen.string);
-    free_string(&fen);
-    for (size_t i = 0; i < b->movegen.move_count; i++) {
-        fprintf(pf, MtS_Fmt"\n", MtS_Arg(b->movegen.moves[i]));
-    }
-    fflush(pf);
+    // fprintf(pf, "%s\n", fen.string);
+    // free_string(&fen);
+    // for (size_t i = 0; i < movegen.move_count; i++) {
+    //     fprintf(pf, MtS_Fmt"\n", MtS_Arg(movegen.moves[i]));
+    // }
+    // fflush(pf);
 
     if (depth == 1) {
-        update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
+        update_perft_result_from_moves(movegen.moves, movegen.move_count, b->check);
         return;
     }
 
     //update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
     Move move;
-    for (size_t i = 0; i < b->movegen.move_count; ++i) {
-        move = b->movegen.moves[i];
+    for (size_t i = 0; i < movegen.move_count; ++i) {
+        move = movegen.moves[i];
         //Board new_b = copy_make(*b, move);
         make_move(b, move);
-        fprintf(pf, "Move Made: "MtS_Fmt" FEN: ", MtS_Arg(move));
+        // fprintf(pf, "Move Made: "MtS_Fmt" FEN: ", MtS_Arg(move));
         perft_test(b, depth - 1);
         unmake_move(b);
-        fprintf(pf, "Move Unade: "MtS_Fmt"\n", MtS_Arg(move));
+        // fprintf(pf, "Move Unade: "MtS_Fmt"\n", MtS_Arg(move));
     }
 }
