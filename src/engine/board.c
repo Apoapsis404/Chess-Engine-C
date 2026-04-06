@@ -73,7 +73,6 @@ PIECE make_move(Board* b, Move move){
         entry->move = move;
         entry->moved_piece = b->board[get_from(move)]; // Store original piece before any modifications
         entry->state_before = b->current_state;
-        entry->white_to_move_before = b->white_to_move;
         entry->king_square_before[0] = b->king_square[0];
         entry->king_square_before[1] = b->king_square[1];
         entry->move_count_before = b->move_count;
@@ -83,7 +82,7 @@ PIECE make_move(Board* b, Move move){
     int to = get_to(move);
 
     uint32_t castling_rights = b->current_state & CASTLING_RIGHTS_MASK;
-    uint32_t en_passant_file = (b->current_state >> 4) & EN_PASSANT_FILE_MASK;
+    uint32_t en_passant_file = 0; 
 
     b->current_state = 0;
 
@@ -91,14 +90,14 @@ PIECE make_move(Board* b, Move move){
 
     PIECE piece = b->board[from];
     PIECE captured_piece = b->board[to]; 
-    b->current_state |= (uint32_t)1 << 7;
+    b->current_state |= (uint32_t)captured_piece << 7;
 
     // Handle flags
     if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) {
         int e_pawn_idx = b->white_to_move ? to - 8 : to + 8;
         captured_piece = b->board[e_pawn_idx];
         b->board[e_pawn_idx] = NONE;
-    }
+    }   
     if (move_is_flag(move, DOUBLEPAWNPUSHFLAG)) {
         en_passant_file = (uint32_t)file_from_idx(to) + 1;
     }
@@ -132,19 +131,22 @@ PIECE make_move(Board* b, Move move){
     }
     
     b->board[to] = piece;
-    b->board[from] = NONE;
+    b->board[from] = captured_piece;
 
     if ((piece & PIECEMASK) == KING) {
         b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE] = to;
     }
     
-    b->current_state |= (en_passant_file << 4) | castling_rights;
+    b->current_state |= ((en_passant_file << 4) | castling_rights);
 
     if (!b->white_to_move) {
         b->move_count += 1;
     }
 
-    b->current_state |= (uint32_t)((move_is_capture(move) || (piece & PIECEMASK) == PAWN) ? 0 : ((b->current_state & HALF_MOVE_CLOCK_MASK) >> 16) + 1) << 16;
+    int half_clock = (b->current_state & HALF_MOVE_CLOCK_MASK) >> 16;
+    if (move_is_capture(move) || (piece & PIECEMASK) == PAWN) half_clock = 0;
+    else half_clock += 1;
+    b->current_state |= half_clock << 16;
 
     bb_make_move(&b->bb, move, piece, captured_piece);
 
@@ -155,9 +157,6 @@ PIECE make_move(Board* b, Move move){
         b->move_history[b->move_history_count].captured_piece = captured_piece;
         b->move_history_count++;
     }
-
-    //TODO implement generate_moves after unmake_move is stable
-    //generate_moves(b);
 
     return captured_piece;
 }
@@ -196,7 +195,7 @@ void unmake_move(Board *b) {
     int to = get_to(move);
     PIECE moved_piece = entry->moved_piece;
     PIECE captured_piece = entry->captured_piece;
-    bool white_to_move_before = entry->white_to_move_before;
+    bool white_to_move_before = !b->white_to_move;
 
     log_move(DEBUG, "BOARD", move);
 
@@ -244,7 +243,7 @@ void unmake_move(Board *b) {
 
     // Restore board state
     b->current_state = entry->state_before;
-    b->white_to_move = entry->white_to_move_before;
+    b->white_to_move = !b->white_to_move;
     b->king_square[0] = entry->king_square_before[0];
     b->king_square[1] = entry->king_square_before[1];
     b->move_count = entry->move_count_before;

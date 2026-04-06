@@ -378,11 +378,6 @@ int main(int argc, const char **argv) {
 
     //repl(ui);
     
-    //int   retval = repl_from_file(b, "command_file.txt");
-    //if (retval == QUIT_TO_REPL_VAL){
-        //repl(b);
-    //}
-
     log_message(INFO, "MAIN", "Quitting");
     close_logging();
 

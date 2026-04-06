@@ -19,16 +19,15 @@ typedef struct {
     PIECE moved_piece;
     PIECE captured_piece;
     uint32_t state_before;
-    bool white_to_move_before;
     int king_square_before[2];
     uint32_t move_count_before;
 } MoveHistoryEntry;
 
 #define MOVE_HISTORY_MAX 1024
 
-#define EN_PASSANT_FILE_MASK 0b11110000
-#define CASTLING_RIGHTS_MASK 0b00001111
-#define HALF_MOVE_CLOCK_MASK 0xFFFF0000
+#define EN_PASSANT_FILE_MASK  0b1110000
+#define CASTLING_RIGHTS_MASK  0b00001111
+#define HALF_MOVE_CLOCK_MASK  0xFFFF0000
 #define CASTLING_WHITE_KINGSIDE  (1u << 3)
 #define CASTLING_WHITE_QUEENSIDE (1u << 2)
 #define CASTLING_BLACK_KINGSIDE  (1u << 1)

@@ -36,6 +36,16 @@
 #define Move uint16_t
 #define NULLMOVE (uint16_t)0
 
+extern const char *chess_squares[64];
+
+#ifndef MtS_Fmt
+#define MtS_Fmt "%s%s"
+#endif //MtS_FmT
+#ifndef MtS_Arg
+#define MtS_Arg(move) (chess_squares)[get_from(move)], (chess_squares)[get_to(move)]
+#endif //MtS_Arg
+
+
 Move construct_move(int flags, int from, int to);
 
 int get_from(Move move);

@@ -96,12 +96,10 @@ void perft_test(Board *b, int depth) {
 
     fprintf(pf, "%s\n", fen.string);
     free_string(&fen);
-
     for (size_t i = 0; i < b->movegen.move_count; i++) {
-        fprintf(pf, "%s\n", move_to_string(b->movegen.moves[i]).string);
+        fprintf(pf, MtS_Fmt"\n", MtS_Arg(b->movegen.moves[i]));
     }
     fflush(pf);
-
 
     if (depth == 1) {
         update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
@@ -114,7 +112,9 @@ void perft_test(Board *b, int depth) {
         move = b->movegen.moves[i];
         //Board new_b = copy_make(*b, move);
         make_move(b, move);
+        fprintf(pf, "Move Made: "MtS_Fmt" FEN: ", MtS_Arg(move));
         perft_test(b, depth - 1);
         unmake_move(b);
+        fprintf(pf, "Move Unade: "MtS_Fmt"\n", MtS_Arg(move));
     }
 }

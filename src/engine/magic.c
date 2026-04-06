@@ -225,7 +225,7 @@ magic_entry_t find_magic(int square, int relevant_bits, bool is_rook) {
     }
 
     BB magic;
-    for (k = 0; k < 10000000; k++){
+    for (k = 0; k < 100000000; k++){
         magic = generate_magic_number();
         if(bit_count((attack_mask  * magic) & 0xFF00000000000000ULL) < 6) continue;
 

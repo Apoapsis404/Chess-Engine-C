@@ -184,7 +184,7 @@ String get_fen(Board *b) {
 
     // 4. En passant target square
     string_append(&fen, ' ');
-    uint32_t en_passant = (b->current_state >> 4) & 0x0F;
+    uint32_t en_passant = (b->current_state & EN_PASSANT_FILE_MASK) >> 4;
     if (en_passant == 0) {
         string_append(&fen, '-');
     } else {
