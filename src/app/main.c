@@ -84,7 +84,7 @@ cleanup:
     return retval;
 }
 
-int repl(ui_t *ui){
+int cmd(ui_t *ui){
     while(1) {
 
         draw_ui(ui, BOARD_DRAW_SIZE);
@@ -101,11 +101,11 @@ int repl(ui_t *ui){
             continue;
         }
 
-        logf_message(INFO, "REPL", "Command: %s", buf);
+        logf_message(INFO, "CMD", "Command: %s", buf);
 
         int ret = process_command_line(ui, buf);
         if (ret == 1){
-            log_message(INFO, "REPL", "Quitting");
+            log_message(INFO, "CMD", "Quitting");
             break;
         }
     }
@@ -124,12 +124,16 @@ typedef struct main_t {
 
     bool perft;
     int perft_depth;
+
+    bool debug_position;
+
+    bool return_to_cmd;
 } main_t;
 
 main_t main_cfg = {
     .config_file_name = "src/logging/config.cfg",
 
-    .log_level = DEBUG,
+    .log_level = NULL_LEVEL,
 
     .fen = DEFAULTFEN,
 
@@ -138,11 +142,16 @@ main_t main_cfg = {
 
     .perft = false,
     .perft_depth = 1,
+
+    .debug_position = false,
+
+    .return_to_cmd = false,
 };
 
 static void print_usage(const char *prog_name) {
     printf("Usage: %s [options]\n", prog_name);
     printf("  --help, -h            Show this help message\n");
+    printf("  --cmd, -c             Opens chess commandline after other functions are completed\n");
     printf("  --config <file>       Load a config file (default: src/logging/config.cfg)\n");
     printf("  --log-level <level>   Set log level (DEBUG, INFO, WARNING, ERROR, FATAL)\n");
     printf("  --fen <fen|preset>    Set initial board position using FEN or preset name.\n");
@@ -152,6 +161,7 @@ static void print_usage(const char *prog_name) {
     printf("      Available tests are from tests.c (calc, save_calc, log, magic, save_magic, read_magic, move_gen, pin, check)\n");
     printf("  --perft, -p <depth>   Run perft test on FEN string with depth <depth>\n");
     printf("      It will run on FEN string given with --fen or the default FEN if none is given\n");
+    printf("  --dbp                 Step through legal moves in a position, and log debug info on command\n");
 }
 
 static bool is_valid_fen_placement(const char *fen) {
@@ -281,8 +291,7 @@ int main(int argc, const char **argv) {
                 print_usage(program);
                 return 1;
             }
-            main_cfg.log_level = DEBUG;
-            set_log_level_from_string(argv[++i]);
+            main_cfg.log_level = get_log_level_from_str(argv[++i]);
             continue;
         }
 
@@ -325,14 +334,29 @@ int main(int argc, const char **argv) {
             continue;
         }
 
+        if (strcmp(arg, "--dbp") == 0) {
+            main_cfg.debug_position = true;
+            continue;
+        }
+
+        if (strcmp(arg, "--cmd") == 0 || strcmp(arg, "-c") == 0) {
+            main_cfg.return_to_cmd = true;
+            continue;
+        }
+
         fprintf(stderr, "Unknown argument: %s\n", arg);
         print_usage(program);
         return 1;
     }
 
     load_config(main_cfg.config_file_name);
+    if (main_cfg.log_level != NULL_LEVEL) set_log_level(main_cfg.log_level);
     log_message(INFO, "MAIN", "Started!");
+    log_message(DEBUG, "MAIN", "If log level is debug this should be shown");
 
+    if (!main_cfg.debug_position && !main_cfg.test && !main_cfg.perft) main_cfg.return_to_cmd = true;
+
+    printf("Should i return to cmd: %s\n", main_cfg.return_to_cmd ? "I should!" : "I should not!");
     if (main_cfg.perft) {
         perft_single_test(main_cfg.fen, main_cfg.perft_depth);
     }
@@ -364,25 +388,33 @@ int main(int argc, const char **argv) {
             }
         }
         log_message(INFO, "MAIN", "Exiting after tests");
-        close_logging();
-        free_move_arrays(move_array);
-        return result_code;
+        if (!main_cfg.return_to_cmd) {
+            close_logging();
+            free_move_arrays(move_array);
+            return result_code;
+        }
     }
 
-    Board *b = init_board_fen(main_cfg.fen);
-    ui_t *ui = malloc(sizeof(ui_t));
-    ui->b = b;
-    ui->bb = 0ULL;
-    ui->clear = true;
-    ui->draw_bb = true;
+    if (main_cfg.debug_position) {
+        log_message(INFO, "MAIN", "Debugging current position");
+    }
 
-    //repl(ui);
-    
+    if (main_cfg.return_to_cmd) {
+        log_message(INFO, "MAIN", "Entering command mode");
+        Board *b = init_board_fen(main_cfg.fen);
+        ui_t *ui = malloc(sizeof(ui_t));
+        ui->b = b;
+        ui->bb = 0ULL;
+        ui->clear = true;
+        ui->draw_bb = true;
+
+        cmd(ui);
+        free_board(b);
+        free(ui);
+    } 
     log_message(INFO, "MAIN", "Quitting");
     close_logging();
 
-    free_board(b);
     free_move_arrays(move_array);
-    free(ui);
     return 0;
 }

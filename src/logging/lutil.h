@@ -8,9 +8,10 @@
 
 // Functions
 
-typedef enum { DEBUG, INFO, WARNING, ERROR, FATAL } log_level_t;
+typedef enum { DEBUG, INFO, WARNING, ERROR, FATAL, NULL_LEVEL } log_level_t;
 void set_log_level(log_level_t level);
 void set_log_level_from_string(const char* level);
+log_level_t get_log_level_from_str(const char* log_level_str);
 void set_log_args(int argc, const char **argv);
 void set_log_file(const char *filename);
 void set_log_entity_limit(int max_entities);

@@ -669,7 +669,7 @@ movegen_t generate_moves(Board *b) {
         movegen.pin_bb = get_pin_bb(king_square, b);
 
         if ((attacks_to(b->bb.occupiedBB, king_square, b->bb.pieceBB) & b->bb.pieceBB[b->white_to_move ? BLACK : WHITE]) != 0) {
-            logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
+            //logf_message(DEBUG, "MOVEGEN", "The %s king is in check", b->white_to_move ? "white" : "black");
             b->check = true;
             movegen.checking_pieces = handle_check(b);
         }

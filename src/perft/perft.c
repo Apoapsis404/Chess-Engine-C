@@ -106,11 +106,9 @@ void perft_test(Board *b, int depth) {
         return;
     }
 
-    //update_perft_result_from_moves(b->movegen.moves, b->movegen.move_count, b->check);
     Move move;
     for (size_t i = 0; i < movegen.move_count; ++i) {
         move = movegen.moves[i];
-        //Board new_b = copy_make(*b, move);
         make_move(b, move);
         // fprintf(pf, "Move Made: "MtS_Fmt" FEN: ", MtS_Arg(move));
         perft_test(b, depth - 1);

@@ -46,13 +46,20 @@ void set_log_file(const char *filename) {
 }
 
 // Config handlers
-static void handle_log_level(const char *value) {
-    if (strcmp(value, "DEBUG") == 0) set_log_level(DEBUG);
-    else if (strcmp(value, "INFO") == 0) set_log_level(INFO);
-    else if (strcmp(value, "WARNING") == 0) set_log_level(WARNING);
-    else if (strcmp(value, "ERROR") == 0) set_log_level(ERROR);
-    else if (strcmp(value, "FATAL") == 0) set_log_level(FATAL);
+
+log_level_t get_log_level_from_str(const char *log_level_str) {
+    if (strcmp(log_level_str, "DEBUG") == 0) return(DEBUG);
+    else if (strcmp(log_level_str, "INFO") == 0) return(INFO);
+    else if (strcmp(log_level_str, "WARNING") == 0) return(WARNING);
+    else if (strcmp(log_level_str, "ERROR") == 0) return(ERROR);
+    else if (strcmp(log_level_str, "FATAL") == 0) return(FATAL);
+    else return DEBUG;
 }
+
+static void handle_log_level(const char *value) {
+    set_log_level(get_log_level_from_str(value));
+}
+
 
 static void handle_clear_file(const char *value) {
     if (strcmp(value, "false") == 0) log.clear_file = false;
@@ -105,11 +112,7 @@ void set_log_args(int argc, const char **argv) {
 }
 
 void set_log_level_from_string(const char* level){
-    if (strcmp(level , "DEBUG") == 0) set_log_level(DEBUG); 
-    else if (strcmp(level , "INFO") == 0) set_log_level(INFO); 
-    else if (strcmp(level , "WARNING") == 0) set_log_level(WARNING); 
-    else if (strcmp(level , "ERROR") == 0) set_log_level(ERROR); 
-    else if (strcmp(level , "FATAL") == 0) set_log_level(FATAL); 
+    set_log_level(get_log_level_from_str(level));
 }
 
 void set_log_entity_limit(int max_entities){
