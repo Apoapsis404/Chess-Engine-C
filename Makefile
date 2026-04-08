@@ -13,6 +13,22 @@ PERFT_DIR = $(SRC_DIR)/perft
 BUILD_DIR = build
 UI ?= terminal
 
+OS_NAME := $(shell uname -s 2>/dev/null || echo Unknown)
+
+RAYLIB_INCLUDE_DIR = $(UI_DIR)/include
+RAYLIB_LIB_DIR = $(UI_DIR)/lib
+
+ifeq ($(UI),raylib)
+    CFLAGS += -I$(RAYLIB_INCLUDE_DIR)
+    LDFLAGS += -L$(RAYLIB_LIB_DIR) -lraylib
+
+    ifeq ($(OS),Windows_NT)
+        LDFLAGS += -lopengl32 -lgdi32 -luser32 -lkernel32 -lwinmm -lws2_32
+    else ifeq ($(OS_NAME),Linux)
+        LDFLAGS += -ldl -lm -lpthread -lX11 -lGL -lrt -lXrandr -lXinerama -lXi -lXxf86vm
+    endif
+endif
+
 APP_SRCS = $(wildcard $(APP_DIR)/*.c)
 UI_COMMON = $(UI_DIR)/ui_common.c
 ifeq ($(UI),none)
@@ -37,7 +53,7 @@ TARGET = chess
 all: $(TARGET)
 
 $(TARGET): $(OBJS)
-	$(CC) $(LDFLAGS) -o $@ $^
+	$(CC) -o $@ $^ $(LDFLAGS)
 
 $(BUILD_DIR)/%.o: src/%.c
 	@mkdir -p $(dir $@)
