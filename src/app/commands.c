@@ -7,6 +7,7 @@
 #include "engine/coordinate.h"
 #include "engine/movegen.h"
 #include "util/sutil.h"
+#include "perft/perft.h"
 
 #include <string.h>
 
@@ -16,7 +17,11 @@
 #define BB_FUNCS "bb"
 #define CHANGE_LEVEL "lvl"
 #define GET_FEN "fen"
-#define PERFT "perft"
+
+// Debugging Commands definitions
+#define PERFT "p"
+#define MAKE_MOVE_IN_POS "mv"
+#define DUMP_MOVES "d"
 
 typedef int (*command_fn)(BString args, ui_t *ui);
 
@@ -211,6 +216,48 @@ static int handle_get_fen_cmd(BString args, ui_t *ui){
     return 0;
 }
 
+static void perft_cmd_usage() {
+    printf("p <depth>\n");
+    printf("        Only accepts depth in range 1-9\n");
+}
+
+static int handle_perft_cmd(BString args, ui_t *ui) {
+    (void) ui;
+    //bstring_next(&args, ' ');
+    if (!(args.count == 1)) {
+        printf("BString not one digit, BS.count: %ld, BS: "BS_Fmt" \n", args.count, BS_Arg(args));
+        perft_cmd_usage();
+        return 0;
+    }
+
+    if (!bstring_is_number(&args)) {
+        printf("BString not a number\n");
+        perft_cmd_usage();
+        return 0;
+    }
+
+    size_t depth = char_digit_to_int(args.string[0]);
+
+    perft_single_test_b(ui->b, depth);
+
+    return 0;
+}
+
+static int handle_move_in_pos_cmd(BString args, ui_t *ui) {
+    (void) args; (void) ui;
+    return 0;
+}
+
+static int handle_dump_moves_cmd(BString args, ui_t *ui) {
+    (void) args;
+    movegen_t movegen = generate_moves(ui->b);
+    for (size_t i = 0; i < movegen.move_count; ++i) {
+        printf("%ld. "MtS_Fmt"\n", i+1, MtS_Arg(movegen.moves[i]));
+    }
+    return 0;
+}
+
+#define DEBUG_COMMANDS_SIZE 2
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
     { RESET, handle_reset_cmd, "Reset board to default position" },
@@ -218,6 +265,11 @@ static const command_def_t command_table[] = {
     { BB_FUNCS, handle_bb_cmd, "Toggle or select bitboard view" },
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
+
+    // Debugging Commands
+    { PERFT, handle_perft_cmd, "Starting a perft from position with given depth" },
+    { MAKE_MOVE_IN_POS, handle_move_in_pos_cmd, "Making legal move in given position" },
+    { DUMP_MOVES, handle_dump_moves_cmd, "Prints all legal move in position to stdout" },
 };
 
 int eval(BString *bs, ui_t *ui){
@@ -226,7 +278,10 @@ int eval(BString *bs, ui_t *ui){
         return 0;
     }
 
-    for (size_t i = 0; i < sizeof(command_table) / sizeof(command_table[0]); ++i) {
+    size_t command_table_size = sizeof(command_table) / sizeof(command_table[0]); 
+    if (!ui->debug) command_table_size -= DEBUG_COMMANDS_SIZE;
+
+    for (size_t i = 0; i < command_table_size;  ++i) {
         if (bstring_equal(token, command_table[i].name)) {
             return command_table[i].handler(bstring_next(bs, ' '), ui);
         }

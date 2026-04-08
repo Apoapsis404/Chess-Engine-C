@@ -118,6 +118,13 @@ int bstring_equal(BString token, const char *command) {
     return token.count == len && strncmp(token.string, command, len) == 0;
 }
 
+int bstring_is_number(BString *bs) {
+    for (size_t i = 0; i < bs->count; ++i) {
+        if (!is_digit(bs->string[i])) return 0;
+    }
+    return 1;
+}
+
 // For now: Expects there to be something here! (because that garanties a null terminator)
 BString bstring_next(BString *bs, char delim){
     size_t i = 0;

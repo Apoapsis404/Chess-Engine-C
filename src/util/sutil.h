@@ -51,6 +51,8 @@ int bstring_equal(BString token, const char *command);
 void bstring_print(BString *bs, char end);
 #define bstring_println(bs) bstring_print(bs, '\n')
 
+int bstring_is_number(BString *bs); 
+
 int string_map(String *s, char (*f)(char));
 #define string_to_lower(s) string_map(s, to_lower);
 #define string_to_upper(s) string_map(s, to_upper);

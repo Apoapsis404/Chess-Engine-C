@@ -244,6 +244,10 @@ static const char *resolve_fen_input(const char *arg) {
         {"PAWN_PIN_FEN", PAWN_PIN_FEN},
         {"POS_4_FEN", POS_4_FEN},
         {"DCERF", DISCOVERED_CHECK_ENPASSANT_ROOK_FEN},
+        {"POS_2", POS_2},
+        {"POS_3", POS_3},
+        {"POS_4W", POS_4W},
+        {"POS_4B", POS_4B},
     };
 
     for (size_t i = 0; i < sizeof(presets) / sizeof(presets[0]); ++i) {
@@ -356,7 +360,6 @@ int main(int argc, const char **argv) {
 
     if (!main_cfg.debug_position && !main_cfg.test && !main_cfg.perft) main_cfg.return_to_cmd = true;
 
-    printf("Should i return to cmd: %s\n", main_cfg.return_to_cmd ? "I should!" : "I should not!");
     if (main_cfg.perft) {
         perft_single_test(main_cfg.fen, main_cfg.perft_depth);
     }
@@ -397,6 +400,17 @@ int main(int argc, const char **argv) {
 
     if (main_cfg.debug_position) {
         log_message(INFO, "MAIN", "Debugging current position");
+        Board *b = init_board_fen(main_cfg.fen);
+        ui_t *ui = malloc(sizeof(ui_t));
+        ui->b = b;
+        ui->bb = 0ULL;
+        ui->clear = false;
+        ui->draw_bb = true;
+        ui->debug = true;
+
+        cmd(ui);
+        free_board(b);
+        free(ui);
     }
 
     if (main_cfg.return_to_cmd) {
@@ -407,6 +421,7 @@ int main(int argc, const char **argv) {
         ui->bb = 0ULL;
         ui->clear = true;
         ui->draw_bb = true;
+        ui->debug = false;
 
         cmd(ui);
         free_board(b);

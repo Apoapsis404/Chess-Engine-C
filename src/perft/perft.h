@@ -1,6 +1,8 @@
 #ifndef PERFT_H
 #define PERFT_H
 
+#include "engine/board.h"
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -15,7 +17,7 @@ typedef struct perft_result_t {
 } perft_result_t;
 
 void perft_single_test(char *fen, int depth);
-
+void perft_single_test_b(Board *b, int depth);
 
 
 #endif // PERFT_H

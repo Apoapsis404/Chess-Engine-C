@@ -20,6 +20,7 @@ typedef struct ui_t {
     bool clear;
     Board *b;
     BB bb;
+    bool debug;
     ui_mode_t mode;
 } ui_t;
 

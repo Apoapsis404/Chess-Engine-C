@@ -1,6 +1,5 @@
 #include "perft.h"
 #include "logging/lutil.h"
-#include "engine/board.h"
 #include "engine/movegen.h"
 #include "engine/fen.h"
 
@@ -11,6 +10,12 @@ FILE *pf = NULL;
 void start_test(Board *b, int depth);
 void perft_test(Board *b, int depth);
 void log_perft_result(log_level_t level, const perft_result_t *result);
+
+void perft_single_test_b(Board *b, int depth) {
+    log_message(INFO, "PERFT", "Starting PERFT test with given board");
+
+    start_test(b, depth);
+}
 
 void perft_single_test(char *fen, int depth){
     Board *b;
@@ -75,8 +80,8 @@ void log_perft_result(log_level_t level, const perft_result_t *result) {
 }
 
 void start_test(Board *b, int depth) {
-    if (pf != NULL) fclose(pf);
-    pf = fopen("perft.txt", "w");
+    // if (pf != NULL) fclose(pf);
+    // pf = fopen("perft.txt", "w");
 
 
     clock_t time_it;
@@ -85,7 +90,7 @@ void start_test(Board *b, int depth) {
     log_perft_result(INFO, &pr);
     log_time_stop(INFO, "PERFT", &time_it);
 
-    fclose(pf);
+    // fclose(pf);
 }
 
 void perft_test(Board *b, int depth) {
