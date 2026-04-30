@@ -8,8 +8,10 @@
 #include "engine/movegen.h"
 #include "util/sutil.h"
 #include "perft/perft.h"
+#include "ai/evaluation.h"
 
 #include <string.h>
+#include <limits.h>
 
 #define QUIT  "q"
 #define RESET "rst"
@@ -17,6 +19,9 @@
 #define BB_FUNCS "bb"
 #define CHANGE_LEVEL "lvl"
 #define GET_FEN "fen"
+#define EVALUATE "eval"
+#define BEST_MOVE "best"
+#define PLAY "play"
 
 // Debugging Commands definitions
 #define PERFT "p"
@@ -82,27 +87,27 @@ PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int
         piece = b->board[from];
 
         if (!piece_is_color(piece, color)) {
-            logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
+            // logf_message(DEBUG, "EVAL_MOVE", "Piece is wrong color. Color: %s", (piece & COLORMASK) ? "Black" : "White");
             continue;
         }
 
         if (from_sq != -1 && from != from_sq){
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong from square: %d", from);
             continue;
         }
 
         if (to_sq != -1 && to != to_sq) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong to square: %d", to);
             continue;
         }
 
         if (from_piece && b->board[from] != from_piece) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %s%s", get_piece_color_name(piece).string, get_piece_name(piece & PIECEMASK).string);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong piece : %s%s", get_piece_color_name(piece).string, get_piece_name(piece & PIECEMASK).string);
             continue;
         }
 
         if (target_piece && b->board[to] != target_piece) {
-            logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %s%s", get_piece_color_name(b->board[to]).string, get_piece_name(b->board[to] & PIECEMASK).string);
+            // logf_message(DEBUG, "EVAL_MOVE", "Wrong target piece : %s%s", get_piece_color_name(b->board[to]).string, get_piece_name(b->board[to] & PIECEMASK).string);
             continue;
         }
 
@@ -257,7 +262,42 @@ static int handle_dump_moves_cmd(BString args, ui_t *ui) {
     return 0;
 }
 
-#define DEBUG_COMMANDS_SIZE 2
+static int handle_eval_position(BString args, ui_t *ui){
+    (void) args;
+    int score = evalutate(ui->b);
+    logf_message(INFO, "SYSTEM_OUT", "Evaluation: %d", score);
+    return 0;
+}
+
+static int handle_get_best_move(BString args, ui_t *ui) {
+    (void) args;
+    movegen_t movegen = generate_moves(ui->b);
+
+    int score = INT32_MIN;
+    Move move = movegen.moves[0];
+    
+    for (size_t i = 0; i < movegen.move_count; i++) {
+        make_move(ui->b, movegen.moves[i]);
+        int tmp_score = nega_max(INT_MIN, INT_MAX, 3, ui->b, generate_moves(ui->b));
+        if (tmp_score > score) {
+            move = movegen.moves[i];
+            score = tmp_score;
+        }
+
+        unmake_move(ui->b);
+    }
+
+    logf_message(INFO, "SYSTEM_OUT", "Best move was: "MtS_Fmt", with a score: %d", MtS_Arg(move), abs(score));
+    return 0;
+}
+
+static int  handle_play_cmd(BString args, ui_t *ui) {
+    (void) args;
+    (void) ui;
+    return 0;
+}
+
+#define DEBUG_COMMANDS_SIZE 3
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
     { RESET, handle_reset_cmd, "Reset board to default position" },
@@ -265,6 +305,9 @@ static const command_def_t command_table[] = {
     { BB_FUNCS, handle_bb_cmd, "Toggle or select bitboard view" },
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
+    { EVALUATE, handle_eval_position, "Evaluates current position" },
+    { BEST_MOVE, handle_get_best_move, "Logs the (allegedly)best move in position" },
+    { PLAY, handle_play_cmd, "Plays the (allegedly)best move in position"},
 
     // Debugging Commands
     { PERFT, handle_perft_cmd, "Starting a perft from position with given depth" },

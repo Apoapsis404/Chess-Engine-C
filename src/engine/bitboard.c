@@ -10,6 +10,7 @@
 void get_blackbb(BitBoard *bb){
     bb->pieceBB[BLACK] = bb->pieceBB[BLACKKING] | bb->pieceBB[BLACKPAWN] |bb->pieceBB[BLACKKNIGHT] |bb->pieceBB[BLACKBISHOP] |bb->pieceBB[BLACKROOK] |bb->pieceBB[BLACKQUEEN]; 
 }
+
 void get_whitebb(BitBoard *bb){
     bb->pieceBB[WHITE] = bb->pieceBB[WHITEKING] | bb->pieceBB[WHITEPAWN] |bb->pieceBB[WHITEKNIGHT] |bb->pieceBB[WHITEBISHOP] |bb->pieceBB[WHITEROOK] |bb->pieceBB[WHITEQUEEN]; 
 }
@@ -24,10 +25,10 @@ void get_piecebb(BitBoard *bb, PIECE *board){
     get_whitebb(bb);
 }
 
-
 void get_occupiedbb(BitBoard *bb){
     bb->occupiedBB = bb->pieceBB[WHITE] | bb->pieceBB[BLACK];
 }
+
 void get_emptybb(BitBoard *bb){
     bb->emptyBB = ~(bb->occupiedBB);
 }
@@ -40,10 +41,6 @@ BitBoard *bb_init(BitBoard *bb, PIECE *board){
     get_emptybb(bb);
     return bb;
 }
-
-// void free_bb(BitBoard *bb){
-//     // No-op: bb is now embedded with fixed arrays
-// }
 
 BB in_between(int sq1, int sq2){
     const BB m1 = UINT64_MAX;
@@ -109,6 +106,7 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
         bb->occupiedBB ^= from_to_BB;
         bb->emptyBB ^= from_to_BB;
     }
+
     bool white_to_move = piece_is_color(piece, WHITE);
     Move castle_move;
     if (move_is_flag(move, KINGCASLTEFLAG)) {

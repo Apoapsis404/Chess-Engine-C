@@ -127,6 +127,9 @@ typedef struct main_t {
 
     bool debug_position;
 
+    bool run_file;
+    const char *file_to_run;
+
     bool return_to_cmd;
 } main_t;
 
@@ -144,6 +147,9 @@ main_t main_cfg = {
     .perft_depth = 1,
 
     .debug_position = false,
+
+    .run_file = false,
+    .file_to_run = NULL,
 
     .return_to_cmd = false,
 };
@@ -279,6 +285,12 @@ int main(int argc, const char **argv) {
             return 0;
         }
 
+        if (strcmp(arg, "--file") == 0) {
+            main_cfg.run_file = true;
+            main_cfg.file_to_run = argv[++i];
+            continue;
+        }
+
         if (strcmp(arg, "--config") == 0) {
             if (i + 1 >= argc) {
                 fprintf(stderr, "Missing argument for --config\n");
@@ -409,6 +421,21 @@ int main(int argc, const char **argv) {
         ui->debug = true;
 
         cmd(ui);
+        free_board(b);
+        free(ui);
+    }
+
+    if (main_cfg.run_file) {
+        log_message(INFO, "MAIN", "Running File");
+        Board *b = init_board_fen(main_cfg.fen);
+        ui_t *ui = malloc(sizeof(ui_t));
+        ui->b = b;
+        ui->bb = 0ULL;
+        ui->clear = true;
+        ui->draw_bb = true;
+        ui->debug = false;
+
+        repl_from_file(ui, main_cfg.file_to_run);
         free_board(b);
         free(ui);
     }

@@ -5,12 +5,14 @@ MAKEFLAGS += -j4
 
 SRC_DIR = src
 APP_DIR = $(SRC_DIR)/app
+AI_DIR = $(SRC_DIR)/ai
 ENGINE_DIR = $(SRC_DIR)/engine
 LOG_DIR = $(SRC_DIR)/logging
 UI_DIR = $(SRC_DIR)/ui
 UTIL_DIR = $(SRC_DIR)/util
 PERFT_DIR = $(SRC_DIR)/perft
 BUILD_DIR = build
+
 UI ?= terminal
 
 APP_SRCS = $(wildcard $(APP_DIR)/*.c)
@@ -27,9 +29,10 @@ ENGINE_SRCS = $(wildcard $(ENGINE_DIR)/*.c)
 UTIL_SRCS = $(wildcard $(UTIL_DIR)/*.c)
 LOG_SRCS = $(wildcard $(LOG_DIR)/*.c)
 PERFT_SRCS = $(wildcard $(PERFT_DIR)/*.c)
+AI_SRCS = $(wildcard $(AI_DIR)/*.c)
 
 
-SRCS = $(APP_SRCS) $(UI_COMMON) $(UI_SRC) $(ENGINE_SRCS) $(UTIL_SRCS) $(LOG_SRCS) $(PERFT_SRCS) 
+SRCS = $(APP_SRCS) $(UI_COMMON) $(UI_SRC) $(ENGINE_SRCS) $(UTIL_SRCS) $(LOG_SRCS) $(PERFT_SRCS) $(AI_SRCS)
 OBJS = $(patsubst src/%.c, $(BUILD_DIR)/%.o, $(SRCS))
 DEPS = $(OBJS:.o=.d)
 TARGET = chess
