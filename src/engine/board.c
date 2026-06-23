@@ -12,16 +12,28 @@
 
 move_arrays *move_array = NULL;
 
-Board* init_board_empty(){
-    Board* b = malloc(sizeof(Board));
-    b->move_history_count = 0;
-    return b;
-}
-
 void get_king_squares(Board *b) {
     b->king_square[0] = b->bb.pieceBB[WHITEKING] ? count_trailing_zeros(b->bb.pieceBB[WHITEKING]) : -1;
     b->king_square[1] = b->bb.pieceBB[BLACKKING] ? count_trailing_zeros(b->bb.pieceBB[BLACKKING]) : -1;
 }
+
+Board* init_board_empty(){
+    Board* b = calloc(1, sizeof(Board));
+    if (b == NULL) {
+        log_message(ERROR, "BOARD", "Failed to allocate board");
+        return NULL;
+    }
+
+    bb_init(&b->bb, b->board);
+    b->white_to_move = true;
+    get_king_squares(b);
+    if (move_array == NULL) {
+        move_array = init_move_arrays(true);
+    }
+
+    return b;
+}
+
 
 Board* init_board_fen(char* fen){
     logf_message(INFO, "BOARD", "Initializing board with fen: %s", fen);
@@ -32,7 +44,9 @@ Board* init_board_fen(char* fen){
     bb_init(&b->bb, b->board);
     b->check = false;
 
-    if (move_array == NULL) move_array = init_move_arrays(true);
+    if (move_array == NULL) {
+        move_array = init_move_arrays(true);
+    }
 
     get_king_squares(b);
     return b;
@@ -48,6 +62,9 @@ void reset_board_fen(Board *b, char *fen) {
     parse_fen(b, fen);
     bb_init(&b->bb, b->board);
     b->check = false;
+    if (move_array == NULL) {
+        move_array = init_move_arrays(true);
+    }
     get_king_squares(b);
     b->move_history_count = 0;
 }
@@ -80,30 +97,65 @@ PIECE make_move(Board* b, Move move){
     int from = get_from(move);
     int to = get_to(move);
 
+    PIECE piece = b->board[from];
+    PIECE captured_piece = b->board[to];
     uint32_t castling_rights = b->current_state & CASTLING_RIGHTS_MASK;
-    uint32_t en_passant_file = 0; 
+    uint32_t en_passant_file = 0;
+    int half_clock = (b->current_state & HALF_MOVE_CLOCK_MASK) >> 16;
+
+    if ((piece & PIECEMASK) == KING) {
+        if (b->white_to_move) {
+            castling_rights &= ~(CASTLING_WHITE_KINGSIDE | CASTLING_WHITE_QUEENSIDE);
+        } else {
+            castling_rights &= ~(CASTLING_BLACK_KINGSIDE | CASTLING_BLACK_QUEENSIDE);
+        }
+    } else if ((piece & PIECEMASK) == ROOK) {
+        if (b->white_to_move) {
+            if (from == h1) {
+                castling_rights &= ~CASTLING_WHITE_KINGSIDE;
+            } else if (from == a1) {
+                castling_rights &= ~CASTLING_WHITE_QUEENSIDE;
+            }
+        } else {
+            if (from == h8) {
+                castling_rights &= ~CASTLING_BLACK_KINGSIDE;
+            } else if (from == a8) {
+                castling_rights &= ~CASTLING_BLACK_QUEENSIDE;
+            }
+        }
+    }
+
+    if (move_is_capture(move) && (captured_piece & PIECEMASK) == ROOK) {
+        if (piece_is_color(captured_piece, WHITE)) {
+            if (to == h1) {
+                castling_rights &= ~CASTLING_WHITE_KINGSIDE;
+            } else if (to == a1) {
+                castling_rights &= ~CASTLING_WHITE_QUEENSIDE;
+            }
+        } else {
+            if (to == h8) {
+                castling_rights &= ~CASTLING_BLACK_KINGSIDE;
+            } else if (to == a8) {
+                castling_rights &= ~CASTLING_BLACK_QUEENSIDE;
+            }
+        }
+    }
 
     b->current_state = 0;
 
-    PIECE piece = b->board[from];
-    PIECE captured_piece = b->board[to]; 
-    b->current_state |= (uint32_t)captured_piece << 7;
-
-    // Handle flags
     if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) {
         int e_pawn_idx = b->white_to_move ? to - 8 : to + 8;
         captured_piece = b->board[e_pawn_idx];
         b->board[e_pawn_idx] = NONE;
-    }   
+    }
     if (move_is_flag(move, DOUBLEPAWNPUSHFLAG)) {
         en_passant_file = (uint32_t)file_from_idx(to) + 1;
     }
     if (move_is_promotion(move)) {
         piece = handle_promotion(move, b);
     }
-    //Castling
+    // Castling
     if (move_is_flag(move, KINGCASLTEFLAG)) {
-        castling_rights &= (uint32_t)~0b1 << (b->white_to_move ? 3 : 1);
         if (b->white_to_move) {
             //Moving rook on h1
             b->board[h1] = NONE;
@@ -115,7 +167,6 @@ PIECE make_move(Board* b, Move move){
         }
     }
     if (move_is_flag(move, QUEENCASTLEFLAG)) {
-        castling_rights &= (uint32_t)~0b1 << (b->white_to_move ? 2 : 0);
         if (b->white_to_move) {
             //Moving rook on a1
             b->board[a1] = NONE;
@@ -126,24 +177,28 @@ PIECE make_move(Board* b, Move move){
             b->board[d8] = BLACKROOK;
         }
     }
-    
+
     b->board[to] = piece;
-    b->board[from] = captured_piece;
+    b->board[from] = NONE;
 
     if ((piece & PIECEMASK) == KING) {
         b->king_square[b->white_to_move ? WHITE_KING_SQUARE : BLACK_KING_SQUARE] = to;
     }
-    
+
     b->current_state |= ((en_passant_file << 4) | castling_rights);
 
     if (!b->white_to_move) {
         b->move_count += 1;
     }
 
-    int half_clock = (b->current_state & HALF_MOVE_CLOCK_MASK) >> 16;
-    if (move_is_capture(move) || (piece & PIECEMASK) == PAWN) half_clock = 0;
-    else half_clock += 1;
+    half_clock = (b->current_state & HALF_MOVE_CLOCK_MASK) >> 16;
+    if (move_is_capture(move) || (piece & PIECEMASK) == PAWN) {
+        half_clock = 0;
+    } else {
+        half_clock += 1;
+    }
     b->current_state |= half_clock << 16;
+    b->half_move_clock = (uint32_t)half_clock;
 
     bb_make_move(&b->bb, move, piece, captured_piece);
 
@@ -163,18 +218,6 @@ Board copy_make(Board b, Move move) {
     make_move(&b, move);
     generate_moves(&b);
     return b;
-}
-
-void test_move() {
-    Move move = 0b0000000000000001;
-    printf("From: %d\n", get_from(move));
-    printf("To: %d\n", get_to(move));
-    printf("Flags: %d\n", get_flags(move));
-}
-
-void test_coord(){
-    print_square(0);
-    print_square(63);
 }
 
 /* Reverses the most recent move. Must have move history available. */
