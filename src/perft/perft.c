@@ -157,7 +157,33 @@ void perft_test(Board *b, int depth) {
     // fflush(pf);
 
     if (depth == 1) {
-        update_perft_result_from_moves(movegen.moves, movegen.move_count, b->check);
+        /* For leaf nodes we must:
+           - count one node per legal move
+           - count captures/promotions/ep/castles from the move itself
+           - determine if the move gives check or checkmate to the opponent by
+             making the move and generating the opponent's replies
+        */
+        Move move;
+        for (size_t i = 0; i < movegen.move_count; ++i) {
+            move = movegen.moves[i];
+
+            /* count node and move-specific stats */
+            pr.nodes += 1;
+            if (move_is_capture(move)) pr.captures += 1;
+            if (move_is_promotion(move)) pr.promotions += 1;
+            if (move_is_flag(move, ENPASSANTCAPTUREFLAG)) pr.ep += 1;
+            if (move_is_flag(move, KINGCASLTEFLAG) || move_is_flag(move, QUEENCASTLEFLAG)) pr.castles += 1;
+
+            /* make the move and generate opponent moves to detect check/checkmate */
+            make_move(b, move);
+            movegen_t opp_moves = generate_moves(b);
+            if (b->check && opp_moves.move_count == 0) {
+                pr.checkmates += 1;
+            } else if (b->check) {
+                pr.checks += 1;
+            }
+            unmake_move(b);
+        }
         return;
     }
 
@@ -165,9 +191,7 @@ void perft_test(Board *b, int depth) {
     for (size_t i = 0; i < movegen.move_count; ++i) {
         move = movegen.moves[i];
         make_move(b, move);
-        // fprintf(pf, "Move Made: "MtS_Fmt" FEN: ", MtS_Arg(move));
         perft_test(b, depth - 1);
         unmake_move(b);
-        // fprintf(pf, "Move Unade: "MtS_Fmt"\n", MtS_Arg(move));
     }
 }

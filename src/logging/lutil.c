@@ -90,10 +90,13 @@ static char *format_full_message(log_level_t level, const char *module, const ch
     size_t size = (size_t)needed + 1;
     char *buf = malloc(size);
     if (!buf) return NULL;
-    snprintf(buf, size, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
-             local_time.tm_year + 1900, local_time.tm_mon+1,
-             local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
-             local_time.tm_sec, level_strings[level], mod, message_text);
+    if (snprintf(buf, size, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
+                 local_time.tm_year + 1900, local_time.tm_mon+1,
+                 local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                 local_time.tm_sec, level_strings[level], mod, message_text) < 0) {
+        free(buf);
+        return NULL;
+    }
     return buf;
 }
 
@@ -291,48 +294,50 @@ void log_header(int argc, const char **argv) {
     struct tm local_time;
     localtime_r(&now, &local_time);
 
-    char *buf = NULL;
-    int needed = 0;
-    // two steps: compute size, then allocate
+    // Build args string first if needed
+    char *args_str = NULL;
+    size_t args_len = 0;
     if (argc > 0 && argv) {
-        // compute size for args
-        size_t args_len = 0;
+        // Calculate total size needed for args
         for (int i = 0; i < argc; ++i) {
             args_len += snprintf(NULL, 0, " %s", argv[i] ? argv[i] : "(null)");
         }
-        needed = snprintf(NULL, 0,
+        args_str = malloc(args_len + 1);
+        if (!args_str) return;
+        size_t offset = 0;
+        for (int i = 0; i < argc; ++i) {
+            const char *arg = argv[i] ? argv[i] : "(null)";
+            offset += snprintf(args_str + offset, args_len - offset + 1, " %s", arg);
+        }
+    }
+
+    // Build the full header
+    int needed = snprintf(NULL, 0,
                           "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments (%d):%s\n===================================================\n",
                           local_time.tm_year + 1900, local_time.tm_mon + 1,
                           local_time.tm_mday, local_time.tm_hour,
-                          local_time.tm_min, local_time.tm_sec, argc, "") + (int)args_len;
-        if (needed < 0) return;
-        buf = malloc((size_t)needed + 1);
-        if (!buf) return;
-        strcpy(buf, "");
-        sprintf(buf, "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments (%d):",
-                local_time.tm_year + 1900, local_time.tm_mon + 1,
-                local_time.tm_mday, local_time.tm_hour,
-                local_time.tm_min, local_time.tm_sec, argc);
-        for (int i = 0; i < argc; ++i) {
-            strcat(buf, " ");
-            strcat(buf, argv[i] ? argv[i] : "(null)");
-        }
-        strcat(buf, "\n===================================================\n");
-    } else {
-        needed = snprintf(NULL, 0,
-                          "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments: [none]\n===================================================\n",
-                          local_time.tm_year + 1900, local_time.tm_mon + 1,
-                          local_time.tm_mday, local_time.tm_hour,
-                          local_time.tm_min, local_time.tm_sec);
-        if (needed < 0) return;
-        buf = malloc((size_t)needed + 1);
-        if (!buf) return;
-        snprintf(buf, (size_t)needed + 1,
-                 "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments: [none]\n===================================================\n",
+                          local_time.tm_min, local_time.tm_sec, argc, args_str ? args_str : "");
+    if (needed < 0) {
+        free(args_str);
+        return;
+    }
+
+    char *buf = malloc((size_t)needed + 1);
+    if (!buf) {
+        free(args_str);
+        return;
+    }
+
+    if (snprintf(buf, (size_t)needed + 1,
+                 "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments (%d):%s\n===================================================\n",
                  local_time.tm_year + 1900, local_time.tm_mon + 1,
                  local_time.tm_mday, local_time.tm_hour,
-                 local_time.tm_min, local_time.tm_sec);
+                 local_time.tm_min, local_time.tm_sec, argc, args_str ? args_str : "") < 0) {
+        free(buf);
+        free(args_str);
+        return;
     }
+    free(args_str);
     enqueue_text(buf);
 }
 
@@ -441,7 +446,8 @@ void log_time_stop(log_level_t level, const char* module, clock_t* time_it){
 void log_empty_line(){
     char *buf = malloc(2);
     if (!buf) return;
-    strcpy(buf, "\n");
+    buf[0] = '\n';
+    buf[1] = '\0';
     enqueue_text(buf);
 }
 
