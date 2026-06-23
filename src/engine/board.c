@@ -237,8 +237,6 @@ void unmake_move(Board *b) {
     PIECE captured_piece = entry->captured_piece;
     bool white_to_move_before = !b->white_to_move;
 
-    logf_message(DEBUG, "BOARD", "Move: "MtS_Fmt, MtS_Arg(move));
-
     // For promotions, the piece at 'to' is the promoted piece, but we need the original pawn for bitboard
     PIECE piece_on_to = b->board[to];
 

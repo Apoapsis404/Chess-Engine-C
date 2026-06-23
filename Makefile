@@ -1,6 +1,6 @@
 CC = gcc
-CFLAGS = -g -Wall -Wextra -Isrc -Isrc/engine -Isrc/logging -Isrc/util -MMD -MP
-LDFLAGS = -g
+CFLAGS = -g -Wall -Wextra -Isrc -Isrc/engine -Isrc/logging -Isrc/util -MMD -MP -pthread
+LDFLAGS = -g -pthread
 MAKEFLAGS += -j4
 
 SRC_DIR = src

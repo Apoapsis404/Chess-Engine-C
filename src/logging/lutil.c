@@ -3,8 +3,11 @@
 
 #include <assert.h>
 #include <stdio.h>
+#include <stdarg.h>
 #include <time.h>
 #include <string.h>
+#include <pthread.h>
+#include <stdlib.h>
 
 #define MAX_MODULES 10
 #define MODULE_NAME_LENGTH 20
@@ -38,6 +41,92 @@ static log_t log = {
     .argc = 0,
     .argv = NULL,
 };
+
+// Background logging queue
+typedef struct log_message_node {
+    char *text;
+    struct log_message_node *next;
+} log_message_node;
+
+static log_message_node *queue_head = NULL;
+static log_message_node *queue_tail = NULL;
+static pthread_mutex_t queue_mutex = PTHREAD_MUTEX_INITIALIZER;
+static pthread_cond_t queue_cond = PTHREAD_COND_INITIALIZER;
+static pthread_t log_thread;
+static int stop_requested = 0;
+
+static void enqueue_text(char *text) {
+    if (!text) return;
+    log_message_node *node = malloc(sizeof(*node));
+    if (!node) { free(text); return; }
+    node->text = text;
+    node->next = NULL;
+
+    pthread_mutex_lock(&queue_mutex);
+    if (!queue_tail) {
+        queue_head = queue_tail = node;
+    } else {
+        queue_tail->next = node;
+        queue_tail = node;
+    }
+    pthread_cond_signal(&queue_cond);
+    pthread_mutex_unlock(&queue_mutex);
+}
+
+static char *format_full_message(log_level_t level, const char *module, const char *message_text) {
+    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR", "FATAL" };
+    time_t now = time(NULL);
+    struct tm local_time;
+    localtime_r(&now, &local_time);
+
+    const char *mod = module ? module : "(null)";
+
+    // Calculate required size
+    int needed = snprintf(NULL, 0, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
+                          local_time.tm_year + 1900, local_time.tm_mon+1,
+                          local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+                          local_time.tm_sec, level_strings[level], mod, message_text);
+    if (needed < 0) return NULL;
+    size_t size = (size_t)needed + 1;
+    char *buf = malloc(size);
+    if (!buf) return NULL;
+    snprintf(buf, size, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
+             local_time.tm_year + 1900, local_time.tm_mon+1,
+             local_time.tm_mday, local_time.tm_hour, local_time.tm_min,
+             local_time.tm_sec, level_strings[level], mod, message_text);
+    return buf;
+}
+
+static void *log_worker(void *arg) {
+    (void)arg;
+    for (;;) {
+        pthread_mutex_lock(&queue_mutex);
+        while (!queue_head && !stop_requested) {
+            pthread_cond_wait(&queue_cond, &queue_mutex);
+        }
+        if (!queue_head && stop_requested) {
+            pthread_mutex_unlock(&queue_mutex);
+            break;
+        }
+        log_message_node *node = queue_head;
+        queue_head = node->next;
+        if (!queue_head) queue_tail = NULL;
+        pthread_mutex_unlock(&queue_mutex);
+
+        if (node && node->text) {
+            if (!log.log_file) {
+                // fallback to stdout
+                printf("%s", node->text);
+            } else {
+                fprintf(log.log_file, "%s", node->text);
+                fflush(log.log_file);
+            }
+        }
+        free(node->text);
+        free(node);
+    }
+    return NULL;
+}
 
 void set_log_file(const char *filename) {
     if (!filename) return;
@@ -197,56 +286,87 @@ static void trim_log_file_to_entity_limit(void) {
 //FILE
 
 void log_header(int argc, const char **argv) {
-    if (!log.log_file) {
-        fprintf(stderr, "Logging not initialized.\n");
-        return;
-    }
-
+    // Build header text and enqueue for background logger
     time_t now = time(NULL);
-    struct tm* local_time = localtime(&now);
+    struct tm local_time;
+    localtime_r(&now, &local_time);
 
-    fprintf(log.log_file, "==================== LOG START ====================\n");
-    fprintf(log.log_file, "Timestamp: %04d-%02d-%02d %02d:%02d:%02d\n",
-            local_time->tm_year + 1900, local_time->tm_mon + 1,
-            local_time->tm_mday, local_time->tm_hour,
-            local_time->tm_min, local_time->tm_sec);
-
+    char *buf = NULL;
+    int needed = 0;
+    // two steps: compute size, then allocate
     if (argc > 0 && argv) {
-        fprintf(log.log_file, "Program arguments (%d):", argc);
+        // compute size for args
+        size_t args_len = 0;
         for (int i = 0; i < argc; ++i) {
-            fprintf(log.log_file, " %s", argv[i] ? argv[i] : "(null)");
+            args_len += snprintf(NULL, 0, " %s", argv[i] ? argv[i] : "(null)");
         }
-        fprintf(log.log_file, "\n");
+        needed = snprintf(NULL, 0,
+                          "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments (%d):%s\n===================================================\n",
+                          local_time.tm_year + 1900, local_time.tm_mon + 1,
+                          local_time.tm_mday, local_time.tm_hour,
+                          local_time.tm_min, local_time.tm_sec, argc, "") + (int)args_len;
+        if (needed < 0) return;
+        buf = malloc((size_t)needed + 1);
+        if (!buf) return;
+        strcpy(buf, "");
+        sprintf(buf, "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments (%d):",
+                local_time.tm_year + 1900, local_time.tm_mon + 1,
+                local_time.tm_mday, local_time.tm_hour,
+                local_time.tm_min, local_time.tm_sec, argc);
+        for (int i = 0; i < argc; ++i) {
+            strcat(buf, " ");
+            strcat(buf, argv[i] ? argv[i] : "(null)");
+        }
+        strcat(buf, "\n===================================================\n");
     } else {
-        fprintf(log.log_file, "Program arguments: [none]\n");
+        needed = snprintf(NULL, 0,
+                          "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments: [none]\n===================================================\n",
+                          local_time.tm_year + 1900, local_time.tm_mon + 1,
+                          local_time.tm_mday, local_time.tm_hour,
+                          local_time.tm_min, local_time.tm_sec);
+        if (needed < 0) return;
+        buf = malloc((size_t)needed + 1);
+        if (!buf) return;
+        snprintf(buf, (size_t)needed + 1,
+                 "==================== LOG START ====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\nProgram arguments: [none]\n===================================================\n",
+                 local_time.tm_year + 1900, local_time.tm_mon + 1,
+                 local_time.tm_mday, local_time.tm_hour,
+                 local_time.tm_min, local_time.tm_sec);
     }
-
-    fprintf(log.log_file, "===================================================\n");
-    fflush(log.log_file);
+    enqueue_text(buf);
 }
 
 void log_footer(void) {
-    if (!log.log_file) {
-        fprintf(stderr, "Logging not initialized.\n");
-        return;
-    }
-
     time_t now = time(NULL);
-    struct tm* local_time = localtime(&now);
+    struct tm local_time;
+    localtime_r(&now, &local_time);
 
-    fprintf(log.log_file, "===================== LOG END =====================\n");
-    fprintf(log.log_file, "Timestamp: %04d-%02d-%02d %02d:%02d:%02d\n",
-            local_time->tm_year + 1900, local_time->tm_mon + 1,
-            local_time->tm_mday, local_time->tm_hour,
-            local_time->tm_min, local_time->tm_sec);
-    fprintf(log.log_file, "===================================================\n");
-    fflush(log.log_file);
+    int needed = snprintf(NULL, 0,
+                          "===================== LOG END =====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\n===================================================\n",
+                          local_time.tm_year + 1900, local_time.tm_mon + 1,
+                          local_time.tm_mday, local_time.tm_hour,
+                          local_time.tm_min, local_time.tm_sec);
+    if (needed < 0) return;
+    char *buf = malloc((size_t)needed + 1);
+    if (!buf) return;
+    snprintf(buf, (size_t)needed + 1,
+             "===================== LOG END =====================\nTimestamp: %04d-%02d-%02d %02d:%02d:%02d\n===================================================\n",
+             local_time.tm_year + 1900, local_time.tm_mon + 1,
+             local_time.tm_mday, local_time.tm_hour,
+             local_time.tm_min, local_time.tm_sec);
+    enqueue_text(buf);
 }
 
 void init_logging(){
     if(!log.log_filename || log.log_filename[0] == '\0'){
         printf("[INFO] Logging on stdout!\n");
         log.log_file = stdout;
+        // start background thread
+        stop_requested = 0;
+        if (pthread_create(&log_thread, NULL, log_worker, NULL) != 0) {
+            fprintf(stderr, "Failed to create log worker thread\n");
+            exit(EXIT_FAILURE);
+        }
         log_header(log.argc, log.argv);
         return;
     }
@@ -261,6 +381,14 @@ void init_logging(){
         fprintf(stderr, "Failed to open log file: %s\n", log.log_filename);
         exit(EXIT_FAILURE);
     }
+
+    // start background thread
+    stop_requested = 0;
+    if (pthread_create(&log_thread, NULL, log_worker, NULL) != 0) {
+        fprintf(stderr, "Failed to create log worker thread\n");
+        exit(EXIT_FAILURE);
+    }
+
     log_empty_line();
     log_header(log.argc, log.argv);
 }
@@ -269,6 +397,15 @@ void close_logging(){
     if (log.log_file) {
         log_footer();
     }
+
+    // signal worker to stop after flushing queue
+    pthread_mutex_lock(&queue_mutex);
+    stop_requested = 1;
+    pthread_cond_signal(&queue_cond);
+    pthread_mutex_unlock(&queue_mutex);
+
+    pthread_join(log_thread, NULL);
+
     if(log.log_file && log.log_file != stdout){
         fclose(log.log_file);
         log.log_file = NULL;
@@ -302,13 +439,10 @@ void log_time_stop(log_level_t level, const char* module, clock_t* time_it){
 }
 
 void log_empty_line(){
-    if (!log.log_file) {
-        //fprintf(stderr, "Logging not initialized.\n");
-        printf("\n");
-        return;
-    }
-    fprintf(log.log_file, "\n");
-    fflush(log.log_file);
+    char *buf = malloc(2);
+    if (!buf) return;
+    strcpy(buf, "\n");
+    enqueue_text(buf);
 }
 
 bool will_log_level(log_level_t level){
@@ -319,22 +453,24 @@ void logf_message(log_level_t level, const char* module, const char* message, ..
     if(level < log.current_log_level){
         return;
     }
-
     va_list args;
     va_start(args, message);
-    
-    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR", "FATAL" };
-    time_t now = time(NULL);
-    struct tm* local_time = localtime(&now);
-
-    fprintf(log.log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] ",
-            local_time->tm_year + 1900, local_time->tm_mon+1,
-            local_time->tm_mday, local_time->tm_hour, local_time->tm_min,
-            local_time->tm_sec, level_strings[level], module);
-    vfprintf(log.log_file, message, args);
-    fprintf(log.log_file, "\n");
-    fflush(log.log_file);
+    va_list args_copy;
+    va_copy(args_copy, args);
+    int needed = vsnprintf(NULL, 0, message, args_copy);
+    va_end(args_copy);
+    if (needed < 0) {
+        va_end(args);
+        return;
+    }
+    char *msgbuf = malloc((size_t)needed + 1);
+    if (!msgbuf) { va_end(args); return; }
+    vsnprintf(msgbuf, (size_t)needed + 1, message, args);
     va_end(args);
+
+    char *full = format_full_message(level, module, msgbuf);
+    free(msgbuf);
+    if (full) enqueue_text(full);
 }
 
 void log_message(log_level_t level, const char* module, const char* message){
@@ -342,26 +478,9 @@ void log_message(log_level_t level, const char* module, const char* message){
         fprintf(stderr, "Error: Null parameter passed to log_message\n");
         return;
     }
-
-    if(level < log.current_log_level){
-        return;
-    }
-
-    if (!log.log_file) {
-        fprintf(stderr, "Logging not initialized.\n");
-        return;
-    }
-
-    const char* level_strings[] = { "DEBUG", "INFO", "WARNING", "ERROR", "FATAL" };
-    time_t now = time(NULL);
-    struct tm* local_time = localtime(&now);
-
-    fprintf(log.log_file, "%04d-%02d-%02d %02d:%02d:%02d [%s][%s] %s\n",
-            local_time->tm_year + 1900, local_time->tm_mon+1,
-            local_time->tm_mday, local_time->tm_hour, local_time->tm_min,
-            local_time->tm_sec, level_strings[level], module, message);
-    
-    fflush(log.log_file);
+    if(level < log.current_log_level) return;
+    char *full = format_full_message(level, module, message);
+    if (full) enqueue_text(full);
 }
 
 /*

@@ -81,7 +81,6 @@ void log_bb(log_level_t level, const char* module, BB bb){
 
 /* Makes move in place */
 void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
-    logf_message(DEBUG, "BITBOARD", "Move: "MtS_Fmt, MtS_Arg(move));
     BB fromBB = 1UL << get_from(move);
     BB toBB = 1UL << get_to(move);
     BB from_to_BB = fromBB ^ toBB;
@@ -138,7 +137,6 @@ void bb_make_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece){
 
 /* Reverses the effects of a move on the bitboard */
 void bb_unmake_move(BitBoard *bb, Move move, PIECE piece, PIECE cpiece) {
-    logf_message(DEBUG, "BITBOARD", "Move: "MtS_Fmt, MtS_Arg(move));
     BB fromBB = 1UL << get_from(move);
     BB toBB = 1UL << get_to(move);
     BB from_to_BB = fromBB ^ toBB;
