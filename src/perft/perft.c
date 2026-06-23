@@ -69,15 +69,64 @@ void update_perft_result_from_moves(Move *moves, size_t moves_size, bool is_chec
     }
 }
 
+/* Format a size_t into `out` with commas for thousands separators. */
+static void format_size_with_commas(size_t value, char *out, size_t out_size) {
+    if (out_size == 0) return;
+
+    char tmp[64];
+    int len = snprintf(tmp, sizeof(tmp), "%llu", (unsigned long long) value);
+    if (len < 0) { out[0] = '\0'; return; }
+
+    int groups = (len - 1) / 3; /* number of commas */
+    int out_len = len + groups;
+
+    if ((int)out_size <= out_len) {
+        /* Not enough space for commas; fall back to unformatted number */
+        snprintf(out, out_size, "%s", tmp);
+        return;
+    }
+
+    out[out_len] = '\0';
+
+    int ti = len - 1;
+    int oi = out_len - 1;
+    int digit_count = 0;
+
+    while (ti >= 0) {
+        out[oi--] = tmp[ti--];
+        digit_count++;
+        if (digit_count == 3 && ti >= 0) {
+            out[oi--] = ',';
+            digit_count = 0;
+        }
+    }
+}
+
 void log_perft_result(log_level_t level, const perft_result_t *result) {
+    char buf[64];
+
     logf_message(level, "PERFT", "=== PERFT RESULTS ===");
-    logf_message(level, "PERFT", "  Nodes:       %zu", result->nodes);
-    logf_message(level, "PERFT", "  Captures:    %zu", result->captures);
-    logf_message(level, "PERFT", "  En Passant:  %zu", result->ep);
-    logf_message(level, "PERFT", "  Castles:     %zu", result->castles);
-    logf_message(level, "PERFT", "  Promotions:  %zu", result->promotions);
-    logf_message(level, "PERFT", "  Checks:      %zu", result->checks);
-    logf_message(level, "PERFT", "  Checkmates:  %zu", result->checkmates);
+
+    format_size_with_commas(result->nodes, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Nodes:       %s", buf);
+
+    format_size_with_commas(result->captures, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Captures:    %s", buf);
+
+    format_size_with_commas(result->ep, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  En Passant:  %s", buf);
+
+    format_size_with_commas(result->castles, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Castles:     %s", buf);
+
+    format_size_with_commas(result->promotions, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Promotions:  %s", buf);
+
+    format_size_with_commas(result->checks, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Checks:      %s", buf);
+
+    format_size_with_commas(result->checkmates, buf, sizeof(buf));
+    logf_message(level, "PERFT", "  Checkmates:  %s", buf);
 }
 
 void start_test(Board *b, int depth) {

@@ -644,7 +644,6 @@ BB handle_check(Board *b) {
     attacks &= attacks - 1;
     // If there are remaining attacks it is a double check and only king moves are allowed
     if (attacks != 0) {
-        printf("It is a double check!\n");
         return 0ULL;
     }
     return cpieces;
