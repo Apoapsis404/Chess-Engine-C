@@ -11,9 +11,19 @@ void start_test(Board *b, int depth);
 void perft_test(Board *b, int depth);
 void log_perft_result(log_level_t level, const perft_result_t *result);
 
-void perft_single_test_b(Board *b, int depth) {
-    log_message(INFO, "PERFT", "Starting PERFT test with given board");
+void reset_pr() {
+    pr.captures = 0;
+    pr.castles = 0;
+    pr.checkmates = 0;
+    pr.checks = 0;
+    pr.promotions = 0;
+    pr.nodes = 0;
+    pr.ep = 0;
+}
 
+void perft_single_test_b(Board *b, int depth) {
+    logf_message(INFO, "PERFT", "Starting PERFT test with given board and depth %d", depth);
+    reset_pr();
     start_test(b, depth);
 }
 
@@ -28,24 +38,15 @@ void perft_single_test(char *fen, int depth){
     free_board(b);
 }
 
-// /* Adds elements of two perft results together, in place in the first given */
-// void add_perft_results(perft_result_t *pr1, perft_result_t *pr2) {
-//     pr1->nodes += pr2->nodes;
-//     pr1->captures += pr2->captures;
-//     pr1->ep += pr2->ep;
-//     pr1->castles += pr2->castles;
-//     pr1->promotions += pr2->promotions;
-//     pr1->checks += pr2->checks;
-//     pr1->checkmates += pr2->checkmates;
-// }
 
 void update_perft_result_from_moves(Move *moves, size_t moves_size, bool is_check) {
     if (is_check && moves_size == 0) {
         pr.checkmates += 1;
+    } else if (is_check) {
+        pr.checks += 1;
     }
 
     Move move;
-
     for (size_t i = 0; i < moves_size; i++) {
         move = moves[i];
         pr.nodes += 1;

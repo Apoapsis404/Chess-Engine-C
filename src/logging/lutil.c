@@ -311,6 +311,10 @@ void log_empty_line(){
     fflush(log.log_file);
 }
 
+bool will_log_level(log_level_t level){
+    return level >= log.current_log_level;
+}
+
 void logf_message(log_level_t level, const char* module, const char* message, ...){
     if(level < log.current_log_level){
         return;

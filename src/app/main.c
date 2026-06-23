@@ -248,6 +248,7 @@ static const char *resolve_fen_input(const char *arg) {
         {"POS_3", POS_3},
         {"POS_4W", POS_4W},
         {"POS_4B", POS_4B},
+        {"POS_5", POS_5},
     };
 
     for (size_t i = 0; i < sizeof(presets) / sizeof(presets[0]); ++i) {

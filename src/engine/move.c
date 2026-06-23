@@ -65,6 +65,17 @@ int move_get_promotion(Move move){
     return get_flags(move) & PROMOTIONMASK;
 }
 
+char move_get_promotion_piece(Move move){
+    if (!move_is_promotion(move)) return '\0';
+    switch (move_get_promotion(move)){
+        case QUEENPROMOTIONFLAG: return 'q'; 
+        case ROOKPROMOTIONFLAG: return 'r'; 
+        case BISHOPPROMOTIONFLAG: return 'b'; 
+        case KNIGHTPROMOTIONFLAG: return 'n'; 
+        default: return '\0';
+    }
+}
+
 int invalid_from_to(int from, int to) {
     int invalid = 0;
 
@@ -151,6 +162,9 @@ void print_move(Move move) {
 }
 
 void log_move(log_level_t level, const char* module, Move move){
+    if (!will_log_level(level)) {
+        return;
+    }
     String s = move_to_string(move);
     logf_message(level, module, "Making move: %s", s.string);
     free_string(&s);

@@ -38,14 +38,6 @@
 
 extern const char *chess_squares[64];
 
-#ifndef MtS_Fmt
-#define MtS_Fmt "%s%s"
-#endif //MtS_FmT
-#ifndef MtS_Arg
-#define MtS_Arg(move) (chess_squares)[get_from(move)], (chess_squares)[get_to(move)]
-#endif //MtS_Arg
-
-
 Move construct_move(int flags, int from, int to);
 
 int get_from(Move move);
@@ -58,6 +50,7 @@ int move_is_capture(Move move);
 int move_is_flag(Move move, int flag);
 int move_is_promotion(Move move);
 int move_get_promotion(Move move);
+char move_get_promotion_piece(Move move);
 
 String get_from_square_name(Move move);
 String get_to_square_name(Move move);
@@ -67,5 +60,12 @@ String move_to_long_algebraic(Move move);
 Move string_to_move(BString move_string);
 void log_move(log_level_t level, const char* module, Move move);
 void print_move(Move move);
+
+#ifndef MtS_Fmt
+#define MtS_Fmt "%s%s%c"
+#endif //MtS_FmT
+#ifndef MtS_Arg
+#define MtS_Arg(move) (chess_squares)[get_from(move)], (chess_squares)[get_to(move)], move_get_promotion_piece(move)
+#endif //MtS_Arg
 
 #endif //MOVE_H;

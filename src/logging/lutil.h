@@ -22,6 +22,7 @@ void close_logging();
 void load_config(const char* config_file);
 
 void log_empty_line();
+bool will_log_level(log_level_t level);
 void log_message(log_level_t level, const char* module, const char* text);
 void logf_message(log_level_t level, const char* module, const char* message, ...);
 

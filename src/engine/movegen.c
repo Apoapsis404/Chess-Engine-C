@@ -3,7 +3,7 @@
 #include "calculate.h"
 #include "magic.h"
 #include "coordinate.h"
-//#include "ui/ui.h"
+#include "ui/ui.h"
 
 #include <stdio.h>
 #include <string.h>
@@ -577,18 +577,20 @@ void generate_king_moves(movegen_t *movegen, Board *b) {
     if (king_bb == 0) return;
 
     from = count_trailing_zeros(king_bb);
-    BB moves_bb = move_array->king_moves[from] & ~piece_bb;
+    BB moves_bb = move_array->king_moves[from];
+    moves_bb &= ~piece_bb;
     
     if (b->check) {
         moves_bb ^= movegen->checking_pieces & moves_bb;
         moves_bb &= ~get_pin_bb(-1, b);
     }
 
+
     Move move;
     while (moves_bb != 0) {
         to = count_trailing_zeros(moves_bb);
 
-        if ((attacks_to(0ULL, to, b->bb.pieceBB) & opponent_bb) != 0){
+        if ((attacks_to(b->bb.occupiedBB, to, b->bb.pieceBB) & opponent_bb) != 0){
             moves_bb &= moves_bb - 1;
             continue;
         }
@@ -601,7 +603,7 @@ void generate_king_moves(movegen_t *movegen, Board *b) {
         add_move(movegen, move);
         moves_bb &= moves_bb - 1;
     }
-
+    
     // Castling
     if (b->white_to_move) {
         if ((b->current_state & CASTLING_RIGHTS_MASK & CASTLING_WHITE_KINGSIDE) != 0){
