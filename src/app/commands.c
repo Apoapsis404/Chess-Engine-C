@@ -18,6 +18,7 @@
 #define BB_FUNCS "bb"
 #define CHANGE_LEVEL "lvl"
 #define GET_FEN "fen"
+#define HELP "help"
 
 // Debugging Commands definitions
 #define PERFT "p"
@@ -304,6 +305,8 @@ static int handle_pos_info_cmd(BString args, ui_t *ui) {
     return 0;
 }
 
+static int handle_help_cmd(BString args, ui_t *ui);
+
 #define DEBUG_COMMANDS_SIZE 4
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
@@ -312,6 +315,7 @@ static const command_def_t command_table[] = {
     { BB_FUNCS, handle_bb_cmd, "Toggle or select bitboard view" },
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
+    { HELP, handle_help_cmd, "Prints Out all available Commands" },
 
     // Debugging Commands
     { PERFT, handle_perft_cmd, "Starting a perft from position with given depth" },
@@ -319,6 +323,16 @@ static const command_def_t command_table[] = {
     { DUMP_MOVES, handle_dump_moves_cmd, "Prints all legal move in position to stdout" },
     { POS_INFO, handle_pos_info_cmd, "Prints info about position to stdout" },
 };
+
+static int handle_help_cmd(BString args, ui_t *ui){
+    (void) args; 
+    size_t command_table_size = sizeof(command_table) / sizeof(command_table[0]); 
+    if (!ui->debug) command_table_size -= DEBUG_COMMANDS_SIZE;
+    for (size_t i = 0; i < command_table_size;  ++i) {
+        printf("%s: %s\n", command_table[i].name, command_table[i].help);   
+    }
+    return 0;
+}
 
 int eval(BString *bs, ui_t *ui){
     BString token = bstring_next(bs, ' ');

@@ -245,6 +245,7 @@ static const char *resolve_fen_input(const char *arg) {
         {"POS_4_FEN", POS_4_FEN},
         {"DCERF", DISCOVERED_CHECK_ENPASSANT_ROOK_FEN},
         {"POS_2", POS_2},
+        {"POS_2B", POS_2B},
         {"POS_3", POS_3},
         {"POS_4W", POS_4W},
         {"POS_4B", POS_4B},

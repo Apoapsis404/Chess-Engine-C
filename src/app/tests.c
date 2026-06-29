@@ -15,6 +15,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <inttypes.h>
 
 extern PIECE *move_board(Board *b, int color, PIECE from_piece, PIECE target_piece, int from_sq, int to_sq);
 
@@ -299,6 +300,58 @@ static int test_en_passant(void) {
                                      must_not_discovered, 1) != 0) {
         return 1;
     }
+    return 0;
+}
+
+static int test_pos2_capture_update(void) {
+    Board *b = init_board_fen((char *)POS_2);
+    if (b == NULL) {
+        printf("[TEST_POS2_CAPTURE] Failed to initialize board\n");
+        return 1;
+    }
+
+    int from = idx_from_square_name((char *)"f3");
+    int to = idx_from_square_name((char *)"f6");
+    Move move = construct_move(CAPTURESFLAG, from, to);
+
+    PIECE captured = make_move(b, move);
+    if (captured != BLACKKNIGHT) {
+        printf("[TEST_POS2_CAPTURE] Expected capture of BLACKKNIGHT, got %d\n", captured);
+        free_board(b);
+        return 1;
+    }
+
+    BitBoard expected_bb;
+    memset(&expected_bb, 0, sizeof(expected_bb));
+    bb_init(&expected_bb, b->board);
+
+    if (expected_bb.occupiedBB != b->bb.occupiedBB) {
+        printf("[TEST_POS2_CAPTURE] occupiedBB mismatch: expected 0x%016" PRIX64 ", got 0x%016" PRIX64 "\n",
+               expected_bb.occupiedBB, b->bb.occupiedBB);
+        free_board(b);
+        return 1;
+    }
+
+    if (expected_bb.pieceBB[WHITEQUEEN] != b->bb.pieceBB[WHITEQUEEN]) {
+        printf("[TEST_POS2_CAPTURE] white queen bitboard mismatch after capture\n");
+        free_board(b);
+        return 1;
+    }
+
+    if (expected_bb.pieceBB[BLACKKNIGHT] != b->bb.pieceBB[BLACKKNIGHT]) {
+        printf("[TEST_POS2_CAPTURE] black knight bitboard mismatch after capture\n");
+        free_board(b);
+        return 1;
+    }
+
+    generate_moves(b);
+    if (b->check) {
+        printf("[TEST_POS2_CAPTURE] Unexpected check after f3f6 capture\n");
+        free_board(b);
+        return 1;
+    }
+
+    free_board(b);
     return 0;
 }
 
@@ -728,6 +781,7 @@ static const struct {
     { "check", "Generates check positions and checks if there is check", test_check},
     { "castling", "Check if all castling rules are followed", test_castling},
     { "en_passant", "Test en passant moves including discovered check", test_en_passant},
+    { "pos2_capture", "Validate POS_2 capture updates occupied bitboard and check status", test_pos2_capture_update},
     { "make_move", "Test make move", test_make_move},
     { "unmake_move", "Test unmake move including edge cases", test_unmake_move},
 };
