@@ -19,6 +19,7 @@ void generate_rook_moves(movegen_t *movegen, Board *b);
 void generate_bishop_moves(movegen_t *movegen, Board *b);
 void generate_queen_moves(movegen_t *movegen, Board *b);
 movegen_t generate_moves(Board *b);
+BB attacks_to(BB occ, int square, BB *piece_bb);
 
 int count_trailing_zeros(BB bb);
 

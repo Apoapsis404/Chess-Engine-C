@@ -12,7 +12,7 @@ static BB get_rook_moves_from_square(int square, BB occupied_bb);
 static BB get_bishop_moves_from_square(int square, BB occupied_bb);
 static BB xray_rook_attacks(int square, Board *b, BB blockers);
 static BB xray_bishop_attacks(int square, Board *b, BB blockers);
-static BB attacks_to(BB occ, int square, BB *piece_bb);
+// static BB attacks_to(BB occ, int square, BB *piece_bb);
 
 void init_movegen(movegen_t *movegen) {
     memset(movegen, 0, sizeof(movegen_t));
@@ -243,26 +243,44 @@ void double_push(BB double_push_bb, movegen_t *movegen, Board *b) {
     }
 }
 
-BB attacks_to(BB occ, int square, BB *piece_bb) {
-    if (square < 0 || square >= 64) {
-        logf_message(ERROR, "MOVEGEN", "Invalid square in attacks_to: %d", square);
-        return 0ULL;
-    }
-    occ &= ~(1ULL << square);
-    BB knight_attackers = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
-    BB king_attackers = piece_bb[WHITEKING] | piece_bb[BLACKKING];
-    BB rook_or_queen_attackers = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
-    BB bishop_or_queen_attackers = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+// BB attacks_to(BB occ, int square, BB *piece_bb) {
+//     if (square < 0 || square >= 64) {
+//         logf_message(ERROR, "MOVEGEN", "Invalid square in attacks_to: %d", square);
+//         return 0ULL;
+//     }
+//     occ &= ~(1ULL << square);
+//     BB knight_attackers = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
+//     BB king_attackers = piece_bb[WHITEKING] | piece_bb[BLACKKING];
+//     BB rook_or_queen_attackers = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
+//     BB bishop_or_queen_attackers = piece_bb[WHITEQUEEN] | piece_bb[BLACKQUEEN];
 
-    rook_or_queen_attackers |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
-    bishop_or_queen_attackers |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
+//     rook_or_queen_attackers |= piece_bb[WHITEROOK] | piece_bb[BLACKROOK];
+//     bishop_or_queen_attackers |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
 
-    return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
-        | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
-        | (move_array->knight_moves[square] & knight_attackers)
-        | (move_array->king_moves[square] & king_attackers)
-        | (get_bishop_moves_from_square(square, occ) & bishop_or_queen_attackers)
-        | (get_rook_moves_from_square(square, occ) & rook_or_queen_attackers);
+//     return (move_array->pawn_attacks[0][square] & piece_bb[BLACKPAWN])
+//         | (move_array->pawn_attacks[1][square] & piece_bb[WHITEPAWN])
+//         | (move_array->knight_moves[square] & knight_attackers)
+//         | (move_array->king_moves[square] & king_attackers)
+//         | (get_bishop_moves_from_square(square, occ) & bishop_or_queen_attackers)
+//         | (get_rook_moves_from_square(square, occ) & rook_or_queen_attackers);
+// }
+
+BB attacks_to(BB occupied, int sq, BB *piece_bb) {
+   BB knights, kings, bishopsQueens, rooksQueens;
+   knights        = piece_bb[WHITEKNIGHT] | piece_bb[BLACKKNIGHT];
+   kings          = piece_bb[WHITEKING]   | piece_bb[BLACKKING];
+   rooksQueens    =
+   bishopsQueens  = piece_bb[WHITEQUEEN]  | piece_bb[BLACKQUEEN];
+   rooksQueens   |= piece_bb[WHITEROOK]   | piece_bb[BLACKROOK];
+   bishopsQueens |= piece_bb[WHITEBISHOP] | piece_bb[BLACKBISHOP];
+
+   return (move_array->pawn_attacks[0][sq] & piece_bb[BLACKPAWN])
+        | (move_array->pawn_attacks[1][sq] & piece_bb[WHITEPAWN])
+        | (move_array->knight_moves[sq] & knights)
+        | (move_array->king_moves[sq] & kings)
+        | (get_bishop_moves_from_square(sq, occupied) & bishopsQueens)
+        | (get_rook_moves_from_square(sq, occupied) & rooksQueens)
+        ;
 }
 
 void handle_en_passant(int from, BB en_passant_bb, movegen_t *movegen, Board *b) {

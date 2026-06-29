@@ -175,6 +175,7 @@ int read_in_calcs(char *filename, move_arrays *move_array) {
 }
 
 int save_magics(char *filename, move_arrays *move_array){
+    logf_message(INFO, "CALC_SAVE_MAGIC", "Saving Magic Bitboards to: %s", filename);
     int retval = 0;
     int wc;
     FILE *f = fopen(filename, "wb");
@@ -289,6 +290,7 @@ move_arrays* init_move_arrays(bool read_in_calcs){
         log_message(INFO, "CALC", "Succesfully read in calcs");
     } else {
         init_magic_bitboards(move_array->rook_magic_entries, move_array->bishop_magic_entries);
+        save_magics("magic_calcs.bin", move_array);
     }
 
     calculate_king_moves(move_array);

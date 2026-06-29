@@ -3,6 +3,7 @@
 #include "logging/lutil.h"
 #include "engine/board.h"
 #include "engine/fen.h"
+#include "engine/bitboard.h"
 #include "engine/move.h"
 #include "engine/coordinate.h"
 #include "engine/movegen.h"
@@ -22,6 +23,7 @@
 #define PERFT "p"
 #define MAKE_MOVE_IN_POS "mv"
 #define DUMP_MOVES "d"
+#define POS_INFO "posinfo"
 
 typedef int (*command_fn)(BString args, ui_t *ui);
 
@@ -169,8 +171,10 @@ static void handle_bb_cmds(BString bs, ui_t *ui){
     if (piece == 7) {
         if (color != -1) {
             ui->bb = ui->b->bb.occupiedBB & ~ui->b->bb.pieceBB[color ? BLACK : WHITE];
+            logf_message(INFO, "CMD", "Showing Occupied Bitboard for %s pieces", color == WHITE ? "white" : "black");
         } else {
             ui->bb = ui->b->bb.occupiedBB;
+            logf_message(INFO, "CMD", "Showing Occupied Bitboard");
         }
         return;
     }
@@ -257,7 +261,50 @@ static int handle_dump_moves_cmd(BString args, ui_t *ui) {
     return 0;
 }
 
-#define DEBUG_COMMANDS_SIZE 2
+static int handle_pos_info_cmd(BString args, ui_t *ui) {
+    (void) args;
+    // Want to print out if either king is in check or checkmate
+    // Want to print out each players castling rights
+    // Want to print out the half move clock
+    BB attacks_to_white = attacks_to(ui->b->bb.occupiedBB, ui->b->king_square[WHITE_KING_SQUARE], ui->b->bb.pieceBB) & ui->b->bb.pieceBB[BLACK];
+    if (attacks_to_white) {
+        ui->bb = attacks_to_white;
+        printf("White King (%s) is in check!\n", chess_squares[ui->b->king_square[WHITE_KING_SQUARE]]);
+        printf("It is attacked by: ");
+        while (attacks_to_white > 0) {
+            int attack_sq = count_trailing_zeros(attacks_to_white);
+            PIECE piece = ui->b->board[attack_sq];
+            printf("%s %s (%s), ", get_piece_color_name(piece).string, get_piece_name(piece).string, chess_squares[attack_sq]);
+
+            attacks_to_white &= attacks_to_white - 1;
+        }
+        printf("\n");
+    } else {
+        printf("White king is not in check\n");
+    }
+
+    BB attacks_to_black = attacks_to(ui->b->bb.occupiedBB, ui->b->king_square[BLACK_KING_SQUARE], ui->b->bb.pieceBB) & ui->b->bb.pieceBB[WHITE];
+    if (attacks_to_black) {
+        ui->bb = attacks_to_black;
+        printf("Black King (%s) is in check!\n", chess_squares[ui->b->king_square[BLACK_KING_SQUARE]]);
+        printf("It is attacked by: ");
+        while (attacks_to_black > 0) {
+            int attack_sq = count_trailing_zeros(attacks_to_black);
+            PIECE piece = ui->b->board[attack_sq];
+            printf("%s %s (%s), ", get_piece_color_name(piece).string, get_piece_name(piece).string, chess_squares[attack_sq]);
+
+            attacks_to_black &= attacks_to_black - 1;
+        }
+        printf("\n");
+    }else {
+        printf("Black king is not in check\n");
+    }
+
+
+    return 0;
+}
+
+#define DEBUG_COMMANDS_SIZE 4
 static const command_def_t command_table[] = {
     { QUIT, handle_quit_cmd, "Quit REPL" },
     { RESET, handle_reset_cmd, "Reset board to default position" },
@@ -270,6 +317,7 @@ static const command_def_t command_table[] = {
     { PERFT, handle_perft_cmd, "Starting a perft from position with given depth" },
     { MAKE_MOVE_IN_POS, handle_move_in_pos_cmd, "Making legal move in given position" },
     { DUMP_MOVES, handle_dump_moves_cmd, "Prints all legal move in position to stdout" },
+    { POS_INFO, handle_pos_info_cmd, "Prints info about position to stdout" },
 };
 
 int eval(BString *bs, ui_t *ui){
