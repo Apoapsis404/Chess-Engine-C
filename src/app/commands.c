@@ -126,6 +126,7 @@ static int handle_move(BString bs, Board *b){
         return (int)make_move(b, move);
     }
 
+
     int color = b->white_to_move ? WHITE : BLACK;
 
     if (is_square(&bs)) {

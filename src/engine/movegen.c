@@ -669,6 +669,7 @@ BB handle_check(Board *b) {
 
 
 movegen_t generate_moves(Board *b) {
+    log_message(DEBUG, "MOVEGEN", "Generating moves");
     movegen_t movegen = { 0 };
     b->check = false;
     movegen.checking_pieces = UINT64_MAX;

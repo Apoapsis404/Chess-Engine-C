@@ -314,7 +314,12 @@ static int test_pos2_capture_update(void) {
     int to = idx_from_square_name((char *)"f6");
     Move move = construct_move(CAPTURESFLAG, from, to);
 
+    generate_moves(b);
+
+    print_board(b->board);
     PIECE captured = make_move(b, move);
+    print_board(b->board);
+
     if (captured != BLACKKNIGHT) {
         printf("[TEST_POS2_CAPTURE] Expected capture of BLACKKNIGHT, got %d\n", captured);
         free_board(b);
