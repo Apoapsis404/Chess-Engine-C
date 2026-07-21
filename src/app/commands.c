@@ -313,7 +313,9 @@ static int handle_save_cmd(BString args, ui_t *ui){
 
     if (bstring_equal(save_command, "fen")){
         logf_message(INFO, "CMD", "Saving fen");
-        save_fen(get_fen(ui->b));
+        String fen = get_fen(ui->b); 
+        save_fen(fen);
+        free_string(&fen);
         return 0;
     }
 
