@@ -208,3 +208,18 @@ String get_fen(Board *b) {
 
     return fen;
 }
+
+int save_fen(String fen) {
+    FILE *fen_file = fopen("saved_fens.txt", "a");
+    if(!fen_file) {
+        fprintf(stderr, "Failed to open fen file: %s\n", "saved_fens.txt");
+        exit(EXIT_FAILURE);
+    }
+
+    fprintf(fen_file, "%s\n", fen.string);
+    fflush(fen_file);
+
+    fclose(fen_file);
+
+    return 0;
+}

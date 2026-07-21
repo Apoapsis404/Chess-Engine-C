@@ -19,6 +19,7 @@
 #define CHANGE_LEVEL "lvl"
 #define GET_FEN "fen"
 #define HELP "help"
+#define SAVE "save"
 
 // Debugging Commands definitions
 #define PERFT "p"
@@ -305,6 +306,20 @@ static int handle_pos_info_cmd(BString args, ui_t *ui) {
 
     return 0;
 }
+static int handle_save_cmd(BString args, ui_t *ui){
+    logf_message(DEBUG, "CMD", "Handeling Save commands");
+
+    BString save_command = bstring_next(&args, '\n');
+
+    if (bstring_equal(save_command, "fen")){
+        logf_message(INFO, "CMD", "Saving fen");
+        save_fen(get_fen(ui->b));
+        return 0;
+    }
+
+    logf_message(WARNING, "CMD", "Invalid save command: "BS_Fmt, BS_Arg(save_command));
+    return 0;
+}
 
 static int handle_help_cmd(BString args, ui_t *ui);
 
@@ -317,6 +332,7 @@ static const command_def_t command_table[] = {
     { CHANGE_LEVEL, handle_change_level_cmd, "Change logging level" },
     { GET_FEN, handle_get_fen_cmd, "Display current FEN string" },
     { HELP, handle_help_cmd, "Prints Out all available Commands" },
+    { SAVE, handle_save_cmd, "All save commands" },
 
     // Debugging Commands
     { PERFT, handle_perft_cmd, "Starting a perft from position with given depth" },

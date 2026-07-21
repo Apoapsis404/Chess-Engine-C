@@ -46,5 +46,6 @@ typedef struct{
 
 int parse_fen(Board *b, char* fen_str);
 String get_fen(Board *b);
+int save_fen(String fen);
 
 #endif //FEN_H;
