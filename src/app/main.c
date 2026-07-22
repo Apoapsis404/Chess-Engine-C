@@ -123,6 +123,7 @@ typedef struct main_t {
     char *test_name;
 
     bool perft;
+    PERFT_TYPE perft_type;
     int perft_depth;
 
     bool debug_position;
@@ -141,6 +142,7 @@ main_t main_cfg = {
     .test_name = "",
 
     .perft = false,
+    .perft_type = PERFT_DEBUG,
     .perft_depth = 1,
 
     .debug_position = false,
@@ -203,26 +205,49 @@ static bool is_valid_fen_placement(const char *fen) {
 }
 
 
-static int resolve_perft_input(const char *arg){
+static int resolve_perft_input(const char **argv, int argc, int i, PERFT_TYPE *perft_type, int *perft_depth){
+    const char *arg = argv[++i];
+    if (strncmp(arg, "d", 1) == 0) {
+        if (i + 1 >= argc) {
+            fprintf(stderr, "Too few arguments for perft\n");
+            return -1;
+        }
+        i++;
+        *perft_type = PERFT_DEBUG;
+    }
+
+    if (strncmp(arg, "n", 1) == 0) {
+        if (i + 1 >= argc) {
+            fprintf(stderr, "Too few arguments for perft\n");
+            fprintf(stderr, "%d, %d\n", i, argc);
+            return -1;
+        }
+        i++;
+        *perft_type = PERFT_NODES;
+    }
+
+    const char *narg = argv[i];
 
     int base = 10;
     char *endptr;
     errno = 0;    /* To distinguish success/failure after call */
     strtol("0", NULL, base);
     if (errno == EINVAL) {
+        fprintf(stderr, "Argument %s is not a number\n", narg);
         return -1;
     }
 
     errno = 0;    /* To distinguish success/failure after call */
-    strtol(arg, &endptr, base);
+    strtol(narg, &endptr, base);
 
     /* Check for various possible errors. */
     if (errno == ERANGE) {
+        fprintf(stderr, "Invalid argument %s\n", narg);
         return -1;
     }
 
-    if (endptr == arg) {
-        fprintf(stderr, "No digits were found\n");
+    if (endptr == narg) {
+        fprintf(stderr, "No digits were found in argument %s\n", narg);
         return -1;
     }
 
@@ -230,7 +255,8 @@ static int resolve_perft_input(const char *arg){
     if (*endptr != '\0')        /* Not necessarily an error... */
         printf("Further characters after number: \"%s\"\n", endptr);
 
-    return strtol(arg, NULL, 10);
+    *perft_depth = strtol(narg, NULL, 10);
+    return i;
 }
 
 static const char *resolve_fen_input(const char *arg) {
@@ -254,11 +280,13 @@ static const char *resolve_fen_input(const char *arg) {
 
     for (size_t i = 0; i < sizeof(presets) / sizeof(presets[0]); ++i) {
         if (strcmp(arg, presets[i].name) == 0) {
+            logf_message(INFO, "MAIN", "Found fen position: %s", presets[i].name);
             return presets[i].fen;
         }
     }
 
     if (is_valid_fen_placement(arg)) {
+        logf_message(DEBUG, "MAIN", "Valid fen position %s", arg);
         return arg;
     }
 
@@ -329,14 +357,14 @@ int main(int argc, const char **argv) {
                 print_usage(program);
                 return 1;
             }
-            int depth = resolve_perft_input(argv[++i]);
-            if (depth <= 0) {
-                fprintf(stderr, "Invalid argument '%s' for depth\n", arg);
+            int res = resolve_perft_input(argv, argc, i, &main_cfg.perft_type, &main_cfg.perft_depth);
+            if (res < 0) {
+                fprintf(stderr, "Invalid argument '%s' for perft\n", arg);
                 print_usage(program);
                 return 1;
             } 
+            i = res;
             main_cfg.perft = true;
-            main_cfg.perft_depth = depth;
             continue;
         }
 
@@ -363,7 +391,7 @@ int main(int argc, const char **argv) {
     if (!main_cfg.debug_position && !main_cfg.test && !main_cfg.perft) main_cfg.return_to_cmd = true;
 
     if (main_cfg.perft) {
-        perft_single_test(main_cfg.fen, main_cfg.perft_depth);
+        perft_single_test(main_cfg.fen, main_cfg.perft_depth, main_cfg.perft_type);
     }
 
 
@@ -422,7 +450,7 @@ int main(int argc, const char **argv) {
         ui->b = b;
         ui->bb = 0ULL;
         ui->clear = true;
-        ui->draw_bb = true;
+        ui->draw_bb = false;
         ui->debug = false;
 
         cmd(ui);

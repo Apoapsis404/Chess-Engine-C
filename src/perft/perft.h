@@ -16,8 +16,13 @@ typedef struct perft_result_t {
     size_t checkmates;
 } perft_result_t;
 
-void perft_single_test(char *fen, int depth);
-void perft_single_test_b(Board *b, int depth);
+typedef enum PERFT_TYPE {
+    PERFT_DEBUG,
+    PERFT_NODES,
+} PERFT_TYPE;
+
+void perft_single_test(char *fen, int depth, PERFT_TYPE perft_type);
+void perft_single_test_b(Board *b, int depth, PERFT_TYPE perft_type);
 
 
 #endif // PERFT_H

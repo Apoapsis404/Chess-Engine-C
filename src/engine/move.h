@@ -61,11 +61,30 @@ Move string_to_move(BString move_string);
 void log_move(log_level_t level, const char* module, Move move);
 void print_move(Move move);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+static inline const char *move_promotion_str(Move move) {
+	static char buf[2];
+	char p = move_get_promotion_piece(move);
+	if (p) {
+		buf[0] = p;
+		buf[1] = '\0';
+		return buf;
+	}
+	return "";
+}
+
+#ifdef __cplusplus
+}
+#endif
+
 #ifndef MtS_Fmt
-#define MtS_Fmt "%s%s%c"
+#define MtS_Fmt "%s%s%s"
 #endif //MtS_FmT
 #ifndef MtS_Arg
-#define MtS_Arg(move) (chess_squares)[get_from(move)], (chess_squares)[get_to(move)], move_get_promotion_piece(move)
+#define MtS_Arg(move) (chess_squares)[get_from(move)], (chess_squares)[get_to(move)], move_promotion_str(move)
 #endif //MtS_Arg
 
 #endif //MOVE_H;

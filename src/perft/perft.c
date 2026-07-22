@@ -7,8 +7,9 @@ perft_result_t pr = { 0 };
 
 FILE *pf = NULL;
 
-void start_test(Board *b, int depth);
+void start_test(Board *b, int depth, PERFT_TYPE perft_type);
 void perft_test(Board *b, int depth);
+void perft_nodes_test(Board *b, int depth);
 void log_perft_result(log_level_t level, const perft_result_t *result);
 
 void reset_pr() {
@@ -21,19 +22,18 @@ void reset_pr() {
     pr.ep = 0;
 }
 
-void perft_single_test_b(Board *b, int depth) {
+void perft_single_test_b(Board *b, int depth, PERFT_TYPE perft_type) {
     logf_message(INFO, "PERFT", "Starting PERFT test with given board and depth %d", depth);
     reset_pr();
-    start_test(b, depth);
+    start_test(b, depth, perft_type);
 }
 
-void perft_single_test(char *fen, int depth){
+void perft_single_test(char *fen, int depth, PERFT_TYPE perft_type){
     Board *b;
     b = init_board_fen(fen);
 
     logf_message(INFO, "PERFT", "Starting PERFT test with FEN '%s' and depth %d", fen, depth);
-
-    start_test(b, depth);
+    start_test(b, depth, perft_type);
 
     free_board(b);
 }
@@ -129,32 +129,23 @@ void log_perft_result(log_level_t level, const perft_result_t *result) {
     logf_message(level, "PERFT", "  Checkmates:  %s", buf);
 }
 
-void start_test(Board *b, int depth) {
-    // if (pf != NULL) fclose(pf);
-    // pf = fopen("perft.txt", "w");
-
-
+void start_test(Board *b, int depth, PERFT_TYPE perft_type) {
     clock_t time_it;
     log_time_start(INFO, "PERFT", &time_it);
-    perft_test(b, depth);
-    log_perft_result(INFO, &pr);
-    log_time_stop(INFO, "PERFT", &time_it);
 
-    // fclose(pf);
+    if (perft_type == PERFT_DEBUG) {
+        perft_test(b, depth);
+        log_perft_result(INFO, &pr);
+    }
+    if (perft_type == PERFT_NODES) {
+        perft_nodes_test(b, depth);
+    }
+
+    log_time_stop(INFO, "PERFT", &time_it);
 }
 
 void perft_test(Board *b, int depth) {
     movegen_t movegen = generate_moves(b);
-    
-    //To be commented out
-    // String fen = get_fen(b);
-
-    // fprintf(pf, "%s\n", fen.string);
-    // free_string(&fen);
-    // for (size_t i = 0; i < movegen.move_count; i++) {
-    //     fprintf(pf, MtS_Fmt"\n", MtS_Arg(movegen.moves[i]));
-    // }
-    // fflush(pf);
 
     if (depth == 1) {
         /* For leaf nodes we must:
@@ -194,4 +185,52 @@ void perft_test(Board *b, int depth) {
         perft_test(b, depth - 1);
         unmake_move(b);
     }
+}
+
+// Counting nodes for the initial moves
+int perft_nodes(Board *b, int depth) {
+    int nodes = 0;
+    movegen_t movegen = generate_moves(b);
+
+    if (depth == 1) {
+        return movegen.move_count;
+    }
+
+    Move move;
+    for (size_t i = 0; i < movegen.move_count; ++i) {
+        move = movegen.moves[i];
+        make_move(b, move);
+        nodes += perft_nodes(b, depth - 1);
+        unmake_move(b);
+    }
+
+    return nodes;
+}
+
+// PERFT nodes for initial moves
+void perft_nodes_test(Board *b, int depth) {
+    if (depth <= 1) {
+        logf_message(ERROR, "PERFT", "Counting nodes requires a depth greater than 1");
+        return;
+    }
+
+    movegen_t movegen = generate_moves(b);
+    char buf[64];
+    long total_nodes = 0;
+
+    Move move;
+    logf_message(INFO, "PERFT", "=== PERFT RESULTS ===");
+    for (size_t i = 0; i < movegen.move_count; ++i) {
+        move = movegen.moves[i];
+        make_move(b, move);
+        int nodes = perft_nodes(b, depth - 1);
+        total_nodes += nodes;
+
+        format_size_with_commas(nodes, buf, sizeof(buf));
+        logf_message(INFO, "PERFT", " Move: "MtS_Fmt"  Nodes: %s", MtS_Arg(move), buf);
+        unmake_move(b);
+    }
+
+    format_size_with_commas(total_nodes, buf, sizeof(buf));
+    logf_message(INFO, "PERFT", " Moves: %d, Total nodes: %s", movegen.move_count, buf);
 }

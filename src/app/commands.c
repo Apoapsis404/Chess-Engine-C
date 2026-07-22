@@ -245,7 +245,7 @@ static int handle_perft_cmd(BString args, ui_t *ui) {
 
     size_t depth = char_digit_to_int(args.string[0]);
 
-    perft_single_test_b(ui->b, depth);
+    perft_single_test_b(ui->b, depth, PERFT_DEBUG);
 
     return 0;
 }
