@@ -66,13 +66,16 @@ void draw_ui(ui_t *ui, size_t offset) {
 
     if (ui->draw_bb) {
         BB bb = ui->bb;
-        printf("\nHex: BB: 0x%" PRIX64 "\n", bb);
+        printf("\nHex: BitBoard: 0x%" PRIX64 "\n", bb);
         print_bb(bb);
         offset += 19;
     }
 
     if (h > offset + 2) {
-        print_char_n('\n', h - offset - 2);
+        print_char_n('\n', h - offset - 4);
     }
+
+    printf("Move command: mv <from_square> <to_square>\n\n");
+
     print_char_n('#', w);
 }
